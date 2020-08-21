@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: zelenyeshtany
+# name: week days
+# key: wdays
+# --
+<%%(let ((dayname (calendar-day-of-week date)))(memq dayname '($1 1 2 3 4 5 6 7))) 00:00-00:00>

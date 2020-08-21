@@ -1,0 +1,15 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '(("localhost"
+  [url-cookie "nc_sameSiteCookielax" "true" "Fri, 31-Dec-2100 23:59:59 GMT" "/nextcloud" "localhost" nil]
+  [url-cookie "nc_sameSiteCookiestrict" "true" "Fri, 31-Dec-2100 23:59:59 GMT" "/nextcloud" "localhost" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

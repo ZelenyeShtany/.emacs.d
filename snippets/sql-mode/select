@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: select
+# key: s
+# --
+select $1 from $2 as 

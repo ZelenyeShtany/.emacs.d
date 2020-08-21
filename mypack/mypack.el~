@@ -1,0 +1,360 @@
+(defun my/newfunc (args)
+  "docstring"
+  (interactive)
+
+  (let* (
+	 (today-week-day (car (split-string (current-time-string) " ")))
+	 
+	 )
+    (string= (upcase ) (upcase today-week-day))
+    
+    )
+  
+  )
+
+
+(defun my/org-get-current-heading-end-point ()
+  "docstring"
+  (interactive)
+
+  (nth 1 (my-org-get-current-heading-level-and-point))
+  
+  )
+
+
+(defun my-org-get-current-heading-level-and-point ()
+  "Returns current heading level by counting its stars
+at the beginning of the line"
+  (let
+      (
+       (current-heading-stars "")
+       (current-heading-level 0)
+       )
+    (save-excursion
+	(while
+	    (progn
+	      ;; current line definition
+	      (setq current-line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+	      
+	      ;; assign all the stars at the beginning of the line to current-heading-stars variable
+	      (save-match-data
+		(and (string-match "\\(^[*]+\\)" current-line)
+		     (if (not (zerop (length (match-data)))) (setq current-heading-stars (match-string 1 current-line)))
+		     )
+		)
+
+	      ;; count stars and assign to a variable
+	      (setq current-heading-level (length current-heading-stars))
+
+	      ;;move 1 line backward
+	      
+
+	      ;; if there's no stars in the line, continue the while loop
+	      (and (eq current-heading-level 0)
+		   (not (eq (point) 1))
+		   ;;if 2 conditions above are true, then move 1 line backward
+		   ;;if couldn't move line, then stop looping
+		   (zerop (forward-line -1))
+		   )
+	      )
+	  )
+	(list current-heading-level (point))
+      )
+    )
+  )
+
+
+(defun my-compare-timestamps (t1 t2)
+  "returns true if timestamp1 equals to timestamp2"
+  (let (
+	(ts-regexp "\\([[:digit:]]\\{4\\}\\)-\\([[:digit:]]\\{2\\}\\)-\\([[:digit:]]\\{2\\}\\)")
+	)
+    (progn
+     (save-match-data
+       (and (string-match ts-regexp t1)
+	    (setq t1-year  (match-string 1 t1)
+		  t1-month (match-string 2 t1)
+		  t1-day   (match-string 3 t1)
+		  )
+	    ))
+
+     (save-match-data
+       (and (string-match ts-regexp t2)
+	    (setq t2-year  (match-string 1 t2)
+		  t2-month (match-string 2 t2)
+		  t2-day   (match-string 3 t2)
+		  )
+	    ))
+
+     (if
+	 (or
+	  (not (string= t1-year  t2-year)  )
+	  (not (string= t1-month t2-month) )
+	  (not (string= t1-day   t2-day)   )
+	 )
+       nil t
+       )
+     )
+    )
+  )
+
+(defun my/org-sync-time-in-heading-with-scheduled-time (t1 t2)
+  "Gets a list of time 1 and time 2 with format 'HH:MM[-HH:MM] and inserts it into heading in the place of old time [range]'"
+  (let*
+      (
+       (regexp "\\(\\([[:digit:]]\\{1,2\\}\\):\\([[:digit:]]\\{2\\}\\)\\)\\(-\\(\\([[:digit:]]\\{1,2\\}\\):\\([[:digit:]]\\{2\\}\\)\\)\\)?")
+       (heading (org-get-heading t t t t))
+       (time-within-heading nil)
+       )
+
+    ;; find time[range] within heading and assign it to a variable
+    (save-match-data
+      (and (string-match regexp heading)
+	   (setq time-within-heading (match-string 0 heading)) ;; было 1
+	   ))
+
+    ;;
+    (if (not (null t2)) (setq t2 (concat "-" t2)))
+    (if (eq time-within-heading nil)
+	(setq newheading (concat t1 t2 " " heading))
+      (setq newheading (replace-regexp-in-string regexp (concat t1 t2) heading))
+      )
+    (org-narrow-to-subtree)
+    (save-excursion
+      (goto-char (point-min))
+      (org-show-subtree)
+      (when
+	  (and (re-search-forward org-complex-heading-regexp nil t)
+	       (match-string 4)
+	       )
+	(let (
+	      (heading-start (match-beginning 4))
+	      (heading-end (match-end 4))
+	      )
+	  (delete-region heading-start heading-end)
+	  (goto-char heading-start)
+	  (insert newheading)
+	  )
+	)
+      )
+    (widen)
+    )
+  )
+
+(defun my/compare-time-range (args)
+  "docstring"
+  (interactive)
+
+  (let* (
+	 ()
+	 ()
+	 )
+    )
+  
+  )
+
+
+(defun my-compare-time (t1 t2)
+  "Returns t, if t1 equals t2 (format is [H]H:MM)
+nil nil returns t
+"
+  (interactive)
+  (let (
+	(time-regexp "\\([[:digit:]]\\{1,2\\}\\):\\([[:digit:]]\\{2\\}\\)")
+	(times-are-equal nil)
+	(t1-hours "")
+	(t2-hours "")
+	(t1-minutes "")
+	(t2-minutes "")
+	)
+    (cond
+	   (
+	    (and (null t1) (null t2))
+	    (setq times-are-equal t)
+	    )
+	   
+	   (
+	    (or (null t1) (null t2))
+	    (setq times-are-equal nil)
+	    )
+	   (
+	    (and
+	     (not(null t1))
+	     (not(null t2))
+	    )
+	     (progn
+	       (save-match-data
+		 (and (string-match time-regexp t1)
+		      (setq t1-hours  (match-string 1 t1)
+			    t1-minutes (match-string 2 t1)
+			    )
+		      ))
+	       (save-match-data
+		 (and (string-match time-regexp t2)
+		      (setq t2-hours  (match-string 1 t2)
+			    t2-minutes (match-string 2 t2)
+			    )
+		      ))
+	       (and
+		(eq (string-to-number t1-hours) (string-to-number t2-hours))
+		(eq (string-to-number t1-minutes) (string-to-number t2-minutes))
+		(setq times-are-equal t)
+		)
+	       times-are-equal
+	       )
+	     )
+	   )
+    )
+  )
+(defun my/org-get-time-range (string)
+  "returns (list start-time end-time) parsing STRING
+finds time range within STRING and returns it via list '(start-time end-time)
+time format: [H]H:MM[-HH:MM]
+"
+  (let* (
+	 (regexp "\\(\\([[:digit:]]\\{1,2\\}\\):\\([[:digit:]]\\{2\\}\\)\\)\\(-\\(\\([[:digit:]]\\{1,2\\}\\):\\([[:digit:]]\\{2\\}\\)\\)\\)?")
+	 (end-time nil)
+	 (start-time nil)
+	 )
+    (if(null string) (list nil nil)
+      (progn
+	(message "fetched string: %s" string)
+	(save-match-data
+	  (and (string-match regexp string)
+	       (setq end-time  (match-string 5 string)
+		     start-time (match-string 1 string)
+		     )
+	       ))
+	(list start-time end-time)
+	)
+      )
+      )
+    )
+
+
+(defun my-org-get-parent-point ()
+  "Returns point of parent of current heading"
+  (let(
+       (current-heading-level (car (my-org-get-current-heading-level-and-point)))
+       (previous-heading-level 0)
+       )
+    (save-excursion
+      (if(<= current-heading-level 1) nil
+      (progn
+	(while 
+	    (progn
+	      (setq previous-heading-level (car (my-org-get-current-heading-level-and-point)))
+	      (and
+	       (< (- current-heading-level previous-heading-level) 1)
+	       (not (eq (point) 1))
+	       ;;if 2 conditions above are true, then move 1 line backward
+	       ;;if couldn't move line, then stop looping
+	       (zerop(forward-line -1))
+	       )
+	      )
+	  )
+	(setq previous-heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
+	(if(or
+	    (eq (point) 1)
+	    ( < (- current-heading-level previous-heading-level) 1)
+	    )
+	    nil previous-heading-point
+	    )	
+	)
+      )
+      )
+    )
+  )
+
+
+
+(defun my-set-created-property()
+"this function sets up CREATE property for current heading if 
+its parent(or headings hierachicaly residing more above) heading has
+either different date (relative to today) or has
+no CREATED property"
+(let* (
+      (today (format-time-string "%Y-%m-%d"))
+      (today-ts (format-time-string "%Y-%m-%d %a %H:%M"))
+      (par-point (my-org-get-parent-point))
+      (parent-timestamp (org-entry-get par-point "CREATED" t))
+      (cur-ts (org-entry-get nil "CREATED" nil))
+      )
+  (if (or
+       (eq par-point nil)
+       (eq parent-timestamp nil)
+       (not (my-compare-timestamps parent-timestamp today))
+	 )
+	  (if(eq cur-ts nil) (org-entry-put nil "CREATED" (concat "[" today-ts "]")))
+      (org-entry-delete nil "CREATED")
+      )
+    )
+)
+
+
+
+(defun my/sync-time-after-gcal-sync (bool)
+  "Если есть время в heading, но нет scheduled - не обновлять;
+Если есть время и там им, и время не равно - обновить(скопировать scheduled время в heading);
+формат времени = HH:MM[-HH:MM]"
+  (interactive
+          (list (y-or-n-p (concat (org-get-heading) "\nUpdate time for further days also? "))))
+  (let* (
+	 (heading-time-range (my/org-get-time-range (org-get-heading) ) )
+	 (heading-start-time (car heading-time-range))
+	 (heading-end-time (nth 1 heading-time-range) )
+
+	 (scheduled-time-range (my/org-get-time-range (org-entry-get nil "SCHEDULED") ))
+	 (scheduled-start-time (car scheduled-time-range))
+	 (scheduled-end-time   (nth 1 scheduled-time-range))
+	)
+	 (if (and
+	      (or
+	      (not (my-compare-time scheduled-start-time heading-start-time))
+	      (not (my-compare-time scheduled-end-time heading-end-time))
+	      )
+	      bool)
+     (my/org-sync-time-in-heading-with-scheduled-time scheduled-start-time scheduled-end-time)
+    )
+  )
+    )
+  )
+;;(defadvice org-gcal-sync (after check-for-amended-timestamps) (message "message advice") )
+;;(ad-activate 'org-gcal-sync)
+
+
+
+
+
+(defun my/recurring-task-p (elem)
+  "docstring"
+  
+  (let* (
+	 (regexp "|\\([^|]*\\)|")
+	 (elem-has-recur-syntax 0)
+	 )
+
+    (when (string-match regexp elem)
+      (setq elem-has-recur-syntax 1)
+      )
+    elem-has-recur-syntax
+    )
+)
+
+
+(add-hook 'org-after-demote-entry-hook 'my-set-created-property)
+(add-hook 'org-after-promote-entry-hook 'my-set-created-property)
+(add-hook 'org-insert-heading-hook 'my-set-created-property)
+
+
+
+
+;;(defun my/testfunc (bool)
+;;  "Если есть время в heading, но нет scheduled - не обновлять;
+;;Если есть время и там им, и время не равно - обновить(скопировать scheduled время в heading);
+;;формат времени = HH:MM[-HH:MM]"
+;;
+;;  (interactive
+;;          (list (y-or-n-p "Update time for further days also? ")))
+;;  (message "pashol von" )
+;;  )

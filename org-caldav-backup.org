@@ -1,0 +1,216 @@
+** TODO настроить org-recur :orgmode:
+SCHEDULED: <2020-07-29 Wed>
+:PROPERTIES:
+:CREATED:  [2020-07-17 Fri 18:12]
+:ID:       452d70c3-ddc3-4fd3-b9c0-08bac06f83f7
+:END:
+
+*** TODO any of exercises(aerobic)
+SCHEDULED: <2020-07-27 Mon 11:00-12:00 .+1d>
+:PROPERTIES:
+:ID:       dca91a53-49ba-49f8-91bb-84a367074b41
+:GOAL:     [[id:adf0d777-7918-4a36-addc-cf103017f257][30days streak]]
+:LAST_REPEAT: [2020-07-21 Tue 16:11]
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-27 Mon 11:00-11:30 .+1d]" on [2020-07-27 Mon 04:42]
+- State "DONE"       from "TODO"       [2020-07-21 Tue 16:11]
+- State "DONE"       from "TODO"       [2020-07-18 Sat 14:41]
+- State "DONE"       from "TODO"       [2020-07-16 Thu 20:15]
+- State "DONE"       from "TODO"       [2020-07-15 Wed 18:17]
+- State "DONE"       from "TODO"       [2020-07-14 Tue 20:00]
+- State "DONE"       from "TODO"       [2020-07-13 Mon 12:38]
+- State "DONE"       from "TODO"       [2020-07-12 Sun 23:48]
+:END:
+Minimum: 20x3 отжим, 20x3 присяд, 20x3 пресс / Бег 20мин
+
+*** TODO почистить зубы утром
+SCHEDULED: <2020-07-27 Mon 08:30 +1d>
+:PROPERTIES:
+:LAST_REPEAT: [2020-07-27 Mon 02:08]
+:ID:       1159e765-f73f-498e-8ed3-a1dd82bf2413
+:GOAL:     [[id:72c875d5-92d9-4dfc-bb0e-509250ac3981][30days streak]]
+:END:
+:LOGBOOK:
+- State "MISSED"     from "TODO"       [2020-07-27 Mon 02:08]
+- State "MISSED"     from "TODO"       [2020-07-24 Fri 06:00]
+- State "DONE"       from "TODO"       [2020-07-22 Wed 12:39]
+- State "DONE"       from "TODO"       [2020-07-21 Tue 16:12]
+- State "MISSED"     from "TODO"       [2020-07-21 Tue 16:12]
+- State "DONE"       from "TODO"       [2020-07-19 Sun 16:56]
+- State "DONE"       from "TODO"       [2020-07-18 Sat 14:38]
+- State "DONE"       from "TODO"       [2020-07-17 Fri 12:43]
+- State "DONE"       from "TODO"       [2020-07-16 Thu 11:57]
+- State "DONE"       from "TODO"       [2020-07-15 Wed 10:48]
+- State "DONE"       from "TODO"       [2020-07-14 Tue 11:44]
+- State "DONE"       from "TODO"       [2020-07-13 Mon 13:41]
+- State "DONE"       from "TODO"       [2020-07-12 Sun 11:56]
+- State "DONE"       from "TODO"       [2020-07-11 Sat 13:52]
+- State "DONE"       from "TODO"       [2020-07-10 Fri 09:41]
+- CLOSING NOTE [2020-07-06 Mon 19:48]
+:END:
+
+**** TODO отслеживание аннотаций типа start и stop, чтобы считать колво прочитанных
+     SCHEDULED: <2020-07-30 Thu 15:00>
+     :PROPERTIES:
+     :ID:       47d578e9-ada9-4714-abc3-3fc11d4cb38d
+     :END:
+- Rescheduled from "[2020-07-03 Fri]" on [2020-07-02 Thu 23:26]
+слов на англ за определенный промежуток. для ведения статистики, достижения
+конкретной цели. чтобы чувствовать прогресс, вернее видеть его в
+цифрах. чтобы не было ощущения того, что я стагнирую.
+
+*** TODO |mon-sat| 11:00-12:30 any of exercises(aerobic)
+SCHEDULED: <2020-07-30 Thu 11:00-12:30>
+:PROPERTIES:
+:ID:       dca91a53-49ba-49f8-91bb-84a367074b41
+:GOAL:     [[id:adf0d777-7918-4a36-addc-cf103017f257][30days streak]]
+:LAST_REPEAT: [2020-07-21 Tue 16:11]
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-29 Wed]" on [2020-07-29 Wed 22:56]
+- Rescheduled from "[2020-07-27 Mon 11:00-11:30 .+1d]" on [2020-07-27 Mon 04:42]
+- State "DONE"       from "TODO"       [2020-07-21 Tue 16:11]
+- State "DONE"       from "TODO"       [2020-07-18 Sat 14:41]
+- State "DONE"       from "TODO"       [2020-07-16 Thu 20:15]
+- State "DONE"       from "TODO"       [2020-07-15 Wed 18:17]
+- State "DONE"       from "TODO"       [2020-07-14 Tue 20:00]
+- State "DONE"       from "TODO"       [2020-07-13 Mon 12:38]
+- State "DONE"       from "TODO"       [2020-07-12 Sun 23:48]
+:END:
+Minimum: 20x3 отжим, 20x3 присяд, 20x3 пресс / Бег 20мин
+
+** TODO [#2] |mon-sat| 13:00-15:00 Discrete Math
+SCHEDULED: <2020-07-30 Thu 13:00-15:00>
+:PROPERTIES:
+:CREATED:  [2020-07-06 Mon 21:08]
+:ID:       3289d489-8275-4dc4-9372-350d8717cc80
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 13:00]" on [2020-07-29 Wed 23:09]
+:END:
+
+** TODO [#4] |tue,thu| 17:00-18:00 ADHD/Taking Charge of ADHD конспект
+SCHEDULED: <2020-07-30 Thu 17:00-18:00>
+:PROPERTIES:
+:CREATED:  [2020-07-06 Mon 21:08]
+:ID:       a8e38c3a-f366-42b4-8483-c4aa3e6fce33
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 17:00]" on [2020-07-29 Wed 23:09]
+:END:
+
+** TODO [#1] |mon-sat| 9:00-12:30 НГТУ (3h + 30m chill)
+SCHEDULED: <2020-07-30 Thu 09:00-12:30>
+:PROPERTIES:
+:CREATED:  [2020-07-06 Mon 21:08]
+:ID:       1b3d13fd-85a1-4629-9c92-99838e5e3106
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-29 Wed]" on [2020-07-29 Wed 23:09]
+- Rescheduled from "[2020-07-30 Thu 15:00]" on [2020-07-29 Wed 22:05]
+- Rescheduled from "[2020-07-29 Wed]" on [2020-07-29 Wed 22:04]
+:END:
+
+** TODO [#4] |Mon,Thu| 16:05 assdasasd
+SCHEDULED: <2020-07-30 Thu 16:05>
+:PROPERTIES:
+:CREATED:  [2020-07-28 Tue 16:31]
+:ID:       b71d717e-0040-4d3a-a262-f845976243f9
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 15:30]" on [2020-07-29 Wed 21:30]
+- Rescheduled from "[2020-07-30 Thu 16:05]" on [2020-07-29 Wed 21:29]
+- Rescheduled from "[2020-07-30 Thu 16:00]" on [2020-07-29 Wed 11:09]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 10:30]
+- Rescheduled from "[2020-07-30 Thu 15:00]" on [2020-07-29 Wed 09:57]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 08:55]
+- Rescheduled from "[2020-07-30 Thu 15:00]" on [2020-07-29 Wed 08:55]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 08:44]
+:END:
+
+*** TODO |+1d| 08:30-08:45 \omega-3 4 капсулы
+SCHEDULED: <2020-07-30 Thu 08:30-08:45>
+:PROPERTIES:
+:LAST_REPEAT: [2020-07-24 Fri 06:00]
+:ID:       705cab81-e925-4ebf-9c40-4d7de42ff6d7
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 08:30]" on [2020-07-29 Wed 22:52]
+- State "MISSED"     from "TODO"       [2020-07-24 Fri 06:00]
+- State "DONE"       from "TODO"       [2020-07-22 Wed 12:39]
+- State "DONE"       from ""           [2020-07-21 Tue 16:12]
+- State "DONE"       from "TODO"       [2020-07-21 Tue 16:12]
+- State "DONE"       from "TODO"       [2020-07-19 Sun 16:56]
+:END:
+
+*** TODO [#3] |mon-sat| 15:30-16:30 English Writing
+SCHEDULED: <2020-07-30 Thu 15:30>
+:PROPERTIES:
+:ID:       90ddf83a-26ca-4fc6-9cac-ff75d008924f
+:GOAL:     [[id:4a5f3dab-eb97-49af-a761-a76e8ebed24e][1575words/21days]]
+:END:
+Write 75 words a day in english (it can be
+chatting, writing on forum, journaling)
+
+*** TODO [#3] |mon-sat| 15:30-16:30 Learning new English words
+SCHEDULED: <2020-07-30 Thu 15:30>
+:PROPERTIES:
+:GOAL:     [[id:ed4f76be-a75d-472a-a4f3-43492e97571a][300words/30days]]
+:ID:       cdfffe04-1e89-402d-a68b-6d92c1d3aa09
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-29 Wed]" on [2020-07-29 Wed 22:20]
+:END:
+learning new words + adding to anki (at least +10/day)
+
+*** TODO [#3] |tue,thu,sat| 15:30-16:30 English Reading
+SCHEDULED: <2020-07-30 Thu 15:30-16:30>
+:PROPERTIES:
+:GOAL:     [[id:5fd10544-ba7e-40aa-a015-c9fa6c8ffdcb][accomplish 10-days streak]]
+:ID:       19d35b60-c0da-4544-9b18-3fb52ed69e3f
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 15:30]" on [2020-07-29 Wed 23:38]
+:END:
+
+**** TODO отслеживание аннотаций типа start и stop, чтобы считать колво прочитанных
+     SCHEDULED: <2020-07-30 Thu 15:00>
+     :PROPERTIES:
+     :ID:       47d578e9-ada9-4714-abc3-3fc11d4cb38d
+     :END:
+- Rescheduled from "[2020-07-03 Fri]" on [2020-07-02 Thu 23:26]
+слов на англ за определенный промежуток. для ведения статистики, достижения
+конкретной цели. чтобы чувствовать прогресс, вернее видеть его в
+цифрах. чтобы не было ощущения того, что я стагнирую.
+
+
+** TODO [#4] |Mon,Thu| 16:05 assdasasd
+SCHEDULED: <2020-07-30 Thu 16:05>
+:PROPERTIES:
+:CREATED:  [2020-07-28 Tue 16:31]
+:ID:       b71d717e-0040-4d3a-a262-f845976243f9
+:END:
+:LOGBOOK:
+- Rescheduled from "[2020-07-30 Thu 15:30]" on [2020-07-29 Wed 21:30]
+- Rescheduled from "[2020-07-30 Thu 16:05]" on [2020-07-29 Wed 21:29]
+- Rescheduled from "[2020-07-30 Thu 16:00]" on [2020-07-29 Wed 11:09]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 10:30]
+- Rescheduled from "[2020-07-30 Thu 15:00]" on [2020-07-29 Wed 09:57]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 08:55]
+- Rescheduled from "[2020-07-30 Thu 15:00]" on [2020-07-29 Wed 08:55]
+- Rescheduled from "[2020-07-30 Thu]" on [2020-07-29 Wed 08:44]
+:END:
+
+* ssghjm
+:PROPERTIES:
+:ID:       99969ece-4518-4e09-b0b8-884d4b425c80
+:END:
+<2020-08-06 Thu 03:00-04:00>
+
+* ssghjm
+:PROPERTIES:
+:ID:       99969ece-4518-4e09-b0b8-884d4b425c80
+:END:
+<2020-08-06 Thu 03:00-04:00>
+

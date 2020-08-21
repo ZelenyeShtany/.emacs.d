@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: sourceBlock
+# key: sb
+# --
+#+begin_src
+
+#+end_src
