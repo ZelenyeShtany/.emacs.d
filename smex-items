@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ getenv
  comment-dwim
- count-words
+ counsel-ag
+ dimmer-mode
  company-mode
+ count-words
  counsel-org-entity
- org-cliplink
- org-mode
- fundamental-mode
 )
 
 ;; ----- smex-data -----
@@ -25,7 +25,7 @@
  (grep . 2)
  (eval-expression . 67)
  (org-evaluate-time-range . 2)
- (getenv . 1)
+ (getenv . 2)
  (kill-word . 2)
  (kill-line . 1)
  (customize-variable . 12)
@@ -125,11 +125,11 @@
  (counsel-buffer-or-recentf . 2)
  (counsel-load-theme . 2)
  (counsel-yank-pop . 1)
- (counsel-ag . 42)
+ (counsel-ag . 43)
  (counsel-package . 95)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 11)
+ (company-mode . 12)
  (company-complete . 1)
  (counsel-org-capture . 1)
  (all-the-icons-install-fonts . 1)
@@ -243,7 +243,7 @@
  (org-narrow-to-subtree . 1)
  (org-show-subtree . 2)
  (indent-region . 4)
- (dimmer-mode . 9)
+ (dimmer-mode . 10)
  (edebug-stop . 3)
  (edebug-mode . 1)
  (edebug-defun . 1)
@@ -295,7 +295,7 @@
  (hs-toggle-hiding . 3)
  (occur . 1)
  (uncomment-region . 1)
- (comment-dwim . 15)
+ (comment-dwim . 17)
  (org-set-tags-command . 1)
  (ido-find-file . 2)
  (counsel-dired . 4)

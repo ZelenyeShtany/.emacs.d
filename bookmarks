@@ -39,7 +39,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Sync/org/notes.org")
- (front-context-string . "**** apache relo")
- (rear-context-string . "ed 13:41]\n:END:\n")
- (position . 76379))
+ (front-context-string . "**** python dire")
+ (rear-context-string . "ri 17:29]\n:END:\n")
+ (position . 83014))
 )
