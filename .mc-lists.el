@@ -18,6 +18,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+	my-jump-to-next
+	my-jump-to-prev
 	delete-window
 	org-cycle
 	))

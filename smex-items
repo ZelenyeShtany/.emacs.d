@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- getenv
- comment-dwim
+ python-mode
  counsel-ag
- dimmer-mode
- company-mode
- count-words
- counsel-org-entity
+ counsel-package
+ highlight-symbol-mode
+ hs-minor-mode
+ eval-region
+ highlight-symbol-next
 )
 
 ;; ----- smex-data -----
@@ -125,11 +125,11 @@
  (counsel-buffer-or-recentf . 2)
  (counsel-load-theme . 2)
  (counsel-yank-pop . 1)
- (counsel-ag . 43)
- (counsel-package . 95)
+ (counsel-ag . 46)
+ (counsel-package . 98)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 12)
+ (company-mode . 17)
  (company-complete . 1)
  (counsel-org-capture . 1)
  (all-the-icons-install-fonts . 1)
@@ -184,7 +184,7 @@
  (xah-find-replace-text-regex . 2)
  (helm-regexp . 3)
  (highlight-regexp . 1)
- (replace-regexp-visual . 59)
+ (replace-regexp-visual . 61)
  (refill-mode . 8)
  (org-fill-paragraph . 2)
  (org-insert-item . 2)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 49)
+ (emacs-init-time . 51)
  (emacs-uptime . 1)
  (debug . 4)
  (check-parens . 7)
@@ -243,7 +243,7 @@
  (org-narrow-to-subtree . 1)
  (org-show-subtree . 2)
  (indent-region . 4)
- (dimmer-mode . 10)
+ (dimmer-mode . 13)
  (edebug-stop . 3)
  (edebug-mode . 1)
  (edebug-defun . 1)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 5)
  (sql-postgres . 1)
- (eval-region . 10)
+ (eval-region . 24)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
@@ -271,7 +271,7 @@
  (windower-toggle-split . 1)
  (windower-move-border-above . 1)
  (find-variable-other-frame . 1)
- (highlight-symbol-mode . 6)
+ (highlight-symbol-mode . 7)
  (ido-switch-buffer . 1)
  (ag . 1)
  (debug-on-entry . 1)
@@ -288,14 +288,14 @@
  (pixel-scroll-mode . 2)
  (origami-toggle-node . 19)
  (origami-close-node . 1)
- (hs-minor-mode . 1)
+ (hs-minor-mode . 4)
  (hs-show-block . 7)
  (hs-hide-all . 1)
  (hs-hide-block . 4)
  (hs-toggle-hiding . 3)
  (occur . 1)
  (uncomment-region . 1)
- (comment-dwim . 17)
+ (comment-dwim . 22)
  (org-set-tags-command . 1)
  (ido-find-file . 2)
  (counsel-dired . 4)
@@ -327,4 +327,8 @@
  (org-table-align . 1)
  (org-table-blank-field . 1)
  (counsel-org-entity . 1)
+ (python-mode . 4)
+ (anaconda-mode . 1)
+ (anaconda-eldoc-mode . 1)
+ (highlight-symbol-next . 1)
 )

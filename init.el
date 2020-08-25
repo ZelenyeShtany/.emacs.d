@@ -19,16 +19,14 @@
  '(company-idle-delay 0.2)
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes
-   (quote
-    ("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default)))
+   '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default))
  '(dimmer-adjustment-mode :background)
  '(dimmer-fraction 0.065)
  '(dimmer-mode nil nil (dimmer))
  '(dimmer-watch-frame-focus-events nil)
  '(dired-always-read-filesystem t)
  '(dired-open-extensions
-   (quote
-    (("pdf" . "okular")
+   '(("pdf" . "okular")
      ("html" . "google-chrome")
      ("mp4" . "mpv")
      ("mp3" . "rhythmbox")
@@ -36,10 +34,9 @@
      ("opus" . "rhythmbox")
      ("odt" . "libreoffice")
      ("doc" . "libreoffice")
-     ("docx" . "libreoffice"))))
+     ("docx" . "libreoffice")))
  '(dired-open-functions
-   (quote
-    (dired-open-by-extension diredp-find-file-reuse-dir-buffer)))
+   '(dired-open-by-extension diredp-find-file-reuse-dir-buffer))
  '(display-time-mode t)
  '(fci-rule-color "#383838")
  '(fringe-mode 0 nil (fringe))
@@ -49,28 +46,25 @@
  '(helm-ff-lynx-style-map nil)
  '(ido-auto-merge-delay-time 0.7)
  '(inhibit-startup-screen t)
- '(initial-major-mode (quote messages-buffer-mode))
+ '(initial-major-mode 'messages-buffer-mode)
  '(ivy-initial-inputs-alist
-   (quote
-    ((counsel-minor . "^+")
+   '((counsel-minor . "^+")
      (counsel-package . "^+")
      (counsel-org-capture . "^")
      (counsel-M-x . "^")
-     (counsel-describe-symbol . "^"))))
- '(org-M-RET-may-split-line (quote ((default))))
- '(org-agenda-files (quote ("~/Sync/org/")))
- '(org-catch-invisible-edits (quote error))
+     (counsel-describe-symbol . "^")))
+ '(org-M-RET-may-split-line '((default)))
+ '(org-agenda-files '("~/Sync/org/"))
+ '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
- '(org-ctrl-k-protect-subtree (quote error))
+ '(org-ctrl-k-protect-subtree 'error)
  '(org-directory "~/Sync/org/")
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-modules
-   (quote
-    (ol-bbdb ol-bibtex ol-docview ol-eww ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-w3m org-collector)))
+   '(ol-bbdb ol-bibtex ol-docview ol-eww ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-w3m org-collector))
  '(org-ql-views
-   (quote
-    (("entries with CREATED or SCHEDULED property on today" :buffers-files org-agenda-files :query
+   '(("entries with CREATED or SCHEDULED property on today" :buffers-files org-agenda-files :query
       (or
        (regexp
 	(concat "CREATED:[ ]*\\["
@@ -139,10 +133,9 @@
 	(help-echo "Tasks with sub-tasks but no NEXT sub-tasks"))
       :sort
       (priority date)
-      :super-groups org-super-agenda-groups))))
+      :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   (quote
-    (csv-mode markdown-mode+ js2-highlight-vars windower org-caldav ace-jump-mode markdown-mode undo-tree org-brain dumb-jump cyberpunk-theme persist alert org-cliplink company-quickhelp visual-regexp xah-find auto-yasnippet doom-modeline workgroups2 command-log-mode helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils all-the-icons-ivy-rich dimmer page-break-lines all-the-icons-dired all-the-icons company ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode org-recur ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme)))
+   '(csv-mode markdown-mode+ js2-highlight-vars windower org-caldav ace-jump-mode markdown-mode undo-tree org-brain dumb-jump cyberpunk-theme persist alert org-cliplink company-quickhelp visual-regexp xah-find auto-yasnippet doom-modeline workgroups2 command-log-mode helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils all-the-icons-ivy-rich dimmer page-break-lines all-the-icons-dired all-the-icons company ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode org-recur ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory "~/org/tmp/")
@@ -224,7 +217,7 @@ There are two things you can do about this warning:
 ;;(require 'auto-minor-mode)
 ;; <open .emacs quickly>
 (define-key global-map (kbd "C-x i")
-  (lambda () (interactive) (find-file-other-frame "~/.emacs")))
+  (lambda () (interactive) (find-file-other-frame "~/.emacs.d/init.el")))
 ;; </open .emacs quickly>
 
 (set-language-environment "UTF-8")
@@ -524,8 +517,6 @@ There are two things you can do about this warning:
 (use-package multiple-cursors
   :bind (:map global-map
 	      ("C-M-z" . 'mc/edit-lines)
-	      ("C->" . 'mc/mark-next-like-this)
-	      ("C-<" . 'mc/mark-previous-like-this)
 	      ("C-?" . 'mc/mark-all-like-this)
 	      )
 )
@@ -1027,7 +1018,7 @@ Adapted from `describe-function-or-variable'."
   :init
   (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.emacs\\'" . highlight-symbol-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.php\\'" . highlight-symbol-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . highlight-symbol-mode))
@@ -1035,7 +1026,7 @@ Adapted from `describe-function-or-variable'."
   ;; auto enabling minor mode for folding
   (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.emacs\\'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.php\\'" . hs-minor-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . hs-minor-mode))
@@ -1240,3 +1231,26 @@ appropriate.  In tables, insert a new row or end the table."
 (define-key org-mode-map (kbd "C-<right>") #'my/org-move-right)
 (define-key org-mode-map (kbd "C-<left>") #'my/org-move-left)
 (define-key global-map (kbd "<mouse-3>") nil)
+(define-key global-map (kbd "M-c") #'comment-dwim)
+
+
+(defun my-jump-to-prev (arg)
+  "docstring"
+  (interactive "p")
+  (if (region-active-p)
+      (mc/mark-previous-like-this arg)
+    (highlight-symbol-prev)
+      )
+  )
+(defun my-jump-to-next (arg)
+  "docstring"
+  (interactive "p")
+  (if (region-active-p)
+      (mc/mark-next-like-this arg)
+    (highlight-symbol-next)
+      )
+  )
+(define-key global-map (kbd "C->") #'my-jump-to-next)
+(define-key global-map (kbd "C-<") #'my-jump-to-prev)
+
+
