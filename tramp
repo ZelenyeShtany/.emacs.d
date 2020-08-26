@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/08/19 14:06:58 /home/zelenyeshtany/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/08/26 11:26:17 /home/zelenyeshtany/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; Run `M-x tramp-cleanup-all-connections' instead.
 
@@ -11,4 +11,21 @@
   ("pipe-buf" 4096)
   ("remote-shell" "/bin/sh")
   ("file-exists" "test -e")
-  ("case-insensitive" nil)))
+  ("case-insensitive" nil)
+  ("readlink" "\\readlink")
+  ("stat" "env QUOTING_STYLE=locale \\stat")
+  ("id" "/bin/id")
+  ("gid-integer" 0)
+  ("gid-string" "root")
+  ("ls" "/bin/ls --color=never")
+  ("ls--quoting-style=literal --show-control-chars" "--quoting-style=literal --show-control-chars")
+  ("ls--dired" "--dired")
+  ("df-blocksize" 1)
+  ("df" "\\df --block-size=1 --output=size,used,avail")
+  ("uid-integer" 0)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("bzr" nil)
+  ("git" "\\git")
+  ("hg" nil)))

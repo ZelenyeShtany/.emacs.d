@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ counsel-find-file
  python-mode
  counsel-ag
  counsel-package
  highlight-symbol-mode
  hs-minor-mode
  eval-region
- highlight-symbol-next
 )
 
 ;; ----- smex-data -----
@@ -116,7 +116,7 @@
  (counsel-describe-function . 6)
  (table-narrow-cell . 6)
  (org-agenda-redo . 1)
- (counsel-find-file . 7)
+ (counsel-find-file . 8)
  (counsel-mode . 2)
  (counsel-cd . 1)
  (counsel-clj . 1)
