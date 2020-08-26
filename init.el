@@ -16,14 +16,9 @@
  '(ansi-color-names-vector
    ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(column-number-mode t)
- '(company-idle-delay 0.2)
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes
    '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default))
- '(dimmer-adjustment-mode :background)
- '(dimmer-fraction 0.065)
- '(dimmer-mode nil nil (dimmer))
- '(dimmer-watch-frame-focus-events nil)
  '(dired-always-read-filesystem t)
  '(dired-open-extensions
    '(("pdf" . "okular")
@@ -135,7 +130,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(csv-mode markdown-mode+ js2-highlight-vars windower org-caldav ace-jump-mode markdown-mode undo-tree org-brain dumb-jump cyberpunk-theme persist alert org-cliplink company-quickhelp visual-regexp xah-find auto-yasnippet doom-modeline workgroups2 command-log-mode helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils all-the-icons-ivy-rich dimmer page-break-lines all-the-icons-dired all-the-icons company ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode org-recur ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory "~/org/tmp/")
@@ -146,7 +141,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(highlight-symbol-face ((t (:background "dark cyan")))))
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -165,14 +160,6 @@ There are two things you can do about this warning:
 (add-to-list 'load-path "~/.emacs.d/dired+/")
 (load "dired+")
 
-(add-to-list 'load-path "~/.emacs.d/origami.el/")
-(require 'origami)
-(global-origami-mode)
-(with-eval-after-load "origami"
-  (define-key global-map (kbd "M-f") 'origami-toggle-node)
-  )
-
-
 (add-to-list 'load-path "~/.emacs.d/elpa/highlight-symbol.el/")
 (require 'highlight-symbol)
 (with-eval-after-load "highlight-symbol"
@@ -184,24 +171,12 @@ There are two things you can do about this warning:
 
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (load "mypack")
-(load "my-org-recur-adjustments")
+;;(load "my-org-recur-adjustments")
 
 
 (require 'ido)
      (ido-mode t)
-(load-theme 'cyberpunk t)
-
-
-
-;;
-;;(add-to-list 'load-path "~/.emacs.d/vimish-fold/")
-;;(require 'vimish-fold)
-;;(use-package vimish-fold
-;;  :init
-;;  :bind(
-;;	("M-f" . #'vimish-fold-toggle)
-;;	)
-;;  )
+(load-theme 'afternoon t)
 
 
 
@@ -292,7 +267,7 @@ There are two things you can do about this warning:
   :defer t
   :mode ("\\.org\\'" . org-mode)
   :init
-  (add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
+;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   (add-hook 'org-mode-hook '(lambda ()
@@ -431,24 +406,6 @@ There are two things you can do about this warning:
 	      )
 	 )
 
-(use-package org-brain
-  :ensure t
-  :init
-  (setq org-brain-path "~/Sync/org/org-brain/")
-
-  :config
-  (bind-key "C-c b" 'org-brain-prefix-map org-mode-map)
-  (setq org-id-track-globally t)
-  (add-hook 'before-save-hook #'org-brain-ensure-ids-in-buffer)
-;;  (push '("b" "Brain" plain (function org-brain-goto-end)
-;;          "* %i%?" :empty-lines 1)
-;;        org-capture-templates)
-  (setq org-brain-visualize-default-choices 'all)
-  (setq org-brain-title-max-length 40)
-  (setq org-brain-include-file-entries nil
-        org-brain-file-entries-use-title nil))
-
-
 ;; <using key bindings while on russian keyboard layout>
 (use-package reverse-im
   :ensure t
@@ -544,18 +501,6 @@ There are two things you can do about this warning:
 (define-key org-agenda-mode-map (kbd "e") 'org-agenda-redo)
 )
 
-(use-package org-recur
-  :hook ((org-mode . org-recur-mode)
-         (org-agenda-mode . org-recur-agenda-mode))
-  :demand t
-  :config
-  (define-key org-recur-mode-map (kbd "C-c d") 'org-recur-finish)
-
-  ;; Rebind the 'd' key in org-agenda (default: `org-agenda-day-view').
-  (define-key org-recur-agenda-mode-map (kbd "d") 'org-recur-finish)
-  (define-key org-recur-agenda-mode-map (kbd "C-c d") 'org-recur-finish)
-  (setq org-read-date-prefer-future 'time)
-  )
 
 
 
@@ -652,51 +597,18 @@ There are two things you can do about this warning:
 ;;(defun org-agenda-revert-buffer (_ignore-auto noconfirm))
 
 (add-hook 'after-revert-hook #'(lambda () (interactive) (org-agenda-redo t)))
-(add-hook 'emacs-lisp-mode-hook #'(lambda () (company-mode) ))
-;;(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-(require 'all-the-icons)
 
-;;dimmer
-(require 'dimmer)
-(dimmer-configure-which-key)
-(dimmer-configure-helm)
-(dimmer-mode t)
-;;/dimmer
-
-
-(require 'ivy-rich)
+;;(require 'ivy-rich)
 (require 'ivy)
 (ivy-mode 1)
-;;all-the-icons-ivy-rich-mode
-(all-the-icons-ivy-rich-mode 1)
-(ivy-rich-mode 1)
-;;/all-the-icons-ivy-rich-mode
+;;(ivy-rich-mode 1)
 
 (define-key global-map (kbd "C-x f") 'helm-find-files)
 
 (require 'dired-open)
 
-
-;; workgroups2
-(require 'workgroups2)
-;; Change some settings
-
-(setq wg-prefix-key (kbd "C-c g"))
-(global-set-key (kbd "C-o") 'wg-switch-to-workgroup-left)
-(workgroups-mode 1)
-;; /workgroups2
-
 (kill-buffer "*scratch*")
 (counsel-mode 1)
-
-;; doom-modeline
-(setq doom-modeline-continuous-word-count-modes '(org-mode))
-(setq doom-modeline-height 1)
-(set-face-attribute 'mode-line nil :family "Noto Sans" :height 100)
-(set-face-attribute 'mode-line-inactive nil :family "Noto Sans" :height 100)
-(require 'doom-modeline)
-(doom-modeline-mode 1)
-;; /doom-modeline
 
 (global-set-key (kbd "C-<return>") 'cua-rectangle-mark-mode)
 
@@ -719,13 +631,6 @@ There are two things you can do about this warning:
     (cua-rectangle-mark-mode arg)))
 (define-key cua-global-keymap (kbd "C-<return>") #'org-cua-rectangle-conflict-resolving)
 
-
-(defun sync-state-modeline ()
-  "docstring"
-  (interactive)
-    (setcar global-mode-string (concat "last sync: " (format-time-string "%H:%M:%S") "  |  "))
-  )
-(add-hook 'after-revert-hook 'sync-state-modeline)
 
  (defun delete-nth (index seq)
    "Delete the INDEX th element of SEQ.
@@ -798,33 +703,12 @@ Narrow to defun if it's not."
     )
     )
 
-(defun my-org-recur-finish ()
-  "If current TODO state is DONE and heading has a org-recur substring,
-set TODO state to 'TODO'(via `my-org-set-todo-state') and call `org-recur-finish'"
-  (interactive)
-  (if (and
-	(or
-	 (string= (org-get-todo-state) "DONE")
-	 (string= (org-get-todo-state) "MISSED")
-	   )
-       (not (eq (org-recur--get-next-date (org-get-heading)) nil ))
-       )
-       
-      (progn
-	(message "!!!!!MASS")
-	(my-org-set-todo-state "TODO")
-	(org-recur-finish)
-	)
-    )
-  )
-
 
 
 
 ;;org-after-todo-state-change-hook
 ;;org-state
 ;;(setq debug-on-error 1)
-;;(company-quickhelp-mode)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -1022,15 +906,6 @@ Adapted from `describe-function-or-variable'."
   (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . highlight-symbol-mode))
-
-  ;; auto enabling minor mode for folding
-  (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.emacs\\'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . hs-minor-mode))
-  (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . hs-minor-mode))
-  ;; /auto enabling minor mode for folding
 )
 
 (use-package counsel
@@ -1173,7 +1048,7 @@ appropriate.  In tables, insert a new row or end the table."
   )
 (define-key org-src-mode-map (kbd "M-n") #'org-edit-src-exit)
 
-;;("/home/zelenyeshtany/Sync/org/CS.org" "/home/zelenyeshtany/Sync/org/Getting Started with Orgzly.org" "/home/zelenyeshtany/Sync/org/annotations.org" "/home/zelenyeshtany/Sync/org/articles.org" "/home/zelenyeshtany/Sync/org/books.org" "/home/zelenyeshtany/Sync/org/brench.org" "/home/zelenyeshtany/Sync/org/clonezilla.org" "/home/zelenyeshtany/Sync/org/copingcards.org" "/home/zelenyeshtany/Sync/org/diredhelp.org" "/home/zelenyeshtany/Sync/org/discrmath.org" "/home/zelenyeshtany/Sync/org/elispCoding.org" "/home/zelenyeshtany/Sync/org/emacs-todos.org" "/home/zelenyeshtany/Sync/org/emacsconfig.org" "/home/zelenyeshtany/Sync/org/engl.org" "/home/zelenyeshtany/Sync/org/englwords.org" "/home/zelenyeshtany/Sync/org/gcal.org" "/home/zelenyeshtany/Sync/org/habits.org" "/home/zelenyeshtany/Sync/org/helmhelp.org" "/home/zelenyeshtany/Sync/org/help.org" "/home/zelenyeshtany/Sync/org/inbox.org" "/home/zelenyeshtany/Sync/org/inboxcal.org" "/home/zelenyeshtany/Sync/org/meditation.org" "/home/zelenyeshtany/Sync/org/mtp.org" "/home/zelenyeshtany/Sync/org/new.org" "/home/zelenyeshtany/Sync/org/newreflex.org" "/home/zelenyeshtany/Sync/org/notes.org" "/home/zelenyeshtany/Sync/org/notes2.org" "/home/zelenyeshtany/Sync/org/nstu.org" "/home/zelenyeshtany/Sync/org/orgrecur.org" "/home/zelenyeshtany/Sync/org/sleephygiene.org" "/home/zelenyeshtany/Sync/org/sss.org" "/home/zelenyeshtany/Sync/org/superego.org" "/home/zelenyeshtany/Sync/org/tabl.org" "/home/zelenyeshtany/Sync/org/tables.org" "/home/zelenyeshtany/Sync/org/takingChargeOfAdultADHDnotes.org" "/home/zelenyeshtany/Sync/org/test.org" "/home/zelenyeshtany/Sync/org/timerasp.org" "/home/zelenyeshtany/Sync/org/todos.org" "/home/zelenyeshtany/Sync/org/ubuntuconfig.org" "/home/zelenyeshtany/Sync/org/webarchive.org" "/home/zelenyeshtany/Sync/org/утррит.org" "/home/zelenyeshtany/Sync/org/вечрит.org")
+;;("/home/zelenyeshtany/Sync/org/CS.org" "/home/zelenyeshtany/Sync/org/Getting Started with Orgzly.org" "/home/zelenyeshtany/Sync/org/annotations.org" "/home/zelenyeshtany/Sync/org/articles.org" "/home/zelenyeshtany/Sync/org/books.org" "/home/zelenyeshtany/Sync/org/brench.org" "/home/zelenyeshtany/Sync/org/clonezilla.org" "/home/zelenyeshtany/Sync/org/copingcards.org" "/home/zelenyeshtany/Sync/org/diredhelp.org" "/home/zelenyeshtany/Sync/org/discrmath.org" "/home/zelenyeshtany/Sync/org/elispCoding.org" "/home/zelenyeshtany/Sync/org/emacs-todos.org" "/home/zelenyeshtany/Sync/org/emacsconfig.org" "/home/zelenyeshtany/Sync/org/engl.org" "/home/zelenyeshtany/Sync/org/englwords.org" "/home/zelenyeshtany/Sync/org/gcal.org" "/home/zelenyeshtany/Sync/org/habits.org" "/home/zelenyeshtany/Sync/org/helmhelp.org" "/home/zelenyeshtany/Sync/org/help.org" "/home/zelenyeshtany/Sync/org/inbox.org" "/home/zelenyeshtany/Sync/org/inboxcal.org" "/home/zelenyeshtany/Sync/org/meditation.org" "/home/zelenyeshtany/Sync/org/mtp.org" "/home/zelenyeshtany/Sync/org/new.org" "/home/zelenyeshtany/Sync/org/newreflex.org" "/home/zelenyeshtany/Sync/org/notes.org" "/home/zelenyeshtany/Sync/org/notes2.org" "/home/zelenyeshtany/Sync/org/nstu.org" "/home/zelenyeshtany/Sync/org/sleephygiene.org" "/home/zelenyeshtany/Sync/org/sss.org" "/home/zelenyeshtany/Sync/org/superego.org" "/home/zelenyeshtany/Sync/org/tabl.org" "/home/zelenyeshtany/Sync/org/tables.org" "/home/zelenyeshtany/Sync/org/takingChargeOfAdultADHDnotes.org" "/home/zelenyeshtany/Sync/org/test.org" "/home/zelenyeshtany/Sync/org/timerasp.org" "/home/zelenyeshtany/Sync/org/todos.org" "/home/zelenyeshtany/Sync/org/ubuntuconfig.org" "/home/zelenyeshtany/Sync/org/webarchive.org" "/home/zelenyeshtany/Sync/org/утррит.org" "/home/zelenyeshtany/Sync/org/вечрит.org")
 ;;
 ;;
 ;;

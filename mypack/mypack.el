@@ -1,18 +1,3 @@
-(defun my/newfunc (args)
-  "docstring"
-  (interactive)
-
-  (let* (
-	 (today-week-day (car (split-string (current-time-string) " ")))
-	 
-	 )
-    (string= (upcase ) (upcase today-week-day))
-    
-    )
-  
-  )
-
-
 (defun my/org-get-current-heading-end-point ()
   "docstring"
   (interactive)

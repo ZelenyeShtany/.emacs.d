@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- counsel-find-file
- python-mode
- counsel-ag
+ emacs-init-time
+ customize
  counsel-package
- highlight-symbol-mode
- hs-minor-mode
- eval-region
+ counsel-load-theme
+ python-mode
+ fundamental-mode
+ benchmark-init/show-durations-tabulated
 )
 
 ;; ----- smex-data -----
@@ -50,7 +50,7 @@
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 3)
- (customize . 15)
+ (customize . 18)
  (regexp-builder . 41)
  (server-start . 1)
  (auto-fill-mode . 6)
@@ -112,7 +112,7 @@
  (icomplete-force-complete-and-exit . 1)
  (ivy-mode . 3)
  (auto-revert-mode . 2)
- (benchmark . 7)
+ (benchmark . 8)
  (counsel-describe-function . 6)
  (table-narrow-cell . 6)
  (org-agenda-redo . 1)
@@ -123,10 +123,10 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 2)
- (counsel-load-theme . 2)
+ (counsel-load-theme . 3)
  (counsel-yank-pop . 1)
  (counsel-ag . 46)
- (counsel-package . 98)
+ (counsel-package . 122)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 17)
@@ -192,11 +192,11 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 51)
+ (emacs-init-time . 57)
  (emacs-uptime . 1)
  (debug . 4)
  (check-parens . 7)
- (benchmark-init/show-durations-tabulated . 10)
+ (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 1)
  (package-initialize . 1)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 3)
+ (fundamental-mode . 4)
  (my/org-at-source-block . 3)
  (csv-align-mode . 3)
  (csv-header-line . 4)
@@ -327,7 +327,7 @@
  (org-table-align . 1)
  (org-table-blank-field . 1)
  (counsel-org-entity . 1)
- (python-mode . 4)
+ (python-mode . 5)
  (anaconda-mode . 1)
  (anaconda-eldoc-mode . 1)
  (highlight-symbol-next . 1)
