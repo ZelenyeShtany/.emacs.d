@@ -49,11 +49,11 @@
      (counsel-M-x . "^")
      (counsel-describe-symbol . "^")))
  '(org-M-RET-may-split-line '((default)))
- '(org-agenda-files '("~/Sync/org/"))
+ '(org-agenda-files '("D:/Sync/org/"))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
- '(org-directory "~/Sync/org/")
+ '(org-directory "D:/Sync/org/")
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-modules
@@ -133,7 +133,7 @@
    '(csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(temporary-file-directory "~/org/tmp/")
+ '(temporary-file-directory "D:/org/tmp/")
  '(tool-bar-mode nil)
  '(wg-emacs-exit-save-behavior nil))
 (custom-set-faces
@@ -270,11 +270,11 @@ There are two things you can do about this warning:
 ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
-  (add-hook 'org-mode-hook '(lambda ()
-   "Beautify Org Checkbox Symbol"
-   (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
-   (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
-   (prettify-symbols-mode)))
+  ;; (add-hook 'org-mode-hook '(lambda ()
+  ;;  "Beautify Org Checkbox Symbol"
+  ;;  (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
+  ;;  (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
+  ;;  (prettify-symbols-mode)))
 
 
   (defun my/copy-id-to-clipboard()
@@ -360,15 +360,15 @@ There are two things you can do about this warning:
 	  )
 
 	org-capture-templates
-	'(("t" "Todo" entry (file+headline "~/Sync/org/todos.org" "Tasks")
+	'(("t" "Todo" entry (file+headline "D:/Sync/org/todos.org" "Tasks")
 	   "* TODO %?")
-	  ("j" "Journal" entry (file+datetree "~/Sync/org/notes.org")
+	  ("j" "Journal" entry (file+datetree "D:/Sync/org/notes.org")
 	   "* %?")
-	  ("i" "Idea" entry (file+datetree "~/Sync/org/notes.org")
+	  ("i" "Idea" entry (file+datetree "D:/Sync/org/notes.org")
 	   "* IDEA %?")
-	  ;;("d" "TEST" entry (file+datetree "~/Sync/org/notes.org")
+	  ;;("d" "TEST" entry (file+datetree "D:/Sync/org/notes.org")
 	  ;; "* frombroser: %a" :immediate-finish t)
-	  ("r" "Report" entry (file+headline "~/Sync/org/timerasp.org" "Reports")
+	  ("r" "Report" entry (file+headline "D:/Sync/org/timerasp.org" "Reports")
 	   "* %u\n** Действительно ли вы следовали расписанию?\n%?\n** Почему вы не следовали расписанию, над которым так долго дрочились?\n\n** Какие мысли вас преследовали?\n\n** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App\n\n** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?\n")
 	  ("d" "capture through org protocol" entry
 	   (file+headline org-board-capture-file "Unsorted")
@@ -383,7 +383,7 @@ There are two things you can do about this warning:
 
 (add-hook 'org-capture-before-finalize-hook 'do-org-board-dl-hook)
 
-(setq org-board-capture-file "~/Sync/org/webarchive.org")
+(setq org-board-capture-file "D:/Sync/org/webarchive.org")
 ;; /web archiving through org-capture + org-board  
   (require 'org-download)
   :bind (:map org-mode-map
@@ -420,8 +420,8 @@ There are two things you can do about this warning:
 ;;  :init
 ;;  (setq org-caldav-url "http://localhost/nextcloud/remote.php/dav/calendars/zelenyeshtany"
 ;;	org-caldav-calendar-id "mycal"
-;;	org-caldav-inbox "~/Sync/org/inboxcal.org"
-;;	org-caldav-files '("~/Sync/org/todos.org" "~/Sync/org/notes.org" "~/Sync/org/habits.org")
+;;	org-caldav-inbox "D:/Sync/org/inboxcal.org"
+;;	org-caldav-files '("D:/Sync/org/todos.org" "D:/Sync/org/notes.org" "D:/Sync/org/habits.org")
 ;;	org-icalendar-timezone "Kazakhstan/Almaty"
 ;;	org-icalendar-use-deadline '(event-if-not-todo event-if-todo)
 ;;	org-icalendar-use-scheduled '(todo-start event-if-todo )
@@ -451,7 +451,7 @@ There are two things you can do about this warning:
   :hook (dired-mode . org-download-enable)
   :init
   (setq org-download-method 'directory)
-  (setq-default org-download-image-dir "~/Sync/org/img/")
+  (setq-default org-download-image-dir "D:/Sync/org/img/")
   (global-set-key (kbd "C-x p") (lambda () (interactive) (org-download-screenshot)))
 )
 ;;  (add-hook 'dired-mode-hook 'org-download-enable)
@@ -521,7 +521,7 @@ There are two things you can do about this warning:
 	 ("<f2>" . 'dired-do-rename)
 	 ("X" . 'diredp-move-file)
 	 ("<ret>" . 'dired-open-by-extension)
-	 ("M-?" .  (lambda () (interactive) (find-file-other-window "~/Sync/org/diredhelp.org")))
+	 ("M-?" .  (lambda () (interactive) (find-file-other-window "D:/Sync/org/diredhelp.org")))
 	 ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
 	 ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
 	 ("d" . 'diredp-delete-this-file)
@@ -755,9 +755,9 @@ Adapted from `describe-function-or-variable'."
 ;;(require 'org-gcal)
 ;;(setq org-gcal-client-id "333013805673-varidbf7tnsge2tv22u3af6admtc60qv.apps.googleusercontent.com"
 ;;      org-gcal-client-secret "KOKdhQLYYJkil_zE3ufDUCa1"
-;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . "~/Sync/org/gcal.org")))
+;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . "D:/Sync/org/gcal.org")))
 ;;
-(define-key global-map (kbd "C-<f1>") (lambda () (interactive)(find-file "~/Sync/org/help.org")))
+(define-key global-map (kbd "C-<f1>") (lambda () (interactive)(find-file "D:/Sync/org/help.org")))
 
 
 
@@ -1127,5 +1127,11 @@ appropriate.  In tables, insert a new row or end the table."
   )
 (define-key global-map (kbd "C->") #'my-jump-to-next)
 (define-key global-map (kbd "C-<") #'my-jump-to-prev)
+
+
+(set-face-attribute 'mode-line nil :font "Calibri 12")
+(set-face-attribute 'default nil :font "Calibri 12")
+(setq helm-ff-default-directory "D:/Sync/org/")
+
 
 

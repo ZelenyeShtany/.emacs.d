@@ -2,36 +2,21 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("nstu"
- (filename . "~/Sync/org/nstu.org")
- (front-context-string . "#+STARTUP: inden")
- (rear-context-string . "ED(s!) DONE(d!)\n")
- (position . 38))
-("5 семак"
- (filename . "~/NSTU/5 семестр/")
- (front-context-string . "Базы данных\n  dr")
- (rear-context-string . " 0 июл 14 20:33 ")
- (position . 275))
-("вечрит vechrit"
- (filename . "~/Sync/org/вечрит.org")
- (front-context-string . "#+STARTUP: inden")
- (rear-context-string)
- (position . 1))
-("утррит utrrit"
- (filename . "~/Sync/org/утррит.org")
- (front-context-string . "#+STARTUP: inden")
- (rear-context-string)
- (position . 1))
-("notes"
- (filename . "~/Sync/org/notes.org")
- (front-context-string . "#+TODO: TODO(1) ")
- (rear-context-string)
- (position . 1))
-("todos"
- (filename . "~/Sync/org/todos.org")
- (front-context-string . "\n* Tasks\n  :PROP")
+(("notes"
+ (filename . "d:/Sync/org/notes.org")
+ (front-context-string . "#+STARTUP: inlin")
  (rear-context-string . "ELED(7) DONE(8)\n")
- (position . 87))
+ (position . 129))
+("вечрит dtxhbn"
+ (filename . "d:/Sync/org/вечрит.org")
+ (front-context-string . "* Вечерний ритуа")
+ (rear-context-string . "STARTUP: indent\n")
+ (position . 19))
+("утррит utrrit"
+ (filename . "d:/Sync/")
+ (front-context-string . "#+STARTUP: inden")
+ (rear-context-string)
+ (position . 1))
 ("ob"
  (filename . "~/.emacs.d/elpa/org-board-20200619.1016/org-board-autoloads.el")
  (front-context-string . ";;; org-board-au")

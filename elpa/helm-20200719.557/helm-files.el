@@ -727,7 +727,7 @@ When nil always delete char backward."
 Don't set it directly, use instead `helm-ff-auto-update-initial-value'.")
 (defvar helm-ff-last-expanded nil
   "Store last expanded directory or file.")
-(defvar helm-ff-default-directory nil)
+(defvar helm-ff-default-directory "D:/Sync/org/")
 (defvar helm-ff-history nil)
 (defvar helm-ff-cand-to-mark nil)
 (defvar helm-ff-url-regexp

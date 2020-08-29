@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  emacs-init-time
- customize
  counsel-package
+ customize
  counsel-load-theme
  python-mode
  fundamental-mode
- benchmark-init/show-durations-tabulated
+ eval-buffer
 )
 
 ;; ----- smex-data -----
@@ -126,7 +126,7 @@
  (counsel-load-theme . 3)
  (counsel-yank-pop . 1)
  (counsel-ag . 46)
- (counsel-package . 122)
+ (counsel-package . 123)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 17)
@@ -184,7 +184,7 @@
  (xah-find-replace-text-regex . 2)
  (helm-regexp . 3)
  (highlight-regexp . 1)
- (replace-regexp-visual . 61)
+ (replace-regexp-visual . 62)
  (refill-mode . 8)
  (org-fill-paragraph . 2)
  (org-insert-item . 2)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 57)
+ (emacs-init-time . 59)
  (emacs-uptime . 1)
  (debug . 4)
  (check-parens . 7)
