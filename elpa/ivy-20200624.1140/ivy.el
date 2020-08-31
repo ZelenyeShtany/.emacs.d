@@ -4070,8 +4070,8 @@ CANDS is a list of candidates that :display-transformer can turn into strings."
           (const :tag "Full path" full)
           ;; eventually, uniquify
           ))
-(declare-function bookmark-maybe-load-default-file "bookmark")
-(declare-function bookmark-get-filename "bookmark")
+(declare-function bookmark-maybe-load-default-file bookmark-file)
+(declare-function bookmark-get-filename bookmark-file)
 
 (defun ivy--virtual-buffers ()
   "Adapted from `ido-add-virtual-buffers-to-list'."

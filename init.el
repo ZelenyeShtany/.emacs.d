@@ -8,6 +8,20 @@
   (require 'package)
   (package-initialize)
 
+(setq bookmark-file
+      (cond
+       ((eq system-type 'gnu/linux) "bookmark-linux")
+       ((eq system-type 'windows-nt) "bookmark-win")
+       )
+      )
+
+(setq data-folder-path
+      (cond
+       ((eq system-type 'gnu/linux) "/data/")
+       ((eq system-type 'windows-nt) "D:/")
+       )
+      )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,11 +63,11 @@
      (counsel-M-x . "^")
      (counsel-describe-symbol . "^")))
  '(org-M-RET-may-split-line '((default)))
- '(org-agenda-files '("D:/Sync/org/"))
+ '(org-agenda-files '((concat data-folder-path "Sync/org/")))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
- '(org-directory "D:/Sync/org/")
+ '(org-directory (concat data-folder-path "Sync/org/"))
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-modules
@@ -133,7 +147,7 @@
    '(csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(temporary-file-directory "D:/org/tmp/")
+ '(temporary-file-directory (concat data-folder-path "org/tmp/"))
  '(tool-bar-mode nil)
  '(wg-emacs-exit-save-behavior nil))
 (custom-set-faces
@@ -285,7 +299,10 @@ There are two things you can do about this warning:
 	 (message "Copied %s to killring (clipboard)" mytmpid)
        ))
   
-  (setq org-return-follows-link t
+  (setq notes (concat data-folder-path "Sync/org/notes.org")
+	todos (concat data-folder-path "Sync/org/todos.org")
+	timerasp (concat data-folder-path "Sync/org/timerasp.org")
+	org-return-follows-link t
 	org-use-speed-commands t
 	org-use-sub-superscripts nil
 	org-ellipsis "⤵"
@@ -359,16 +376,17 @@ There are two things you can do about this warning:
 	  ("film" .           ?f)
 	  )
 
+	
 	org-capture-templates
-	'(("t" "Todo" entry (file+headline "D:/Sync/org/todos.org" "Tasks")
+	'(("t" "Todo" entry (file+headline todos "Tasks")
 	   "* TODO %?")
-	  ("j" "Journal" entry (file+datetree "D:/Sync/org/notes.org")
+	  ("j" "Journal" entry (file+datetree notes)
 	   "* %?")
-	  ("i" "Idea" entry (file+datetree "D:/Sync/org/notes.org")
+	  ("i" "Idea" entry (file+datetree notes)
 	   "* IDEA %?")
-	  ;;("d" "TEST" entry (file+datetree "D:/Sync/org/notes.org")
+	  ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
 	  ;; "* frombroser: %a" :immediate-finish t)
-	  ("r" "Report" entry (file+headline "D:/Sync/org/timerasp.org" "Reports")
+	  ("r" "Report" entry (file+headline timerasp "Reports")
 	   "* %u\n** Действительно ли вы следовали расписанию?\n%?\n** Почему вы не следовали расписанию, над которым так долго дрочились?\n\n** Какие мысли вас преследовали?\n\n** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App\n\n** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?\n")
 	  ("d" "capture through org protocol" entry
 	   (file+headline org-board-capture-file "Unsorted")
@@ -383,7 +401,7 @@ There are two things you can do about this warning:
 
 (add-hook 'org-capture-before-finalize-hook 'do-org-board-dl-hook)
 
-(setq org-board-capture-file "D:/Sync/org/webarchive.org")
+(setq org-board-capture-file (concat data-folder-path "Sync/org/webarchive.org"))
 ;; /web archiving through org-capture + org-board  
   (require 'org-download)
   :bind (:map org-mode-map
@@ -420,8 +438,8 @@ There are two things you can do about this warning:
 ;;  :init
 ;;  (setq org-caldav-url "http://localhost/nextcloud/remote.php/dav/calendars/zelenyeshtany"
 ;;	org-caldav-calendar-id "mycal"
-;;	org-caldav-inbox "D:/Sync/org/inboxcal.org"
-;;	org-caldav-files '("D:/Sync/org/todos.org" "D:/Sync/org/notes.org" "D:/Sync/org/habits.org")
+;;	org-caldav-inbox (concat data-folder-path "Sync/org/inboxcal.org")
+;;	org-caldav-files '((concat data-folder-path "Sync/org/todos.org") (concat data-folder-path "Sync/org/notes.org") (concat data-folder-path "Sync/org/habits.org"))
 ;;	org-icalendar-timezone "Kazakhstan/Almaty"
 ;;	org-icalendar-use-deadline '(event-if-not-todo event-if-todo)
 ;;	org-icalendar-use-scheduled '(todo-start event-if-todo )
@@ -432,7 +450,7 @@ There are two things you can do about this warning:
 ;;
 
 ;;default directory for find-file command (C-x C-f)
-(setq default-directory "/home/zelenyeshtany/Sync/org/")
+;;(setq default-directory "/home/zelenyeshtany/Sync/org/")
 ;;
 
 ;; <placing backup files (with ~ in the end) in special directory>
@@ -451,7 +469,7 @@ There are two things you can do about this warning:
   :hook (dired-mode . org-download-enable)
   :init
   (setq org-download-method 'directory)
-  (setq-default org-download-image-dir "D:/Sync/org/img/")
+  (setq-default org-download-image-dir (concat data-folder-path "Sync/org/img/"))
   (global-set-key (kbd "C-x p") (lambda () (interactive) (org-download-screenshot)))
 )
 ;;  (add-hook 'dired-mode-hook 'org-download-enable)
@@ -521,7 +539,7 @@ There are two things you can do about this warning:
 	 ("<f2>" . 'dired-do-rename)
 	 ("X" . 'diredp-move-file)
 	 ("<ret>" . 'dired-open-by-extension)
-	 ("M-?" .  (lambda () (interactive) (find-file-other-window "D:/Sync/org/diredhelp.org")))
+	 ("M-?" .  (lambda () (interactive) (find-file-other-window (concat data-folder-path "Sync/org/diredhelp.org"))))
 	 ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
 	 ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
 	 ("d" . 'diredp-delete-this-file)
@@ -603,7 +621,7 @@ There are two things you can do about this warning:
 (ivy-mode 1)
 ;;(ivy-rich-mode 1)
 
-(define-key global-map (kbd "C-x f") 'helm-find-files)
+(define-key global-map (kbd "C-x f") 'counsel-find-file)
 
 (require 'dired-open)
 
@@ -708,7 +726,7 @@ Narrow to defun if it's not."
 
 ;;org-after-todo-state-change-hook
 ;;org-state
-;;(setq debug-on-error 1)
+(setq debug-on-error 1)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -755,9 +773,17 @@ Adapted from `describe-function-or-variable'."
 ;;(require 'org-gcal)
 ;;(setq org-gcal-client-id "333013805673-varidbf7tnsge2tv22u3af6admtc60qv.apps.googleusercontent.com"
 ;;      org-gcal-client-secret "KOKdhQLYYJkil_zE3ufDUCa1"
-;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . "D:/Sync/org/gcal.org")))
+;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . (concat data-folder-path "Sync/org/gcal.org"))))
 ;;
-(define-key global-map (kbd "C-<f1>") (lambda () (interactive)(find-file "D:/Sync/org/help.org")))
+
+(defun my-help ()
+  "docstring"
+  (interactive)
+  (find-file
+   (concat data-folder-path "Sync/org/help.org")
+   )
+  )
+(define-key global-map (kbd "<f1>") #'my-help)
 
 
 
@@ -924,7 +950,7 @@ Adapted from `describe-function-or-variable'."
 (define-key global-map (kbd "M-f") 'hs-toggle-hiding)
 (define-key global-map (kbd "M-i") 'org-time-stamp-inactive)
 (define-key global-map (kbd "M-l") 'org-insert-link)
-(define-key global-map (kbd "C-b") 'helm-bookmarks)
+(define-key global-map (kbd "C-b") 'counsel-bookmark)
 
 
 (global-set-key [remap mouse-kill] nil)
@@ -1129,9 +1155,6 @@ appropriate.  In tables, insert a new row or end the table."
 (define-key global-map (kbd "C-<") #'my-jump-to-prev)
 
 
-(set-face-attribute 'mode-line nil :font "Calibri 12")
-(set-face-attribute 'default nil :font "Calibri 12")
-(setq helm-ff-default-directory "D:/Sync/org/")
-
-
-
+;; (set-face-attribute 'mode-line nil :font "Calibri 12")
+;; (set-face-attribute 'default nil :font "Calibri 12")
+;; (setq helm-ff-default-directory (concat data-folder-path "Sync/org/"))

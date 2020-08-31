@@ -2408,10 +2408,10 @@ By default `counsel-bookmark' opens a dired buffer for directories."
   :type 'boolean)
 
 (defvar bookmark-alist)
-(declare-function bookmark-location "bookmark")
-(declare-function bookmark-all-names "bookmark")
-(declare-function bookmark-get-filename "bookmark")
-(declare-function bookmark-maybe-load-default-file "bookmark")
+(declare-function bookmark-location bookmark-file)
+(declare-function bookmark-all-names bookmark-file)
+(declare-function bookmark-get-filename bookmark-file)
+(declare-function bookmark-maybe-load-default-file bookmark-file)
 
 ;;;###autoload
 (defun counsel-bookmark ()

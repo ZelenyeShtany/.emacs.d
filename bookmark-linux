@@ -1,0 +1,30 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("notes"
+ (filename . "/data/Sync/org/notes.org")
+ (front-context-string . "#+TODO: TODO(1) ")
+ (rear-context-string)
+ (position . 1))
+("вечрит dtxhbn"
+ (filename . "/data/Sync/org/вечрит.org")
+ (front-context-string . "* Вечерний ритуа")
+ (rear-context-string . "STARTUP: indent\n")
+ (position . 19))
+("утррит utrrit"
+ (filename . "/data/Sync/org/утррит.org")
+ (front-context-string . "#+STARTUP: inden")
+ (rear-context-string)
+ (position . 1))
+("ob"
+ (filename . "~/.emacs.d/elpa/org-board-20200619.1016/org-board-autoloads.el")
+ (front-context-string . ";;; org-board-au")
+ (rear-context-string)
+ (position . 1))
+("org-capture-last-stored"
+ (filename . "~/Sync/org/notes.org")
+ (front-context-string . "**** apache stop")
+ (rear-context-string . "on 16:51]\n:END:\n")
+ (position . 87962))
+)

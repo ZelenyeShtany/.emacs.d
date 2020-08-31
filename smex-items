@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  emacs-init-time
+ eval-region
+ edebug-defun
+ debug
+ counsel-find-file
+ counsel-file-jump
  counsel-package
- customize
- counsel-load-theme
- python-mode
- fundamental-mode
- eval-buffer
 )
 
 ;; ----- smex-data -----
@@ -116,7 +116,7 @@
  (counsel-describe-function . 6)
  (table-narrow-cell . 6)
  (org-agenda-redo . 1)
- (counsel-find-file . 8)
+ (counsel-find-file . 9)
  (counsel-mode . 2)
  (counsel-cd . 1)
  (counsel-clj . 1)
@@ -125,7 +125,7 @@
  (counsel-buffer-or-recentf . 2)
  (counsel-load-theme . 3)
  (counsel-yank-pop . 1)
- (counsel-ag . 46)
+ (counsel-ag . 61)
  (counsel-package . 123)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
@@ -135,7 +135,7 @@
  (all-the-icons-install-fonts . 1)
  (all-the-icons-insert . 22)
  (counsel-bookmarked-directory . 5)
- (counsel-bookmark . 15)
+ (counsel-bookmark . 23)
  (helm-bookmarks . 8)
  (bookmark-delete . 1)
  (helm-bookmark-run-edit . 1)
@@ -184,7 +184,7 @@
  (xah-find-replace-text-regex . 2)
  (helm-regexp . 3)
  (highlight-regexp . 1)
- (replace-regexp-visual . 62)
+ (replace-regexp-visual . 70)
  (refill-mode . 8)
  (org-fill-paragraph . 2)
  (org-insert-item . 2)
@@ -192,9 +192,9 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 59)
+ (emacs-init-time . 67)
  (emacs-uptime . 1)
- (debug . 4)
+ (debug . 5)
  (check-parens . 7)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
@@ -246,7 +246,7 @@
  (dimmer-mode . 13)
  (edebug-stop . 3)
  (edebug-mode . 1)
- (edebug-defun . 1)
+ (edebug-defun . 2)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 1)
  (my/show-scheduling-amendments-status . 2)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 5)
  (sql-postgres . 1)
- (eval-region . 24)
+ (eval-region . 30)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
@@ -273,7 +273,7 @@
  (find-variable-other-frame . 1)
  (highlight-symbol-mode . 7)
  (ido-switch-buffer . 1)
- (ag . 1)
+ (ag . 9)
  (debug-on-entry . 1)
  (xref-find-definitions-other-frame . 1)
  (other-window . 2)
@@ -331,4 +331,8 @@
  (anaconda-mode . 1)
  (anaconda-eldoc-mode . 1)
  (highlight-symbol-next . 1)
+ (my-counsel-ag . 3)
+ (helm-do-grep-ag . 14)
+ (counsel-file-jump . 2)
+ (my-help . 1)
 )
