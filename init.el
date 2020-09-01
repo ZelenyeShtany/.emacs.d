@@ -10,8 +10,8 @@
 
 (setq bookmark-file
       (cond
-       ((eq system-type 'gnu/linux) "bookmark-linux")
-       ((eq system-type 'windows-nt) "bookmark-win")
+       ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
+       ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
        )
       )
 
@@ -21,7 +21,7 @@
        ((eq system-type 'windows-nt) "D:/")
        )
       )
-
+(setq my-org-directory (concat data-folder-path "Sync/org/"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -62,12 +62,13 @@
      (counsel-org-capture . "^")
      (counsel-M-x . "^")
      (counsel-describe-symbol . "^")))
+ '(menu-bar-mode nil)
  '(org-M-RET-may-split-line '((default)))
- '(org-agenda-files '((concat data-folder-path "Sync/org/")))
+ '(org-agenda-files nil)
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
- '(org-directory (concat data-folder-path "Sync/org/"))
+ '(org-directory my-org-directory)
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-modules
@@ -726,7 +727,7 @@ Narrow to defun if it's not."
 
 ;;org-after-todo-state-change-hook
 ;;org-state
-(setq debug-on-error 1)
+;;(setq debug-on-error 1)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -1078,9 +1079,23 @@ appropriate.  In tables, insert a new row or end the table."
 ;;
 ;;
 ;;
+
+(defun my-org-element-type (element)
+  "Return type of ELEMENT.
+
+The function returns the type of the element or object provided.
+It can also return the following special value:
+  `plain-text'       for a string
+  `org-data'         for a complete document
+  nil                in any other case."
+  (cond
+   ((not (consp element)) (and (stringp element) 'plain-text))
+   ((symbolp (car element)) (car element))))
+
+
 (defun my/org-at-source-block-p ()
   "returns non-nil if point is at source block"
-(eq (org-element-type (org-element-at-point)) 'src-block)
+(eq (my-org-element-type (org-element-at-point)) 'src-block)
 )
 
 ;; old version
@@ -1158,3 +1173,77 @@ appropriate.  In tables, insert a new row or end the table."
 ;; (set-face-attribute 'mode-line nil :font "Calibri 12")
 ;; (set-face-attribute 'default nil :font "Calibri 12")
 ;; (setq helm-ff-default-directory (concat data-folder-path "Sync/org/"))
+
+
+(defun er-sudo-edit (&optional arg)
+  "Edit currently visited file as root.
+
+With a prefix ARG prompt for a file to visit.
+Will also prompt for a file to visit if current
+buffer is not visiting a file."
+  (interactive "P")
+  (if (or arg (not buffer-file-name))
+      (find-file (concat "/sudo:root@localhost:"
+                         (ido-read-file-name "Find file(as root): ")))
+    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+(define-key global-map (kbd "C-r") #'er-sudo-edit)
+
+(defun my-make-frame-command (args)
+  "docstring"
+  (interactive "P")
+(let*
+    (
+     (result nil)
+     (buffer-list (ivy--buffer-list ""))
+     (buffer-with-name-drafts-exists-p
+     (dolist
+	 (cur-buffer buffer-list result)
+       (if (string= cur-buffer "drafts")
+	   (setq result t)
+	 )
+       ))
+     
+     (buffer
+      (if buffer-with-name-drafts-exists-p
+	  ;; return existing buffers list
+	  (get-buffer "drafts")
+	  (generate-new-buffer "drafts")
+	  )
+      )
+     )
+  
+  (set-buffer-major-mode buffer)
+  (display-buffer buffer '(display-buffer-pop-up-frame . nil))
+  )
+  )
+;;(make-frame-command)
+(define-key global-map (kbd "C-x 5 2") #'my-make-frame-command)
+
+
+(defun delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (if (use-region-p)
+      (delete-region (region-beginning) (region-end))
+    (delete-region (point) (progn (forward-word arg) (point)))))
+
+(defun backward-delete-word (arg)
+  "Delete characters backward until encountering the end of a word.
+With argument, do this that many times."
+  (interactive "p")
+  (delete-word (- arg)))
+
+(define-key global-map (kbd "C-<backspace>") 'backward-delete-word)
+(define-key global-map (kbd "C-<del>") 'delete-word)
+;;If you use CUA mode, you might want to register these functions as movements, so that shift-<key> works properly:
+
+;;(dolist (cmd '(delete-word backward-delete-word))
+;;(put cmd 'CUA 'move))
+
+
+;; (scroll-restore-mode 1)
+;; ;; Allow scroll-restore to modify the cursor face
+;; (setq scroll-restore-handle-cursor t)
+;; ;; Make the cursor invisible while POINT is off-screen
+;; (setq scroll-restore-cursor-type nil)

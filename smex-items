@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ counsel-package
+ blink-cursor-mode
  emacs-init-time
  eval-region
  edebug-defun
  debug
  counsel-find-file
- counsel-file-jump
- counsel-package
 )
 
 ;; ----- smex-data -----
@@ -126,7 +126,7 @@
  (counsel-load-theme . 3)
  (counsel-yank-pop . 1)
  (counsel-ag . 61)
- (counsel-package . 123)
+ (counsel-package . 125)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 17)
@@ -335,4 +335,5 @@
  (helm-do-grep-ag . 14)
  (counsel-file-jump . 2)
  (my-help . 1)
+ (blink-cursor-mode . 4)
 )
