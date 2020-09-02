@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- counsel-load-theme
- customize
- eval-region
+ elpy-multiedit-python-symbol-at-point
+ company-mode
+ beacon-mode
+ emacs-init-time
  counsel-package
- pixel-scroll-mode
- counsel-ag
- menu-bar-options-save
+ eval-region
+ hs-minor-mode
 )
 
 ;; ----- smex-data -----
@@ -126,10 +126,10 @@
  (counsel-load-theme . 4)
  (counsel-yank-pop . 1)
  (counsel-ag . 62)
- (counsel-package . 126)
+ (counsel-package . 131)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 17)
+ (company-mode . 18)
  (company-complete . 1)
  (counsel-org-capture . 1)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 67)
+ (emacs-init-time . 71)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 7)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 5)
  (sql-postgres . 1)
- (eval-region . 31)
+ (eval-region . 32)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
@@ -288,7 +288,7 @@
  (pixel-scroll-mode . 4)
  (origami-toggle-node . 19)
  (origami-close-node . 1)
- (hs-minor-mode . 4)
+ (hs-minor-mode . 8)
  (hs-show-block . 7)
  (hs-hide-all . 1)
  (hs-hide-block . 4)
@@ -298,7 +298,7 @@
  (comment-dwim . 22)
  (org-set-tags-command . 1)
  (ido-find-file . 2)
- (counsel-dired . 4)
+ (counsel-dired . 5)
  (helm-find-files . 21)
  (counsel-command-history . 2)
  (helm-find-files-switch-to-bookmark . 1)
@@ -327,7 +327,7 @@
  (org-table-align . 1)
  (org-table-blank-field . 1)
  (counsel-org-entity . 1)
- (python-mode . 5)
+ (python-mode . 6)
  (anaconda-mode . 1)
  (anaconda-eldoc-mode . 1)
  (highlight-symbol-next . 1)
@@ -337,4 +337,20 @@
  (my-help . 1)
  (blink-cursor-mode . 4)
  (menu-bar-options-save . 1)
+ (magit . 2)
+ (magit-push . 1)
+ (magit-mode . 2)
+ (magit-branch . 1)
+ (magit-diff . 1)
+ (magit-commit . 2)
+ (magit-stage . 1)
+ (elpy-folding-toggle-at-point . 3)
+ (elpy-doc . 3)
+ (elpy-refactor-mode . 1)
+ (elpy-find-file . 1)
+ (elpy-company-backend . 2)
+ (elpy-goto-definition . 8)
+ (elpy-config . 1)
+ (beacon-mode . 1)
+ (elpy-multiedit-python-symbol-at-point . 2)
 )

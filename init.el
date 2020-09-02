@@ -145,7 +145,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -804,7 +804,7 @@ Adapted from `describe-function-or-variable'."
      (counsel-M-x . "")
      (counsel-describe-symbol . ""))))
 
-(define-key global-map (kbd "C-x d") 'ido-dired)
+(define-key global-map (kbd "C-x d") 'counsel-dired)
 (define-key global-map (kbd "C-x C-f")
 (lambda () (interactive) (message "not defined))"))
   )
@@ -934,6 +934,9 @@ Adapted from `describe-function-or-variable'."
   (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . highlight-symbol-mode))
+
+  (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . hs-minor-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . hs-minor-mode))
 )
 
 (use-package counsel
@@ -946,13 +949,31 @@ Adapted from `describe-function-or-variable'."
 	      ("C-x C-b" . 'counsel-switch-buffer)
 	      ("C-w" . 'counsel-imenu)
 	      )
-)
+  )
+
+;; if you want to defer Elpy loading:
+(use-package elpy
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  (setq elpy-rpc-backend "jedi") 
+  :bind (:map elpy-mode-map
+	      ("C-j d" . 'elpy-goto-definition)
+	      ("C-j a" . 'elpy-goto-assignment)
+	      ("M-f" . 'elpy-folding-toggle-at-point)
+	      ("C-<down>" . 'forward-paragraph)
+	      ("C-<up>" . 'backward-paragraph)
+	      ("<f2>" . 'elpy-multiedit-python-symbol-at-point)
+	 )
+
+  )
 
 
 (define-key global-map (kbd "M-f") 'hs-toggle-hiding)
 (define-key global-map (kbd "M-i") 'org-time-stamp-inactive)
 (define-key global-map (kbd "M-l") 'org-insert-link)
-(define-key global-map (kbd "C-b") 'counsel-bookmark)
+(define-key global-map (kbd "C-x m") 'counsel-bookmark)
 
 
 (global-set-key [remap mouse-kill] nil)
@@ -1251,3 +1272,14 @@ With argument, do this that many times."
 (define-key global-map (kbd "M-<up>") #'bm-previous)
 (define-key global-map (kbd "M-<down>") #'bm-next)
 (define-key global-map (kbd "M-b") #'bm-toggle)
+
+
+(defun copy-line (arg)
+      "Copy lines (as many as prefix argument) in the kill ring"
+      (interactive "p")
+      (kill-ring-save (line-beginning-position)
+                      (line-beginning-position (+ 1 arg)))
+      (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+(define-key global-map (kbd "C-l") #'copy-line)
+
+(beacon-mode 1)
