@@ -145,7 +145,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -156,6 +156,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bm-face ((t (:background "khaki3" :foreground "Black"))))
  '(highlight-symbol-face ((t (:background "dark cyan")))))
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -640,7 +641,7 @@ There are two things you can do about this warning:
 (call-interactively 'vr/replace)
 )
 )
-
+(define-key global-map (kbd "C-S-f") #'replace-regexp-visual)
 (require 'visual-regexp)
 
 (defun org-cua-rectangle-conflict-resolving (&optional arg)
@@ -1247,3 +1248,6 @@ With argument, do this that many times."
 ;; (setq scroll-restore-handle-cursor t)
 ;; ;; Make the cursor invisible while POINT is off-screen
 ;; (setq scroll-restore-cursor-type nil)
+(define-key global-map (kbd "M-<up>") #'bm-previous)
+(define-key global-map (kbd "M-<down>") #'bm-next)
+(define-key global-map (kbd "M-b") #'bm-toggle)

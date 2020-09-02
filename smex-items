@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- counsel-package
- blink-cursor-mode
- emacs-init-time
+ counsel-load-theme
+ customize
  eval-region
- edebug-defun
- debug
- counsel-find-file
+ counsel-package
+ pixel-scroll-mode
+ counsel-ag
+ menu-bar-options-save
 )
 
 ;; ----- smex-data -----
@@ -50,7 +50,7 @@
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 3)
- (customize . 18)
+ (customize . 20)
  (regexp-builder . 41)
  (server-start . 1)
  (auto-fill-mode . 6)
@@ -123,10 +123,10 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 2)
- (counsel-load-theme . 3)
+ (counsel-load-theme . 4)
  (counsel-yank-pop . 1)
- (counsel-ag . 61)
- (counsel-package . 125)
+ (counsel-ag . 62)
+ (counsel-package . 126)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 17)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 5)
  (sql-postgres . 1)
- (eval-region . 30)
+ (eval-region . 31)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
@@ -285,7 +285,7 @@
  (org-table-export . 4)
  (org-table-toggle-column-width . 1)
  (diredp-move-file . 1)
- (pixel-scroll-mode . 2)
+ (pixel-scroll-mode . 4)
  (origami-toggle-node . 19)
  (origami-close-node . 1)
  (hs-minor-mode . 4)
@@ -336,4 +336,5 @@
  (counsel-file-jump . 2)
  (my-help . 1)
  (blink-cursor-mode . 4)
+ (menu-bar-options-save . 1)
 )
