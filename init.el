@@ -36,6 +36,7 @@
  '(dired-always-read-filesystem t)
  '(dired-open-extensions
    '(("pdf" . "okular")
+     ("csv" . "konsole -e visidata")
      ("html" . "google-chrome")
      ("mp4" . "mpv")
      ("mp3" . "rhythmbox")
@@ -69,8 +70,20 @@
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-directory my-org-directory)
+ '(org-file-apps
+   '((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . default)
+     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
+ '(org-link-frame-setup
+   '((vm . vm-visit-folder-other-frame)
+     (vm-imap . vm-visit-imap-folder-other-frame)
+     (gnus . org-gnus-no-new-news)
+     (file . find-file-other-frame)
+     (wl . wl-other-frame)))
  '(org-modules
    '(ol-bbdb ol-bibtex ol-docview ol-eww ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-w3m org-collector))
  '(org-ql-views
@@ -157,6 +170,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bm-face ((t (:background "khaki3" :foreground "Black"))))
+ '(company-preview-common ((t (:inherit \#311d57 :foreground "red"))))
+ '(company-scrollbar-bg ((t (:background "DeepSkyBlue"))))
+ '(company-scrollbar-fg ((t (:background "DeepSkyBlue"))))
+ '(company-tooltip ((t (:background "#22143d" :foreground "#cccccc"))))
+ '(company-tooltip-annotation ((t (:foreground "#757575"))))
+ '(company-tooltip-common ((t (:foreground "white" :weight ultra-bold))))
+ '(company-tooltip-selection ((t (:background "dark cyan"))))
  '(highlight-symbol-face ((t (:background "dark cyan")))))
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- elpy-multiedit-python-symbol-at-point
- company-mode
- beacon-mode
  emacs-init-time
+ dired-open-file
  counsel-package
- eval-region
- hs-minor-mode
+ term
+ ses-mode
+ org-mode
+ flymake-mode
 )
 
 ;; ----- smex-data -----
@@ -50,7 +50,7 @@
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 3)
- (customize . 20)
+ (customize . 22)
  (regexp-builder . 41)
  (server-start . 1)
  (auto-fill-mode . 6)
@@ -126,7 +126,7 @@
  (counsel-load-theme . 4)
  (counsel-yank-pop . 1)
  (counsel-ag . 62)
- (counsel-package . 131)
+ (counsel-package . 132)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 18)
@@ -144,7 +144,7 @@
  (counsel-switch-buffer . 3)
  (org-ql-view-sidebar . 6)
  (all-the-icons-ivy-rich-kill-buffer . 2)
- (dired-open-file . 2)
+ (dired-open-file . 3)
  (dired-open-xdg . 1)
  (dired-open-by-extension . 2)
  (jump-to-register . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 71)
+ (emacs-init-time . 78)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 7)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 8)
  (eval-buffer . 87)
- (org-mode . 5)
+ (org-mode . 6)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -353,4 +353,11 @@
  (elpy-config . 1)
  (beacon-mode . 1)
  (elpy-multiedit-python-symbol-at-point . 2)
+ (flymake-menu . 2)
+ (flymake-mode . 2)
+ (flymake-start . 2)
+ (elpy-flymake-next-error . 2)
+ (ses-mode . 2)
+ (term . 2)
+ (term-mode . 2)
 )
