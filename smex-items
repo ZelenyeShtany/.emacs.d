@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ eval-region
+ counsel-package
+ list-packages
+ company-mode
+ emacs-init-time
  zoom-mode
  centaur-tabs-mode
- centaur-tabs--tab-menu
- counsel-package
- emacs-init-time
- org-mode
- fundamental-mode
 )
 
 ;; ----- smex-data -----
@@ -93,7 +93,7 @@
  (helm-buffers-list . 1)
  (package-menu-mark-upgrades . 1)
  (helm-imenu . 3)
- (list-packages . 1)
+ (list-packages . 2)
  (calc . 1)
  (cua-exchange-point-and-mark . 3)
  (prettify-symbols-mode . 17)
@@ -126,10 +126,10 @@
  (counsel-load-theme . 4)
  (counsel-yank-pop . 1)
  (counsel-ag . 62)
- (counsel-package . 135)
+ (counsel-package . 141)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 21)
+ (company-mode . 22)
  (company-complete . 1)
  (counsel-org-capture . 1)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 79)
+ (emacs-init-time . 86)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 7)
@@ -218,7 +218,7 @@
  (narrow-to-defun . 1)
  (cua-copy-region . 1)
  (zoom . 4)
- (zoom-mode . 3)
+ (zoom-mode . 4)
  (find-function-other-window . 2)
  (find-variable . 7)
  (find-variable-other-window . 1)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 5)
  (sql-postgres . 1)
- (eval-region . 32)
+ (eval-region . 33)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)

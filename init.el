@@ -4,16 +4,16 @@
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 ;; /speeds up initialization
-
-  (require 'package)
-  (package-initialize)
-
+(add-to-list 'load-path "~/.emacs.d/elpa/peg-1.0")
+(require 'package)
+(package-initialize)
 (setq bookmark-file
       (cond
        ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
        ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
        )
       )
+
 
 (setq data-folder-path
       (cond
@@ -158,7 +158,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-ql quelpa-use-package quelpa centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -999,8 +999,8 @@ Adapted from `describe-function-or-variable'."
 (global-set-key [remap mouse-kill-secondary] nil)
 
 
-(define-key global-map (kbd "C-x v") 'org-ql-view)
-
+(define-key global-map (kbd "C-c v") 'org-ql-view)
+(define-key global-map (kbd "C-c s") 'org-ql-search)
 
 
 (defun unpackaged/org-element-descendant-of (type element)
@@ -1320,3 +1320,7 @@ With argument, do this that many times."
 ;;   ("C-<prior>" . centaur-tabs-backward)
 ;;   ("C-<next>" . centaur-tabs-forward))
 (zoom-mode 1)
+
+(require 'quelpa-use-package)
+(use-package org-ql
+  :quelpa (org-ql :fetcher github :repo "alphapapa/org-ql"))
