@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- emacs-init-time
- dired-open-file
+ zoom-mode
+ centaur-tabs-mode
+ centaur-tabs--tab-menu
  counsel-package
- term
- ses-mode
+ emacs-init-time
  org-mode
- flymake-mode
+ fundamental-mode
 )
 
 ;; ----- smex-data -----
@@ -50,7 +50,7 @@
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 3)
- (customize . 22)
+ (customize . 23)
  (regexp-builder . 41)
  (server-start . 1)
  (auto-fill-mode . 6)
@@ -126,10 +126,10 @@
  (counsel-load-theme . 4)
  (counsel-yank-pop . 1)
  (counsel-ag . 62)
- (counsel-package . 132)
+ (counsel-package . 135)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 18)
+ (company-mode . 21)
  (company-complete . 1)
  (counsel-org-capture . 1)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 78)
+ (emacs-init-time . 79)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 7)
@@ -218,7 +218,7 @@
  (narrow-to-defun . 1)
  (cua-copy-region . 1)
  (zoom . 4)
- (zoom-mode . 2)
+ (zoom-mode . 3)
  (find-function-other-window . 2)
  (find-variable . 7)
  (find-variable-other-window . 1)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 8)
  (eval-buffer . 87)
- (org-mode . 6)
+ (org-mode . 7)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 4)
+ (fundamental-mode . 5)
  (my/org-at-source-block . 3)
  (csv-align-mode . 3)
  (csv-header-line . 4)
@@ -360,4 +360,14 @@
  (ses-mode . 2)
  (term . 2)
  (term-mode . 2)
+ (counsel-ffdata-firefox-bookmarks . 1)
+ (counsel-ffdata-firefox-history . 2)
+ (shell-mode . 2)
+ (shell-script-mode . 1)
+ (fill-paragraph . 1)
+ (swiper-mc . 4)
+ (counsel-google . 1)
+ (counsel-grep . 1)
+ (centaur-tabs-mode . 3)
+ (centaur-tabs--tab-menu . 1)
 )

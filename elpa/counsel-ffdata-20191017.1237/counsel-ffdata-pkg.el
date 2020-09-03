@@ -1,0 +1,2 @@
+;;; Generated package description from /home/zelenyeshtany/.emacs.d/elpa/counsel-ffdata-20191017.1237/counsel-ffdata.el  -*- no-byte-compile: t -*-
+(define-package "counsel-ffdata" "20191017.1237" "Use ivy to access firefox data" '((emacs "25.1") (counsel "0.11.0") (emacsql "3.0.0")) :commit "88c2348c4039d9e562bd3d9a364708b01037c283" :keywords '("convenience" "tools" "matching") :authors '(("Zhu Zihao" . "all_but_last@163.com")) :maintainer '("Zhu Zihao" . "all_but_last@163.com") :url "https://github.com/cireu/counsel-ffdata")

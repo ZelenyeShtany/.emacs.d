@@ -158,7 +158,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -961,10 +961,9 @@ Adapted from `describe-function-or-variable'."
 
 (use-package counsel
   :init
- (global-set-key [remap org-set-tags-command] #'counsel-org-tag)
+  (global-set-key [remap org-set-tags-command] #'counsel-org-tag)
   (global-set-key [remap describe-function] #'counsel-describe-function)
   (global-set-key [remap describe-variable] #'counsel-describe-variable) 
-
   :bind (:map global-map
 	      ("C-x C-b" . 'counsel-switch-buffer)
 	      ("C-w" . 'counsel-imenu)
@@ -1303,3 +1302,21 @@ With argument, do this that many times."
 (define-key global-map (kbd "C-l") #'copy-line)
 
 (beacon-mode 1)
+(use-package emacsql-sqlite
+  :ensure t
+  )
+
+;; (use-package counsel-ffdata
+;;   :ensure t
+;;   )
+;; (add-to-list 'load-path "~/.emacs.d/elpa/counsel-ffdata-20191017.1237/")
+;; (require 'counsel-ffdata)
+(define-key global-map (kbd "M-q") #'fill-paragraph)
+;; (use-package centaur-tabs
+;;   :demand
+;;   :config
+;;   (centaur-tabs-mode t)
+;;   :bind
+;;   ("C-<prior>" . centaur-tabs-backward)
+;;   ("C-<next>" . centaur-tabs-forward))
+(zoom-mode 1)
