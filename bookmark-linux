@@ -2,7 +2,42 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("notes"
+((".emacs.d"
+ (filename . "~/.emacs.d/")
+ (front-context-string . "bookmark-linux\n ")
+ (rear-context-string . "25 Қыр  5 10:57 ")
+ (position . 588))
+("projects / reading-session-stats"
+ (filename . "/data/Sync/projects/reading-session-stats/")
+ (front-context-string . "..\n  -rwxrwxrwx ")
+ (rear-context-string . "96 Қыр  3 19:17 ")
+ (position . 184))
+("snippets"
+ (filename . "~/.emacs.d/snippets/json-mode/")
+ (front-context-string)
+ (rear-context-string . "24 Қыр  4 20:10 ")
+ (position . 365))
+("org"
+ (filename . "/data/Sync/org/")
+ (front-context-string . "annotations.org\n")
+ (rear-context-string . "93 Шіл  1 14:11 ")
+ (position . 209))
+("sync"
+ (filename . "/data/Sync/")
+ (front-context-string . "tg_api\n  drwxrwx")
+ (rear-context-string . "56 Там 23 12:01 ")
+ (position . 679))
+("tables"
+ (filename . "/data/Sync/tables/")
+ (front-context-string . "exercises tracke")
+ (rear-context-string . " 0 Там 29 21:35 ")
+ (position . 263))
+("todos"
+ (filename . "/data/Sync/org/todos.org")
+ (front-context-string . "ODO дописать [[h")
+ (rear-context-string . "7:13]\n:END:\n** T")
+ (position . 38529))
+("notes"
  (filename . "/data/Sync/org/notes.org")
  (front-context-string . "#+TODO: TODO(1) ")
  (rear-context-string)
@@ -23,8 +58,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "~/Sync/org/notes.org")
- (front-context-string . "**** apache stop")
- (rear-context-string . "on 16:51]\n:END:\n")
- (position . 87962))
+ (filename . "/data/Sync/org/sleepdiary.org")
+ (front-context-string . "** заполнить утр")
+ (rear-context-string . "робуждения(1-4)\n")
+ (position . 357))
 )

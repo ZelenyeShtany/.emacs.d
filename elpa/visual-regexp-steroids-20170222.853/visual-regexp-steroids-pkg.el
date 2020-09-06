@@ -1,0 +1,2 @@
+;;; Generated package description from /home/zelenyeshtany/.emacs.d/elpa/visual-regexp-steroids-20170222.853/visual-regexp-steroids.el  -*- no-byte-compile: t -*-
+(define-package "visual-regexp-steroids" "20170222.853" "Extends visual-regexp to support other regexp engines" '((visual-regexp "1.1")) :authors '(("Marko Bencun" . "mbencun@gmail.com")) :maintainer '("Marko Bencun" . "mbencun@gmail.com") :keywords '("external" "foreign" "regexp" "replace" "python" "visual" "feedback") :url "https://github.com/benma/visual-regexp-steroids.el/")

@@ -48,12 +48,15 @@
  '(dired-open-functions
    '(dired-open-by-extension diredp-find-file-reuse-dir-buffer))
  '(display-time-mode t)
+ '(elpy-modules
+   '(elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults))
  '(fci-rule-color "#383838")
  '(fringe-mode 0 nil (fringe))
  '(global-auto-revert-mode-text "Synced")
  '(global-auto-revert-non-file-buffers t)
  '(global-display-line-numbers-mode t)
  '(helm-ff-lynx-style-map nil)
+ '(highlight-indent-guides-method 'character)
  '(ido-auto-merge-delay-time 0.7)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'messages-buffer-mode)
@@ -158,7 +161,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(org-ql quelpa-use-package quelpa centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(loop json-mode org-ql centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -191,7 +194,128 @@ There are two things you can do about this warning:
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+)
+
+(defun my/get-approppriate-location-to-insert()
+  "docstring"
+  (interactive)
+  ;; prompt for a date
+  (let (
+	(success 0)
+		 )
+  (loop-do-while (eq success 0)
+  (let* (
+;;	 (date (org-time-stamp-inactive nil))
+	 (date (read-string "date:" (concat "[" (format-time-string "%Y-%m-%d %a") "]")))
+	 (files (list sleepdiary))
+	 (dates  (org-map-entries 'org-element-at-point "LEVEL=1" files ) )
+	 ;;                       [  function to call  ]        [list of files]
+	   (datefound 0)
+	   (date-element nil)
+	   )
+
+    (save-excursion
+      ;; (setq datefound 1) if entered date exists within the file
+      (catch 'datefound
+	(dolist (curdate dates);;(goto-char(org-element-property :begin curdate))
+	  (if (string= (org-element-property :title curdate) date)
+	      (progn
+		(setq date-element-end (org-element-property :end curdate))
+		(setq date-element-begin (org-element-property :begin curdate))
+		(setq datefound 1)
+		(throw 'datefound 1)
+		)
+            )
+	  )
+	)
+      
+      ;; if typed date found,
+          ;;check if it has a sugheading "заполнить утром"
+      (if (eq datefound 1)
+	  (let* (
+		 
+		 (elements (progn
+			     (goto-char date-element-begin)
+			     (org-map-entries 'org-element-at-point nil 'tree)
+			     ))
+		 (morningfound 0)
+       		 )
+	    ;; try to find "заполнить утром" heading.
+	    (catch 'morningfound
+	      (dolist (cur-element elements)
+		(if (string= cur-element "заполнить утром")
+		    (progn
+		      (setq morningfound 1)
+		      (setq morning cur-element)
+		      (throw 'morningfound 1)
+		      )
+		  )
+		)
+	      )
+	    ;;If it exists, run "REWRITE?" function. If not - create subhedaing with name "заполнить утром" and return its point
+	    (if morningfound
+		(let*
+		    (
+		     (options  (list "выбрать другую дату" "перезаписать утреннюю запись")  )
+		     (chosen-option (read-string "запись уже есть. Изменить запись или выбрать другую дату?" nil nil options)
+)
+		     )
+		  (cond
+		   ((string= chosen-option "выбрать другую дату")
+		    (loop-continue)
+		    )
+		   ((string= chosen-option "перезаписать утреннюю запись")
+		    (let*
+			()
+		      (goto-char (org-element-property :begin morning))
+		      (org-cut-subtree)
+		      (goto-char date-element-end)
+		      (org-insert-subheading)
+		      (insert "заполнить утром\n")
+		      (setq success 1)
+		      (point)
+		      )
+
+		    )
+		   
+		   )
+
+		  )
+
+	      ;;"заполнить утром" hasnt been found
+	      (let* ()
+		(goto-char date-element-end)
+		(org-insert-subheading)
+		(insert "заполнить утром\n")
+		(point)
+		)
+	      )
+	    )
+	
+	(let* ()
+	  (goto-char
+	   (if (> (length dates) 0)
+	       (org-element-property :begin (car dates) )
+	       (goto-char (point-max))
+	     ) )
+	  (org-insert-heading)
+	  (insert date)
+	  (org-end-of-subtree) ;;skipping properties and other automatically set drawers
+	  (if (not (eq (forward-char 1) nil) ) (insert "\n") )
+	  (setq success 1)
+	  (point)
+	  )
+	)
+
+	)
+      ;; if the date exists within the file
+
+    ;; if
+    )
   )
+  )
+)
+
 
 (add-to-list 'load-path "~/.emacs.d/dired+/")
 (load "dired+")
@@ -219,6 +343,11 @@ There are two things you can do about this warning:
 (add-to-list 'load-path "~/.emacs.d/zoom/")
 (require 'zoom)
 
+
+
+(add-to-list 'load-path "~/.emacs.d/elpa/powerline-20200817.1321/")
+(require 'powerline)
+(powerline-default-theme)
 
 (add-to-list 'load-path "~/.emacs.d/deferred/")
 (require 'deferred)
@@ -324,6 +453,8 @@ There are two things you can do about this warning:
   (setq notes (concat data-folder-path "Sync/org/notes.org")
 	todos (concat data-folder-path "Sync/org/todos.org")
 	timerasp (concat data-folder-path "Sync/org/timerasp.org")
+	sleepdiary (concat data-folder-path "Sync/org/sleepdiary.org")
+	sleep-tracking-file (concat data-folder-path "Sync/org/sleepdiary.org")
 	org-return-follows-link t
 	org-use-speed-commands t
 	org-use-sub-superscripts nil
@@ -409,7 +540,56 @@ There are two things you can do about this warning:
 	  ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
 	  ;; "* frombroser: %a" :immediate-finish t)
 	  ("r" "Report" entry (file+headline timerasp "Reports")
-	   "* %u\n** Действительно ли вы следовали расписанию?\n%?\n** Почему вы не следовали расписанию, над которым так долго дрочились?\n\n** Какие мысли вас преследовали?\n\n** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App\n\n** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?\n")
+	   "* %u
+** Действительно ли вы следовали расписанию?
+%^{PROMPT}
+** Почему вы не следовали расписанию, над которым так долго дрочились?
+%^{PROMPT}
+** Какие мысли вас преследовали?
+%^{PROMPT}
+** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App
+%^{PROMPT}
+** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?
+%^{PROMPT}")
+	  ("m" "Sleep Morning" entry (file+function sleep-tracking-file my/get-approppriate-location-to-insert)
+"
+** лечь в 23:00-00:00, встать в 08:00-09:00
+%^{PROMPT|0|1}
+** когда пошел спать вчера
+%^{PROMPT|0000}
+** когда встал утром сегодня
+%^{PROMPT|0000}
+** ск-ко часов спал
+%^{PROMPT|8}
+** сколько времени засыпал(мин)
+%^{PROMPT}
+** какие медикаменты принимал, чтобы уснуть
+%^{PROMPT}
+** как чувствовал себя после пробуждения(1-4)
+%^{PROMPT}
+	  ")
+	  ("e" "Sleep Evening" entry (file+function sleep-tracking-file )
+	   "* %u
+** заполнить вечером
+*** ск-ко пил кофе сегодня
+%^{PROMPT|0|1}
+*** во ск-ко дремал сегодня
+%^{PROMPT|0000}
+*** ск-ко дремал
+%^{PROMPT|0000}
+*** во сколько занимался спортом сегодня
+%^{PROMPT|8}
+*** сколько занимался спортом(мин)
+%^{PROMPT}
+*** как себя чувствовал в течение дня.
+1. приходилось стараться не заснуть.
+2. немного уставшим
+3. достаточно бдительным
+4. отлично
+%^{PROMPT|1|2|3|4}
+*** как чувствовал себя после пробуждения(1-4)
+%^{PROMPT}
+	  ")
 	  ("d" "capture through org protocol" entry
 	   (file+headline org-board-capture-file "Unsorted")
              "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
@@ -562,6 +742,7 @@ There are two things you can do about this warning:
 	 ("X" . 'diredp-move-file)
 	 ("<ret>" . 'dired-open-by-extension)
 	 ("M-?" .  (lambda () (interactive) (find-file-other-window (concat data-folder-path "Sync/org/diredhelp.org"))))
+	 ("<deletechar>" . 'dired-do-delete)
 	 ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
 	 ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
 	 ("d" . 'diredp-delete-this-file)
@@ -651,7 +832,6 @@ There are two things you can do about this warning:
 (counsel-mode 1)
 
 (global-set-key (kbd "C-<return>") 'cua-rectangle-mark-mode)
-
 
 (defun replace-regexp-visual ()
   "call vr/replace(more convenient func name)"
@@ -951,12 +1131,13 @@ Adapted from `describe-function-or-variable'."
   (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.emacs\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . highlight-symbol-mode))
-  (add-to-list 'auto-minor-mode-alist '("\\.js\\'" . highlight-symbol-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.js\\(on\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . highlight-symbol-mode))
 
   (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . hs-minor-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.js\\(on\\)?\\'" . hs-minor-mode))
 )
 
 (use-package counsel
@@ -975,6 +1156,7 @@ Adapted from `describe-function-or-variable'."
   :ensure t
   :defer t
   :init
+  (highlight-indentation-mode 0)
   (advice-add 'python-mode :before 'elpy-enable)
   (setq elpy-rpc-backend "jedi") 
   :bind (:map elpy-mode-map
@@ -1207,12 +1389,12 @@ It can also return the following special value:
     (highlight-symbol-next)
       )
   )
-(define-key global-map (kbd "C->") #'my-jump-to-next)
-(define-key global-map (kbd "C-<") #'my-jump-to-prev)
+(define-key global-map (kbd "C-M-<right>") #'my-jump-to-next)
+(define-key global-map (kbd "C-M-<left>") #'my-jump-to-prev)
 
 
-;; (set-face-attribute 'mode-line nil :font "Calibri 12")
-;; (set-face-attribute 'default nil :font "Calibri 12")
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono 12")
+;;(set-face-attribute 'default nil :font "Calibri 12")
 ;; (setq helm-ff-default-directory (concat data-folder-path "Sync/org/"))
 
 
@@ -1319,8 +1501,14 @@ With argument, do this that many times."
 ;;   :bind
 ;;   ("C-<prior>" . centaur-tabs-backward)
 ;;   ("C-<next>" . centaur-tabs-forward))
-(zoom-mode 1)
+;;(zoom-mode 1)
 
-(require 'quelpa-use-package)
-(use-package org-ql
-  :quelpa (org-ql :fetcher github :repo "alphapapa/org-ql"))
+;; (use-package visual-regexp-steroids
+;;   :quelpa (visual-regexp-steroids :fetcher github :repo "benma/visual-regexp-steroids.el"))
+
+(add-to-list 'load-path "~/.emacs.d/highlight-indent/")
+(require 'highlight-indent-guides)
+(add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+(setq ivy-use-selectable-prompt t)
+
+

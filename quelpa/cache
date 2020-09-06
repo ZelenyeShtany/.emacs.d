@@ -1,1 +1,1 @@
-((org-ql :fetcher github :repo "alphapapa/org-ql"))
+((org-ql :fetcher github :repo "alphapapa/org-ql") (visual-regexp-steroids :fetcher github :repo "benma/visual-regexp-steroids.el"))

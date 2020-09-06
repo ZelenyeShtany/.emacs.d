@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: migraine
+# key: migraine
+# --
+"${1:`(format-time-string "%Y-%m-%d")`}" : {
+  "notes" : "${2:0}"
+}

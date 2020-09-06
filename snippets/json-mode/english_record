@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: english_record
+# key: english
+# --
+"${1:`(format-time-string "%Y-%m-%d")`}" : {
+  "reading1h" : ${2:0}
+  "grammar" : ${3:0}
+  "writing" :  ${4:0}
+  "anki" : {
+    "add" : ${5:0}
+    "revise" : ${6:0}
+  }
+  "notes" : "${7:}"
+},

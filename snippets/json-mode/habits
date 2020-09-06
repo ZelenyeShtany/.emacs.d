@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: habits
+# key: habits
+# --
+"${1:`(format-time-string "%Y-%m-%d")`}" : {
+  "Taking Charge of Adult ADHD notes" : "${2:0}",
+  "SOC Skills / Евгения Стрелецкая" : "${3:0}",
+  "НГТУ 3H+30M" : "${4:0}",
+  "DISCR MATHS 2h" : "${5:0}",
+  "nofap" : "${6:0}",
+  "meditation" : "${7:0}",
+  "зубы(утро+вечер)" : "${8:0}",
+  "душ" : "${9:0}"
+},

@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: exercise_record
+# key: exercise
+# --
+
+"${1:`(format-time-string "%Y-%m-%d")`}": {
+    "riding a bike": {
+    	"done?": ${2:0},
+	"duration": ${3:0}min,
+        "time": ${4:0000}
+    },
+    "run": {
+    	"done?": ${5:0},
+        "duration": ${6:}min,
+        "time": ${7:0000}
+    },
+    "squats": {
+    	"done?": ${8:0},
+        "sets": [${9:0},${10:0}]
+    },
+    "pushups": {
+        "done?": ${11:0},
+        "sets": [${12:0},${13:0}]
+    },
+    "press": {
+        "done?": ${14:0},
+        "sets": [${15:0},${16:0}]
+    },
+    "notes": "${17:}"
+    },
