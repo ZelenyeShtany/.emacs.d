@@ -52,7 +52,6 @@
    '(elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults))
  '(fci-rule-color "#383838")
  '(fringe-mode 0 nil (fringe))
- '(global-auto-revert-mode-text "Synced")
  '(global-auto-revert-non-file-buffers t)
  '(global-display-line-numbers-mode t)
  '(helm-ff-lynx-style-map nil)
@@ -161,11 +160,12 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(loop json-mode org-ql centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(web-mode diminish loop json-mode org-ql centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
  '(tool-bar-mode nil)
+ '(web-mode-enable-current-element-highlight t)
  '(wg-emacs-exit-save-behavior nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -180,7 +180,8 @@
  '(company-tooltip-annotation ((t (:foreground "#757575"))))
  '(company-tooltip-common ((t (:foreground "white" :weight ultra-bold))))
  '(company-tooltip-selection ((t (:background "dark cyan"))))
- '(highlight-symbol-face ((t (:background "dark cyan")))))
+ '(highlight-symbol-face ((t (:background "dark cyan"))))
+ '(web-mode-current-element-highlight-face ((t (:background "#008b8b" :foreground "#ffffff")))))
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -195,28 +196,29 @@ There are two things you can do about this warning:
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
 )
-
-(defun my/get-approppriate-location-to-insert()
+(defun my/get-approppriate-location-to-insert(filepath subheading-title)
   "docstring"
   (interactive)
   ;; prompt for a date
   (let (
+	
 	(success 0)
-		 )
+	)
+  (require 'loop)
   (loop-do-while (eq success 0)
-  (let* (
-;;	 (date (org-time-stamp-inactive nil))
-	 (date (read-string "date:" (concat "[" (format-time-string "%Y-%m-%d %a") "]")))
-	 (files (list sleepdiary))
-	 (dates  (org-map-entries 'org-element-at-point "LEVEL=1" files ) )
-	 ;;                       [  function to call  ]        [list of files]
+    (let* (
+	   (date-element-begin 0)
+	   (date-element-end 0)
+	   (date (read-string "date:" (concat "[" (format-time-string "%Y-%m-%d") "]")))
+	   (files (list filepath))
+	   (dates  (org-map-entries 'org-element-at-point "LEVEL=1" files ) )
+	   ;;                      [  function to call  ]        [list of files]
 	   (datefound 0)
 	   (date-element nil)
 	   )
-
-    (save-excursion
-      ;; (setq datefound 1) if entered date exists within the file
+      ;; (setq datefound 1) if entered date exists within the file DONE
       (catch 'datefound
+	(when (> (length dates) 0)
 	(dolist (curdate dates);;(goto-char(org-element-property :begin curdate))
 	  (if (string= (org-element-property :title curdate) date)
 	      (progn
@@ -228,22 +230,23 @@ There are two things you can do about this warning:
             )
 	  )
 	)
+	)
       
       ;; if typed date found,
-          ;;check if it has a sugheading "заполнить утром"
       (if (eq datefound 1)
+          ;;check if it has a sugheading subheading-title
 	  (let* (
-		 
 		 (elements (progn
 			     (goto-char date-element-begin)
-			     (org-map-entries 'org-element-at-point nil 'tree)
+			     (org-map-entries 'org-element-at-point "LEVEL=2" 'tree)
 			     ))
 		 (morningfound 0)
        		 )
-	    ;; try to find "заполнить утром" heading.
+	    ;; try to find subheading-title heading. DONE
 	    (catch 'morningfound
 	      (dolist (cur-element elements)
-		(if (string= cur-element "заполнить утром")
+		(message "%s" (org-element-property :title cur-element))
+		(if (string= (org-element-property :title cur-element) subheading-title)
 		    (progn
 		      (setq morningfound 1)
 		      (setq morning cur-element)
@@ -252,47 +255,53 @@ There are two things you can do about this warning:
 		  )
 		)
 	      )
-	    ;;If it exists, run "REWRITE?" function. If not - create subhedaing with name "заполнить утром" and return its point
-	    (if morningfound
+	    ;;If morning heading exists 
+	    (if (eq morningfound 1)
+		;;then prompt for an option
 		(let*
 		    (
-		     (options  (list "выбрать другую дату" "перезаписать утреннюю запись")  )
-		     (chosen-option (read-string "запись уже есть. Изменить запись или выбрать другую дату?" nil nil options)
-)
+		     (options  (list "выбрать другую дату" (concat "перезаписать запись \"" subheading-title "\""))  )
+		     (chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+
 		     )
+		     
 		  (cond
-		   ((string= chosen-option "выбрать другую дату")
+		   ;; skip the rest of the loop (continue)
+		   ((string= chosen-option (nth 0 options))
 		    (loop-continue)
 		    )
-		   ((string= chosen-option "перезаписать утреннюю запись")
+
+		   ;; cut subheading subheading-title create a new one, return a point
+		   ((string= chosen-option (nth 1 options) )
 		    (let*
 			()
 		      (goto-char (org-element-property :begin morning))
 		      (org-cut-subtree)
 		      (goto-char date-element-end)
-		      (org-insert-subheading)
-		      (insert "заполнить утром\n")
+		      (org-insert-subheading 4)
+		      (insert (concat subheading-title "\n"))
 		      (setq success 1)
 		      (point)
 		      )
-
 		    )
-		   
 		   )
-
 		  )
 
-	      ;;"заполнить утром" hasnt been found
+	      ;;else insert subheading-title subheading and return a point
 	      (let* ()
 		(goto-char date-element-end)
-		(org-insert-subheading)
-		(insert "заполнить утром\n")
+		(org-insert-subheading 4)
+		(insert (concat subheading-title "\n"))
+		(setq success 1)
 		(point)
 		)
 	      )
 	    )
-	
-	(let* ()
+	;; date not found
+	(let* (
+	       (tvar 0)
+	       (morning nil)
+	       )
 	  (goto-char
 	   (if (> (length dates) 0)
 	       (org-element-property :begin (car dates) )
@@ -300,22 +309,25 @@ There are two things you can do about this warning:
 	     ) )
 	  (org-insert-heading)
 	  (insert date)
-	  (org-end-of-subtree) ;;skipping properties and other automatically set drawers
-	  (if (not (eq (forward-char 1) nil) ) (insert "\n") )
+	  ;;(org-end-of-subtree) ;;skipping properties and other automatically set drawers
+	  (org-insert-subheading 4)
+	  (setq morning (org-element-at-point))
+	  (insert (concat subheading-title "\n"))
+	  ;;(org-end-of-subtree)
+	  ;;(if (not (eq (forward-char 1) nil) ) (insert "\n") )
 	  (setq success 1)
-	  (point)
 	  )
 	)
 
-	)
+	
       ;; if the date exists within the file
 
     ;; if
     )
   )
   )
-)
-
+  )
+;; org-element-adopt-element
 
 (add-to-list 'load-path "~/.emacs.d/dired+/")
 (load "dired+")
@@ -357,7 +369,7 @@ There are two things you can do about this warning:
 ;;(require 'auto-minor-mode)
 ;; <open .emacs quickly>
 (define-key global-map (kbd "C-x i")
-  (lambda () (interactive) (find-file-other-frame "~/.emacs.d/init.el")))
+  (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
 ;; </open .emacs quickly>
 
 (set-language-environment "UTF-8")
@@ -441,7 +453,58 @@ There are two things you can do about this warning:
   ;;  (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
   ;;  (prettify-symbols-mode)))
 
-
+  (defun my/number-of-spaces-at-point(point)
+    "docstring"
+    (interactive)
+    (require 'loop)
+    (let* (
+	   (count 0)
+	   )
+      (save-excursion
+      (loop-do-while (eq (char-after) ? )
+	(setq count (+ count 1))
+	(forward-char)
+	)
+      )
+      count
+    )
+    )
+  (defun my/org-headline-return ()
+    "docstring"
+    (interactive)
+    (let* (
+	   (level (org-element-property :level (org-element-at-point)))
+	   (begin (org-element-property :begin (org-element-at-point)))
+	   (title-length (length (org-element-property :title (org-element-at-point))))
+	   (contents-end (org-element-property :contents-end (org-element-at-point)))
+	   )
+      (if (
+	   and
+	   (eq (org-element-type (org-element-at-point)) 'headline)
+	   (eq (point)
+	       (+ begin level (my/number-of-spaces-at-point(+ begin level))
+		  title-length)
+	       )
+	   )
+	  
+	  (if (org-goto-first-child)
+	      (progn
+		(forward-char -1)
+		(insert "\n")
+		)
+	    
+	    (progn
+	      (goto-char contents-end)
+	      (if (not(eq (char-before) "\n" ) )
+		  (progn (insert "\n") (forward-char -1))
+		  )
+	      )
+	    )
+	(org-return)
+	)
+      )
+      )
+  
   (defun my/copy-id-to-clipboard()
        (interactive)
        (when (eq major-mode 'org-mode) ; do this only in org-mode buffers
@@ -453,6 +516,11 @@ There are two things you can do about this warning:
   (setq notes (concat data-folder-path "Sync/org/notes.org")
 	todos (concat data-folder-path "Sync/org/todos.org")
 	timerasp (concat data-folder-path "Sync/org/timerasp.org")
+	poor-man-cbt (concat data-folder-path "Sync/org/poor-man-cbt.org")
+	english-tracker (concat data-folder-path "Sync/tables/english tracker/englishtracker.org")
+	migraines-tracker (concat data-folder-path "Sync/tables/migraines.org")
+	habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/habits.org")
+	exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/exercisetracker.org")
 	sleepdiary (concat data-folder-path "Sync/org/sleepdiary.org")
 	sleep-tracking-file (concat data-folder-path "Sync/org/sleepdiary.org")
 	org-return-follows-link t
@@ -495,27 +563,28 @@ There are two things you can do about this warning:
 	org-tag-persistent-alist 
 	'(
 	  (:startgrouptag)
-	  ("ADHD" .           ?A)
+	  ("ADHD")
 	  (:grouptags)
-	  ("" .       ?v)
+	  ("внимание")
 	  (:endgrouptag)
-	  
-	  ("" .       ?p)
-	  ("quantifiedself" . ?q)
-	  ("NSTU" .           ?N) 
-	  ("book" .           ?b)
+	  ("SCT")
+	  ("quantifiedself")
+	  ("NSTU")
+	  ("important")
+	  ("book")
 	  
 	  (:startgrouptag)
-	  ("emacs" .          ?e)
+	  ("emacs")
 	  (:grouptags)
-	  ("orgmode" .        ?o)
+	  ("emacs_config")
+	  ("orgmode")
 	  ("elisp")
 	  (:endgrouptag)
 	       
 	  (:startgrouptag)
-	  ("mindset" .        ?M)
+	  ("mindset")
 	  (:grouptags)
-	  ("copingcard" .     ?c)
+	  ("copingcard")
 	  (:endgrouptag)
 	       
 	       
@@ -524,9 +593,11 @@ There are two things you can do about this warning:
 	  (:grouptags)
 	  ("article")
 	  (:endgrouptag)
-	       
-	  ("music" .          ?m)
-	  ("film" .           ?f)
+
+	  
+	  ("engl")
+	  ("music")
+	  ("film")
 	  )
 
 	
@@ -539,56 +610,139 @@ There are two things you can do about this warning:
 	   "* IDEA %?")
 	  ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
 	  ;; "* frombroser: %a" :immediate-finish t)
-	  ("r" "Report" entry (file+headline timerasp "Reports")
-	   "* %u
-** Действительно ли вы следовали расписанию?
-%^{PROMPT}
-** Почему вы не следовали расписанию, над которым так долго дрочились?
-%^{PROMPT}
-** Какие мысли вас преследовали?
-%^{PROMPT}
-** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App
-%^{PROMPT}
-** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?
-%^{PROMPT}")
-	  ("m" "Sleep Morning" entry (file+function sleep-tracking-file my/get-approppriate-location-to-insert)
+	  ("r" "CBT-Report" plain (file+function poor-man-cbt (lambda () (interactive) (my/get-approppriate-location-to-insert poor-man-cbt "запись")))
 "
-** лечь в 23:00-00:00, встать в 08:00-09:00
-%^{PROMPT|0|1}
-** когда пошел спать вчера
-%^{PROMPT|0000}
-** когда встал утром сегодня
-%^{PROMPT|0000}
-** ск-ко часов спал
-%^{PROMPT|8}
-** сколько времени засыпал(мин)
-%^{PROMPT}
-** какие медикаменты принимал, чтобы уснуть
-%^{PROMPT}
-** как чувствовал себя после пробуждения(1-4)
-%^{PROMPT}
+*** Действительно ли вы следовали расписанию?
+%^{Действительно ли вы следовали расписанию?}
+*** Почему вы не следовали расписанию, над которым так долго дрочились?
+%^{Почему вы не следовали расписанию, над которым так долго дрочились?}
+*** Какие мысли вас преследовали?
+%^{Какие мысли вас преследовали?}
+*** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App
+%^{Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App}
+*** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?
+%^{+Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?}")
+
+("n" "English Tracker" plain (file+function english-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert english-tracker "запись")))
+"
+*** reading1h
+%^{reading1h|0|1}
+*** grammar
+%^{grammar|0|1}
+*** writing
+%^{writing|0|1}
+*** anki
+**** add (добавлял новые слова?)
+%^{anki add(добавлял новые слова?)|0|1}
+**** revise (повторял слова?)
+%^{anki revise (повторял слова?)|0|1}
+*** notes
+%^{notes}")
+
+("g" "Migraines" plain (file+function migraines-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert migraines-tracker "запись")))
+"
+*** как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып? 
+%^{как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып?}
+*** степень тяжести приступа (1-4) 
+%^{степень тяжести приступа (1-4)|1|2|3|4}
+*** notes
+%^{notes}")
+
+("h" "Habits" plain (file+function habits-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert habits-tracker "запись")))
+"
+*** Taking Charge of Adult ADHD notes
+%^{Taking Charge of Adult ADHD notes|0|1}
+*** SOC Skills / Евгения Стрелецкая
+%^{SOC Skills / Евгения Стрелецкая|0|1}
+*** НГТУ 3H+30M
+%^{НГТУ 3H+30M|0|1}
+*** DISCR MATHS 2h
+%^{DISCR MATHS 2h|0|1}
+*** nofap
+%^{nofap|0|1}
+*** meditation(mins)
+%^{meditation(mins)|0}
+*** зубы(утро+вечер)
+%^{зубы(утро+вечер)|0|1}
+*** душ
+%^{душ|0|1}
+"
+
+)
+
+
+("x" "Exercise Tracker" plain (file+function exercise-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert exercise-tracker "запись")))
+"
+*** Riding a bike
+**** done?
+%^{Riding a bike: done?|0|1}
+**** duration(mins)
+%^{duration(mins)|0}
+**** time
+%^{time|0000}
+*** Run
+**** done?
+%^{Run: done?|0|1}
+**** duration(mins)
+%^{duration(mins)}
+**** time
+%^{time|0000}
+*** Squats
+**** done?
+%^{Squats: done?|0|1}
+**** sets
+%^{sets|0,0,0}
+*** Pushups
+**** done?
+%^{Pushups: done?|0|1}
+**** sets
+%^{sets|0,0,0}
+*** Press
+**** done?
+%^{Press: done?|0|1}
+**** sets
+%^{sets|0,0,0}
+*** notes
+%^{notes}
+"
+
+)
+
+("m" "Sleep Morning" plain (file+function sleep-tracking-file (lambda () (interactive) (my/get-approppriate-location-to-insert sleep-tracking-file "заполнить утром")))
+"
+*** лечь в 23:00-00:00, встать в 08:00-09:00
+%^{лечь в 23:00-00:00, встать в 08:00-09:00|0|1}
+*** когда пошел спать вчера
+%^{когда пошел спать вчера|0000}
+*** когда встал утром сегодня
+%^{когда встал утром сегодня|0000}
+*** ск-ко часов спал
+%^{ск-ко часов спал|8:30}
+*** сколько времени засыпал(мин)
+%^{сколько времени засыпал(мин)}
+*** какие медикаменты принимал, чтобы уснуть
+%^{какие медикаменты принимал, чтобы уснуть|-}
+*** как чувствовал себя после пробуждения(1-4)
+%^{как чувствовал себя после пробуждения(1-4)}
 	  ")
-	  ("e" "Sleep Evening" entry (file+function sleep-tracking-file )
-	   "* %u
-** заполнить вечером
+	  ("e" "Sleep Evening" plain (file+function sleep-tracking-file (lambda () (interactive) (my/get-approppriate-location-to-insert sleep-tracking-file "заполнить вечером")))
+"
 *** ск-ко пил кофе сегодня
-%^{PROMPT|0|1}
+%^{ск-ко пил кофе сегодня|0|1}
 *** во ск-ко дремал сегодня
-%^{PROMPT|0000}
+%^{во ск-ко дремал сегодня|0000}
 *** ск-ко дремал
-%^{PROMPT|0000}
+%^{ск-ко дремал|0000}
 *** во сколько занимался спортом сегодня
-%^{PROMPT|8}
+%^{во сколько занимался спортом сегодня|8}
 *** сколько занимался спортом(мин)
-%^{PROMPT}
+%^{сколько занимался спортом(мин)}
 *** как себя чувствовал в течение дня.
 1. приходилось стараться не заснуть.
 2. немного уставшим
 3. достаточно бдительным
 4. отлично
-%^{PROMPT|1|2|3|4}
-*** как чувствовал себя после пробуждения(1-4)
-%^{PROMPT}
+%^{как себя чувствовал в течение дня.|1|2|3|4}
 	  ")
 	  ("d" "capture through org protocol" entry
 	   (file+headline org-board-capture-file "Unsorted")
@@ -607,6 +761,8 @@ There are two things you can do about this warning:
 ;; /web archiving through org-capture + org-board  
   (require 'org-download)
   :bind (:map org-mode-map
+	      ("<RET>" . 'my/org-headline-return)
+	      ("C-<RET>" . 'org-return)
 	      ("<f5>" . 'my/copy-id-to-clipboard)
 	      ("M-r" . 'org-todo)
 	      ("M-t" . 'counsel-org-tag)
@@ -737,7 +893,9 @@ There are two things you can do about this warning:
 				     ))
 
   :bind (:map dired-mode-map
+	 ("C-S-n" . 'dired-create-directory)
 	 ("<tab>" . 'dired-subtree-toggle)
+	 ("+" . 'dired-create-empty-file)     
 	 ("<f2>" . 'dired-do-rename)
 	 ("X" . 'diredp-move-file)
 	 ("<ret>" . 'dired-open-by-extension)
@@ -818,11 +976,12 @@ There are two things you can do about this warning:
 ;;(defun org-agenda-revert-buffer (_ignore-auto noconfirm))
 
 (add-hook 'after-revert-hook #'(lambda () (interactive) (org-agenda-redo t)))
-
-;;(require 'ivy-rich)
+(require 'ivy-rich)
 (require 'ivy)
 (ivy-mode 1)
+(ivy-rich-mode 1)
 ;;(ivy-rich-mode 1)
+
 
 (define-key global-map (kbd "C-x f") 'counsel-find-file)
 
@@ -1141,6 +1300,7 @@ Adapted from `describe-function-or-variable'."
 )
 
 (use-package counsel
+  :diminish counsel-mode
   :init
   (global-set-key [remap org-set-tags-command] #'counsel-org-tag)
   (global-set-key [remap describe-function] #'counsel-describe-function)
@@ -1172,8 +1332,8 @@ Adapted from `describe-function-or-variable'."
 
 
 (define-key global-map (kbd "M-f") 'hs-toggle-hiding)
-(define-key global-map (kbd "M-i") 'org-time-stamp-inactive)
-(define-key global-map (kbd "M-l") 'org-insert-link)
+(define-key org-mode-map (kbd "M-i") 'org-time-stamp-inactive)
+(define-key org-mode-map (kbd "M-l") 'org-insert-link)
 (define-key global-map (kbd "C-x m") 'counsel-bookmark)
 
 
@@ -1506,9 +1666,95 @@ With argument, do this that many times."
 ;; (use-package visual-regexp-steroids
 ;;   :quelpa (visual-regexp-steroids :fetcher github :repo "benma/visual-regexp-steroids.el"))
 
-(add-to-list 'load-path "~/.emacs.d/highlight-indent/")
-(require 'highlight-indent-guides)
-(add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+;;(require 'highlight-indent-guides)
+;;(add-to-list 'load-path "~/.emacs.d/highlight-indent/")
+;;(add-hook 'python-mode-hook 'highlight-indent-guides-mode)
+
 (setq ivy-use-selectable-prompt t)
+(use-package company
+:diminish company-mode
+  )
+  
+(use-package ivy
+  :diminish ivy-mode
+  )
+
+  
+(use-package yasnippet
+  :diminish yas-minor-mode
+  )
+
+(use-package hideshow
+  :diminish hs-minor-mode
+  )
+
+(use-package highlight-symbol
+  :diminish highlight-symbol-mode
+  )
+
+(use-package beacon
+  :diminish beacon-mode
+  )
+(use-package eldoc
+  :diminish eldoc-mode
+  )
+
+(use-package org-indent
+  :diminish org-indent-mode
+  )
+(use-package simple
+  :diminish auto-fill-function
+  )
+(scroll-bar-mode 1)
+
+
+(defun counsel-org-tag ()
+  "Add or remove tags in `org-mode'."
+  (interactive)
+  (save-excursion
+    (if (eq major-mode 'org-agenda-mode)
+        (if org-agenda-bulk-marked-entries
+            (setq counsel-org-tags nil)
+          (let ((hdmarker (or (org-get-at-bol 'org-hd-marker)
+                              (org-agenda-error))))
+            (with-current-buffer (marker-buffer hdmarker)
+              (goto-char hdmarker)
+              (setq counsel-org-tags (counsel--org-get-tags)))))
+      (unless (org-at-heading-p)
+        (org-back-to-heading t))
+      (setq counsel-org-tags (counsel--org-get-tags)))
+    
+    (let ((org-last-tags-completion-table
+           (append (and (or org-complete-tags-always-offer-all-agenda-tags
+                            (eq major-mode 'org-agenda-mode))
+                        (org-global-tags-completion-table
+                         (org-agenda-files)))
+                   (unless (boundp 'org-current-tag-alist)
+                     org-tag-persistent-alist)
+                   (or (if (boundp 'org-current-tag-alist)
+                           org-current-tag-alist
+                         org-tag-alist)
+                       (org-get-buffer-tags)))))
+      (ivy-read (counsel-org-tag-prompt)
+                (lambda (str _pred _action)
+                  (delete-dups
+                   (all-completions str #'org-tags-completion-function)))
+                :history 'org-tags-history
+                :action #'counsel-org-tag-action
+                :caller 'counsel-org-tag)
+      )))
+
+(use-package web-mode
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  )
 
 

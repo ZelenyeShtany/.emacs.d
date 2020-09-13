@@ -4,7 +4,9 @@
 (setq mc/cmds-to-run-for-all
       '(
 	ace-jump-mode
+	backward-delete-word
 	cua--prefix-override-handler
+	cua-exchange-point-and-mark
 	cua-paste
 	org-backward-sentence
 	org-ctrl-c-ctrl-c
@@ -18,8 +20,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+	delete-window
 	my-jump-to-next
 	my-jump-to-prev
-	delete-window
 	org-cycle
 	))

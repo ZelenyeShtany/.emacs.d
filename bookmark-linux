@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-((".emacs.d"
+(("dark theme css goldendict"
+ (filename . "~/.goldendict/styles/dark-theme/article-style.css")
+ (front-context-string . "  margin-left:  ")
+ (rear-context-string . "gin-right: 3px;\n")
+ (position . 48))
+(".goldendict"
+ (filename . "~/.goldendict/")
+ (front-context-string . "index\n  -rw-rw-r")
+ (rear-context-string . "88 Қыр  8 15:55 ")
+ (position . 492))
+("утррит morning"
+ (filename . "/data/Sync/org/утррит.org")
+ (front-context-string . "#+STARTUP: inden")
+ (rear-context-string)
+ (position . 1))
+("вечрит evening"
+ (filename . "/data/Sync/org/вечрит.org")
+ (front-context-string . "#+STARTUP: inden")
+ (rear-context-string)
+ (position . 1))
+("diary"
+ (filename . "/data/Sync/org/sleepdiary.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+(".emacs.d"
  (filename . "~/.emacs.d/")
  (front-context-string . "bookmark-linux\n ")
  (rear-context-string . "25 Қыр  5 10:57 ")
@@ -42,24 +67,14 @@
  (front-context-string . "#+TODO: TODO(1) ")
  (rear-context-string)
  (position . 1))
-("вечрит dtxhbn"
- (filename . "/data/Sync/org/вечрит.org")
- (front-context-string . "* Вечерний ритуа")
- (rear-context-string . "STARTUP: indent\n")
- (position . 19))
-("утррит utrrit"
- (filename . "/data/Sync/org/утррит.org")
- (front-context-string . "#+STARTUP: inden")
- (rear-context-string)
- (position . 1))
 ("ob"
  (filename . "~/.emacs.d/elpa/org-board-20200619.1016/org-board-autoloads.el")
  (front-context-string . ";;; org-board-au")
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/sleepdiary.org")
- (front-context-string . "** заполнить утр")
- (rear-context-string . "робуждения(1-4)\n")
- (position . 357))
+ (filename . "/data/Sync/org/notes.org")
+ (front-context-string . "**** словари\n***")
+ (rear-context-string . "re just perfect\n")
+ (position . 108513))
 )

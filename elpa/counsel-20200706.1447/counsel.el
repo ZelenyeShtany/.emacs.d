@@ -3578,6 +3578,7 @@ otherwise continue prompting for tags."
       (unless (org-at-heading-p)
         (org-back-to-heading t))
       (setq counsel-org-tags (counsel--org-get-tags)))
+    
     (let ((org-last-tags-completion-table
            (append (and (or org-complete-tags-always-offer-all-agenda-tags
                             (eq major-mode 'org-agenda-mode))
@@ -3595,7 +3596,12 @@ otherwise continue prompting for tags."
                    (all-completions str #'org-tags-completion-function)))
                 :history 'org-tags-history
                 :action #'counsel-org-tag-action
-                :caller 'counsel-org-tag))))
+                :caller 'counsel-org-tag)
+      ;; my code
+      (message "%s" (all-completions "" #'org-tags-completion-function))
+      ;; /my code
+
+      )))
 
 (defvar org-version)
 
