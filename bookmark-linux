@@ -74,7 +74,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** словари\n***")
- (rear-context-string . "re just perfect\n")
- (position . 108513))
+ (front-context-string . "**** https://ema")
+ (rear-context-string . "un 23:58]\n:END:\n")
+ (position . 109306))
 )

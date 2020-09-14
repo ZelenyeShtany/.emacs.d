@@ -4,7 +4,6 @@
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 ;; /speeds up initialization
-(add-to-list 'load-path "~/.emacs.d/elpa/peg-1.0")
 (require 'package)
 (package-initialize)
 (setq bookmark-file
@@ -160,7 +159,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(web-mode diminish loop json-mode org-ql centaur-tabs counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -332,6 +331,8 @@ There are two things you can do about this warning:
 (add-to-list 'load-path "~/.emacs.d/dired+/")
 (load "dired+")
 
+(add-to-list 'load-path "~/.emacs.d/elpa/peg-1.0")
+
 (add-to-list 'load-path "~/.emacs.d/elpa/highlight-symbol.el/")
 (require 'highlight-symbol)
 (with-eval-after-load "highlight-symbol"
@@ -452,7 +453,6 @@ There are two things you can do about this warning:
   ;;  (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
   ;;  (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
   ;;  (prettify-symbols-mode)))
-
   (defun my/number-of-spaces-at-point(point)
     "docstring"
     (interactive)
@@ -572,6 +572,7 @@ There are two things you can do about this warning:
 	  ("NSTU")
 	  ("important")
 	  ("book")
+	  ("cpp")
 	  
 	  (:startgrouptag)
 	  ("emacs")
@@ -1691,6 +1692,9 @@ With argument, do this that many times."
 (use-package highlight-symbol
   :diminish highlight-symbol-mode
   )
+
+(add-to-list 'load-path "~/.emacs.d/elpa/org-ql-20200713.909/")
+(require 'org-ql)
 
 (use-package beacon
   :diminish beacon-mode

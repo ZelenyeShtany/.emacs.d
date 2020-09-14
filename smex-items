@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- table-widen-cell
- org-edit-table\.el
- org-table-edit-field
- org-table-convert
- eval-region
- indent-region
+ counsel-package
+ org-mode
+ fundamental-mode
+ counsel-ag
  company-mode
+ org-tags-view
+ table-widen-cell
 )
 
 ;; ----- smex-data -----
@@ -125,11 +125,11 @@
  (counsel-buffer-or-recentf . 3)
  (counsel-load-theme . 5)
  (counsel-yank-pop . 1)
- (counsel-ag . 96)
- (counsel-package . 152)
+ (counsel-ag . 97)
+ (counsel-package . 155)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 53)
+ (company-mode . 54)
  (company-complete . 1)
  (counsel-org-capture . 134)
  (all-the-icons-install-fonts . 1)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 8)
  (eval-buffer . 149)
- (org-mode . 9)
+ (org-mode . 10)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 8)
+ (fundamental-mode . 9)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -398,7 +398,7 @@
  (org-narrow-to-element . 4)
  (org-version . 1)
  (counsel-org-tag . 1)
- (org-tags-view . 1)
+ (org-tags-view . 2)
  (xml-mode . 1)
  (web-mode . 4)
  (web-mode-navigate . 1)
@@ -409,4 +409,5 @@
  (web-mode-toggle-current-element-highlight . 1)
  (my/number-of-spaces-at-point . 1)
  (table-widen-cell . 1)
+ (org-ql-view-todo . 2)
 )
