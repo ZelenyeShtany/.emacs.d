@@ -38,9 +38,9 @@
      ("csv" . "konsole -e visidata")
      ("html" . "google-chrome")
      ("mp4" . "mpv")
-     ("mp3" . "rhythmbox")
-     ("ogg" . "rhythmbox")
-     ("opus" . "rhythmbox")
+     ("mp3" . "clementine")
+     ("ogg" . "clementine")
+     ("opus" . "clementine")
      ("odt" . "libreoffice")
      ("doc" . "libreoffice")
      ("docx" . "libreoffice")))
@@ -194,7 +194,16 @@ There are two things you can do about this warning:
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
-)
+  )
+
+
+(defun my/json-point ()
+  "docstring"
+  (interactive)
+  
+  (min-point)
+  )
+
 (defun my/get-approppriate-location-to-insert(filepath subheading-title)
   "docstring"
   (interactive)
@@ -573,6 +582,7 @@ There are two things you can do about this warning:
 	  ("important")
 	  ("book")
 	  ("cpp")
+	  ("workflow")
 	  
 	  (:startgrouptag)
 	  ("emacs")
@@ -667,6 +677,8 @@ There are two things you can do about this warning:
 %^{зубы(утро+вечер)|0|1}
 *** душ
 %^{душ|0|1}
+*** cold shower
+%^{cold shower|0|1}
 "
 
 )
@@ -674,6 +686,8 @@ There are two things you can do about this warning:
 
 ("x" "Exercise Tracker" plain (file+function exercise-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert exercise-tracker "запись")))
 "
+*** Planned to be done?(any kind of sport activity)
+%^{Planned to be done?(any kind of sport activity)|0|1}
 *** Riding a bike
 **** done?
 %^{Riding a bike: done?|0|1}
@@ -708,6 +722,15 @@ There are two things you can do about this warning:
 "
 
 )
+
+("G" "JSON TEST" plain (file "/data/Sync/tables/exercises tracker/2020/september.json")
+"
+{ 
+notes : \"%^{test}\"
+}
+"
+)
+
 
 ("m" "Sleep Morning" plain (file+function sleep-tracking-file (lambda () (interactive) (my/get-approppriate-location-to-insert sleep-tracking-file "заполнить утром")))
 "

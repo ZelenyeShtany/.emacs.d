@@ -73,8 +73,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** https://ema")
- (rear-context-string . "un 23:58]\n:END:\n")
- (position . 109306))
+ (filename . "/data/Sync/tables/exercises tracker/2020/september.json")
+ (front-context-string . "{ \nnotes : \"asda")
+ (rear-context-string)
+ (position . 1))
 )

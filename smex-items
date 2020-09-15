@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- counsel-package
+ json-mode
  org-mode
- fundamental-mode
- counsel-ag
+ view-emacs-news
+ counsel-org-capture
+ check-parens
  company-mode
- org-tags-view
- table-widen-cell
+ fundamental-mode
 )
 
 ;; ----- smex-data -----
 (
  (package-install . 44)
- (org-ql-view . 23)
+ (org-ql-view . 24)
  (package-list-packages . 8)
  (package-delete . 5)
- (org-ql-search . 48)
+ (org-ql-search . 49)
  (org-cycle-agenda-files . 1)
  (org-agenda . 1)
  (org-todo . 3)
@@ -126,12 +126,12 @@
  (counsel-load-theme . 5)
  (counsel-yank-pop . 1)
  (counsel-ag . 97)
- (counsel-package . 155)
+ (counsel-package . 156)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 54)
+ (company-mode . 56)
  (company-complete . 1)
- (counsel-org-capture . 134)
+ (counsel-org-capture . 135)
  (all-the-icons-install-fonts . 1)
  (all-the-icons-insert . 22)
  (counsel-bookmarked-directory . 5)
@@ -192,10 +192,10 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 98)
+ (emacs-init-time . 99)
  (emacs-uptime . 1)
  (debug . 5)
- (check-parens . 7)
+ (check-parens . 8)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 1)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 8)
  (eval-buffer . 149)
- (org-mode . 10)
+ (org-mode . 12)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 9)
+ (fundamental-mode . 10)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -410,4 +410,10 @@
  (my/number-of-spaces-at-point . 1)
  (table-widen-cell . 1)
  (org-ql-view-todo . 2)
+ (helm-org-ql-views . 1)
+ (helm-org-ql . 1)
+ (org-copy-subtree . 1)
+ (org-browse-news . 1)
+ (view-emacs-news . 1)
+ (json-mode . 1)
 )
