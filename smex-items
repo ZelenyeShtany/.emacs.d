@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- json-mode
- org-mode
- view-emacs-news
- counsel-org-capture
- check-parens
  company-mode
- fundamental-mode
+ counsel-package
+ counsel-org-capture
+ emacs-lisp-mode
+ edebug-defun
+ widen
+ customize
 )
 
 ;; ----- smex-data -----
@@ -49,9 +49,9 @@
  (revert-buffer . 22)
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
- (toggle-debug-on-error . 13)
- (customize . 29)
- (regexp-builder . 41)
+ (toggle-debug-on-error . 14)
+ (customize . 31)
+ (regexp-builder . 42)
  (server-start . 1)
  (auto-fill-mode . 6)
  (toggle-text-mode-auto-fill . 4)
@@ -126,12 +126,12 @@
  (counsel-load-theme . 5)
  (counsel-yank-pop . 1)
  (counsel-ag . 97)
- (counsel-package . 156)
+ (counsel-package . 158)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 56)
+ (company-mode . 80)
  (company-complete . 1)
- (counsel-org-capture . 135)
+ (counsel-org-capture . 223)
  (all-the-icons-install-fonts . 1)
  (all-the-icons-insert . 22)
  (counsel-bookmarked-directory . 5)
@@ -192,10 +192,10 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 99)
+ (emacs-init-time . 100)
  (emacs-uptime . 1)
  (debug . 5)
- (check-parens . 8)
+ (check-parens . 13)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 1)
@@ -226,8 +226,8 @@
  (list-matching-lines . 1)
  (org-priority . 4)
  (org-cliplink . 8)
- (eval-buffer . 149)
- (org-mode . 12)
+ (eval-buffer . 209)
+ (org-mode . 13)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -242,11 +242,11 @@
  (comment-region . 2)
  (org-narrow-to-subtree . 1)
  (org-show-subtree . 2)
- (indent-region . 18)
+ (indent-region . 57)
  (dimmer-mode . 13)
  (edebug-stop . 4)
  (edebug-mode . 1)
- (edebug-defun . 33)
+ (edebug-defun . 46)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 1)
  (my/show-scheduling-amendments-status . 2)
@@ -261,7 +261,7 @@
  (eval-last-sexp . 1)
  (company-yasnippet . 9)
  (sql-postgres . 1)
- (eval-region . 50)
+ (eval-region . 57)
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
@@ -312,7 +312,7 @@
  (markdown-cycle . 3)
  (markdown-demote . 9)
  (markdown-promote . 1)
- (narrow-to-region . 7)
+ (narrow-to-region . 16)
  (my-is-region-active . 2)
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
@@ -385,7 +385,7 @@
  (powerline-vim-theme . 3)
  (find-file-at-point . 1)
  (powerline-default-theme . 3)
- (emacs-lisp-mode . 4)
+ (emacs-lisp-mode . 7)
  (org-insert-heading-respect-content . 1)
  (org-time-stamp-inactive . 2)
  (my/get-approppriate-location-to-insert . 42)
@@ -394,7 +394,7 @@
  (multiple-cursors-mode . 1)
  (helm-colors . 3)
  (scroll-bar-mode . 1)
- (widen . 6)
+ (widen . 17)
  (org-narrow-to-element . 4)
  (org-version . 1)
  (counsel-org-tag . 1)
@@ -404,7 +404,7 @@
  (web-mode-navigate . 1)
  (web-mode-buffer-indent . 1)
  (javascript-mode . 1)
- (js-indent-line . 1)
+ (js-indent-line . 2)
  (html-mode . 1)
  (web-mode-toggle-current-element-highlight . 1)
  (my/number-of-spaces-at-point . 1)
@@ -414,6 +414,9 @@
  (helm-org-ql . 1)
  (org-copy-subtree . 1)
  (org-browse-news . 1)
- (view-emacs-news . 1)
+ (view-emacs-news . 2)
  (json-mode . 1)
+ (emacs-version . 1)
+ (my/json-point . 19)
+ (json-pretty-print-buffer . 1)
 )

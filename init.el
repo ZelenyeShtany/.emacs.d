@@ -54,6 +54,7 @@
  '(global-auto-revert-non-file-buffers t)
  '(global-display-line-numbers-mode t)
  '(helm-ff-lynx-style-map nil)
+ '(help-window-select t)
  '(highlight-indent-guides-method 'character)
  '(ido-auto-merge-delay-time 0.7)
  '(inhibit-startup-screen t)
@@ -197,13 +198,192 @@ There are two things you can do about this warning:
   )
 
 
-(defun my/json-point ()
+(defun my/search-for-date (tmpdate filename)
   "docstring"
-  (interactive)
-  
-  (min-point)
+  (save-excursion
+    (find-file filename)
+    (widen)
+    (goto-char (point-min))
+    (let* (
+	   ;;(date (concat "\"" tmpdate "\""))
+	   (date tmpdate)
+	   (data-array-search-result (search-forward-regexp "\"data\"[ ]*:[ ]*\\[" nil t))
+	   ;; going to array's 1st square bracket and saving it
+	   (beg (progn (forward-char -1)(point)))
+	   
+	   (end (nth 3 (show-paren--default)))
+	   date-search-result
+	   )
+      
+      (if (not(eq data-array-search-result nil))
+	  (let*
+	      ( )
+	    (narrow-to-region beg end) ;; narrowing to "data" array
+	    (goto-char (point-min))
+	    (setq date-search-result (search-forward date nil t))
+	    )
+	)
+      (kill-buffer)
+      date-search-result
+      )
+    )
   )
 
+(defun my/json-point (filename)
+  "docstring"
+  (interactive)
+  (require 'loop)
+  (require 'dash)
+  (let* (
+	 ;; function for appending to 'sets' arrays
+	 (my/exercise-sets-list (lambda ()
+				  (let* (
+					 (tmplist '())
+					 (input nil)
+					 )
+				    
+				    (while(and
+					   (setq input (read-string
+							(concat "sets: ["
+								(mapconcat 'number-to-string tmplist ",")
+								"] enter another one or press ENTER to quit: ")
+							))
+					   (not(string= input ""))
+					   )
+				      (setq tmplist (append tmplist (list (string-to-number input))))
+				      )
+				    tmplist
+				    )
+				  ) )
+	 
+	 redefine-record
+	 (date
+	  (let* (
+		 tmpdate
+		 (options  (list "выбрать другую дату" "перезаписать запись")  )
+		 chosen-option
+		 )
+	    (loop-while t
+			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+			(if (not(eq(my/search-for-date tmpdate filename) nil))
+			    (progn
+			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			      (cond
+			       ;; выбрать другую дату
+			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+
+			       ;; перезаписать запись
+			       ((string= chosen-option (nth 1 options) ) 
+				(setq redefine-record t)
+				(loop-break)
+				)
+			       )
+			      )
+			  (loop-break)
+			  )
+
+			)
+	    tmpdate
+	    )
+	  )
+	 (mins '(15 30 45 60))
+	 (one-or-zero (list "0" "1"))
+	 (exercised-p (string-to-number (ivy-read "exercised?" one-or-zero :require-match t)))
+	 (planned-to-exercise-p (string-to-number (ivy-read "planned-to-exercise?" one-or-zero :require-match t)))
+
+	 (ride-a-bike-p (string-to-number (ivy-read "ride-a-bike?" one-or-zero :require-match t)))
+	 (bike-time (if (eq ride-a-bike-p 0) "0000" (ivy-read "when?" '("0000"))))
+	 (bike-duration (if (eq ride-a-bike-p 0) 0 (ivy-read "duration(mins):" mins)))
+
+	 (run-p (string-to-number (ivy-read "run?" one-or-zero :require-match t)))
+	 (run-time (if (eq run-p 0) "0000" (ivy-read "when?" '("0000"))))
+	 (run-duration (if (eq run-p 0) 0 (ivy-read "duration(mins):" mins)))
+
+	 (default-sets '())
+	 (squats-p (string-to-number (ivy-read "do squats?" one-or-zero :require-match t)))
+	 (squats-sets (if (eq squats-p 0) default-sets (funcall my/exercise-sets-list)))
+
+	 (pushups-p (string-to-number (ivy-read "do pushups?" one-or-zero :require-match t)))
+	 (pushups-sets (if (eq pushups-p 0) default-sets (funcall my/exercise-sets-list)))
+
+	 (press-p (string-to-number (ivy-read "do press?" one-or-zero :require-match t)))
+	 (press-sets (if (eq press-p 0) default-sets (funcall my/exercise-sets-list)))
+
+	 (notes (read-string "notes:" ""))
+	 
+	 (json-object (list date
+			    exercised-p
+			    planned-to-exercise-p
+			    (list ride-a-bike-p bike-time bike-duration)
+			    (list run-p run-time run-duration)
+			    (list squats-p squats-sets)
+			    (list pushups-p pushups-sets)
+			    (list press-p press-sets)
+			    notes
+			    ))
+	 )
+    ;; appending to "data" array
+    (save-excursion
+      (find-file filename)
+      (widen)
+      (goto-char (point-min))
+      (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
+	  (let*
+	      (
+	       (data-array-beg (progn (forward-char -1)(point))) ;; array's 1st square bracket
+	       (data-array-end (nth 3 (show-paren--default))) ;; array's 2nd square bracket
+	       (data-array-elisp (json-read-array))
+	       (iter 0)
+	       data-array-json-string
+	       )
+	    (narrow-to-region data-array-beg data-array-end) ;; narrowing to "data" array
+	    
+	    (if (eq redefine-record t)
+		;; redefine existing data record
+		(progn
+		  (loop-while (/= iter (length data-array-elisp))
+		    (if (string= (car(nth iter data-array-elisp)) date)
+			(progn
+			  ;; debug 1
+			  (message "DEBUG entered date: %s" date)
+			  (message "car nth: %s" (car(nth iter data-array-elisp)))
+			  ;; /debug 1
+			  (loop-break)
+			  )
+		      )
+		    (setq iter (+ iter 1))
+		    )
+		  (delete-region (point-min) (point-max))
+		  (setq data-array-elisp (-replace-at iter json-object data-array-elisp))
+		  (setq data-array-json-string (json-encode-array data-array-elisp) )
+		  (message "==DEB===")
+		  (message "data array: %s" data-array-json-string)
+		  (message "=====")
+		  (insert data-array-json-string)
+		  )
+
+	      ;; append to data array via (insert)
+	      (progn
+		(goto-char data-array-end)
+		(forward-char -1)
+		(while (not (eq (char-before) ?\] ) )
+		  (forward-char -1)
+		  )
+		(insert ",\n")
+		(insert (json-encode-array json-object))
+		(indent-for-tab-command)
+		)
+	      
+	      )
+	    (save-buffer)
+	    (kill-buffer)
+	    )
+	)
+      )
+    ;; /appending to "data" array
+    "" ;;returning an empty string as a template string for orgmode
+    )
+  )
 (defun my/get-approppriate-location-to-insert(filepath subheading-title)
   "docstring"
   (interactive)
@@ -269,7 +449,8 @@ There are two things you can do about this warning:
 		(let*
 		    (
 		     (options  (list "выбрать другую дату" (concat "перезаписать запись \"" subheading-title "\""))  )
-		     (chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+		     (chosen-option (ivy-read
+				     "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
 
 		     )
 		     
@@ -723,12 +904,8 @@ There are two things you can do about this warning:
 
 )
 
-("G" "JSON TEST" plain (file "/data/Sync/tables/exercises tracker/2020/september.json")
-"
-{ 
-notes : \"%^{test}\"
-}
-"
+("G" "JSON TEST" plain (file "/data/Sync/tables/english tracker/september.json" )
+(function (lambda () (interactive) (my/json-point "/data/Sync/tables/english tracker/september.json"))) :immediate-finish t
 )
 
 
@@ -847,7 +1024,8 @@ notes : \"%^{test}\"
 ;;<org-download - drag-n-drop images>
 ;; Drag-and-drop to `dired`
 (use-package org-download
-  :after (org)
+  :after
+  (org)
   :hook (dired-mode . org-download-enable)
   :init
   (setq org-download-method 'directory)
@@ -1111,7 +1289,7 @@ Narrow to defun if it's not."
 
 ;;org-after-todo-state-change-hook
 ;;org-state
-;;(setq debug-on-error 1)
+(setq debug-on-error 1)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -1251,54 +1429,47 @@ Adapted from `describe-function-or-variable'."
 
 
 ;; open describe- functions in other frame
-(advice-add 'describe-function :after '(lambda (&rest args)
-				    (let* (current-buffer)
-				      (when (> (count-windows 1) 1)
-				      (call-interactively 'other-window)
-				      (setq current-buffer (buffer-name))
-				      
-				      (if(eq my/windows-quantity-before-call 1)
-					  (delete-window)
-					(previous-buffer)
-				      )
-				    
-				      (switch-to-buffer-other-frame current-buffer)
-				      )
-				    )
-				    )
-	    )
-(advice-add 'describe-variable :after '(lambda (&rest args)
-				    (let* (current-buffer)
-				      (when (> (count-windows 1) 1)
-				      (call-interactively 'other-window)
-				      (setq current-buffer (buffer-name))
-				    (if(eq my/windows-quantity-before-call 1)
-					(delete-window)
-				      (previous-buffer)
-				      )
-				    (switch-to-buffer-other-frame current-buffer))))
-)
-(advice-add 'describe-key :after '(lambda (&rest args)
-				    (let* (current-buffer)
-				    (when (> (count-windows 1) 1) 
-				    (call-interactively 'other-window)
-				    (setq current-buffer (buffer-name))
-				    (if(eq my/windows-quantity-before-call 1)
-					(delete-window)
-				      (previous-buffer)
-				      )
-				    (switch-to-buffer-other-frame current-buffer)
-				    
-				    )
-				    )
-				    )
-)
+;;ensure that help-window-select set to always(t)
+(defun my/describe-functions-open-window (arg)
+  "docstring"
+  (if (> my/windows-quantity-before-call 1)
+      (progn
+	(previous-buffer)
+	(select-window my/previous-selected-window)
+	(if (< (window-pixel-height) (window-pixel-width))
+	    (split-window-horizontally)
+	  (split-window-vertically)
+	  )
+	(other-window 1)
+	(switch-to-buffer "*Help*")
+	)
+    )
+  )
+;;     );;(lambda (&rest args) (interactive)(split-window-horizontally) (other-window 1)))
+;;   )
+(defun my/count-windows-before-call (arg)
+  "docstring"
+  (if (ivy--buffer-list "*Help*")
+      (progn
+	(switch-to-buffer "*Help*")
+	(rename-uniquely)
+	(previous-buffer)
+	)
+    )
+  (setq my/windows-quantity-before-call (count-windows 1))
+  (setq my/previous-selected-window (selected-window))
+  (message "selected window: %s" (selected-window))
+  )
 
-(advice-add 'describe-function :before '(lambda (&rest args) (setq my/windows-quantity-before-call (count-windows 1))))
-(advice-add 'describe-variable :before '(lambda (&rest args)(setq my/windows-quantity-before-call (count-windows 1))))
-(advice-add 'describe-key :before '(lambda (&rest args)(setq my/windows-quantity-before-call (count-windows 1))))
+(advice-add 'describe-function :after 'my/describe-functions-open-window)
+(advice-add 'describe-variable :after 'my/describe-functions-open-window)
+(advice-add 'describe-key :after 'my/describe-functions-open-window)
+
+(advice-add 'describe-function :before 'my/count-windows-before-call)
+(advice-add 'describe-variable :before 'my/count-windows-before-call)
+(advice-add 'describe-key :before 'my/count-windows-before-call)
 (setq my/windows-quantity-before-call nil)
-	    
+(setq my/previous-selected-window nil)
 ;; /open describe- functions in other frame
 
 
@@ -1770,7 +1941,7 @@ With argument, do this that many times."
                 :action #'counsel-org-tag-action
                 :caller 'counsel-org-tag)
       )))
-
+(setq json-array-type 'list)
 (use-package web-mode
   :defer t
   :init
@@ -1783,5 +1954,3 @@ With argument, do this that many times."
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   )
-
-
