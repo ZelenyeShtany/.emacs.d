@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("dark theme css goldendict"
+(("sleep data"
+ (filename . "/data/Sync/tables/sleep diary/2020/data.json")
+ (front-context-string . "{\n    \"data form")
+ (rear-context-string)
+ (position . 1))
+("dark theme css goldendict"
  (filename . "~/.goldendict/styles/dark-theme/article-style.css")
  (front-context-string . "  margin-left:  ")
  (rear-context-string . "gin-right: 3px;\n")
@@ -73,8 +78,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/english tracker/september.json")
+ (filename . "/data/Sync/tables/poor-man-CBT/data.json")
  (front-context-string)
- (rear-context-string . "[0,null],\"\"]]\n}\n")
- (position . 878))
+ (rear-context-string . "sdc\",\"aww\"]\n]\n}\n")
+ (position . 397))
 )

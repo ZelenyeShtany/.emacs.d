@@ -29,6 +29,7 @@
  '(ansi-color-names-vector
    ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(column-number-mode t)
+ '(company-idle-delay 0.1)
  '(cua-mode t nil (cua-base))
  '(custom-safe-themes
    '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default))
@@ -223,17 +224,305 @@ There are two things you can do about this warning:
 	    (setq date-search-result (search-forward date nil t))
 	    )
 	)
-      (kill-buffer)
+      ;;(kill-buffer)
       date-search-result
       )
     )
   )
 
-(defun my/json-point (filename)
+
+(defun my/json-sleep (filename evening-p)
+  "if evening-p non-nil, create evening record.
+If nil, create morning record"
+  (interactive)
+  (require 'loop)
+  (let* 
+      (
+       (mins '(15 30 45 60))
+       (hours '(6 7 8 9))
+       (one-four '(1 2 3 4))
+       (one-or-zero (list "0" "1"))
+       redefine-record
+       (record-exists nil)
+       (date
+	(let* (
+	       tmpdate
+	       (options  (list "выбрать другую дату" "перезаписать запись")  )
+	       chosen-option
+	       date-search-result
+	       )
+	  (loop-while t
+	    (setq record-exists nil)
+	    (setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+	    (setq date-search-result (my/search-for-date tmpdate filename))
+
+	    ;; if date has been found
+	    (if (not(eq date-search-result nil))
+		(progn
+		  (setq record-exists t)
+		  (find-file filename)
+		  (goto-char date-search-result)
+
+		  ;; go to comma
+		  (while (not (eq (char-after) ?\, ) )
+		    (forward-char 1)
+		    )
+
+		  ;; skip all whitespaces
+		  (while (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)
+		    (forward-char 1)
+		    )
+		  
+		  (forward-char 1) ;; set cursor to beginning of next element of array
+
+		  (when evening-p
+		    (progn
+		      (json-read)
+		      (forward-char 1)
+		      )
+		    )
+		  ;; if morning(org evening) subarray has been found
+		  (if (not (eq(json-read) nil))
+		      (progn
+			(setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			(cond
+			 ;; выбрать другую дату
+			 ((string= chosen-option (nth 0 options) ) (loop-continue))
+
+			 ;; перезаписать запись
+			 ((string= chosen-option (nth 1 options) )
+			  (setq redefine-record t)
+			  (loop-break)
+			  )
+			 )
+			)
+		    ))
+	      )
+	    (loop-break)
+	    )
+	  tmpdate
+	  )
+	)
+       ;; morning
+       (2300-0000-0800-0900-p (if (eq evening-p nil) (string-to-number (ivy-read "лечь в 23:00-00:00, встать в 08:00-09:00" one-or-zero :require-match t)) nil))
+       (when-go-to-bed (if (eq evening-p nil)(ivy-read "когда пошел спать вчера?" '("0000")) nil))
+       (when-got-up (if (eq evening-p nil)(ivy-read "когда встал утром сегодня?" '("0000")) nil))
+
+       (how-many-hours-of-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько часов спал?:" hours)) nil))
+       (mins-before-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько минут засыпал? " mins)) nil))
+
+       (medication (if (eq evening-p nil)(ivy-read "какие медикаменты принимал, чтобы уснуть?" '("-" "мелатонин 3мг" "мелатонин 6мг")) nil))
+       (general-sostoyanie-after-wake-up (if (eq evening-p nil) (string-to-number(ivy-read "как себя чувствовал после пробуждения?:" one-four)) nil))
+
+       ;; evening
+       (coffee-p (if evening-p (string-to-number (ivy-read "пил кофе сегодня?" one-or-zero :require-match t)) nil))
+       (mins-nap (if evening-p (string-to-number(ivy-read "сколько дремал сегодня? " mins)) nil))
+       (when-nap (if evening-p (if (eq mins-nap 0) "0000" (ivy-read "во сколько дремал сегодня?" '("0000"))) nil))
+       (general-sostoyanie-whole-day (if evening-p (string-to-number(ivy-read "как себя чувствовал в течение дня?:" one-four)) nil))
+       
+       (json-morning-or-evening-subarray 
+	(if evening-p
+	    (list
+	     coffee-p
+	     mins-nap
+	     when-nap
+	     general-sostoyanie-whole-day
+	     )
+	  (list 2300-0000-0800-0900-p
+		when-go-to-bed
+		when-got-up
+		how-many-hours-of-sleep
+		mins-before-sleep
+		medication
+		general-sostoyanie-after-wake-up
+		)
+	  )
+	
+	)
+       )
+	    
+    ;; appending to "data" array
+    (find-file filename)
+    (widen)
+    (goto-char (point-min))
+
+    (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
+	(let*
+	    (
+	     (data-array-beg (progn (forward-char -1)(point))) ;; array's 1st square bracket
+	     (data-array-end (nth 3 (show-paren--default))) ;; array's 2nd square bracket
+	     (data-array-elisp (json-read-array)) ;; get json array through elisp vector
+	     (iter 0)
+	     data-array-json-string
+	     date-morning-evening-subarray-elisp
+	     )
+	  (narrow-to-region data-array-beg data-array-end) ;; narrowing to "data" array
+	  
+	  (if (eq record-exists t)
+	      ;; redefine existing data record
+	      (progn
+		(loop-while (/= iter (length data-array-elisp))
+		  (if (string= (aref (aref data-array-elisp iter) 0) date)
+		      (loop-break)
+		    )
+		  (setq iter (+ iter 1))
+		  )
+		(delete-region (point-min) (point-max))
+
+		;; get array data point
+		(setq date-morning-evening-subarray-elisp (aref data-array-elisp iter))
+
+		;; replace morning-subarray within date-morning-evening-subarray-elisp
+		
+		;; (setq date-morning-evening-subarray-elisp
+		;;       (-replace-at (if evening-p 2 1)
+		;; 		   json-morning-or-evening-subarray
+		;; 		   date-morning-evening-subarray-elisp)
+		;;       )
+		(aset date-morning-evening-subarray-elisp (if evening-p 2 1) json-morning-or-evening-subarray)
+
+	      ;; replace element within vector by index
+	      (aset data-array-elisp iter date-morning-evening-subarray-elisp)
+		
+		(setq data-array-json-string
+		      (json-encode-array data-array-elisp) )
+		(insert data-array-json-string)
+		)
+
+	    ;; append to data array via (insert)
+	    
+	    
+	    )
+	  (if (eq record-exists nil)
+	      (progn
+	      (goto-char data-array-end)
+	      (forward-char -1)
+	      (while (not (eq (char-before) ?\] ) )
+		(forward-char -1)
+		)
+	      (insert ",")
+	      (insert (if evening-p (json-encode-array (list date nil json-morning-or-evening-subarray))
+			(json-encode-array (list date json-morning-or-evening-subarray nil )) ) )
+	      (indent-for-tab-command)
+	      )
+
+
+	      )
+	  ;; converting to human-readable format
+	  (goto-char (point-min))
+	  (my-json/prettify-array-at-point)
+	  ;; /converting to human-readable format
+	  (save-buffer)
+	  (kill-buffer)
+	  )
+      )
+    
+    ;;returning an empty string as a template string for orgmode
+    "" 
+    
+    )
+  
+  )
+
+
+(defun my/json-habits (filename)
   "docstring"
   (interactive)
   (require 'loop)
-  (require 'dash)
+  (let* (
+	 redefine-record
+	 (date
+	  (let* (
+		 tmpdate
+		 (options  (list "выбрать другую дату" "перезаписать запись")  )
+		 chosen-option
+		 )
+	    (loop-while t
+			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+			(if (not(eq(my/search-for-date tmpdate filename) nil))
+			    (progn
+			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			      (cond
+			       ;; выбрать другую дату
+			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+
+			       ;; перезаписать запись
+			       ((string= chosen-option (nth 1 options) ) 
+				(setq redefine-record t)
+				(loop-break)
+				)
+			       )
+			      )
+			  (loop-break)
+			  )
+
+			)
+	    tmpdate
+	    )
+	  )
+	 (mins '(15 30 45 60))
+	 (one-or-zero (list "0" "1"))
+	 
+	 (taking-charge-adhd-p (string-to-number (ivy-read "taking-charge-adhd?" one-or-zero :require-match t)))
+	 (taking-charge-adhd-planned-p (string-to-number (ivy-read "taking-charge-adhd-planned?" one-or-zero :require-match t)))
+	 
+	 (soc-skills-p (string-to-number (ivy-read "soc-skills?" one-or-zero :require-match t)))
+	 (soc-skills-planned-p (string-to-number (ivy-read "soc-skills-planned?" one-or-zero :require-match t)))
+	 
+	 (nstu-3h-p (string-to-number (ivy-read "nstu-3h?" one-or-zero :require-match t)))
+	 (nstu-3h-planned-p (string-to-number (ivy-read "nstu-3h-planned?" one-or-zero :require-match t)))
+
+	 (discr-2h-p (string-to-number (ivy-read "discr-2h?" one-or-zero :require-match t)))
+	 (discr-2h-planned-p (string-to-number (ivy-read "discr-2h-planned?" one-or-zero :require-match t)))
+	 
+	 (nofap-p (string-to-number (ivy-read "nofap?" one-or-zero :require-match t)))
+
+	 (meditation-p (string-to-number (ivy-read "meditation?" one-or-zero :require-match t)))
+	 (meditation-planned-p (string-to-number (ivy-read "meditation-planned?" one-or-zero :require-match t)))
+	 (meditation-duration (if (eq meditation-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
+	 
+	 (teeth-morning-p (string-to-number (ivy-read "teeth-morning?" one-or-zero :require-match t)))
+	 (teeth-evening-p (string-to-number (ivy-read "teeth-evening?" one-or-zero :require-match t)))
+
+	 (shower-p (string-to-number (ivy-read "shower?" one-or-zero :require-match t)))
+
+	 (cold-shower-p (string-to-number (ivy-read "cold-shower?" one-or-zero :require-match t)))
+	 (cold-shower-planned-p (string-to-number (ivy-read "cold-shower-planned?" one-or-zero :require-match t)))
+
+	 (notes (read-string "notes:" ""))
+
+
+	 (json-object (vector date
+			    (vector taking-charge-adhd-p taking-charge-adhd-planned-p)
+			    (vector soc-skills-p soc-skills-planned-p)
+			    (vector nstu-3h-p nstu-3h-planned-p)
+			    (vector discr-2h-p discr-2h-planned-p)
+			    nofap-p
+			    (vector meditation-p meditation-planned-p meditation-duration)
+			    (vector teeth-morning-p teeth-evening-p)
+			    shower-p
+			    (vector cold-shower-p cold-shower-planned-p)
+			    notes
+			    ))
+	 
+	 )
+    ;; appending to "data" array
+    (my/json-insert filename date json-object redefine-record)
+
+    ;;returning an empty string as a template string for orgmode
+    "" 
+    
+    )
+  
+  )
+
+
+
+
+(defun my/json-exercises (filename)
+  "docstring"
+  (interactive)
+  (require 'loop)
   (let* (
 	 ;; function for appending to 'sets' arrays
 	 (my/exercise-sets-list (lambda ()
@@ -293,11 +582,11 @@ There are two things you can do about this warning:
 
 	 (ride-a-bike-p (string-to-number (ivy-read "ride-a-bike?" one-or-zero :require-match t)))
 	 (bike-time (if (eq ride-a-bike-p 0) "0000" (ivy-read "when?" '("0000"))))
-	 (bike-duration (if (eq ride-a-bike-p 0) 0 (ivy-read "duration(mins):" mins)))
+	 (bike-duration (if (eq ride-a-bike-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
 
 	 (run-p (string-to-number (ivy-read "run?" one-or-zero :require-match t)))
 	 (run-time (if (eq run-p 0) "0000" (ivy-read "when?" '("0000"))))
-	 (run-duration (if (eq run-p 0) 0 (ivy-read "duration(mins):" mins)))
+	 (run-duration (if (eq run-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
 
 	 (default-sets '())
 	 (squats-p (string-to-number (ivy-read "do squats?" one-or-zero :require-match t)))
@@ -311,79 +600,210 @@ There are two things you can do about this warning:
 
 	 (notes (read-string "notes:" ""))
 	 
-	 (json-object (list date
+	 (json-object (vector date
 			    exercised-p
 			    planned-to-exercise-p
-			    (list ride-a-bike-p bike-time bike-duration)
-			    (list run-p run-time run-duration)
-			    (list squats-p squats-sets)
-			    (list pushups-p pushups-sets)
-			    (list press-p press-sets)
+			    (vector ride-a-bike-p bike-time bike-duration)
+			    (vector run-p run-time run-duration)
+			    (vector squats-p squats-sets)
+			    (vector pushups-p pushups-sets)
+			    (vector press-p press-sets)
 			    notes
 			    ))
 	 )
     ;; appending to "data" array
-    (save-excursion
-      (find-file filename)
-      (widen)
-      (goto-char (point-min))
-      (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
-	  (let*
-	      (
-	       (data-array-beg (progn (forward-char -1)(point))) ;; array's 1st square bracket
-	       (data-array-end (nth 3 (show-paren--default))) ;; array's 2nd square bracket
-	       (data-array-elisp (json-read-array))
-	       (iter 0)
-	       data-array-json-string
-	       )
-	    (narrow-to-region data-array-beg data-array-end) ;; narrowing to "data" array
-	    
-	    (if (eq redefine-record t)
-		;; redefine existing data record
-		(progn
-		  (loop-while (/= iter (length data-array-elisp))
-		    (if (string= (car(nth iter data-array-elisp)) date)
-			(progn
-			  ;; debug 1
-			  (message "DEBUG entered date: %s" date)
-			  (message "car nth: %s" (car(nth iter data-array-elisp)))
-			  ;; /debug 1
-			  (loop-break)
-			  )
-		      )
-		    (setq iter (+ iter 1))
-		    )
-		  (delete-region (point-min) (point-max))
-		  (setq data-array-elisp (-replace-at iter json-object data-array-elisp))
-		  (setq data-array-json-string (json-encode-array data-array-elisp) )
-		  (message "==DEB===")
-		  (message "data array: %s" data-array-json-string)
-		  (message "=====")
-		  (insert data-array-json-string)
-		  )
+    (my/json-insert filename date json-object redefine-record)
 
-	      ;; append to data array via (insert)
-	      (progn
-		(goto-char data-array-end)
-		(forward-char -1)
-		(while (not (eq (char-before) ?\] ) )
-		  (forward-char -1)
-		  )
-		(insert ",\n")
-		(insert (json-encode-array json-object))
-		(indent-for-tab-command)
-		)
-	      
-	      )
-	    (save-buffer)
-	    (kill-buffer)
-	    )
-	)
-      )
-    ;; /appending to "data" array
-    "" ;;returning an empty string as a template string for orgmode
+    ;;returning an empty string as a template string for orgmode
+    "" 
     )
   )
+
+
+(defun my-json/poor-man-CBT (filename)
+  "docstring"
+  (interactive)
+
+(require 'loop)
+  (let* (
+	 redefine-record
+	 (date
+	  (let* (
+		 tmpdate
+		 (options  (list "выбрать другую дату" "перезаписать запись")  )
+		 chosen-option
+		 )
+	    (loop-while t
+			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+			(if (not(eq(my/search-for-date tmpdate filename) nil))
+			    (progn
+			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			      (cond
+			       ;; выбрать другую дату
+			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+
+			       ;; перезаписать запись
+			       ((string= chosen-option (nth 1 options) ) 
+				(setq redefine-record t)
+				(loop-break)
+				)
+			       )
+			      )
+			  (loop-break)
+			  )
+
+			)
+	    tmpdate
+	    )
+	  )
+	 (one-or-zero (list "0" "1"))
+
+	 (question1 (string-to-number (ivy-read "Действительно ли вы следовали расписанию?" one-or-zero :require-match t)))
+	 (question2 (if (eq question1 0) nil (read-string "Почему вы не следовали расписанию, над которым так долго дрочились? ")))
+	 (question3 (read-string "Какие мысли вас преследовали? "))
+	 (question4 (read-string "Что можно сделать, чтобы исправить ситуацию завтра?"))
+
+	 (json-object (vector date
+			    question1
+			    question2
+			    question3
+			    question4
+			    ))
+	 
+	 )
+
+    (my/json-insert filename date json-object redefine-record)
+    
+    ;;returning an empty string as a template string for orgmode
+    "" 
+    )
+  
+  )
+
+
+(defun my-json/migraines (filename)
+  "docstring"
+  (interactive)
+  (require 'loop)
+  (let* (
+	 redefine-record
+	 (date
+	  (let* (
+		 tmpdate
+		 (options  (list "выбрать другую дату" "перезаписать запись")  )
+		 chosen-option
+		 )
+	    (loop-while t
+			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+			(if (not(eq(my/search-for-date tmpdate filename) nil))
+			    (progn
+			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			      (cond
+			       ;; выбрать другую дату
+			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+
+			       ;; перезаписать запись
+			       ((string= chosen-option (nth 1 options) ) 
+				(setq redefine-record t)
+				(loop-break)
+				)
+			       )
+			      )
+			  (loop-break)
+			  )
+
+			)
+	    tmpdate
+	    )
+	  )
+	 (one-four '("1" "2" "3" "4"))
+
+	 (headache-possible-reason (read-string "как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып?" ""))
+
+	 (headache-extent (string-to-number (ivy-read "степень тяжести приступа (1-4) " one-four :require-match t)))
+
+	 (notes (read-string "notes: " ""))
+
+	 (json-object (vector date
+			    headache-possible-reason
+			    headache-extent
+			    notes
+			    ))
+	 
+	 )
+
+    (my/json-insert filename date json-object redefine-record)
+    
+    ;;returning an empty string as a template string for orgmode
+    "" 
+    )
+
+  )
+
+(defun my/json-insert (filename date json-object redefine-record)
+  "docstring"
+  (interactive)
+  (require 'loop)
+  (save-excursion
+    (find-file filename)
+    (widen)
+    (goto-char (point-min))
+    (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
+	(let*
+	    (
+	     (data-array-beg-bracket (progn (forward-char -1)(point))) ;; array's 1st square bracket
+	     (data-array-end-bracket (nth 3 (show-paren--default))) ;; array's 2nd square bracket
+	     (data-array-elisp (json-read-array))
+	     (iter 0)
+	     data-array-json-string
+	     )
+	  (narrow-to-region data-array-beg-bracket data-array-end-bracket) ;; narrowing to "data" array
+	  
+	  (if (eq redefine-record t)
+	      ;; redefine existing data record
+	      (progn
+		(loop-while (/= iter (length data-array-elisp))
+		  (if (string= (aref (aref data-array-elisp iter) 0) date)
+		      (loop-break)
+		    )
+		  (setq iter (+ iter 1))
+		  )
+		(delete-region (point-min) (point-max))
+		
+		;; replace element within vector by index
+		(aset data-array-elisp iter json-object)
+		
+		(setq data-array-json-string (json-encode-array data-array-elisp) )
+		(insert data-array-json-string)
+		)
+
+	    ;; append to data array via (insert)
+	    (progn
+	      (goto-char data-array-end-bracket)
+	      (forward-char -1)
+	      (while (not (eq (char-before) ?\] ) )
+		(forward-char -1)
+		)
+	      (insert ",\n")
+	      (insert (json-encode-array json-object))
+	      (indent-for-tab-command)
+	      )
+	    
+	    )
+	  ;; converting to human-readable format
+	  (goto-char (point-min))
+	  (my-json/prettify-array-at-point)
+	  ;; /converting to human-readable format
+	  (save-buffer)
+	  (kill-buffer)
+	  )
+      )
+    )
+  
+  )
+
+
+
 (defun my/get-approppriate-location-to-insert(filepath subheading-title)
   "docstring"
   (interactive)
@@ -703,253 +1123,142 @@ There are two things you can do about this warning:
 	 (message "Copied %s to killring (clipboard)" mytmpid)
        ))
   
-  (setq notes (concat data-folder-path "Sync/org/notes.org")
-	todos (concat data-folder-path "Sync/org/todos.org")
-	timerasp (concat data-folder-path "Sync/org/timerasp.org")
-	poor-man-cbt (concat data-folder-path "Sync/org/poor-man-cbt.org")
-	english-tracker (concat data-folder-path "Sync/tables/english tracker/englishtracker.org")
-	migraines-tracker (concat data-folder-path "Sync/tables/migraines.org")
-	habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/habits.org")
-	exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/exercisetracker.org")
-	sleepdiary (concat data-folder-path "Sync/org/sleepdiary.org")
-	sleep-tracking-file (concat data-folder-path "Sync/org/sleepdiary.org")
-	org-return-follows-link t
-	org-use-speed-commands t
-	org-use-sub-superscripts nil
-	org-ellipsis "⤵"
-	org-protocol-default-template-key "d"
-	org-highest-priority 49
-	org-lowest-priority 54
-	org-default-priority 52
-	org-log-reschedule 'time
-	org-log-redeadline 'time
-	org-log-done 'time
-	org-pretty-entities 1
-	org-startup-indented 1
-	org-log-into-drawer "LOGBOOK"
-	org-support-shift-select 'always
-	org-image-actual-width nil ;; allowing images to be resized by #+attr_org atribute
-	org-todo-keyword-faces
-	'(
-	  ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
-	  ("DONE" . (:weight bold :background "#ACE1AF" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-	  ("TODO" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  
-	  ("FEATURE" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("TROUBLE" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-	  ("SOLUTION" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("BUG" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+  (setq
+   notes (concat data-folder-path "Sync/org/notes.org")
+   todos (concat data-folder-path "Sync/org/todos.org")
+   timerasp (concat data-folder-path "Sync/org/timerasp.org")
+   poor-man-cbt (concat data-folder-path "Sync/tables/poor-man-CBT/data.json")
+   english-tracker (concat data-folder-path "Sync/tables/english tracker/data.json")
+   migraines-tracker (concat data-folder-path "Sync/tables/migraines/data.json")
+   habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/data.json")
+   exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
+   sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json")
+   org-return-follows-link t
+   org-use-speed-commands t
+   org-use-sub-superscripts nil
+   org-ellipsis "⤵"
+   org-protocol-default-template-key "d"
+   org-highest-priority 49
+   org-lowest-priority 54
+   org-default-priority 52
+   org-log-reschedule 'time
+   org-log-redeadline 'time
+   org-log-done 'time
+   org-pretty-entities 1
+   org-startup-indented 1
+   org-log-into-drawer "LOGBOOK"
+   org-support-shift-select 'always
+   org-image-actual-width nil ;; allowing images to be resized by #+attr_org atribute
+   org-todo-keyword-faces
+   '(
+     ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
+     ("DONE" . (:weight bold :background "#ACE1AF" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("TODO" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     
+     ("FEATURE" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TROUBLE" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("SOLUTION" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("BUG" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
 
-	  ("TOREAD" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("TOWATCH" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("SOMEDAY" . (:weight bold :background "#6C3333" :foreground "#DCDCCC" :box(:color "#3F3F3F") )) 
-	  ("TOBUY" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-	  ("NEXT" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("TOSTUDY" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  ("STUCK" . (:weight bold  :background "#366060" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
-	  ("CANCELED" . (:weight bold  :background "#2B2B2B" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
-	  ("IDEA" . (:weight bold  :background "#ba3244" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-	  )
-	org-tag-persistent-alist 
-	'(
-	  (:startgrouptag)
-	  ("ADHD")
-	  (:grouptags)
-	  ("внимание")
-	  (:endgrouptag)
-	  ("SCT")
-	  ("quantifiedself")
-	  ("NSTU")
-	  ("important")
-	  ("book")
-	  ("cpp")
-	  ("workflow")
-	  
-	  (:startgrouptag)
-	  ("emacs")
-	  (:grouptags)
-	  ("emacs_config")
-	  ("orgmode")
-	  ("elisp")
-	  (:endgrouptag)
-	       
-	  (:startgrouptag)
-	  ("mindset")
-	  (:grouptags)
-	  ("copingcard")
-	  (:endgrouptag)
-	       
-	       
-	  (:startgrouptag)
-	  ("web")
-	  (:grouptags)
-	  ("article")
-	  (:endgrouptag)
+     ("TOREAD" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOWATCH" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("SOMEDAY" . (:weight bold :background "#6C3333" :foreground "#DCDCCC" :box(:color "#3F3F3F") )) 
+     ("TOBUY" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("NEXT" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOSTUDY" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("STUCK" . (:weight bold  :background "#366060" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("CANCELED" . (:weight bold  :background "#2B2B2B" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("IDEA" . (:weight bold  :background "#ba3244" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     )
+   org-tag-persistent-alist 
+   '(
+     (:startgrouptag)
+     ("ADHD")
+     (:grouptags)
+     ("внимание")
+     (:endgrouptag)
+     ("SCT")
+     ("quantifiedself")
+     ("NSTU")
+     ("important")
+     ("book")
+     ("cpp")
+     ("workflow")
+     
+     (:startgrouptag)
+     ("emacs")
+     (:grouptags)
+     ("emacs_config")
+     ("orgmode")
+     ("elisp")
+     (:endgrouptag)
+     
+     (:startgrouptag)
+     ("mindset")
+     (:grouptags)
+     ("copingcard")
+     (:endgrouptag)
+     
+     
+     (:startgrouptag)
+     ("web")
+     (:grouptags)
+     ("article")
+     (:endgrouptag)
 
-	  
-	  ("engl")
-	  ("music")
-	  ("film")
-	  )
+     
+     ("engl")
+     ("music")
+     ("film")
+     )
 
-	
-	org-capture-templates
-	'(("t" "Todo" entry (file+headline todos "Tasks")
-	   "* TODO %?")
-	  ("j" "Journal" entry (file+datetree notes)
-	   "* %?")
-	  ("i" "Idea" entry (file+datetree notes)
-	   "* IDEA %?")
-	  ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
-	  ;; "* frombroser: %a" :immediate-finish t)
-	  ("r" "CBT-Report" plain (file+function poor-man-cbt (lambda () (interactive) (my/get-approppriate-location-to-insert poor-man-cbt "запись")))
-"
-*** Действительно ли вы следовали расписанию?
-%^{Действительно ли вы следовали расписанию?}
-*** Почему вы не следовали расписанию, над которым так долго дрочились?
-%^{Почему вы не следовали расписанию, над которым так долго дрочились?}
-*** Какие мысли вас преследовали?
-%^{Какие мысли вас преследовали?}
-*** Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App
-%^{Приложите, пожалуйста, csv-файл лога текущего дня из Boosted App}
-*** +Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?
-%^{+Почему вы такой долбоеб?+ Что можно сделать, чтобы исправить ситуацию завтра?}")
-
-("n" "English Tracker" plain (file+function english-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert english-tracker "запись")))
-"
-*** reading1h
-%^{reading1h|0|1}
-*** grammar
-%^{grammar|0|1}
-*** writing
-%^{writing|0|1}
-*** anki
-**** add (добавлял новые слова?)
-%^{anki add(добавлял новые слова?)|0|1}
-**** revise (повторял слова?)
-%^{anki revise (повторял слова?)|0|1}
-*** notes
-%^{notes}")
-
-("g" "Migraines" plain (file+function migraines-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert migraines-tracker "запись")))
-"
-*** как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып? 
-%^{как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып?}
-*** степень тяжести приступа (1-4) 
-%^{степень тяжести приступа (1-4)|1|2|3|4}
-*** notes
-%^{notes}")
-
-("h" "Habits" plain (file+function habits-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert habits-tracker "запись")))
-"
-*** Taking Charge of Adult ADHD notes
-%^{Taking Charge of Adult ADHD notes|0|1}
-*** SOC Skills / Евгения Стрелецкая
-%^{SOC Skills / Евгения Стрелецкая|0|1}
-*** НГТУ 3H+30M
-%^{НГТУ 3H+30M|0|1}
-*** DISCR MATHS 2h
-%^{DISCR MATHS 2h|0|1}
-*** nofap
-%^{nofap|0|1}
-*** meditation(mins)
-%^{meditation(mins)|0}
-*** зубы(утро+вечер)
-%^{зубы(утро+вечер)|0|1}
-*** душ
-%^{душ|0|1}
-*** cold shower
-%^{cold shower|0|1}
-"
-
-)
+   
+   org-capture-templates
+   '(("t" "Todo" entry (file+headline todos "Tasks")
+      "* TODO %?")
+     ("j" "Journal" entry (file+datetree notes)
+      "* %?")
+     ("i" "Idea" entry (file+datetree notes)
+      "* IDEA %?")
+     ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
+     ;; "* frombroser: %a" :immediate-finish t)
 
 
-("x" "Exercise Tracker" plain (file+function exercise-tracker (lambda () (interactive) (my/get-approppriate-location-to-insert exercise-tracker "запись")))
-"
-*** Planned to be done?(any kind of sport activity)
-%^{Planned to be done?(any kind of sport activity)|0|1}
-*** Riding a bike
-**** done?
-%^{Riding a bike: done?|0|1}
-**** duration(mins)
-%^{duration(mins)|0}
-**** time
-%^{time|0000}
-*** Run
-**** done?
-%^{Run: done?|0|1}
-**** duration(mins)
-%^{duration(mins)}
-**** time
-%^{time|0000}
-*** Squats
-**** done?
-%^{Squats: done?|0|1}
-**** sets
-%^{sets|0,0,0}
-*** Pushups
-**** done?
-%^{Pushups: done?|0|1}
-**** sets
-%^{sets|0,0,0}
-*** Press
-**** done?
-%^{Press: done?|0|1}
-**** sets
-%^{sets|0,0,0}
-*** notes
-%^{notes}
-"
+     ("H" "Habits Tracker" plain (file habits-tracker )
+      (function (lambda () (interactive) (my/json-habits habits-tracker))) :immediate-finish t
+      )
 
-)
+     ("g" "Migraines Tracker" plain (file migraines-tracker )
+      (function (lambda () (interactive) (my-json/migraines migraines-tracker))) :immediate-finish t
+      )
 
-("G" "JSON TEST" plain (file "/data/Sync/tables/english tracker/september.json" )
-(function (lambda () (interactive) (my/json-point "/data/Sync/tables/english tracker/september.json"))) :immediate-finish t
-)
+     ("n" "Poor Man CBT" plain (file poor-man-cbt )
+      (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
+      )
 
 
-("m" "Sleep Morning" plain (file+function sleep-tracking-file (lambda () (interactive) (my/get-approppriate-location-to-insert sleep-tracking-file "заполнить утром")))
-"
-*** лечь в 23:00-00:00, встать в 08:00-09:00
-%^{лечь в 23:00-00:00, встать в 08:00-09:00|0|1}
-*** когда пошел спать вчера
-%^{когда пошел спать вчера|0000}
-*** когда встал утром сегодня
-%^{когда встал утром сегодня|0000}
-*** ск-ко часов спал
-%^{ск-ко часов спал|8:30}
-*** сколько времени засыпал(мин)
-%^{сколько времени засыпал(мин)}
-*** какие медикаменты принимал, чтобы уснуть
-%^{какие медикаменты принимал, чтобы уснуть|-}
-*** как чувствовал себя после пробуждения(1-4)
-%^{как чувствовал себя после пробуждения(1-4)}
-	  ")
-	  ("e" "Sleep Evening" plain (file+function sleep-tracking-file (lambda () (interactive) (my/get-approppriate-location-to-insert sleep-tracking-file "заполнить вечером")))
-"
-*** ск-ко пил кофе сегодня
-%^{ск-ко пил кофе сегодня|0|1}
-*** во ск-ко дремал сегодня
-%^{во ск-ко дремал сегодня|0000}
-*** ск-ко дремал
-%^{ск-ко дремал|0000}
-*** во сколько занимался спортом сегодня
-%^{во сколько занимался спортом сегодня|8}
-*** сколько занимался спортом(мин)
-%^{сколько занимался спортом(мин)}
-*** как себя чувствовал в течение дня.
-1. приходилось стараться не заснуть.
-2. немного уставшим
-3. достаточно бдительным
-4. отлично
-%^{как себя чувствовал в течение дня.|1|2|3|4}
-	  ")
-	  ("d" "capture through org protocol" entry
-	   (file+headline org-board-capture-file "Unsorted")
-             "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
-	  )
-	)
+     ("n" "English Tracker" plain (file english-tracker )
+      (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
+      )
+
+     ("E" "Exercise Tracker" plain (file exercise-tracker )
+      (function (lambda () (interactive) (my/json-exercises exercise-tracker))) :immediate-finish t
+      )
+
+     ("M" "Sleep Tracker Morning" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary nil))) :immediate-finish t
+      )
+
+     ("l" "Sleep Tracker Evening" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary t))) :immediate-finish t
+      )
+
+     
+     ("d" "capture through org protocol" entry
+      (file+headline org-board-capture-file "Unsorted")
+      "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
+     )
+   )
 
 ;; web archiving through org-capture + org-board
 (defun do-org-board-dl-hook ()
@@ -975,11 +1284,7 @@ There are two things you can do about this warning:
 	      ("C-c 1" . (lambda() (interactive) (my-insert-into-table "DONE")))
 	      ("C-c 2" . (lambda() (interactive) (my-insert-into-table "MISSED")))
 	      ("C-c 3" . (lambda() (interactive) (my-insert-into-table "TODO")))
-	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))
-	      :map global-map 
-	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
-	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
-	      ("C-c r" . (lambda () (interactive) (org-capture nil "r")))
+	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))	      
 	      )
 	 )
 
@@ -1081,13 +1386,24 @@ There are two things you can do about this warning:
 
 
 
+;; telegram
+
+;; (use-package dired
+;;   :hook (dired-load . (lambda () (load "dired-x") (define-key dired-mode-map (kbd "C-c") 'dired-do-copy)))
+;;   :bind (:map dired-mode-map
+;; 	 ("C-c" . 'dired-do-copy)
+;; 	 )
+;;   )
+
+;; /telegram
+
+
 
 (use-package dired
+  :hook (dired-load . (lambda ()
+			(load "dired-x")
+			(define-key dired-mode-map (kbd "C-c") 'dired-do-copy)))
   :init
-  (add-hook 'dired-load-hook
-          (lambda ()
-            (load "dired-x")
-            ))
   (setq dired-guess-shell-alist-user '(
 				     ("\\.pdf\\'" "okular")
 				     ("\\.mp4\\'" "mpv")
@@ -1289,7 +1605,7 @@ Narrow to defun if it's not."
 
 ;;org-after-todo-state-change-hook
 ;;org-state
-(setq debug-on-error 1)
+(setq debug-on-error t)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -1381,7 +1697,7 @@ Adapted from `describe-function-or-variable'."
   "Emacs quick move minor mode"
   t)
 ;; you can select the key you prefer to
-(define-key global-map (kbd "C-c C-c") 'ace-jump-mode)
+;;(define-key global-map (kbd "C-c C-c") 'ace-jump-mode)
 
 
 
@@ -1536,8 +1852,8 @@ Adapted from `describe-function-or-variable'."
 (global-set-key [remap mouse-kill-secondary] nil)
 
 
-(define-key global-map (kbd "C-c v") 'org-ql-view)
-(define-key global-map (kbd "C-c s") 'org-ql-search)
+;;(define-key global-map (kbd "C-c v") 'org-ql-view)
+;;(define-key global-map (kbd "C-c s") 'org-ql-search)
 
 
 (defun unpackaged/org-element-descendant-of (type element)
@@ -1748,7 +2064,9 @@ It can also return the following special value:
 (define-key global-map (kbd "C-M-<left>") #'my-jump-to-prev)
 
 
-(set-face-attribute 'mode-line nil :font "Ubuntu Mono 12")
+(set-face-attribute 'mode-line nil :font "Ubuntu Mono 10")
+;;(set-face-attribute 'default nil :font "Ubuntu Mono 10")
+;;(set-face-attribute 'default nil :height 90)
 ;;(set-face-attribute 'default nil :font "Calibri 12")
 ;; (setq helm-ff-default-directory (concat data-folder-path "Sync/org/"))
 
@@ -1903,7 +2221,7 @@ With argument, do this that many times."
 (use-package simple
   :diminish auto-fill-function
   )
-(scroll-bar-mode 1)
+;;(scroll-bar-mode 1)
 
 
 (defun counsel-org-tag ()
@@ -1941,7 +2259,7 @@ With argument, do this that many times."
                 :action #'counsel-org-tag-action
                 :caller 'counsel-org-tag)
       )))
-(setq json-array-type 'list)
+(setq json-array-type 'vector)
 (use-package web-mode
   :defer t
   :init
@@ -1953,4 +2271,201 @@ With argument, do this that many times."
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  )
+(setq json-encoding-pretty-print nil)
+
+
+(defun my-json/engl (filename)
+  "docstring"
+  (interactive)
+  (require 'loop)
+  (let*
+      (
+       redefine-record
+       (date
+	  (let* (
+		 tmpdate
+		 (options  (list "выбрать другую дату" "перезаписать запись")  )
+		 chosen-option
+		 )
+	    (loop-while t
+			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+			(if (not(eq(my/search-for-date tmpdate filename) nil))
+			    (progn
+			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+			      (cond
+			       ;; выбрать другую дату
+			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+
+			       ;; перезаписать запись
+			       ((string= chosen-option (nth 1 options) ) 
+				(setq redefine-record t)
+				(loop-break)
+				)
+			       )
+			      )
+			  (loop-break)
+			  )
+
+			)
+	    tmpdate
+	    )
+	  )
+       (one-or-zero (list "0" "1"))
+       ;;;;;;;;;;;;;
+       
+       (reading-done-p (string-to-number (ivy-read "reading-done?" one-or-zero :require-match t)))
+       (reading-planned-p (string-to-number (ivy-read "reading-planned?" one-or-zero :require-match t)))
+
+       (grammar-done-p (string-to-number (ivy-read "grammar-done?" one-or-zero :require-match t)))
+       (grammar-planned-p (string-to-number (ivy-read "grammar-planned?" one-or-zero :require-match t)))
+
+       (writing-done-p (string-to-number (ivy-read "writing-done?" one-or-zero :require-match t)))
+       (writing-planned-p (string-to-number (ivy-read "writing-planned?" one-or-zero :require-match t)))
+
+       (anki-new-words-done-p (string-to-number (ivy-read "anki-new-words-done?" one-or-zero :require-match t)))
+       (anki-new-words-planned-p (string-to-number (ivy-read "anki-new-words-planned?" one-or-zero :require-match t)))
+       (anki-revise-done-p (string-to-number (ivy-read "anki-revise-done?" one-or-zero :require-match t)))
+       (anki-revise-planned-p (string-to-number (ivy-read "anki-revise-planned?" one-or-zero :require-match t)))
+       
+       ;;;;;;;;;;;;;
+       
+       ;; 3 level nested json arrays wont work when attempting to create from lists as opposed to vectors
+       (json-object (vector date
+			  (vector reading-done-p reading-planned-p)
+			  (vector grammar-done-p grammar-planned-p)
+			  (vector writing-done-p writing-planned-p)
+
+			  (vector
+			  (vector anki-new-words-done-p anki-new-words-planned-p)
+			  (vector anki-revise-done-p anki-revise-planned-p)
+			  )
+			    ))
+       )
+    (my/json-insert filename date json-object redefine-record)
+    
+    ;;returning an empty string as a template string for orgmode
+    "" 
+    )
+  )
+
+
+(defun my-json/prettify-array-at-point ()
+  "the function ill work correctly if cursor is on the first square
+bracket of JSON array"
+  (interactive)
+  (require 'loop)
+  (let* (
+	 (array-start (point))
+	 (end-of-array nil)
+	 (array-is-valid
+	  
+	  (let* (
+		 (array-elisp (save-excursion(json-read)))
+		 (json-array-type-default json-array-type)
+		 valid-check
+		 )
+	    (setq json-array-type 'vector)
+	  (setq valid-check (vectorp array-elisp) )
+	   ;; validation
+	  (setq json-array-type json-array-type-default)
+	  valid-check
+	  )
+	  
+	  )
+	 )
+    
+    (if array-is-valid
+	(progn
+	  
+	  (goto-char (1+ array-start))
+
+	  ;; if char-after is equal to whitespace, delete all consequent whitespaces
+	  (if (whitespace-p)
+	      (let* (
+		     (beg (point))
+		     )
+		;; skip whitespaces
+		(while (whitespace-p)
+		  (forward-char 1)
+		  )
+		(delete-region beg (point))
+		(insert "\n")
+		)
+	    (insert "\n")
+	    )
+	  
+	  (loop-while (and
+		  (eq end-of-array nil)
+		  (not
+		  (eq
+		   (condition-case ;;handling errors
+		       nil
+		       (json-read)
+		     ;; return 'error symbol if error occurs (because nil value is valid and
+		     ;; corresponds to null value of json syntax)
+		     (error 'error) 
+		     ) 'error)
+		  ))
+
+	    ;; if char-after is equal to whitespace, delete all consequent whitespaces
+	    (if (whitespace-p)
+	      (let* (
+		     (beg (point))
+		     )
+		;; skip whitespaces
+		(while (whitespace-p)
+		  (forward-char 1)
+		  )
+		(delete-region beg (point))
+		
+		)
+	      )
+	    
+	    (if (eq (char-after) ?,)
+		(progn
+		  (forward-char 1) ;; cursor is on a comma, so make step forward
+		  (if (not(whitespace-p)) ;; if char-after is not equal to whitespace
+		      (insert "\n")
+		    (let* (
+			   (beg (point))
+			   )
+		      ;; skip whitespaces
+		      (while (whitespace-p)
+			(forward-char 1)
+			)
+		      (delete-region beg (point))
+		      (insert "\n")
+		      )
+		    )
+		  )
+	      (progn
+		(if (whitespace-p)
+		    (let* (
+			   (beg (point))
+			   )
+		      ;; skip whitespaces
+		      (while (whitespace-p)
+			(forward-char 1)
+			)
+		      (delete-region beg (point))
+		      (insert "\n")
+		      )
+		  (insert "\n")
+		  )
+		(setq end-of-array t)
+		)
+	    )
+	  )
+
+	  )
+    )
+  
+  )
+)
+
+(defun whitespace-p ()
+  "returns t if character after point is a whitespace"
+  (interactive)
+  (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)      
   )
