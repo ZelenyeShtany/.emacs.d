@@ -13,13 +13,13 @@
        )
       )
 
-
 (setq data-folder-path
       (cond
        ((eq system-type 'gnu/linux) "/data/")
        ((eq system-type 'windows-nt) "D:/")
        )
       )
+
 (setq my-org-directory (concat data-folder-path "Sync/org/"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -28,6 +28,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
+ '(auto-revert-verbose nil)
+ '(bm-highlight-style 'bm-highlight-only-fringe)
  '(column-number-mode t)
  '(company-idle-delay 0.1)
  '(cua-mode t nil (cua-base))
@@ -67,8 +69,91 @@
      (counsel-M-x . "^")
      (counsel-describe-symbol . "^")))
  '(menu-bar-mode nil)
+ '(mode-line-format
+   '("%e"
+     (:eval
+      (let*
+	  ((active
+	    (powerline-selected-window-active))
+	   (mode-line-buffer-id
+	    (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
+	   (mode-line
+	    (if active 'mode-line 'mode-line-inactive))
+	   (face0
+	    (if active 'powerline-active0 'powerline-inactive0))
+	   (face1
+	    (if active 'powerline-active1 'powerline-inactive1))
+	   (face2
+	    (if active 'powerline-active2 'powerline-inactive2))
+	   (separator-left
+	    (intern
+	     (format "powerline-%s-%s"
+		     (powerline-current-separator)
+		     (car powerline-default-separator-dir))))
+	   (separator-right
+	    (intern
+	     (format "powerline-%s-%s"
+		     (powerline-current-separator)
+		     (cdr powerline-default-separator-dir))))
+	   (lhs
+	    (list
+	     (powerline-raw "%*" face0 'l)
+	     (when powerline-display-buffer-size
+	       (powerline-buffer-size face0 'l))
+	     (when powerline-display-mule-info
+	       (powerline-raw mode-line-mule-info face0 'l))
+	     (powerline-buffer-id
+	      `(mode-line-buffer-id ,face0)
+	      'l)
+	     (when
+		 (and
+		  (boundp 'which-func-mode)
+		  which-func-mode)
+	       (powerline-raw which-func-format face0 'l))
+	     (powerline-raw " " face0)
+	     (funcall separator-left face0 face1)
+	     (when
+		 (and
+		  (boundp 'erc-track-minor-mode)
+		  erc-track-minor-mode)
+	       (powerline-raw erc-modified-channels-object face1 'l))
+	     (powerline-major-mode face1 'l)
+	     (powerline-process face1)
+	     (powerline-minor-modes face1 'l)
+	     (powerline-narrow face1 'l)
+	     (powerline-raw " " face1)
+	     (funcall separator-left face1 face2)
+	     (powerline-vc face2 'r)
+	     (when
+		 (bound-and-true-p nyan-mode)
+	       (powerline-raw
+		(list
+		 (nyan-create))
+		face2 'l))))
+	   (rhs
+	    (list
+	     (powerline-raw global-mode-string face2 'r)
+	     (funcall separator-right face2 face1)
+	     (unless window-system
+	       (powerline-raw
+		(char-to-string 57505)
+		face1 'l))
+	     (powerline-raw "%4l" face1 'l)
+	     (powerline-raw ":" face1 'l)
+	     (powerline-raw "%3c" face1 'r)
+	     (funcall separator-right face1 face0)
+	     (powerline-raw " " face0)
+	     (powerline-raw "%6p" face0 'r)
+	     (when powerline-display-hud
+	       (powerline-hud face0 face2))
+	     (powerline-fill face0 0))))
+	(concat
+	 (powerline-render lhs)
+	 (powerline-fill face2
+			 (powerline-width rhs))
+	 (powerline-render rhs))))))
  '(org-M-RET-may-split-line '((default)))
- '(org-agenda-files nil)
+ '(org-agenda-files (list org-directory))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
@@ -77,7 +162,7 @@
    '((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . default)
+     ("\\.pdf\\'" . "okular \"%s\"")
      ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
@@ -160,8 +245,9 @@
       :sort
       (priority date)
       :super-groups org-super-agenda-groups)))
+ '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-pomodoro org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -174,8 +260,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bm-face ((t (:background "khaki3" :foreground "Black"))))
+ '(bm-fringe-face ((t (:background "deep sky blue" :foreground "white"))))
  '(company-preview-common ((t (:inherit \#311d57 :foreground "red"))))
- '(company-scrollbar-bg ((t (:background "DeepSkyBlue"))))
+ '(company-scrollbar-bg ((t (:background "DarkCyan"))))
  '(company-scrollbar-fg ((t (:background "DeepSkyBlue"))))
  '(company-tooltip ((t (:background "#22143d" :foreground "#cccccc"))))
  '(company-tooltip-annotation ((t (:foreground "#757575"))))
@@ -197,612 +284,6 @@ There are two things you can do about this warning:
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
-
-
-(defun my/search-for-date (tmpdate filename)
-  "docstring"
-  (save-excursion
-    (find-file filename)
-    (widen)
-    (goto-char (point-min))
-    (let* (
-	   ;;(date (concat "\"" tmpdate "\""))
-	   (date tmpdate)
-	   (data-array-search-result (search-forward-regexp "\"data\"[ ]*:[ ]*\\[" nil t))
-	   ;; going to array's 1st square bracket and saving it
-	   (beg (progn (forward-char -1)(point)))
-	   
-	   (end (nth 3 (show-paren--default)))
-	   date-search-result
-	   )
-      
-      (if (not(eq data-array-search-result nil))
-	  (let*
-	      ( )
-	    (narrow-to-region beg end) ;; narrowing to "data" array
-	    (goto-char (point-min))
-	    (setq date-search-result (search-forward date nil t))
-	    )
-	)
-      ;;(kill-buffer)
-      date-search-result
-      )
-    )
-  )
-
-
-(defun my/json-sleep (filename evening-p)
-  "if evening-p non-nil, create evening record.
-If nil, create morning record"
-  (interactive)
-  (require 'loop)
-  (let* 
-      (
-       (mins '(15 30 45 60))
-       (hours '(6 7 8 9))
-       (one-four '(1 2 3 4))
-       (one-or-zero (list "0" "1"))
-       redefine-record
-       (record-exists nil)
-       (date
-	(let* (
-	       tmpdate
-	       (options  (list "выбрать другую дату" "перезаписать запись")  )
-	       chosen-option
-	       date-search-result
-	       )
-	  (loop-while t
-	    (setq record-exists nil)
-	    (setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-	    (setq date-search-result (my/search-for-date tmpdate filename))
-
-	    ;; if date has been found
-	    (if (not(eq date-search-result nil))
-		(progn
-		  (setq record-exists t)
-		  (find-file filename)
-		  (goto-char date-search-result)
-
-		  ;; go to comma
-		  (while (not (eq (char-after) ?\, ) )
-		    (forward-char 1)
-		    )
-
-		  ;; skip all whitespaces
-		  (while (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)
-		    (forward-char 1)
-		    )
-		  
-		  (forward-char 1) ;; set cursor to beginning of next element of array
-
-		  (when evening-p
-		    (progn
-		      (json-read)
-		      (forward-char 1)
-		      )
-		    )
-		  ;; if morning(org evening) subarray has been found
-		  (if (not (eq(json-read) nil))
-		      (progn
-			(setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			(cond
-			 ;; выбрать другую дату
-			 ((string= chosen-option (nth 0 options) ) (loop-continue))
-
-			 ;; перезаписать запись
-			 ((string= chosen-option (nth 1 options) )
-			  (setq redefine-record t)
-			  (loop-break)
-			  )
-			 )
-			)
-		    ))
-	      )
-	    (loop-break)
-	    )
-	  tmpdate
-	  )
-	)
-       ;; morning
-       (2300-0000-0800-0900-p (if (eq evening-p nil) (string-to-number (ivy-read "лечь в 23:00-00:00, встать в 08:00-09:00" one-or-zero :require-match t)) nil))
-       (when-go-to-bed (if (eq evening-p nil)(ivy-read "когда пошел спать вчера?" '("0000")) nil))
-       (when-got-up (if (eq evening-p nil)(ivy-read "когда встал утром сегодня?" '("0000")) nil))
-
-       (how-many-hours-of-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько часов спал?:" hours)) nil))
-       (mins-before-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько минут засыпал? " mins)) nil))
-
-       (medication (if (eq evening-p nil)(ivy-read "какие медикаменты принимал, чтобы уснуть?" '("-" "мелатонин 3мг" "мелатонин 6мг")) nil))
-       (general-sostoyanie-after-wake-up (if (eq evening-p nil) (string-to-number(ivy-read "как себя чувствовал после пробуждения?:" one-four)) nil))
-
-       ;; evening
-       (coffee-p (if evening-p (string-to-number (ivy-read "пил кофе сегодня?" one-or-zero :require-match t)) nil))
-       (mins-nap (if evening-p (string-to-number(ivy-read "сколько дремал сегодня? " mins)) nil))
-       (when-nap (if evening-p (if (eq mins-nap 0) "0000" (ivy-read "во сколько дремал сегодня?" '("0000"))) nil))
-       (general-sostoyanie-whole-day (if evening-p (string-to-number(ivy-read "как себя чувствовал в течение дня?:" one-four)) nil))
-       
-       (json-morning-or-evening-subarray 
-	(if evening-p
-	    (list
-	     coffee-p
-	     mins-nap
-	     when-nap
-	     general-sostoyanie-whole-day
-	     )
-	  (list 2300-0000-0800-0900-p
-		when-go-to-bed
-		when-got-up
-		how-many-hours-of-sleep
-		mins-before-sleep
-		medication
-		general-sostoyanie-after-wake-up
-		)
-	  )
-	
-	)
-       )
-	    
-    ;; appending to "data" array
-    (find-file filename)
-    (widen)
-    (goto-char (point-min))
-
-    (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
-	(let*
-	    (
-	     (data-array-beg (progn (forward-char -1)(point))) ;; array's 1st square bracket
-	     (data-array-end (nth 3 (show-paren--default))) ;; array's 2nd square bracket
-	     (data-array-elisp (json-read-array)) ;; get json array through elisp vector
-	     (iter 0)
-	     data-array-json-string
-	     date-morning-evening-subarray-elisp
-	     )
-	  (narrow-to-region data-array-beg data-array-end) ;; narrowing to "data" array
-	  
-	  (if (eq record-exists t)
-	      ;; redefine existing data record
-	      (progn
-		(loop-while (/= iter (length data-array-elisp))
-		  (if (string= (aref (aref data-array-elisp iter) 0) date)
-		      (loop-break)
-		    )
-		  (setq iter (+ iter 1))
-		  )
-		(delete-region (point-min) (point-max))
-
-		;; get array data point
-		(setq date-morning-evening-subarray-elisp (aref data-array-elisp iter))
-
-		;; replace morning-subarray within date-morning-evening-subarray-elisp
-		
-		;; (setq date-morning-evening-subarray-elisp
-		;;       (-replace-at (if evening-p 2 1)
-		;; 		   json-morning-or-evening-subarray
-		;; 		   date-morning-evening-subarray-elisp)
-		;;       )
-		(aset date-morning-evening-subarray-elisp (if evening-p 2 1) json-morning-or-evening-subarray)
-
-	      ;; replace element within vector by index
-	      (aset data-array-elisp iter date-morning-evening-subarray-elisp)
-		
-		(setq data-array-json-string
-		      (json-encode-array data-array-elisp) )
-		(insert data-array-json-string)
-		)
-
-	    ;; append to data array via (insert)
-	    
-	    
-	    )
-	  (if (eq record-exists nil)
-	      (progn
-	      (goto-char data-array-end)
-	      (forward-char -1)
-	      (while (not (eq (char-before) ?\] ) )
-		(forward-char -1)
-		)
-	      (insert ",")
-	      (insert (if evening-p (json-encode-array (list date nil json-morning-or-evening-subarray))
-			(json-encode-array (list date json-morning-or-evening-subarray nil )) ) )
-	      (indent-for-tab-command)
-	      )
-
-
-	      )
-	  ;; converting to human-readable format
-	  (goto-char (point-min))
-	  (my-json/prettify-array-at-point)
-	  ;; /converting to human-readable format
-	  (save-buffer)
-	  (kill-buffer)
-	  )
-      )
-    
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    
-    )
-  
-  )
-
-
-(defun my/json-habits (filename)
-  "docstring"
-  (interactive)
-  (require 'loop)
-  (let* (
-	 redefine-record
-	 (date
-	  (let* (
-		 tmpdate
-		 (options  (list "выбрать другую дату" "перезаписать запись")  )
-		 chosen-option
-		 )
-	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
-
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
-
-			)
-	    tmpdate
-	    )
-	  )
-	 (mins '(15 30 45 60))
-	 (one-or-zero (list "0" "1"))
-	 
-	 (taking-charge-adhd-p (string-to-number (ivy-read "taking-charge-adhd?" one-or-zero :require-match t)))
-	 (taking-charge-adhd-planned-p (string-to-number (ivy-read "taking-charge-adhd-planned?" one-or-zero :require-match t)))
-	 
-	 (soc-skills-p (string-to-number (ivy-read "soc-skills?" one-or-zero :require-match t)))
-	 (soc-skills-planned-p (string-to-number (ivy-read "soc-skills-planned?" one-or-zero :require-match t)))
-	 
-	 (nstu-3h-p (string-to-number (ivy-read "nstu-3h?" one-or-zero :require-match t)))
-	 (nstu-3h-planned-p (string-to-number (ivy-read "nstu-3h-planned?" one-or-zero :require-match t)))
-
-	 (discr-2h-p (string-to-number (ivy-read "discr-2h?" one-or-zero :require-match t)))
-	 (discr-2h-planned-p (string-to-number (ivy-read "discr-2h-planned?" one-or-zero :require-match t)))
-	 
-	 (nofap-p (string-to-number (ivy-read "nofap?" one-or-zero :require-match t)))
-
-	 (meditation-p (string-to-number (ivy-read "meditation?" one-or-zero :require-match t)))
-	 (meditation-planned-p (string-to-number (ivy-read "meditation-planned?" one-or-zero :require-match t)))
-	 (meditation-duration (if (eq meditation-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
-	 
-	 (teeth-morning-p (string-to-number (ivy-read "teeth-morning?" one-or-zero :require-match t)))
-	 (teeth-evening-p (string-to-number (ivy-read "teeth-evening?" one-or-zero :require-match t)))
-
-	 (shower-p (string-to-number (ivy-read "shower?" one-or-zero :require-match t)))
-
-	 (cold-shower-p (string-to-number (ivy-read "cold-shower?" one-or-zero :require-match t)))
-	 (cold-shower-planned-p (string-to-number (ivy-read "cold-shower-planned?" one-or-zero :require-match t)))
-
-	 (notes (read-string "notes:" ""))
-
-
-	 (json-object (vector date
-			    (vector taking-charge-adhd-p taking-charge-adhd-planned-p)
-			    (vector soc-skills-p soc-skills-planned-p)
-			    (vector nstu-3h-p nstu-3h-planned-p)
-			    (vector discr-2h-p discr-2h-planned-p)
-			    nofap-p
-			    (vector meditation-p meditation-planned-p meditation-duration)
-			    (vector teeth-morning-p teeth-evening-p)
-			    shower-p
-			    (vector cold-shower-p cold-shower-planned-p)
-			    notes
-			    ))
-	 
-	 )
-    ;; appending to "data" array
-    (my/json-insert filename date json-object redefine-record)
-
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    
-    )
-  
-  )
-
-
-
-
-(defun my/json-exercises (filename)
-  "docstring"
-  (interactive)
-  (require 'loop)
-  (let* (
-	 ;; function for appending to 'sets' arrays
-	 (my/exercise-sets-list (lambda ()
-				  (let* (
-					 (tmplist '())
-					 (input nil)
-					 )
-				    
-				    (while(and
-					   (setq input (read-string
-							(concat "sets: ["
-								(mapconcat 'number-to-string tmplist ",")
-								"] enter another one or press ENTER to quit: ")
-							))
-					   (not(string= input ""))
-					   )
-				      (setq tmplist (append tmplist (list (string-to-number input))))
-				      )
-				    tmplist
-				    )
-				  ) )
-	 
-	 redefine-record
-	 (date
-	  (let* (
-		 tmpdate
-		 (options  (list "выбрать другую дату" "перезаписать запись")  )
-		 chosen-option
-		 )
-	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
-
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
-
-			)
-	    tmpdate
-	    )
-	  )
-	 (mins '(15 30 45 60))
-	 (one-or-zero (list "0" "1"))
-	 (exercised-p (string-to-number (ivy-read "exercised?" one-or-zero :require-match t)))
-	 (planned-to-exercise-p (string-to-number (ivy-read "planned-to-exercise?" one-or-zero :require-match t)))
-
-	 (ride-a-bike-p (string-to-number (ivy-read "ride-a-bike?" one-or-zero :require-match t)))
-	 (bike-time (if (eq ride-a-bike-p 0) "0000" (ivy-read "when?" '("0000"))))
-	 (bike-duration (if (eq ride-a-bike-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
-
-	 (run-p (string-to-number (ivy-read "run?" one-or-zero :require-match t)))
-	 (run-time (if (eq run-p 0) "0000" (ivy-read "when?" '("0000"))))
-	 (run-duration (if (eq run-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
-
-	 (default-sets '())
-	 (squats-p (string-to-number (ivy-read "do squats?" one-or-zero :require-match t)))
-	 (squats-sets (if (eq squats-p 0) default-sets (funcall my/exercise-sets-list)))
-
-	 (pushups-p (string-to-number (ivy-read "do pushups?" one-or-zero :require-match t)))
-	 (pushups-sets (if (eq pushups-p 0) default-sets (funcall my/exercise-sets-list)))
-
-	 (press-p (string-to-number (ivy-read "do press?" one-or-zero :require-match t)))
-	 (press-sets (if (eq press-p 0) default-sets (funcall my/exercise-sets-list)))
-
-	 (notes (read-string "notes:" ""))
-	 
-	 (json-object (vector date
-			    exercised-p
-			    planned-to-exercise-p
-			    (vector ride-a-bike-p bike-time bike-duration)
-			    (vector run-p run-time run-duration)
-			    (vector squats-p squats-sets)
-			    (vector pushups-p pushups-sets)
-			    (vector press-p press-sets)
-			    notes
-			    ))
-	 )
-    ;; appending to "data" array
-    (my/json-insert filename date json-object redefine-record)
-
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    )
-  )
-
-
-(defun my-json/poor-man-CBT (filename)
-  "docstring"
-  (interactive)
-
-(require 'loop)
-  (let* (
-	 redefine-record
-	 (date
-	  (let* (
-		 tmpdate
-		 (options  (list "выбрать другую дату" "перезаписать запись")  )
-		 chosen-option
-		 )
-	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
-
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
-
-			)
-	    tmpdate
-	    )
-	  )
-	 (one-or-zero (list "0" "1"))
-
-	 (question1 (string-to-number (ivy-read "Действительно ли вы следовали расписанию?" one-or-zero :require-match t)))
-	 (question2 (if (eq question1 0) nil (read-string "Почему вы не следовали расписанию, над которым так долго дрочились? ")))
-	 (question3 (read-string "Какие мысли вас преследовали? "))
-	 (question4 (read-string "Что можно сделать, чтобы исправить ситуацию завтра?"))
-
-	 (json-object (vector date
-			    question1
-			    question2
-			    question3
-			    question4
-			    ))
-	 
-	 )
-
-    (my/json-insert filename date json-object redefine-record)
-    
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    )
-  
-  )
-
-
-(defun my-json/migraines (filename)
-  "docstring"
-  (interactive)
-  (require 'loop)
-  (let* (
-	 redefine-record
-	 (date
-	  (let* (
-		 tmpdate
-		 (options  (list "выбрать другую дату" "перезаписать запись")  )
-		 chosen-option
-		 )
-	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
-
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
-
-			)
-	    tmpdate
-	    )
-	  )
-	 (one-four '("1" "2" "3" "4"))
-
-	 (headache-possible-reason (read-string "как думаешь, что спровоцировало приступ? погода? какая-то еда? недосып/пересып?" ""))
-
-	 (headache-extent (string-to-number (ivy-read "степень тяжести приступа (1-4) " one-four :require-match t)))
-
-	 (notes (read-string "notes: " ""))
-
-	 (json-object (vector date
-			    headache-possible-reason
-			    headache-extent
-			    notes
-			    ))
-	 
-	 )
-
-    (my/json-insert filename date json-object redefine-record)
-    
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    )
-
-  )
-
-(defun my/json-insert (filename date json-object redefine-record)
-  "docstring"
-  (interactive)
-  (require 'loop)
-  (save-excursion
-    (find-file filename)
-    (widen)
-    (goto-char (point-min))
-    (if (search-forward-regexp "\"data\"[ ]*:[ ]*\\[")
-	(let*
-	    (
-	     (data-array-beg-bracket (progn (forward-char -1)(point))) ;; array's 1st square bracket
-	     (data-array-end-bracket (nth 3 (show-paren--default))) ;; array's 2nd square bracket
-	     (data-array-elisp (json-read-array))
-	     (iter 0)
-	     data-array-json-string
-	     )
-	  (narrow-to-region data-array-beg-bracket data-array-end-bracket) ;; narrowing to "data" array
-	  
-	  (if (eq redefine-record t)
-	      ;; redefine existing data record
-	      (progn
-		(loop-while (/= iter (length data-array-elisp))
-		  (if (string= (aref (aref data-array-elisp iter) 0) date)
-		      (loop-break)
-		    )
-		  (setq iter (+ iter 1))
-		  )
-		(delete-region (point-min) (point-max))
-		
-		;; replace element within vector by index
-		(aset data-array-elisp iter json-object)
-		
-		(setq data-array-json-string (json-encode-array data-array-elisp) )
-		(insert data-array-json-string)
-		)
-
-	    ;; append to data array via (insert)
-	    (progn
-	      (goto-char data-array-end-bracket)
-	      (forward-char -1)
-	      (while (not (eq (char-before) ?\] ) )
-		(forward-char -1)
-		)
-	      (insert ",\n")
-	      (insert (json-encode-array json-object))
-	      (indent-for-tab-command)
-	      )
-	    
-	    )
-	  ;; converting to human-readable format
-	  (goto-char (point-min))
-	  (my-json/prettify-array-at-point)
-	  ;; /converting to human-readable format
-	  (save-buffer)
-	  (kill-buffer)
-	  )
-      )
-    )
-  
-  )
-
-
 
 (defun my/get-approppriate-location-to-insert(filepath subheading-title)
   "docstring"
@@ -943,6 +424,17 @@ If nil, create morning record"
 
 (add-to-list 'load-path "~/.emacs.d/elpa/peg-1.0")
 
+;; sticky windows 
+(add-to-list 'load-path "~/.emacs.d/sticky-windows")
+(require 'sticky-windows)
+;; /sticky windows 
+;;smartparens
+(add-to-list 'load-path "~/.emacs.d/smartparens")
+(use-package smartparens-config
+  :diminish smartparens-mode
+  )
+;;/smartparens
+
 (add-to-list 'load-path "~/.emacs.d/elpa/highlight-symbol.el/")
 (require 'highlight-symbol)
 (with-eval-after-load "highlight-symbol"
@@ -954,9 +446,11 @@ If nil, create morning record"
 
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (load "mypack")
+(require 'my-json)
 ;;(load "my-org-recur-adjustments")
 
 
+(add-to-list 'load-path "~/.emacs.d/mypack/")
 (require 'ido)
      (ido-mode t)
 (load-theme 'afternoon t)
@@ -1056,7 +550,7 @@ If nil, create morning record"
   :mode ("\\.org\\'" . org-mode)
   :init
 ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
-  (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)))
+  (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)(org-superstar-mode 1)))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   ;; (add-hook 'org-mode-hook '(lambda ()
   ;;  "Beautify Org Checkbox Symbol"
@@ -1082,36 +576,44 @@ If nil, create morning record"
   (defun my/org-headline-return ()
     "docstring"
     (interactive)
-    (let* (
-	   (level (org-element-property :level (org-element-at-point)))
-	   (begin (org-element-property :begin (org-element-at-point)))
-	   (title-length (length (org-element-property :title (org-element-at-point))))
-	   (contents-end (org-element-property :contents-end (org-element-at-point)))
-	   )
-      (if (
-	   and
-	   (eq (org-element-type (org-element-at-point)) 'headline)
-	   (eq (point)
-	       (+ begin level (my/number-of-spaces-at-point(+ begin level))
-		  title-length)
+    (if (eq (org-element-type (org-element-at-point)) 'headline)
+	 
+	(let* (
+	       (level (org-element-property :level (org-element-at-point)))
+	       (begin (org-element-property :begin (org-element-at-point)))
+	       (title-length (length (org-element-property :title (org-element-at-point))))
+	       (contents-end (org-element-property :contents-end (org-element-at-point)))
+	       (end-of-headline (+ begin level
+				   (my/number-of-spaces-at-point(+ begin level))
+				   title-length))
 	       )
-	   )
 	  
-	  (if (org-goto-first-child)
+	  (if (eq (point) end-of-headline)
+	      (if (org-goto-first-child)
 	      (progn
 		(forward-char -1)
 		(insert "\n")
 		)
 	    
 	    (progn
-	      (goto-char contents-end)
-	      (if (not(eq (char-before) "\n" ) )
+	      (if (eq contents-end nil)
+		  (progn
+		    (goto-char end-of-headline)
+		    (insert "\n")
+		    )
+		(goto-char contents-end)
+		)
+	      
+	      (if (not (eq (char-before) ?\n ) )
 		  (progn (insert "\n") (forward-char -1))
-		  )
+		)
 	      )
 	    )
-	(org-return)
-	)
+	    (org-return)
+	    )
+	  
+	  )
+      (org-return)
       )
       )
   
@@ -1133,11 +635,13 @@ If nil, create morning record"
    habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/data.json")
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
    sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json")
+   org-clock-sound (concat data-folder-path "Sync/org/timer-sounds/bell.wav")
    org-return-follows-link t
    org-use-speed-commands t
    org-use-sub-superscripts nil
    org-ellipsis "⤵"
    org-protocol-default-template-key "d"
+   org-read-date-prefer-future nil
    org-highest-priority 49
    org-lowest-priority 54
    org-default-priority 52
@@ -1149,6 +653,7 @@ If nil, create morning record"
    org-log-into-drawer "LOGBOOK"
    org-support-shift-select 'always
    org-image-actual-width nil ;; allowing images to be resized by #+attr_org atribute
+   org-todo-keywords (list "TODO(1)" "STARTED(2)" "|" "CANCELED(3)"  "MISSED(4)" "DONE(5)")
    org-todo-keyword-faces
    '(
      ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
@@ -1175,14 +680,22 @@ If nil, create morning record"
      (:startgrouptag)
      ("ADHD")
      (:grouptags)
-     ("внимание")
+     ("attention")
      (:endgrouptag)
      ("SCT")
      ("quantifiedself")
      ("NSTU")
+     ("compression")
+     ("podcasts")
+     
      ("important")
      ("book")
+     ("sobering")
+     ("motivation")
      ("cpp")
+     ("health")
+     ("alcohol")
+     ("organization")
      ("workflow")
      
      (:startgrouptag)
@@ -1214,12 +727,12 @@ If nil, create morning record"
 
    
    org-capture-templates
-   '(("t" "Todo" entry (file+headline todos "Tasks")
-      "* TODO %?")
-     ("j" "Journal" entry (file+datetree notes)
+   '(;; ("t" "Todo" entry (file+headline todos "Tasks")
+     ;;  "* TODO %?")
+     ("j" "Add to notes.org" entry (file+datetree notes)
       "* %?")
-     ("i" "Idea" entry (file+datetree notes)
-      "* IDEA %?")
+     ;; ("i" "Idea" entry (file+datetree notes)
+     ;;  "* IDEA %?")
      ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
      ;; "* frombroser: %a" :immediate-finish t)
 
@@ -1232,10 +745,9 @@ If nil, create morning record"
       (function (lambda () (interactive) (my-json/migraines migraines-tracker))) :immediate-finish t
       )
 
-     ("n" "Poor Man CBT" plain (file poor-man-cbt )
+     ("p" "Poor Man CBT" plain (file poor-man-cbt )
       (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
       )
-
 
      ("n" "English Tracker" plain (file english-tracker )
       (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
@@ -1269,10 +781,11 @@ If nil, create morning record"
 
 (setq org-board-capture-file (concat data-folder-path "Sync/org/webarchive.org"))
 ;; /web archiving through org-capture + org-board  
-  (require 'org-download)
+(require 'org-download)
+(require 'my-week-day-based-habits)
   :bind (:map org-mode-map
-	      ("<RET>" . 'my/org-headline-return)
 	      ("C-<RET>" . 'org-return)
+	      ("C-c n" . 'org-add-note)
 	      ("<f5>" . 'my/copy-id-to-clipboard)
 	      ("M-r" . 'org-todo)
 	      ("M-t" . 'counsel-org-tag)
@@ -1284,8 +797,12 @@ If nil, create morning record"
 	      ("C-c 1" . (lambda() (interactive) (my-insert-into-table "DONE")))
 	      ("C-c 2" . (lambda() (interactive) (my-insert-into-table "MISSED")))
 	      ("C-c 3" . (lambda() (interactive) (my-insert-into-table "TODO")))
-	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))	      
+	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))
+	      :map global-map 
+	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
+	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	      )
+  
 	 )
 
 ;; <using key bindings while on russian keyboard layout>
@@ -1409,6 +926,7 @@ If nil, create morning record"
 				     ("\\.mp4\\'" "mpv")
 				     ("\\.mkv\\'" "mpv")
 				     ))
+  ;;(setq dired-dwim-target t)
 
   :bind (:map dired-mode-map
 	 ("C-S-n" . 'dired-create-directory)
@@ -1542,35 +1060,91 @@ If nil, create morning record"
 (define-key global-map (kbd "C-y") 'yas-new-snippet)
 
 
-(defun my-toggle-narrow-to-defun ()
+(defun my-toggle-narrow-to-sth ()
   "If narrowed, then widen current buffer. 
 Narrow to defun if it's not."
   (interactive)
-  (let* (
-	 (new-indirect-buffer-name (concat (buffer-name) "/" (lisp-current-defun-name)))
-	)
-
-    (cond
-     ((my/org-at-source-block-p) (org-edit-src-code)(delete-other-windows)  )
-     ((my/org-mode-p)(org-toggle-narrow-to-subtree))
-     ( t (if (not (buffer-narrowed-p))
-	     (progn
-	       (clone-indirect-buffer new-indirect-buffer-name nil )
-	       (switch-to-buffer new-indirect-buffer-name)
-	       (narrow-to-defun)
-	       )
-	   ;;(progn (widen) (setq my-narrowed nil)) - old version
-	   (progn
-	     (kill-buffer)
-	     (switch-to-buffer (car (split-string (buffer-name) "/")))
-	     )
-	   ))
-     )
+  (cond
+   (
+    ;; if current buffer is already narrowed,
+    ;; kill this indirect buffer and switch to base buffer
+    (buffer-narrowed-p) 
+    (let* (
+	   (curbuf (current-buffer))
+	   (curpoint (point))
+	   )
+      (switch-to-buffer (buffer-base-buffer))
+      (goto-char curpoint)
+      (kill-buffer curbuf)
+      )
     )
-  )
+   ((use-region-p) ;; id there's active region (text selection)
+    (let* (
+	   (beg (point))
+	   (end (mark))
+	   )
+      (cua-cancel)
+      (switch-to-buffer
+       (clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
+       ) ;; and switch to it
+      (narrow-to-region beg end))
+    )
+   
+   ((my/org-at-source-block-p)
+    (switch-to-buffer
+     (clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
+     )
+    (org-narrow-to-block)
+    )
+   ((my/org-mode-p)
+    (switch-to-buffer
+     (clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
+     )
+    (org-toggle-narrow-to-subtree)
+    )
 
+   (
+    (derived-mode-p 'emacs-lisp-mode)
 
-(define-key global-map (kbd "M-n") 'my-toggle-narrow-to-defun)
+    (let*
+	(
+	 (new-indirect-buffer-name (concat (buffer-name) "/" (lisp-current-defun-name)))
+	 )
+      (if (or
+	   (eq (char-after) ?\( )
+	   (eq (char-before) ?\) )
+	   )
+
+	  ;; narrow to sexp
+	  (let*
+	      (
+	       (beg (point))
+	       (end  (goto-char (nth 2 (show-paren--default))))
+	       )
+	    (switch-to-buffer
+	     (clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
+	     )
+	    (forward-char (if (eq (char-after) ?\( ) 1 -1) )
+	    (sp-narrow-to-sexp 1)
+	    )
+	
+	;; narrow to defun
+	(if (eq (ivy--buffer-list new-indirect-buffer-name) nil)
+	  (progn
+	    (clone-indirect-buffer new-indirect-buffer-name nil )
+	    (switch-to-buffer new-indirect-buffer-name)
+	    (narrow-to-defun)
+	    )
+	(progn
+	  (switch-to-buffer new-indirect-buffer-name)
+	  (narrow-to-defun)
+	  )
+	)
+	  )
+      )
+    )
+   )
+  )(define-key global-map (kbd "M-n") 'my-toggle-narrow-to-sth)
 (define-key global-map (kbd "C-s") 'save-buffer)
 (define-key global-map (kbd "C-f") 'swiper)
 
@@ -1578,34 +1152,34 @@ Narrow to defun if it's not."
 (defun my-org-set-todo-state (todostate)
   "Change TODO state of current heading to todostate"
   (save-excursion
-  (let* (
-	 (todo-state (concat todostate " "))
-	 (regexp "\\([[:word:]]+ \\)\\(.*\\)")
-	 (heading-level (car (my-org-get-current-heading-level-and-point)))
-	 (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
-	 )
+    (let* (
+	   (todo-state (concat todostate " "))
+	   (regexp "\\([[:word:]]+ \\)\\(.*\\)")
+	   (heading-level (car (my-org-get-current-heading-level-and-point)))
+	   (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
+	   )
       (progn
-      (if (eq (org-get-todo-state) nil)
-	  (setq new-line (concat todo-state (org-get-heading)))
-	(progn
-	  (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
+	(if (eq (org-get-todo-state) nil)
+	    (setq new-line (concat todo-state (org-get-heading)))
+	  (progn
+	    (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
+	    )
+	  )
+	(goto-char (+ heading-point heading-level 1))
+	(zap-up-to-char -1 ?*)
+	(zap-up-to-char 1 ?\n)
+	(insert (concat " " new-line))
 	)
-	)
-      (goto-char (+ heading-point heading-level 1))
-      (zap-up-to-char -1 ?*)
-      (zap-up-to-char 1 ?\n)
-      (insert (concat " " new-line))
       )
     )
-    )
-    )
+  )
 
 
 
 
 ;;org-after-todo-state-change-hook
 ;;org-state
-(setq debug-on-error t)
+(setq debug-on-error nil)
 
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
   "Display summary of function or variable at point.
@@ -1674,16 +1248,16 @@ Adapted from `describe-function-or-variable'."
 ;;(define-key global-map (kbd "C-x 8") 'xref-find-definitions-other-window)
 
 (setq ivy-initial-inputs-alist
-   (quote
-    ((counsel-minor . "^+")
-     (counsel-package . "^+")
-     (counsel-org-capture . "")
-     (counsel-M-x . "")
-     (counsel-describe-symbol . ""))))
+      (quote
+       ((counsel-minor . "^+")
+	(counsel-package . "^+")
+	(counsel-org-capture . "")
+	(counsel-M-x . "")
+	(counsel-describe-symbol . ""))))
 
 (define-key global-map (kbd "C-x d") 'counsel-dired)
 (define-key global-map (kbd "C-x C-f")
-(lambda () (interactive) (message "not defined))"))
+  (lambda () (interactive) (message "not defined))"))
   )
 
 
@@ -1719,12 +1293,14 @@ Adapted from `describe-function-or-variable'."
 ;;(run-with-timer 0 30 'org-gcal-sync)
 
 
+;; windower
+;; redefining for my purposes
+;; (delete-other-windows -> sticky-window-delete-other-windows)
 
 (use-package windower
-  :init
   :bind (:map global-map
 	      ("<s-tab>" . 'windower-switch-to-last-buffer)
-	      ("C-x 1" . 'windower-toggle-single)
+	      ("C-x 1" . 'my/windower-toggle-single)
 	      ("C-x \\" . 'windower-toggle-split)
 	      
 	      ("<M-s-left>" . 'windower-move-border-left)
@@ -1738,7 +1314,8 @@ Adapted from `describe-function-or-variable'."
 	      ("<S-s-right>" . 'windower-swap-right)
 	      ("<S-s-right>" . 'windower-swap-right)
 	      )  
-)
+  )
+;; /windower
 
 
 (setq aw-scope 'frame)
@@ -1746,7 +1323,7 @@ Adapted from `describe-function-or-variable'."
 
 ;; open describe- functions in other frame
 ;;ensure that help-window-select set to always(t)
-(defun my/describe-functions-open-window (arg)
+(defun my/describe-functions-open-window (&rest arg)
   "docstring"
   (if (> my/windows-quantity-before-call 1)
       (progn
@@ -1763,20 +1340,23 @@ Adapted from `describe-function-or-variable'."
   )
 ;;     );;(lambda (&rest args) (interactive)(split-window-horizontally) (other-window 1)))
 ;;   )
-(defun my/count-windows-before-call (arg)
+(defun my/count-windows-before-call (&rest arg)
   "docstring"
-  (if (ivy--buffer-list "*Help*")
+  (when (not (derived-mode-p 'help-mode))
       (progn
-	(switch-to-buffer "*Help*")
-	(rename-uniquely)
-	(previous-buffer)
-	)
+       (if (member "*Help*" (ivy--buffer-list "*Help*"))
+	   (progn
+	     (switch-to-buffer "*Help*")
+	     (rename-uniquely)
+	     (previous-buffer)
+	     )
+	 )
+       (setq my/windows-quantity-before-call (count-windows 1))
+       (setq my/previous-selected-window (selected-window))
+       (message "selected window: %s" (selected-window))
+       )
     )
-  (setq my/windows-quantity-before-call (count-windows 1))
-  (setq my/previous-selected-window (selected-window))
-  (message "selected window: %s" (selected-window))
   )
-
 (advice-add 'describe-function :after 'my/describe-functions-open-window)
 (advice-add 'describe-variable :after 'my/describe-functions-open-window)
 (advice-add 'describe-key :after 'my/describe-functions-open-window)
@@ -1788,11 +1368,34 @@ Adapted from `describe-function-or-variable'."
 (setq my/previous-selected-window nil)
 ;; /open describe- functions in other frame
 
+;; find-function and etc
+(defun my/after-find-function-advice(&rest arg)
+  "docstring"
+  (interactive)
+  (let* (
+	 (curbuf (current-buffer))
+	 )
+    
+  (previous-buffer)
+  (if (< (window-pixel-height) (window-pixel-width))
+	    (split-window-horizontally)
+	  (split-window-vertically)
+	  )
+  (other-window 1)
+  (switch-to-buffer curbuf)
+  )
+  )
+;;(advice-add 'find-function :after 'my/after-find-function-advice)
+(add-hook 'find-function-after-hook 'my/after-find-function-advice)
+
+;; /find-function and etc
+
+
 
 (define-prefix-command 'jump-map)
 (global-set-key (kbd "C-j") 'jump-map)
-(define-key jump-map (kbd "v") 'find-variable-other-frame)
-(define-key jump-map (kbd "f") 'find-function-other-frame)
+(define-key jump-map (kbd "v") 'find-variable)
+(define-key jump-map (kbd "f") 'find-function)
 
 
 (require 'auto-minor-mode)
@@ -1805,10 +1408,17 @@ Adapted from `describe-function-or-variable'."
   (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . highlight-symbol-mode))
   (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . highlight-symbol-mode))
 
+  (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . company-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.emacs\\'" . company-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . company-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.js\\(on\\)?\\'" . company-mode))
+  (add-to-list 'auto-minor-mode-alist '("[.]c\\(\\(ss\\)\\|\\(pp\\)\\)?\\'" . company-mode))
+  (add-to-list 'auto-minor-mode-alist '("[.]h\\(\\(pp\\)\\|\\(tml\\)\\)?\\'" . company-mode))
+  
   (add-to-list 'auto-minor-mode-alist '("\\.el\\([.]gz\\)?\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.p\\(\\(hp\\)\\|\\(y\\)\\)\\'" . hs-minor-mode))
   (add-to-list 'auto-minor-mode-alist '("\\.js\\(on\\)?\\'" . hs-minor-mode))
-)
+  )
 
 (use-package counsel
   :diminish counsel-mode
@@ -1837,7 +1447,7 @@ Adapted from `describe-function-or-variable'."
 	      ("C-<down>" . 'forward-paragraph)
 	      ("C-<up>" . 'backward-paragraph)
 	      ("<f2>" . 'elpy-multiedit-python-symbol-at-point)
-	 )
+	      )
 
   )
 
@@ -1962,8 +1572,8 @@ appropriate.  In tables, insert a new row or end the table."
   )
 
 (with-eval-after-load "org-ql-view"
-(define-key org-ql-view-map (kbd "r") 'org-ql-view-todo)
-)
+  (define-key org-ql-view-map (kbd "r") 'org-ql-view-todo)
+  )
 (define-key global-map (kbd "C-x C-s")
   (lambda () (interactive) (message "not defined))"))
   )
@@ -1989,11 +1599,11 @@ It can also return the following special value:
 
 (defun my/org-at-source-block-p ()
   "returns non-nil if point is at source block"
-(eq (my-org-element-type (org-element-at-point)) 'src-block)
-)
+  (eq (my-org-element-type (org-element-at-point)) 'src-block)
+  )
 
 ;; old version
-;;(defun my-toggle-narrow-to-defun () ;;old
+;;(defun my-toggle-narrow-to-sth () ;;old
 ;;  "If narrowed, then widen current buffer. 
 ;;Narrow to defun if it's not."
 ;;  (interactive)
@@ -2027,7 +1637,7 @@ It can also return the following special value:
   (if(org-at-table-p)
       (org-table-next-field)
     (right-word)
-   )
+    )
   )
 (defun my/org-move-left ()
   "docstring"
@@ -2035,7 +1645,7 @@ It can also return the following special value:
   (if(org-at-table-p)
       (org-table-previous-field)
     (left-word)
-   )
+    )
   )
 
 (define-key org-mode-map (kbd "C-<right>") #'my/org-move-right)
@@ -2050,7 +1660,7 @@ It can also return the following special value:
   (if (region-active-p)
       (mc/mark-previous-like-this arg)
     (highlight-symbol-prev)
-      )
+    )
   )
 (defun my-jump-to-next (arg)
   "docstring"
@@ -2058,7 +1668,7 @@ It can also return the following special value:
   (if (region-active-p)
       (mc/mark-next-like-this arg)
     (highlight-symbol-next)
-      )
+    )
   )
 (define-key global-map (kbd "C-M-<right>") #'my-jump-to-next)
 (define-key global-map (kbd "C-M-<left>") #'my-jump-to-prev)
@@ -2087,30 +1697,30 @@ buffer is not visiting a file."
 (defun my-make-frame-command (args)
   "docstring"
   (interactive "P")
-(let*
-    (
-     (result nil)
-     (buffer-list (ivy--buffer-list ""))
-     (buffer-with-name-drafts-exists-p
-     (dolist
-	 (cur-buffer buffer-list result)
-       (if (string= cur-buffer "drafts")
-	   (setq result t)
-	 )
-       ))
-     
-     (buffer
-      (if buffer-with-name-drafts-exists-p
-	  ;; return existing buffers list
-	  (get-buffer "drafts")
+  (let*
+      (
+       (result nil)
+       (buffer-list (ivy--buffer-list ""))
+       (buffer-with-name-drafts-exists-p
+	(dolist
+	    (cur-buffer buffer-list result)
+	  (if (string= cur-buffer "drafts")
+	      (setq result t)
+	    )
+	  ))
+       
+       (buffer
+	(if buffer-with-name-drafts-exists-p
+	    ;; return existing buffers list
+	    (get-buffer "drafts")
 	  (generate-new-buffer "drafts")
 	  )
-      )
-     )
-  
-  (set-buffer-major-mode buffer)
-  (display-buffer buffer '(display-buffer-pop-up-frame . nil))
-  )
+	)
+       )
+    
+    (set-buffer-major-mode buffer)
+    (display-buffer buffer '(display-buffer-pop-up-frame . nil))
+    )
   )
 ;;(make-frame-command)
 (define-key global-map (kbd "C-x 5 2") #'my-make-frame-command)
@@ -2149,11 +1759,11 @@ With argument, do this that many times."
 
 
 (defun copy-line (arg)
-      "Copy lines (as many as prefix argument) in the kill ring"
-      (interactive "p")
-      (kill-ring-save (line-beginning-position)
-                      (line-beginning-position (+ 1 arg)))
-      (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-ring-save (line-beginning-position)
+                  (line-beginning-position (+ 1 arg)))
+  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 (define-key global-map (kbd "C-l") #'copy-line)
 
 (beacon-mode 1)
@@ -2182,17 +1792,18 @@ With argument, do this that many times."
 ;;(require 'highlight-indent-guides)
 ;;(add-to-list 'load-path "~/.emacs.d/highlight-indent/")
 ;;(add-hook 'python-mode-hook 'highlight-indent-guides-mode)
-
+(define-key global-map (kbd "C-M-f") #'ag)
+(define-key global-map (kbd "C-x e") #'eval-last-sexp)
 (setq ivy-use-selectable-prompt t)
 (use-package company
-:diminish company-mode
+  :diminish company-mode
   )
-  
+
 (use-package ivy
   :diminish ivy-mode
   )
 
-  
+
 (use-package yasnippet
   :diminish yas-minor-mode
   )
@@ -2275,197 +1886,377 @@ With argument, do this that many times."
 (setq json-encoding-pretty-print nil)
 
 
-(defun my-json/engl (filename)
+
+(defun smarter-move-end-of-line ()
   "docstring"
   (interactive)
-  (require 'loop)
-  (let*
-      (
-       redefine-record
-       (date
-	  (let* (
-		 tmpdate
-		 (options  (list "выбрать другую дату" "перезаписать запись")  )
-		 chosen-option
-		 )
-	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
-
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
-
-			)
-	    tmpdate
-	    )
-	  )
-       (one-or-zero (list "0" "1"))
-       ;;;;;;;;;;;;;
-       
-       (reading-done-p (string-to-number (ivy-read "reading-done?" one-or-zero :require-match t)))
-       (reading-planned-p (string-to-number (ivy-read "reading-planned?" one-or-zero :require-match t)))
-
-       (grammar-done-p (string-to-number (ivy-read "grammar-done?" one-or-zero :require-match t)))
-       (grammar-planned-p (string-to-number (ivy-read "grammar-planned?" one-or-zero :require-match t)))
-
-       (writing-done-p (string-to-number (ivy-read "writing-done?" one-or-zero :require-match t)))
-       (writing-planned-p (string-to-number (ivy-read "writing-planned?" one-or-zero :require-match t)))
-
-       (anki-new-words-done-p (string-to-number (ivy-read "anki-new-words-done?" one-or-zero :require-match t)))
-       (anki-new-words-planned-p (string-to-number (ivy-read "anki-new-words-planned?" one-or-zero :require-match t)))
-       (anki-revise-done-p (string-to-number (ivy-read "anki-revise-done?" one-or-zero :require-match t)))
-       (anki-revise-planned-p (string-to-number (ivy-read "anki-revise-planned?" one-or-zero :require-match t)))
-       
-       ;;;;;;;;;;;;;
-       
-       ;; 3 level nested json arrays wont work when attempting to create from lists as opposed to vectors
-       (json-object (vector date
-			  (vector reading-done-p reading-planned-p)
-			  (vector grammar-done-p grammar-planned-p)
-			  (vector writing-done-p writing-planned-p)
-
-			  (vector
-			  (vector anki-new-words-done-p anki-new-words-planned-p)
-			  (vector anki-revise-done-p anki-revise-planned-p)
-			  )
-			    ))
-       )
-    (my/json-insert filename date json-object redefine-record)
-    
-    ;;returning an empty string as a template string for orgmode
-    "" 
-    )
-  )
-
-
-(defun my-json/prettify-array-at-point ()
-  "the function ill work correctly if cursor is on the first square
-bracket of JSON array"
-  (interactive)
-  (require 'loop)
-  (let* (
-	 (array-start (point))
-	 (end-of-array nil)
-	 (array-is-valid
-	  
-	  (let* (
-		 (array-elisp (save-excursion(json-read)))
-		 (json-array-type-default json-array-type)
-		 valid-check
-		 )
-	    (setq json-array-type 'vector)
-	  (setq valid-check (vectorp array-elisp) )
-	   ;; validation
-	  (setq json-array-type json-array-type-default)
-	  valid-check
-	  )
-	  
-	  )
+  (cond
+   (
+    (derived-mode-p 'org-mode)
+    (let*
+	(
+	 narrowed
 	 )
-    
-    (if array-is-valid
-	(progn
-	  
-	  (goto-char (1+ array-start))
+      (when (not (buffer-narrowed-p)) (progn(org-narrow-to-subtree) (setq narrowed t)))
 
-	  ;; if char-after is equal to whitespace, delete all consequent whitespaces
-	  (if (whitespace-p)
-	      (let* (
-		     (beg (point))
-		     )
-		;; skip whitespaces
-		(while (whitespace-p)
-		  (forward-char 1)
-		  )
-		(delete-region beg (point))
-		(insert "\n")
-		)
-	    (insert "\n")
-	    )
-	  
-	  (loop-while (and
-		  (eq end-of-array nil)
-		  (not
-		  (eq
-		   (condition-case ;;handling errors
-		       nil
-		       (json-read)
-		     ;; return 'error symbol if error occurs (because nil value is valid and
-		     ;; corresponds to null value of json syntax)
-		     (error 'error) 
-		     ) 'error)
-		  ))
-
-	    ;; if char-after is equal to whitespace, delete all consequent whitespaces
-	    (if (whitespace-p)
-	      (let* (
-		     (beg (point))
-		     )
-		;; skip whitespaces
-		(while (whitespace-p)
-		  (forward-char 1)
-		  )
-		(delete-region beg (point))
-		
-		)
-	      )
-	    
-	    (if (eq (char-after) ?,)
-		(progn
-		  (forward-char 1) ;; cursor is on a comma, so make step forward
-		  (if (not(whitespace-p)) ;; if char-after is not equal to whitespace
-		      (insert "\n")
-		    (let* (
-			   (beg (point))
-			   )
-		      ;; skip whitespaces
-		      (while (whitespace-p)
-			(forward-char 1)
-			)
-		      (delete-region beg (point))
-		      (insert "\n")
-		      )
-		    )
-		  )
-	      (progn
-		(if (whitespace-p)
-		    (let* (
-			   (beg (point))
-			   )
-		      ;; skip whitespaces
-		      (while (whitespace-p)
-			(forward-char 1)
-			)
-		      (delete-region beg (point))
-		      (insert "\n")
-		      )
-		  (insert "\n")
-		  )
-		(setq end-of-array t)
-		)
-	    )
+      (if(and
+	  (eq (sp-point-in-string) ?\")
+	  (not (eq (char-after) ?\"))
 	  )
-
-	  )
+	  (sp-end-of-sexp)
+	(move-end-of-line 1)
+	)
+      (when narrowed (widen))
+      )
     )
-  
+   
+   ((and
+     (eq (sp-point-in-string) ?\")
+     (not (eq (char-after) ?\"))
+     )
+    (sp-end-of-sexp)
+    
+    )
+   (
+    t
+    (move-end-of-line 1)
+    )
+   )
   )
-)
+(define-key global-map (kbd "C-e") #'smarter-move-end-of-line)
+
+
+
+
+(defun smarter-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+
+If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  ;;(setq arg (or arg 1))
+
+  (let* (
+	 (arg (or arg 1))
+	 )
+    (cond
+     (
+      (derived-mode-p 'org-mode)
+      (let*
+	  (
+	   narrowed
+	   )
+	(when (not (buffer-narrowed-p)) (progn(org-narrow-to-subtree) (setq narrowed t)))
+
+	(if(and
+	    (eq (sp-point-in-string) ?\")
+	    (not (eq (char-before) ?\"))
+	    )
+	    (sp-beginning-of-sexp)
+	  (let ((orig-point (point)))
+	    (back-to-indentation)
+	    (when (= orig-point (point))
+	      (move-beginning-of-line 1)))
+	  )
+	(when narrowed (widen))
+	)
+      )
+     
+     ((and
+       (eq (sp-point-in-string) ?\")
+       (not (eq (char-before) ?\"))
+       )
+      (sp-beginning-of-sexp))
+     (t
+      (let ((orig-point (point)))
+	(back-to-indentation)
+	(when (= orig-point (point))
+	  (move-beginning-of-line 1))))
+     )
+    ;; Move lines first
+    ;; (when (/= arg 1)
+    ;;   (let ((line-move-visual nil))
+    ;;     (forward-line (1- arg))))
+    )
+  )
+;; remap C-a to `smarter-move-beginning-of-line'
+(global-set-key [remap move-beginning-of-line]
+                'smarter-move-beginning-of-line)
+(define-key org-mode-map (kbd "C-a") 'smarter-move-beginning-of-line)
+(use-package wgrep)
+(use-package emacs-lisp-mode
+  :hook (emacs-lisp-mode . smartparens-mode)
+  )
 
 (defun whitespace-p ()
   "returns t if character after point is a whitespace"
   (interactive)
-  (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)      
+  (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)
   )
+(fringe-mode '(8 . 0))
+
+(define-key global-map (kbd "C-c c") #'counsel-org-capture)
+(define-key global-map (kbd "M-<backspace>") #'sp-splice-sexp)
+
+(defun my/mark-sexp ()
+  "docstring"
+  (interactive)
+
+  (cond
+   (
+    (eq (char-before) ?\) )
+    (progn
+      (goto-char (nth 2 (show-paren--default)))
+      (sp-mark-sexp)
+      )
+
+    )
+
+   (
+    (eq (char-after) ?\( )
+    (sp-mark-sexp)
+    )
+
+   (
+    t
+    (progn
+      ;;(sp-beginning-of-sexp)
+      (thing-at-point--beginning-of-sexp)
+      (sp-mark-sexp)
+      )
+    )
+   )
+  )
+
+
+(global-set-key [remap mark-sexp]
+                'my/mark-sexp)
+
+
+;;(advice-add 'dired-mark-read-file-name :after 'ivy-next-history-element)
+(define-key emacs-lisp-mode-map (kbd "M-q") 'indent-region)
+;; my orgmode dynamic blocks
+(defun org-dblock-write:update-progress (params)
+  (let* (
+	 (fmt (or (plist-get params :format) "%d. %m. %Y"))
+	 (myarg (string-to-number (or (plist-get params :myarg) "0")))
+	)
+    (if (eq myarg 1)
+	(insert (concat "current time: " (format-time-string "%Y-%m-%d %S")))
+	(insert 
+     (concat "* MMO-like development branches
+:PROPERTIES:
+:CREATED:  [2020-07-04 Sat 14:55]
+:END:
+** english language
+*** level 1 [[id:50dc4620-7b4b-46bf-9b87-43c7aba298c3][reward: case for internal HDD]]           :level:
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+**** TODO 10 reading sessions in a row (" (number-to-string (my/count-last-todo-states-streak-within-logbook "9ade80ad-b62e-4b18-90c4-3d796907c435" "DONE")) "/10)
+:PROPERTIES:
+:ID:       5fd10544-ba7e-40aa-a015-c9fa6c8ffdcb
+:ACTION:   [[id:19d35b60-c0da-4544-9b18-3fb52ed69e3f][reading habit]]
+:STARTED:  [2020-07-11 Sat]
+:Description: accomplish reading english books habit 10 times in a row (10-days streak)(занимаясь через день)
+:END:
+**** TODO 8 grammar units/20d (0/8)
+:PROPERTIES:
+:ID:       b9b7a38e-a925-4e67-ba22-b6c19d295729
+:ACTION:   [[id:87e84f88-d61a-4762-8790-cc542073e8e1][studying grammar habit]]
+:STARTED:  [2020-07-10 Fri]
+:Description: study 8 grammar units in 20 days from \"Advanced Grammar in use 2ed\"
+:END: 
+**** TODO write 525 words in 1 week in english (0/525) (mon-sat)
+:PROPERTIES:
+:ID:       4a5f3dab-eb97-49af-a761-a76e8ebed24e
+:ACTION: 
+:STARTED:  [2020-07-10 Fri]
+:Description: write 1575 words in 3 weeks in english while chatting with people from other countries or doing journaling
+:END:
+**** TODO 7 дней подряд добавлять минимум 5 слов в Anki(0/7)
+:PROPERTIES:
+:ID:       ed4f76be-a75d-472a-a4f3-43492e97571a
+:STARTED:  [2020-07-10 Fri]
+:END:
+**** TODO anki revision 7 days in a row(0/7)
+:PROPERTIES:
+:CREATED:  [2020-08-15 Sat 07:49]
+:END:
+** computer science
+:PROPERTIES:
+:ID:       1799c14c-118c-46d1-8ccc-bb1e0cf9ddc5
+:END:
+*** 1 level reward: e-reader                                        :level:
+:PROPERTIES:
+:CREATED:  [2020-07-07 Tue 21:15]
+:VISIBILITY: children
+:END:
+**** discrete maths 2h/d; 12d/2w (0/12)  [[http://www.sp19.eecs70.org/][currentcourse]] [[id:f3f793f1-441a-4e5f-8fc9-5808c71bf438][tracker]] [[file:discrmath.org][planning+trackingProgress]]
+:PROPERTIES:
+:STARTED: [2020-07-10 Fri]
+:END:
+дискретная математика 6 дней подряд по 2 часа в
+день за неделю
+** adhd
+*** level 1 [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 3/6 of raspberry pi]]                :level:
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+**** meditation 2-5m 7days streak (1/7)
+:PROPERTIES:
+:ID:       a62e03f8-8bf8-4c59-bbcf-0f5e93e62837
+:STARTED:  [2020-07-10 Fri]
+:END:
+:LOGBOOK:
+- Note taken on [2020-07-24 Fri 07:48] \\
+  15 мин слишком много. совсем непродуктивные
+  медитации выходят
+:END:
+Описание: медитация 5мин 30 дней подряд
+**** Taking charge of adult ADHD notes [[file:takingChargeOfAdultADHDnotes.org][notes]] [0/1]
+:PROPERTIES:
+:CREATED:  [2020-07-06 Mon 20:56]
+:END:
+Описание: перечитать некоторые главы и
+законспектировать Taking charge of adult ADHD
+***** 8 rules
+:PROPERTIES:
+:CREATED:  [2020-08-12 Wed 10:32]
+:END:
+****** TODO 1 rule
+** exercises
+*** level 1 [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]           :level:
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+**** do any of exercises 7 days in a row (0/7) [[file:/data/Sync/tables/exercises tracker/2020/september.csv][tracker]]
+:PROPERTIES:
+:STARTED:  [2020-07-10 Fri]
+:ID:       adf0d777-7918-4a36-addc-cf103017f257
+:END:
+What counts:
+1. Do at least 20x4 push ups; x3 pull ups
+2. Ride a bike for at least 30 mins
+3. Run for at least 15mins
+DO NOT DO SQUATS (trouble with knees)
+** social skills
+*** 1 level [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]       :level:
+:PROPERTIES:
+:CREATED:  [2020-07-05 Sun 21:12]
+:VISIBILITY: children
+:END:
+**** TODO Евгения Стрелецкая (40мин макс в день)
+посмотреть и законспектить видосы от Евгении Стрелецкой и
+законспектировать, скачать себе на диск. Выполнять
+упражнения, которые там даны.
+
+***** TODO [[https://www.youtube.com/watch?v=P9LG1kTH3nE][Застенчивость/стеснительность? Страх критики и негативных оценок. СОЦИОФОБИЯ Ч.1: СУТЬ, ПРИЧИНЫ]]
+***** TODO [[https://www.youtube.com/watch?v=VlA_NmxYHXc][Победить СОЦИОФОБИЮ самостоятельно: когнитивно-поведенческая психотерапия (социальная фобия ч.2)]]
+***** TODO [[https://www.youtube.com/watch?v=UgNNS62_ubQ][СОЦИОФОБИЯ Ч.3: секретные действенные методы избавления от стеснительности/застенчивости]]
+**** TODO nofap 7 дней (1/7) [[id:f3f793f1-441a-4e5f-8fc9-5808c71bf438][tracker]]
+:PROPERTIES:
+:ID:     8d9858ca-4e06-4c68-a902-f206b8683ca1
+:END:
+** hygiene
+*** 1 level [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]             :level:
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+**** sleep hygiene(встать в 8-8:30, ЛЕЧЬ в 23:30-00:00) 7days streak (2/7)
+:PROPERTIES:
+:ID:       98ddac3f-dca8-465d-a2ad-5ecec2c28032
+:END:
+**** shower at least 4days a week during a month (0/16)
+:PROPERTIES:
+:ID:       849c38f9-eb52-4adc-b090-c36b086dfa89
+:END:
+**** brush teeth 7days in a row 2 times a day (1/7)
+:PROPERTIES:
+:ID:       72c875d5-92d9-4dfc-bb0e-509250ac3981
+:STARTED:  [2020-07-10 Fri]
+:END:
+** general it skills
+:PROPERTIES:
+:ID:       46c6896e-c7a4-48bb-b39c-861a13441f54
+:END:
+*** 1 level no reward
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+**** DONE [[http://clonezilla.org][how to create OS images]]
+***** чрезвычайно важно освоить сейчас, чтобы потом не было
+огроменной траты времени на переустановку всей
+системы
+***** максимум 1час в день
+:PROPERTIES:
+:CREATED:  [2020-07-24 Fri 07:50]
+:END:
+")))
+    ))
+;; /my orgmode dynamic blocks
+
+
+(use-package org-pomodoro
+  :init
+  (setq org-pomodoro-short-break-length 5
+	org-pomodoro-length 15
+	org-pomodoro-manual-break t
+	)
+  (defun my-org-pomodoro/prompt-for-worksession-duration (&optional arg)
+    "docstring"
+    (interactive "P")
+    (if (not (org-pomodoro-active-p))
+	(let* (
+	   (default-minutes (list "5" "10" "15" "20" "25" "30"))
+	   (default-pomodoro-duration org-pomodoro-length)
+	   (chosen-duration org-pomodoro-length)
+	   )
+      (setq chosen-duration (string-to-number (ivy-read "enter duration: " default-minutes)))
+      (setq org-pomodoro-length chosen-duration)
+      (org-pomodoro arg)
+      (setq org-pomodoro-length default-pomodoro-duration)
+      )
+      (org-pomodoro arg)
+      )
+    )
+  )
+(define-key global-map (kbd "C-c p") 'my-org-pomodoro/prompt-for-worksession-duration)
+
+
+(defun my/windower-toggle-single ()
+    "Un-maximize current window.
+If multiple windows are active, save window configuration and
+delete other windows.  If only one window is active and a window
+configuration was previously save, restore that configuration."
+    (interactive)
+    (let*
+	(
+	 (number-of-dedicated-windows
+	  (let*
+	      (
+	       (count 0)
+	       )
+	    (dolist
+		(curwindow (window-list))
+	      (if (window-dedicated-p curwindow)
+		  (setq count (1+ count))
+		  )
+	      )
+	    count
+	    )
+	  )
+	 )
+	(if (<= (- (count-windows) number-of-dedicated-windows) 1)
+	(when windower--last-configuration
+          (set-window-configuration windower--last-configuration))
+      (setq windower--last-configuration (current-window-configuration))
+      (sticky-window-delete-other-windows)))
+    )
+(require 'org-branch)
+(org-dynamic-block-define "update-progress" 'org-dblock-write:update-progress)

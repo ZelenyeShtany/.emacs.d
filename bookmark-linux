@@ -2,7 +2,42 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("sleep data"
+(("data"
+ (filename . "/data/")
+ (front-context-string . "$RECYCLE.BIN\n  d")
+ (rear-context-string . " 0 Қаң  2  2020 ")
+ (position . 207))
+("discr"
+ (filename . "/data/Sync/org/discrmath.org")
+ (front-context-string . "ODO: TODO(1) | R")
+ (rear-context-string)
+ (position . 4))
+("timetracker"
+ (filename . "/data/Sync/org/timetracker.org")
+ (front-context-string . "iscrete maths\n:P")
+ (rear-context-string)
+ (position . 4))
+("regulars"
+ (filename . "/data/Sync/org/regular.org")
+ (front-context-string . "#+TODO: TODO(1) ")
+ (rear-context-string)
+ (position . 1))
+("mypack"
+ (filename . "~/.emacs.d/mypack/")
+ (front-context-string . "my-json.el\n  -rw")
+ (rear-context-string . "02 Қыр 24 03:38 ")
+ (position . 281))
+("pomodoros"
+ (filename . "/data/Sync/org/pomodoros.org")
+ (front-context-string . "* таймеры\n30\n25\n")
+ (rear-context-string)
+ (position . 1))
+("dict"
+ (filename . "/data/Dictionaries/")
+ (front-context-string . ".\n  drwxrwxrwx 1")
+ (rear-context-string . "96 Қыр 23 01:58 ")
+ (position . 126))
+("sleep data"
  (filename . "/data/Sync/tables/sleep diary/2020/data.json")
  (front-context-string . "{\n    \"data form")
  (rear-context-string)
@@ -78,8 +113,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/poor-man-CBT/data.json")
+ (filename . "/data/Sync/tables/exercises tracker/2020/data.json")
  (front-context-string)
- (rear-context-string . "sdc\",\"aww\"]\n]\n}\n")
- (position . 397))
+ (rear-context-string . "ренности\"]\n]\n\n}\n")
+ (position . 1365))
 )

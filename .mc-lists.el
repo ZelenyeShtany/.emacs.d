@@ -5,9 +5,11 @@
       '(
 	ace-jump-mode
 	backward-delete-word
+	counsel-M-x
 	cua--prefix-override-handler
 	cua-exchange-point-and-mark
 	cua-paste
+	my/mark-sexp
 	org-backward-sentence
 	org-ctrl-c-ctrl-c
 	org-force-self-insert
@@ -16,6 +18,7 @@
 	org-metaright
 	org-self-insert-command
 	org-shiftright
+	smarter-move-end-of-line
 	))
 
 (setq mc/cmds-to-run-once
