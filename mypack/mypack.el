@@ -326,8 +326,8 @@ no CREATED property"
 )
 
 
-(add-hook 'org-after-demote-entry-hook 'my-set-created-property)
-(add-hook 'org-after-promote-entry-hook 'my-set-created-property)
+;;(add-hook 'org-after-demote-entry-hook 'my-set-created-property)
+;;(add-hook 'org-after-promote-entry-hook 'my-set-created-property)
 (add-hook 'org-insert-heading-hook 'my-set-created-property)
 
 

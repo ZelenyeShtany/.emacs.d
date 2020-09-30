@@ -247,7 +247,7 @@
       :super-groups org-super-agenda-groups)))
  '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(org-pomodoro org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -627,6 +627,7 @@ There are two things you can do about this warning:
   
   (setq
    notes (concat data-folder-path "Sync/org/notes.org")
+   regular (concat data-folder-path "Sync/org/regular.org")
    todos (concat data-folder-path "Sync/org/todos.org")
    timerasp (concat data-folder-path "Sync/org/timerasp.org")
    poor-man-cbt (concat data-folder-path "Sync/tables/poor-man-CBT/data.json")
@@ -636,9 +637,11 @@ There are two things you can do about this warning:
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
    sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json")
    org-clock-sound (concat data-folder-path "Sync/org/timer-sounds/bell.wav")
+   org-clock-modeline-total 'current
    org-return-follows-link t
    org-use-speed-commands t
    org-use-sub-superscripts nil
+   org-use-property-inheritance '("CLOCK_MODELINE_TOTAL")
    org-ellipsis "⤵"
    org-protocol-default-template-key "d"
    org-read-date-prefer-future nil
@@ -694,6 +697,7 @@ There are two things you can do about this warning:
      ("motivation")
      ("cpp")
      ("health")
+     ("assonfire")
      ("alcohol")
      ("organization")
      ("workflow")
@@ -783,7 +787,7 @@ There are two things you can do about this warning:
 ;; /web archiving through org-capture + org-board  
 (require 'org-download)
 (require 'my-week-day-based-habits)
-  :bind (:map org-mode-map
+:bind (:map org-mode-map
 	      ("C-<RET>" . 'org-return)
 	      ("C-c n" . 'org-add-note)
 	      ("<f5>" . 'my/copy-id-to-clipboard)
@@ -801,8 +805,6 @@ There are two things you can do about this warning:
 	      :map global-map 
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
-	      )
-  
 	 )
 
 ;; <using key bindings while on russian keyboard layout>
@@ -2041,192 +2043,35 @@ point reaches the beginning or end of the buffer, stop there."
 ;;(advice-add 'dired-mark-read-file-name :after 'ivy-next-history-element)
 (define-key emacs-lisp-mode-map (kbd "M-q") 'indent-region)
 ;; my orgmode dynamic blocks
-(defun org-dblock-write:update-progress (params)
-  (let* (
-	 (fmt (or (plist-get params :format) "%d. %m. %Y"))
-	 (myarg (string-to-number (or (plist-get params :myarg) "0")))
-	)
-    (if (eq myarg 1)
-	(insert (concat "current time: " (format-time-string "%Y-%m-%d %S")))
-	(insert 
-     (concat "* MMO-like development branches
-:PROPERTIES:
-:CREATED:  [2020-07-04 Sat 14:55]
-:END:
-** english language
-*** level 1 [[id:50dc4620-7b4b-46bf-9b87-43c7aba298c3][reward: case for internal HDD]]           :level:
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-**** TODO 10 reading sessions in a row (" (number-to-string (my/count-last-todo-states-streak-within-logbook "9ade80ad-b62e-4b18-90c4-3d796907c435" "DONE")) "/10)
-:PROPERTIES:
-:ID:       5fd10544-ba7e-40aa-a015-c9fa6c8ffdcb
-:ACTION:   [[id:19d35b60-c0da-4544-9b18-3fb52ed69e3f][reading habit]]
-:STARTED:  [2020-07-11 Sat]
-:Description: accomplish reading english books habit 10 times in a row (10-days streak)(занимаясь через день)
-:END:
-**** TODO 8 grammar units/20d (0/8)
-:PROPERTIES:
-:ID:       b9b7a38e-a925-4e67-ba22-b6c19d295729
-:ACTION:   [[id:87e84f88-d61a-4762-8790-cc542073e8e1][studying grammar habit]]
-:STARTED:  [2020-07-10 Fri]
-:Description: study 8 grammar units in 20 days from \"Advanced Grammar in use 2ed\"
-:END: 
-**** TODO write 525 words in 1 week in english (0/525) (mon-sat)
-:PROPERTIES:
-:ID:       4a5f3dab-eb97-49af-a761-a76e8ebed24e
-:ACTION: 
-:STARTED:  [2020-07-10 Fri]
-:Description: write 1575 words in 3 weeks in english while chatting with people from other countries or doing journaling
-:END:
-**** TODO 7 дней подряд добавлять минимум 5 слов в Anki(0/7)
-:PROPERTIES:
-:ID:       ed4f76be-a75d-472a-a4f3-43492e97571a
-:STARTED:  [2020-07-10 Fri]
-:END:
-**** TODO anki revision 7 days in a row(0/7)
-:PROPERTIES:
-:CREATED:  [2020-08-15 Sat 07:49]
-:END:
-** computer science
-:PROPERTIES:
-:ID:       1799c14c-118c-46d1-8ccc-bb1e0cf9ddc5
-:END:
-*** 1 level reward: e-reader                                        :level:
-:PROPERTIES:
-:CREATED:  [2020-07-07 Tue 21:15]
-:VISIBILITY: children
-:END:
-**** discrete maths 2h/d; 12d/2w (0/12)  [[http://www.sp19.eecs70.org/][currentcourse]] [[id:f3f793f1-441a-4e5f-8fc9-5808c71bf438][tracker]] [[file:discrmath.org][planning+trackingProgress]]
-:PROPERTIES:
-:STARTED: [2020-07-10 Fri]
-:END:
-дискретная математика 6 дней подряд по 2 часа в
-день за неделю
-** adhd
-*** level 1 [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 3/6 of raspberry pi]]                :level:
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-**** meditation 2-5m 7days streak (1/7)
-:PROPERTIES:
-:ID:       a62e03f8-8bf8-4c59-bbcf-0f5e93e62837
-:STARTED:  [2020-07-10 Fri]
-:END:
-:LOGBOOK:
-- Note taken on [2020-07-24 Fri 07:48] \\
-  15 мин слишком много. совсем непродуктивные
-  медитации выходят
-:END:
-Описание: медитация 5мин 30 дней подряд
-**** Taking charge of adult ADHD notes [[file:takingChargeOfAdultADHDnotes.org][notes]] [0/1]
-:PROPERTIES:
-:CREATED:  [2020-07-06 Mon 20:56]
-:END:
-Описание: перечитать некоторые главы и
-законспектировать Taking charge of adult ADHD
-***** 8 rules
-:PROPERTIES:
-:CREATED:  [2020-08-12 Wed 10:32]
-:END:
-****** TODO 1 rule
-** exercises
-*** level 1 [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]           :level:
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-**** do any of exercises 7 days in a row (0/7) [[file:/data/Sync/tables/exercises tracker/2020/september.csv][tracker]]
-:PROPERTIES:
-:STARTED:  [2020-07-10 Fri]
-:ID:       adf0d777-7918-4a36-addc-cf103017f257
-:END:
-What counts:
-1. Do at least 20x4 push ups; x3 pull ups
-2. Ride a bike for at least 30 mins
-3. Run for at least 15mins
-DO NOT DO SQUATS (trouble with knees)
-** social skills
-*** 1 level [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]       :level:
-:PROPERTIES:
-:CREATED:  [2020-07-05 Sun 21:12]
-:VISIBILITY: children
-:END:
-**** TODO Евгения Стрелецкая (40мин макс в день)
-посмотреть и законспектить видосы от Евгении Стрелецкой и
-законспектировать, скачать себе на диск. Выполнять
-упражнения, которые там даны.
 
-***** TODO [[https://www.youtube.com/watch?v=P9LG1kTH3nE][Застенчивость/стеснительность? Страх критики и негативных оценок. СОЦИОФОБИЯ Ч.1: СУТЬ, ПРИЧИНЫ]]
-***** TODO [[https://www.youtube.com/watch?v=VlA_NmxYHXc][Победить СОЦИОФОБИЮ самостоятельно: когнитивно-поведенческая психотерапия (социальная фобия ч.2)]]
-***** TODO [[https://www.youtube.com/watch?v=UgNNS62_ubQ][СОЦИОФОБИЯ Ч.3: секретные действенные методы избавления от стеснительности/застенчивости]]
-**** TODO nofap 7 дней (1/7) [[id:f3f793f1-441a-4e5f-8fc9-5808c71bf438][tracker]]
-:PROPERTIES:
-:ID:     8d9858ca-4e06-4c68-a902-f206b8683ca1
-:END:
-** hygiene
-*** 1 level [[id:0eb8b63b-218f-4800-953e-97d563ed793d][reward: 1/6 of raspberry pi]]             :level:
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-**** sleep hygiene(встать в 8-8:30, ЛЕЧЬ в 23:30-00:00) 7days streak (2/7)
-:PROPERTIES:
-:ID:       98ddac3f-dca8-465d-a2ad-5ecec2c28032
-:END:
-**** shower at least 4days a week during a month (0/16)
-:PROPERTIES:
-:ID:       849c38f9-eb52-4adc-b090-c36b086dfa89
-:END:
-**** brush teeth 7days in a row 2 times a day (1/7)
-:PROPERTIES:
-:ID:       72c875d5-92d9-4dfc-bb0e-509250ac3981
-:STARTED:  [2020-07-10 Fri]
-:END:
-** general it skills
-:PROPERTIES:
-:ID:       46c6896e-c7a4-48bb-b39c-861a13441f54
-:END:
-*** 1 level no reward
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-**** DONE [[http://clonezilla.org][how to create OS images]]
-***** чрезвычайно важно освоить сейчас, чтобы потом не было
-огроменной траты времени на переустановку всей
-системы
-***** максимум 1час в день
-:PROPERTIES:
-:CREATED:  [2020-07-24 Fri 07:50]
-:END:
-")))
-    ))
 ;; /my orgmode dynamic blocks
 
 
-(use-package org-pomodoro
-  :init
-  (setq org-pomodoro-short-break-length 5
-	org-pomodoro-length 15
-	org-pomodoro-manual-break t
-	)
-  (defun my-org-pomodoro/prompt-for-worksession-duration (&optional arg)
-    "docstring"
-    (interactive "P")
-    (if (not (org-pomodoro-active-p))
-	(let* (
-	   (default-minutes (list "5" "10" "15" "20" "25" "30"))
-	   (default-pomodoro-duration org-pomodoro-length)
-	   (chosen-duration org-pomodoro-length)
-	   )
-      (setq chosen-duration (string-to-number (ivy-read "enter duration: " default-minutes)))
-      (setq org-pomodoro-length chosen-duration)
-      (org-pomodoro arg)
-      (setq org-pomodoro-length default-pomodoro-duration)
-      )
-      (org-pomodoro arg)
-      )
-    )
-  )
-(define-key global-map (kbd "C-c p") 'my-org-pomodoro/prompt-for-worksession-duration)
+;; (use-package org-pomodoro
+;;   :init
+;;   (setq org-pomodoro-short-break-length 5
+;; 	org-pomodoro-length 15
+;; 	org-pomodoro-manual-break t
+;; 	)
+;;   (defun my-org-pomodoro/prompt-for-worksession-duration (&optional arg)
+;;     "docstring"
+;;     (interactive "P")
+;;     (if (not (org-pomodoro-active-p))
+;; 	(let* (
+;; 	   (default-minutes (list "5" "10" "15" "20" "25" "30"))
+;; 	   (default-pomodoro-duration org-pomodoro-length)
+;; 	   (chosen-duration org-pomodoro-length)
+;; 	   )
+;;       (setq chosen-duration (string-to-number (ivy-read "enter duration: " default-minutes)))
+;;       (setq org-pomodoro-length chosen-duration)
+;;       (org-pomodoro arg)
+;;       (setq org-pomodoro-length default-pomodoro-duration)
+;;       )
+;;       (org-pomodoro arg)
+;;       )
+;;     )
+;;   )
+;;(define-key global-map (kbd "C-c p") 'my-org-pomodoro/prompt-for-worksession-duration)
 
 
 (defun my/windower-toggle-single ()
@@ -2259,4 +2104,34 @@ configuration was previously save, restore that configuration."
       (sticky-window-delete-other-windows)))
     )
 (require 'org-branch)
-(org-dynamic-block-define "update-progress" 'org-dblock-write:update-progress)
+;;(org-dynamic-block-define "update-progress" 'org-dblock-write:update-progress)
+
+
+(defun my/create-tmp-buffer ()
+  "docstring"
+  (interactive)
+
+  (let* (
+	 (files (list "/data/Sync/org/atomoxetine_research.org"))
+	 (tmpbuf nil)
+	 )
+    (save-excursion
+      (find-file "/data/Sync/org/atomoxetine_research.org")
+      (when (buffer-narrowed-p) (widen) )
+      (goto-char (point-min))
+      (if
+	  ;;(buffer-substring (line-beginning-position)(line-end-position))
+	  (if
+	   (string-match "[0-9]" (org-element-property :title (org-element-at-point))))
+	  
+	  )
+      
+   x )
+  
+    )
+  )
+
+
+(define-key org-agenda-mode-map (kbd "C-<down>") 'org-agenda-later)
+(define-key org-agenda-mode-map (kbd "C-<up>") 'org-agenda-earlier)
+;;(add-hook 'org-timer-done-hook ')

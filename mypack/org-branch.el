@@ -1,7 +1,9 @@
 (require 'my-week-day-based-habits)
 
-(defun my/count-last-todo-states-streak-within-logbook (id todo-state)
+(defun my/count-last-todo-states-streak-within-logbook (todo-state &optional id)
   "counts last `TODO-STATE' streak within a logbook of a specified (via `ID') heading
+if `ID' is not specified, takes heading at point
+`TODO-STATE' is a `string'
 "
   (require 'loop)
   (let*
@@ -11,7 +13,7 @@
        )
       (save-excursion
     ;; goto heading with id specified in argument
-	(org-id-goto id)
+	(if id (org-id-goto id))
 	(setq logbook-beg (org-log-beginning t))
     
     ;;goto logbook of this heading
@@ -60,5 +62,41 @@
     )
       streak
   )
-)
+  )
+
+(defun org-dblock-write:last-streaks (params)
+  (require 'loop)
+  (let* (
+	 ;; EXAMPLE OF EXTRACTING PARAMS (fmt (or (plist-get params :format) "%d. %m. %Y"))
+	 
+	 (file  (or (plist-get params :file) regular) )
+	 (string-to-insert "")
+	)
+    (save-window-excursion
+     (save-excursion
+      (find-file file)
+      (widen)
+      (goto-char (point-min))
+
+      (loop-while (outline-next-heading)
+	(if (eq (org-entry-get nil "count-last-streak") nil)
+	    (loop-continue)
+	  (setq string-to-insert
+		(concat string-to-insert
+			(org-element-property :title (org-element-at-point))
+			": "
+			(number-to-string(my/count-last-todo-states-streak-within-logbook "DONE"))
+			"\n"
+			))
+	  )
+
+	)
+      ;;(org-element-property :count-last-streak (org-element-at-point))
+      ;;(previous-buffer)
+
+      ))
+    (insert string-to-insert)
+    )
+  )
+
 (provide 'org-branch)

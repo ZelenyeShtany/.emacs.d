@@ -20,7 +20,7 @@
 (setq statistics-property-name ":STATISTICS:")
 
 (defun my/org-insert-to-logbook (string)
-  "Insert STRING at the beginning of LOGBOOK drawer.
+  "Insert STRING at the beginning of LOGBOOK drawer which belongs to org heading at point.
 Create it if it doesnt exist"
   (save-excursion
 	    (goto-char (org-log-beginning t)) ;; goto LOGBOOK drawer beginning; if it doesnt exist, create

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("data"
+(("org-refile-last-stored"
+ (filename . "/data/Sync/org/atomoxetine_research.org")
+ (front-context-string . "** 70 день (100m")
+ (rear-context-string . "t:\nТо же самое.\n")
+ (position . 36045))
+("data"
  (filename . "/data/")
  (front-context-string . "$RECYCLE.BIN\n  d")
  (rear-context-string . " 0 Қаң  2  2020 ")
@@ -113,8 +118,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/exercises tracker/2020/data.json")
- (front-context-string)
- (rear-context-string . "ренности\"]\n]\n\n}\n")
- (position . 1365))
+ (filename . "/data/Sync/org/notes.org")
+ (front-context-string . "**** настроить c")
+ (rear-context-string . "9-30 Wed 11:30>\n")
+ (position . 127117))
 )

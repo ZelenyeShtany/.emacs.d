@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- org-dynamic-block-insert-dblock
- org-agenda
- org-mode
- fundamental-mode
- edebug-defun
- ag
+ tetris
+ snake
+ bubbles
+ handwrite
+ 5x5
  counsel-org-capture
+ eval-buffer
 )
 
 ;; ----- smex-data -----
@@ -16,9 +16,9 @@
  (org-ql-view . 25)
  (package-list-packages . 8)
  (package-delete . 5)
- (org-ql-search . 49)
+ (org-ql-search . 51)
  (org-cycle-agenda-files . 1)
- (org-agenda . 15)
+ (org-agenda . 17)
  (org-todo . 3)
  (image-toggle-display . 2)
  (org-redisplay-inline-images . 1)
@@ -76,7 +76,7 @@
  (doctor . 1)
  (org-sidebar . 2)
  (org-sidebar-toggle . 4)
- (org-sparse-tree . 1)
+ (org-sparse-tree . 6)
  (org-sidebar-tree . 20)
  (org-sidebar-tree-toggle . 17)
  (list-load-path-shadows . 1)
@@ -195,7 +195,7 @@
  (emacs-init-time . 106)
  (emacs-uptime . 1)
  (debug . 5)
- (check-parens . 14)
+ (check-parens . 15)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 2)
@@ -267,13 +267,13 @@
  (avy-copy-line . 1)
  (avy-goto-char . 2)
  (counsel-brain . 1)
- (windower-swap-right . 1)
+ (windower-swap-right . 4)
  (windower-toggle-split . 1)
  (windower-move-border-above . 1)
  (find-variable-other-frame . 1)
  (highlight-symbol-mode . 12)
  (ido-switch-buffer . 1)
- (ag . 27)
+ (ag . 28)
  (debug-on-entry . 1)
  (xref-find-definitions-other-frame . 1)
  (other-window . 2)
@@ -387,7 +387,7 @@
  (powerline-default-theme . 3)
  (emacs-lisp-mode . 8)
  (org-insert-heading-respect-content . 1)
- (org-time-stamp-inactive . 2)
+ (org-time-stamp-inactive . 3)
  (my/get-approppriate-location-to-insert . 42)
  (find-face-definition . 1)
  (xref-find-references . 1)
@@ -412,7 +412,7 @@
  (org-ql-view-todo . 2)
  (helm-org-ql-views . 1)
  (helm-org-ql . 1)
- (org-copy-subtree . 2)
+ (org-copy-subtree . 5)
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 182)
+ (tetris . 205)
  (tetris-start-game . 30)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -447,18 +447,30 @@
  (org-timestamp-up-day . 3)
  (my/kkk . 11)
  (my/count-done-records . 13)
- (org-clock-report . 2)
+ (org-clock-report . 3)
  (org-cut-subtree . 2)
  (org-paste-subtree . 2)
- (org-pomodoro . 3)
+ (org-pomodoro . 4)
  (org-agenda-file-to-front . 2)
  (org-timer . 1)
  (org-toggle-sticky-agenda . 2)
  (pin-window . 13)
- (toggle-pin-window . 19)
+ (toggle-pin-window . 28)
  (windower-swap . 1)
  (org-mark-subtree . 1)
  (view-mode . 3)
- (org-dynamic-block-insert-dblock . 6)
+ (org-dynamic-block-insert-dblock . 12)
  (org-narrow-to-block . 2)
+ (org-ql-sparse-tree . 3)
+ (my/create-tmp-buffer . 6)
+ (org-agenda-bulk-mark . 1)
+ (org-agenda-bulk-mark-regexp . 8)
+ (org-agenda-refile . 2)
+ (org-agenda-bulk-action . 7)
+ (display-time . 1)
+ (5x5 . 1)
+ (handwrite . 1)
+ (bubbles . 1)
+ (snake . 2)
+ (org-agenda-clockreport-mode . 2)
 )
