@@ -41,6 +41,7 @@
      ("csv" . "konsole -e visidata")
      ("html" . "google-chrome")
      ("mp4" . "mpv")
+     ("avi" . "mpv")
      ("mp3" . "clementine")
      ("ogg" . "clementine")
      ("opus" . "clementine")
@@ -247,7 +248,7 @@
       :super-groups org-super-agenda-groups)))
  '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -573,6 +574,19 @@ There are two things you can do about this warning:
       count
     )
     )
+
+  (defun my/toggle-org-columns ()
+    "docstring"
+    (interactive)
+
+    (if (and (boundp 'org-columns-current-fmt)
+	     (not (eq org-columns-current-fmt nil))
+	     )
+	(org-columns-quit)
+      (org-columns)
+      )
+    )
+  
   (defun my/org-headline-return ()
     "docstring"
     (interactive)
@@ -616,6 +630,16 @@ There are two things you can do about this warning:
       (org-return)
       )
       )
+
+  (defun my/org-clock-in (arg)
+    "Clocks into a task at point if in org-mode, 
+or calls a menu of last clocked tasks to choose"
+    (interactive "P")
+    (if (derived-mode-p 'org-mode)
+	(org-clock-in)
+      (org-clock-in '(4))
+      )
+    )
   
   (defun my/copy-id-to-clipboard()
        (interactive)
@@ -623,9 +647,23 @@ There are two things you can do about this warning:
 	 (setq mytmpid (concat "id:" (funcall 'org-id-get-create)))
 	 (kill-new mytmpid)
 	 (message "Copied %s to killring (clipboard)" mytmpid)
-       ))
-  
+	 ))
+
+  ;; time tracking
+  ;; Resume clocking task when emacs is restarted
+  (org-clock-persistence-insinuate)
+  ;; /time tracking
   (setq
+   ;; time tracking
+   ;; Save the running clock and all clock history when exiting Emacs, load it on startup
+   org-clock-persist t
+   ;; Resume clocking task on clock-in if the clock is open
+   org-clock-in-resume t
+   ;; Do not prompt to resume an active clock, just resume it
+   org-clock-persist-query-resume nil
+   ;; /time tracking
+   org-enforce-todo-dependencies t
+   engl (concat data-folder-path "Sync/org/engl.org")
    notes (concat data-folder-path "Sync/org/notes.org")
    regular (concat data-folder-path "Sync/org/regular.org")
    todos (concat data-folder-path "Sync/org/todos.org")
@@ -739,7 +777,8 @@ There are two things you can do about this warning:
      ;;  "* IDEA %?")
      ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
      ;; "* frombroser: %a" :immediate-finish t)
-
+     ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
+      "* %?")
 
      ("H" "Habits Tracker" plain (file habits-tracker )
       (function (lambda () (interactive) (my/json-habits habits-tracker))) :immediate-finish t
@@ -788,6 +827,8 @@ There are two things you can do about this warning:
 (require 'org-download)
 (require 'my-week-day-based-habits)
 :bind (:map org-mode-map
+	      ("C-c C-x C-c" . 'my/toggle-org-columns)
+	      ;;("C-c C-x C-i" . 'my/org-clock-in)
 	      ("C-<RET>" . 'org-return)
 	      ("C-c n" . 'org-add-note)
 	      ("<f5>" . 'my/copy-id-to-clipboard)
@@ -803,10 +844,12 @@ There are two things you can do about this warning:
 	      ("C-c 3" . (lambda() (interactive) (my-insert-into-table "TODO")))
 	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))
 	      :map global-map 
+	      ;;("C-c C-x C-i" . 'my/org-clock-in)
+	      ("C-c C-x C-o" . 'org-clock-out)
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	 )
-
+)
 ;; <using key bindings while on russian keyboard layout>
 (use-package reverse-im
   :ensure t
@@ -927,6 +970,7 @@ There are two things you can do about this warning:
 				     ("\\.pdf\\'" "okular")
 				     ("\\.mp4\\'" "mpv")
 				     ("\\.mkv\\'" "mpv")
+				     ("\\.avi\\'" "mpv")
 				     ))
   ;;(setq dired-dwim-target t)
 
@@ -2135,3 +2179,30 @@ configuration was previously save, restore that configuration."
 (define-key org-agenda-mode-map (kbd "C-<down>") 'org-agenda-later)
 (define-key org-agenda-mode-map (kbd "C-<up>") 'org-agenda-earlier)
 ;;(add-hook 'org-timer-done-hook ')
+
+(global-so-long-mode);; for long-line files performance improvement
+
+;; showing that window is dedicated in the modeline
+;; (setq mode-line-misc-info
+;;       (cons '(:eval (if (window-dedicated-p) "DEDICATED" "NOT-DEDICATED")) mode-line-misc-info))
+
+;;(push "TEST" global-mode-string)
+
+;; time tracking
+(use-package org-mru-clock
+  :ensure t
+  ;;:defer t
+  :bind (
+	 :map org-mode-map
+	 ("C-c C-x C-i" . 'org-mru-clock-in)
+	 :map global-map
+	 ("C-c C-x C-i" . 'org-mru-clock-in)
+	 )
+  :commands (org-mru-clock-in org-mru-clock-select-recent-task)
+  :config
+  (setq org-mru-clock-how-many 50
+        ;;;;;;;;;;;;;; Also possible: #'ido-completing-read
+        org-mru-clock-completing-read #'ivy-completing-read))
+;; /time tracking
+
+

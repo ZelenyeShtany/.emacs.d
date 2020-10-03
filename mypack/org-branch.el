@@ -84,9 +84,12 @@ if `ID' is not specified, takes heading at point
 	  (setq string-to-insert
 		(concat string-to-insert
 			(org-element-property :title (org-element-at-point))
-			": "
+			": ("
 			(number-to-string(my/count-last-todo-states-streak-within-logbook "DONE"))
-			"\n"
+			"/"
+			(org-entry-get nil "streak-to-achieve")
+			;;(org-element-property :streak-to-achieve (org-element-at-point))
+			")\n"
 			))
 	  )
 
@@ -99,4 +102,64 @@ if `ID' is not specified, takes heading at point
     )
   )
 
-(provide 'org-branch)
+;; find-file-after-hook
+(setq my/org-mmo-heading "MMO-like development branches")
+(defun my/org-branch-main ()
+  "docstring"
+  ;;(interactive)
+  (require 'loop)
+  (when (string= (car (reverse (split-string (buffer-file-name) "/"))) "brench.org")
+    (save-excursion
+     (let*
+	(
+	 (mmo-heading-point
+	  (progn
+	    ;; допустим мы в файле brench.organization
+	    (widen)
+	    (goto-char (point-min))
+	    (while (not (string= (org-element-property :title (org-element-at-point)) my/org-mmo-heading))
+	      (outline-next-heading)
+	      (point)
+	      ))
+	  )
+	 (branches
+	  (org-map-entries 'org-element-at-point
+			   (concat "LEVEL="
+				   (number-to-string
+				    (1+ (org-element-property :level (org-element-at-point)))
+				    ))
+			   'tree )
+	  )
+	 )
+      (org-narrow-to-subtree)
+      (while (not (eobp))
+	(outline-next-heading)
+	(if (and
+	     
+	     (not (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE"))
+	     (not (eq (org-entry-get nil "ACTION" nil) nil))
+	     (not (eq (org-entry-get nil "streak-to-achieve" nil) nil))
+	     )
+	    (progn (org-entry-put nil "current-streak" 
+				  (number-to-string
+				   (my/count-last-todo-states-streak-within-logbook
+				    "DONE"
+				    (org-entry-get nil "ACTION" nil)
+				    )))
+		   (if (eq (string-to-number
+			    (org-entry-get nil "streak-to-achieve" nil)
+			    )
+			   (string-to-number
+			    (org-entry-get nil "current-streak" nil)
+			    )
+			   )
+		       (org-entry-put nil "TODO" "DONE")
+		       )
+		   )
+	  )
+	)
+      (widen)
+      (goto-char (point-min))
+      )))
+  (point)
+  )(provide 'org-branch)

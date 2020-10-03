@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ emacs-init-time
+ toggle-pin-window-minor-mode
  tetris
- snake
- bubbles
- handwrite
- 5x5
- counsel-org-capture
- eval-buffer
+ customize-group
+ org-superstar-mode
+ org-search-view
+ ag
 )
 
 ;; ----- smex-data -----
@@ -126,7 +126,7 @@
  (counsel-load-theme . 5)
  (counsel-yank-pop . 1)
  (counsel-ag . 100)
- (counsel-package . 166)
+ (counsel-package . 167)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 104)
@@ -169,7 +169,7 @@
  (ivy-rich-mode . 1)
  (dired-open-subdir . 1)
  (workgroups-mode . 4)
- (customize-group . 3)
+ (customize-group . 4)
  (wg-switch-to-workgroup-left . 3)
  (follow-mode . 2)
  (define-abbrevs . 2)
@@ -192,10 +192,10 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 106)
+ (emacs-init-time . 110)
  (emacs-uptime . 1)
  (debug . 5)
- (check-parens . 15)
+ (check-parens . 16)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 2)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 8)
  (eval-buffer . 250)
- (org-mode . 17)
+ (org-mode . 18)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -246,7 +246,7 @@
  (dimmer-mode . 13)
  (edebug-stop . 4)
  (edebug-mode . 1)
- (edebug-defun . 115)
+ (edebug-defun . 126)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 1)
  (my/show-scheduling-amendments-status . 2)
@@ -273,7 +273,7 @@
  (find-variable-other-frame . 1)
  (highlight-symbol-mode . 12)
  (ido-switch-buffer . 1)
- (ag . 28)
+ (ag . 29)
  (debug-on-entry . 1)
  (xref-find-definitions-other-frame . 1)
  (other-window . 2)
@@ -305,7 +305,7 @@
  (avy-goto-line . 1)
  (avy-org-goto-heading-timer . 2)
  (avy-goto-char-timer . 6)
- (org-archive-subtree . 3)
+ (org-archive-subtree . 4)
  (diredp-rename-this-file . 1)
  (org-agenda-todo . 1)
  (diredp-do-search-recursive . 1)
@@ -394,7 +394,7 @@
  (multiple-cursors-mode . 1)
  (helm-colors . 3)
  (scroll-bar-mode . 1)
- (widen . 40)
+ (widen . 43)
  (org-narrow-to-element . 4)
  (org-version . 2)
  (counsel-org-tag . 1)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 205)
+ (tetris . 325)
  (tetris-start-game . 30)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -447,7 +447,7 @@
  (org-timestamp-up-day . 3)
  (my/kkk . 11)
  (my/count-done-records . 13)
- (org-clock-report . 3)
+ (org-clock-report . 5)
  (org-cut-subtree . 2)
  (org-paste-subtree . 2)
  (org-pomodoro . 4)
@@ -455,12 +455,12 @@
  (org-timer . 1)
  (org-toggle-sticky-agenda . 2)
  (pin-window . 13)
- (toggle-pin-window . 28)
+ (toggle-pin-window . 36)
  (windower-swap . 1)
  (org-mark-subtree . 1)
  (view-mode . 3)
- (org-dynamic-block-insert-dblock . 12)
- (org-narrow-to-block . 2)
+ (org-dynamic-block-insert-dblock . 14)
+ (org-narrow-to-block . 3)
  (org-ql-sparse-tree . 3)
  (my/create-tmp-buffer . 6)
  (org-agenda-bulk-mark . 1)
@@ -472,5 +472,14 @@
  (handwrite . 1)
  (bubbles . 1)
  (snake . 2)
- (org-agenda-clockreport-mode . 2)
+ (org-agenda-clockreport-mode . 3)
+ (global-so-long-mode . 1)
+ (org-indent-mode . 7)
+ (dedicated-window-mode . 2)
+ (toggle-pin-window-minor-mode . 8)
+ (my/org-branch-main . 7)
+ (so-long-minor-mode . 1)
+ (org-columns-quit . 4)
+ (org-search-view . 1)
+ (org-superstar-mode . 1)
 )

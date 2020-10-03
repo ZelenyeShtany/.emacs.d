@@ -28,9 +28,10 @@ A prefix arg reverses this operation."
   (interactive)
   (set-window-dedicated-p (selected-window) (not current-prefix-arg)))
 
+;;doesnt work: (push (if (window-dedicated-p) "DEDICATED" "//") global-mode-string) 
+
 ;;;###autoload
 (defun my/sticky-window-toggle-keep-window-visible ()
-  (interactive)
   (if (window-dedicated-p (selected-window))
       (set-window-dedicated-p (selected-window) nil)
     (set-window-dedicated-p (selected-window) t)
@@ -64,6 +65,14 @@ with `sticky-window-keep-window-visible'."
 	    (cdr (window-list)))))
 
 (defalias 'toggle-pin-window 'my/sticky-window-toggle-keep-window-visible)
+
+
+(define-minor-mode toggle-pin-window-minor-mode
+  "Get your foos in the right places."
+  :lighter " PINNED"
+  ;; code below executes whenever this minor mode turns off or on
+  (toggle-pin-window)
+  )
 
 (provide 'sticky-windows)
 

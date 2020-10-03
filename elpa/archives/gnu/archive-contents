@@ -650,7 +650,7 @@
 	      (:maintainer "Markus Triska" . "triska@metalevel.at")
 	      (:url . "https://www.metalevel.at/ediprolog/"))])
  (eev .
-      [(20200224)
+      [(20200928)
        ((emacs
 	 (24 1)))
        "Support for e-scripts (eepitch blocks, elisp hyperlinks, etc)" tar
@@ -764,13 +764,13 @@
 		    ("Matthew L. Fidler" . "matthew.fidler@gmail.com"))
 		   (:keywords "convenience"))])
  (excorporate .
-	      [(0 8 3)
+	      [(0 9 0)
 	       ((emacs
 		 (24 1))
 		(fsm
 		 (0 2 1))
 		(soap-client
-		 (3 1 5))
+		 (3 2 0))
 		(url-http-ntlm
 		 (2 0 4))
 		(nadvice
@@ -1524,7 +1524,7 @@
 		   ("Eric Abrahamsen" . "eric@ericabrahamsen.net"))
 		  (:maintainer "Eric Abrahamsen" . "eric@ericabrahamsen.net"))])
  (orgalist .
-	   [(1 12)
+	   [(1 13)
 	    ((emacs
 	      (24 4)))
 	    "Manage Org-like lists in non-Org buffers" single
@@ -1880,7 +1880,7 @@
 		   ("Yoni Rabkin" . "yrk@gnu.org"))
 		  (:keywords "rt" "tickets"))])
  (rudel .
-	[(0 3 1)
+	[(0 3 2)
 	 ((emacs
 	   (24))
 	  (cl-lib
@@ -1939,7 +1939,7 @@
 	     ("Michael R. Mauger" . "michael@mauger.com"))
 	    (:maintainer "Michael R. Mauger" . "michael@mauger.com"))])
  (shell-command+ .
-		 [(1 0 3)
+		 [(2 0 0)
 		  ((emacs
 		    (24 1)))
 		  "An extended shell-command" tar
@@ -2017,7 +2017,7 @@
 	    (:maintainer "Phil Sainty" . "psainty@orcon.net.nz")
 	    (:url . "https://savannah.nongnu.org/projects/so-long"))])
  (soap-client .
-	      [(3 1 5)
+	      [(3 2 0)
 	       ((cl-lib
 		 (0 6 1)))
 	       "Access SOAP web services" tar

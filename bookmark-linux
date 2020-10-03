@@ -2,26 +2,26 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
- (filename . "/data/Sync/org/atomoxetine_research.org")
- (front-context-string . "** 70 день (100m")
- (rear-context-string . "t:\nТо же самое.\n")
- (position . 36045))
+(("torrents"
+ (filename . "/data/Torrents/")
+ (front-context-string . "Green.Book.2018.")
+ (rear-context-string . "96 Қаз  1 22:29 ")
+ (position . 466))
+("engl"
+ (filename . "/data/Sync/org/engl.org")
+ (front-context-string . "#+TODO: TOSTUDY(")
+ (rear-context-string)
+ (position . 1))
+("org-refile-last-stored"
+ (filename . "/data/Sync/org/brench.org")
+ (front-context-string . "** general it sk")
+ (rear-context-string . "de-sublevels 1)\n")
+ (position . 14551))
 ("data"
  (filename . "/data/")
  (front-context-string . "$RECYCLE.BIN\n  d")
  (rear-context-string . " 0 Қаң  2  2020 ")
  (position . 207))
-("discr"
- (filename . "/data/Sync/org/discrmath.org")
- (front-context-string . "ODO: TODO(1) | R")
- (rear-context-string)
- (position . 4))
-("timetracker"
- (filename . "/data/Sync/org/timetracker.org")
- (front-context-string . "iscrete maths\n:P")
- (rear-context-string)
- (position . 4))
 ("regulars"
  (filename . "/data/Sync/org/regular.org")
  (front-context-string . "#+TODO: TODO(1) ")
@@ -119,7 +119,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** настроить c")
- (rear-context-string . "9-30 Wed 11:30>\n")
- (position . 127117))
+ (front-context-string . "**** elisp codin")
+ (rear-context-string . "fix it, repeat.\n")
+ (position . 131305))
 )
