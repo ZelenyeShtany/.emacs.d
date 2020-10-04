@@ -173,6 +173,16 @@
      (gnus . org-gnus-no-new-news)
      (file . find-file-other-frame)
      (wl . wl-other-frame)))
+ '(org-log-note-headings
+   '((done . "CLOSING NOTE %t")
+     (state . "State %-12s from %-12S %e")
+     (note . "Note taken on %t")
+     (reschedule . "Rescheduled from %S on %t")
+     (delschedule . "Not scheduled, was %S on %t")
+     (redeadline . "New deadline from %S on %t")
+     (deldeadline . "Removed deadline, was %S on %t")
+     (refile . "Refiled on %t")
+     (clock-out . "")))
  '(org-modules
    '(ol-bbdb ol-bibtex ol-docview ol-eww ol-gnus ol-info ol-irc ol-mhe ol-rmail ol-w3m org-collector))
  '(org-ql-views
@@ -249,6 +259,20 @@
  '(org-read-date-prefer-future nil)
  '(package-selected-packages
    '(org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+ '(safe-local-variable-values
+   '((eval progn
+	   (org-babel-goto-named-src-block "update-content")
+	   (org-babel-execute-src-block)
+	   (org-update-all-dblocks)
+	   (save-buffer))
+     (eval progn
+	   (org-babel-goto-named-src-block "update-content")
+	   (org-babel-execute-src-block)
+	   (save-buffer))
+     (eval progn
+	   (org-babel-goto-named-src-block "update-content")
+	   (org-babel-execute-src-block))
+     (org-confirm-babel-evaluate)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
@@ -558,6 +582,11 @@ There are two things you can do about this warning:
   ;;  (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
   ;;  (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
   ;;  (prettify-symbols-mode)))
+
+  ;; redefined for custom %-escapes.
+  ;; For example, 
+  
+  
   (defun my/number-of-spaces-at-point(point)
     "docstring"
     (interactive)
@@ -728,7 +757,8 @@ or calls a menu of last clocked tasks to choose"
      ("NSTU")
      ("compression")
      ("podcasts")
-     
+
+     ("buy")
      ("important")
      ("book")
      ("sobering")
@@ -827,6 +857,7 @@ or calls a menu of last clocked tasks to choose"
 (require 'org-download)
 (require 'my-week-day-based-habits)
 :bind (:map org-mode-map
+	      ("C-c f" . 'org-search-view)
 	      ("C-c C-x C-c" . 'my/toggle-org-columns)
 	      ;;("C-c C-x C-i" . 'my/org-clock-in)
 	      ("C-<RET>" . 'org-return)
@@ -845,7 +876,9 @@ or calls a menu of last clocked tasks to choose"
 	      ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))
 	      :map global-map 
 	      ;;("C-c C-x C-i" . 'my/org-clock-in)
+	      ("C-c f" . 'org-search-view)
 	      ("C-c C-x C-o" . 'org-clock-out)
+	      ("C-c C-x C-q" . 'org-clock-cancel)
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	 )
@@ -2206,3 +2239,127 @@ configuration was previously save, restore that configuration."
 ;; /time tracking
 
 
+;; NEW
+;;(org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point)))
+;;(parse-time-string (org-entry-get nil "SCHEDULED"))
+;;(parse-time-string (org-get-scheduled-time nil))
+;; /NEW
+;; (setq myal (state . (concat "State %-12s from %-12S "
+;; 			    (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point)))
+;; 			    )
+;; 		  ))
+
+      ;;org-add-log-setup for custom org-add-note
+
+(with-eval-after-load "org"
+
+ (defun org-store-log-note ()
+    "Finish taking a log note, and insert it to where it belongs.
+ATTENTION
+This is redefined version of this function. I've redefined it for custom %-escapes.
+My custom %-escapes:
+%e - previous SCHEDULED timestamp, format: '[%Y-%m-%d %a]'
+"
+    (let ((txt (prog1 (buffer-string)
+		 (kill-buffer)))
+	  (note (cdr (assq org-log-note-purpose org-log-note-headings)))
+	  lines)
+      (while (string-match "\\`# .*\n[ \t\n]*" txt)
+	(setq txt (replace-match "" t t txt)))
+      (when (string-match "\\s-+\\'" txt)
+	(setq txt (replace-match "" t t txt)))
+      (setq lines (and (not (equal "" txt)) (org-split-string txt "\n")))
+      (when (org-string-nw-p note)
+	(setq note
+	      (org-replace-escapes
+	       note
+	       (list
+		(cons "%e" (if (not my/org-previous-scheduled-time) (org-format-time-string "[%Y-%m-%d %a]" (org-get-scheduled-time (point)))
+			     my/org-previous-scheduled-time
+			     ))
+		(cons "%u" (user-login-name))
+		(cons "%U" user-full-name)
+		(cons "%t" (format-time-string
+			    (org-time-stamp-format 'long 'inactive)
+			    org-log-note-effective-time))
+		(cons "%T" (format-time-string
+			    (org-time-stamp-format 'long nil)
+			    org-log-note-effective-time))
+		(cons "%d" (format-time-string
+			    (org-time-stamp-format nil 'inactive)
+			    org-log-note-effective-time))
+		(cons "%D" (format-time-string
+			    (org-time-stamp-format nil nil)
+			    org-log-note-effective-time))
+		(cons "%s" (cond
+			    ((not org-log-note-state) "")
+			    ((string-match-p org-ts-regexp
+					     org-log-note-state)
+			     (format "\"[%s]\""
+				     (substring org-log-note-state 1 -1)))
+			    (t (format "\"%s\"" org-log-note-state))))
+		(cons "%S"
+		      (cond
+		       ((not org-log-note-previous-state) "")
+		       ((string-match-p org-ts-regexp
+					org-log-note-previous-state)
+			(format "\"[%s]\""
+				(substring
+				 org-log-note-previous-state 1 -1)))
+		       (t (format "\"%s\""
+				  org-log-note-previous-state)))))))
+	(when lines (setq note (concat note " \\\\")))
+	(push note lines))
+      (when (and lines (not org-note-abort))
+	(with-current-buffer (marker-buffer org-log-note-marker)
+	  (org-with-wide-buffer
+	   ;; Find location for the new note.
+	   (goto-char org-log-note-marker)
+	   (set-marker org-log-note-marker nil)
+	   ;; Note associated to a clock is to be located right after
+	   ;; the clock.  Do not move point.
+	   (unless (eq org-log-note-purpose 'clock-out)
+	     (goto-char (org-log-beginning t)))
+	   ;; Make sure point is at the beginning of an empty line.
+	   (cond ((not (bolp)) (let ((inhibit-read-only t)) (insert "\n")))
+		 ((looking-at "[ \t]*\\S-") (save-excursion (insert "\n"))))
+	   ;; In an existing list, add a new item at the top level.
+	   ;; Otherwise, indent line like a regular one.
+	   (let ((itemp (org-in-item-p)))
+	     (if itemp
+		 (indent-line-to
+		  (let ((struct (save-excursion
+				  (goto-char itemp) (org-list-struct))))
+		    (org-list-get-ind (org-list-get-top-point struct) struct)))
+	       (org-indent-line)))
+	   (insert (org-list-bullet-string "-") (pop lines))
+	   (let ((ind (org-list-item-body-column (line-beginning-position))))
+	     (dolist (line lines)
+	       (insert "\n")
+	       (indent-line-to ind)
+	       (insert line)))
+	   (message "Note stored")
+	   (org-back-to-heading t))
+	  ;; Fix `buffer-undo-list' when `org-store-log-note' is called
+	  ;; from within `org-add-log-note' because `buffer-undo-list'
+	  ;; is then modified outside of `org-with-remote-undo'.
+	  (when (eq this-command 'org-agenda-todo)
+	    (setcdr buffer-undo-list (cddr buffer-undo-list))))))
+    ;; Don't add undo information when called from `org-agenda-todo'.
+    (let ((buffer-undo-list (eq this-command 'org-agenda-todo)))
+      (set-window-configuration org-log-note-window-configuration)
+      (with-current-buffer (marker-buffer org-log-note-return-to)
+	(goto-char org-log-note-return-to))
+      (move-marker org-log-note-return-to nil)
+      (when org-log-post-message (message "%s" org-log-post-message)))))
+
+(setq my/org-previous-scheduled-time nil)
+(defun my/org-set-previous-scheduled-time (&rest args)
+  "Remembers previous scheduled
+time into `my/org-previous-scheduled-time'
+as a inactive timestamp string '[%Y-%m-%d %a]'"
+  (interactive "P")
+  (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d %a]" (org-get-scheduled-time (point))))
+  )
+(advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
+(advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)

@@ -2383,7 +2383,7 @@ When nil, only the date will be recorded."
 
 (defcustom org-log-note-headings
   '((done .  "CLOSING NOTE %t")
-    (state . "State %-12s from %-12S %t")
+    (state . "State %-12s from %-12S %s")
     (note .  "Note taken on %t")
     (reschedule .  "Rescheduled from %S on %t")
     (delschedule .  "Not scheduled, was %S on %t")

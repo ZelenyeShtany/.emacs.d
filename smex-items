@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  emacs-init-time
- toggle-pin-window-minor-mode
+ customize
  tetris
- customize-group
- org-superstar-mode
  org-search-view
- ag
+ toggle-pin-window-minor-mode
+ counsel-org-capture
+ eval-buffer
 )
 
 ;; ----- smex-data -----
@@ -50,7 +50,7 @@
  (diff-buffer-with-file . 1)
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 14)
- (customize . 39)
+ (customize . 40)
  (regexp-builder . 49)
  (server-start . 1)
  (auto-fill-mode . 6)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 110)
+ (emacs-init-time . 111)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 16)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 325)
+ (tetris . 378)
  (tetris-start-game . 30)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -459,7 +459,7 @@
  (windower-swap . 1)
  (org-mark-subtree . 1)
  (view-mode . 3)
- (org-dynamic-block-insert-dblock . 14)
+ (org-dynamic-block-insert-dblock . 15)
  (org-narrow-to-block . 3)
  (org-ql-sparse-tree . 3)
  (my/create-tmp-buffer . 6)
@@ -480,6 +480,9 @@
  (my/org-branch-main . 7)
  (so-long-minor-mode . 1)
  (org-columns-quit . 4)
- (org-search-view . 1)
+ (org-search-view . 2)
  (org-superstar-mode . 1)
+ (org-clock-cancel . 1)
+ (org-babel-view-src-block-info . 2)
+ (org-dblock-update . 1)
 )

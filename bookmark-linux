@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("torrents"
+(("org.el"
+ (filename . "~/.emacs.d/elpa/org-9.3.6/org.el")
+ (front-context-string . "efun org-store-l")
+ (rear-context-string . "ically scoped\n(d")
+ (position . 437975))
+("brench"
+ (filename . "/data/Sync/org/brench.org")
+ (front-context-string . "#+TODO: TODO LEV")
+ (rear-context-string)
+ (position . 1))
+("discretemaths"
+ (filename . "/data/Sync/org/career.org")
+ (front-context-string . "* Discrete Mathe")
+ (rear-context-string . " logdone indent\n")
+ (position . 41))
+("torrents"
  (filename . "/data/Torrents/")
  (front-context-string . "Green.Book.2018.")
  (rear-context-string . "96 Қаз  1 22:29 ")
@@ -119,7 +134,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** elisp codin")
- (rear-context-string . "fix it, repeat.\n")
- (position . 131305))
+ (front-context-string . "**** https://yqr")
+ (rear-context-string . "un 00:56]\n:END:\n")
+ (position . 135781))
 )

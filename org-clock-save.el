@@ -1,2 +1,2 @@
-;; org-clock-save.el - zelenyeshtany-VPCEH2J1R at <2020-10-03 Sat 15:50>
-(setq org-clock-stored-history '(("/data/Sync/org/regular.org" . 9759) ("/data/Sync/org/notes.org" . 132666) ("/data/Sync/org/notes.org" . 131558) ("/data/Sync/org/test.org" . 1)))
+;; org-clock-save.el - zelenyeshtany-VPCEH2J1R at <2020-10-04 Sun 14:15>
+(setq org-clock-stored-history '(("/data/Sync/org/regular.org" . 10501) ("/data/Sync/org/notes.org" . 134926) ("/data/Sync/org/notes.org" . 133755)))
