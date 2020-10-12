@@ -1,18 +1,18 @@
 
 ;; ----- smex-history -----
 (
- emacs-init-time
- customize
+ helm-colors
+ image-decrease-size
  tetris
- org-search-view
- toggle-pin-window-minor-mode
+ tiny-expand
+ tiny-helper
+ counsel-package
  counsel-org-capture
- eval-buffer
 )
 
 ;; ----- smex-data -----
 (
- (package-install . 44)
+ (package-install . 45)
  (org-ql-view . 25)
  (package-list-packages . 8)
  (package-delete . 5)
@@ -65,7 +65,7 @@
  (dired-launch-command . 1)
  (replace-string . 8)
  (dired-hide-details-mode . 1)
- (line-number-mode . 2)
+ (line-number-mode . 4)
  (comment-line . 1)
  (org-recur-finish . 55)
  (ace-window . 2)
@@ -123,13 +123,13 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 5)
+ (counsel-load-theme . 11)
  (counsel-yank-pop . 1)
  (counsel-ag . 100)
- (counsel-package . 167)
+ (counsel-package . 180)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 104)
+ (company-mode . 105)
  (company-complete . 1)
  (counsel-org-capture . 333)
  (all-the-icons-install-fonts . 1)
@@ -225,9 +225,9 @@
  (sql-mode-menu . 1)
  (list-matching-lines . 1)
  (org-priority . 4)
- (org-cliplink . 8)
+ (org-cliplink . 20)
  (eval-buffer . 250)
- (org-mode . 18)
+ (org-mode . 19)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -246,7 +246,7 @@
  (dimmer-mode . 13)
  (edebug-stop . 4)
  (edebug-mode . 1)
- (edebug-defun . 126)
+ (edebug-defun . 132)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 1)
  (my/show-scheduling-amendments-status . 2)
@@ -265,7 +265,7 @@
  (reverse-region . 2)
  (wg-create-workgroup . 1)
  (avy-copy-line . 1)
- (avy-goto-char . 2)
+ (avy-goto-char . 3)
  (counsel-brain . 1)
  (windower-swap-right . 4)
  (windower-toggle-split . 1)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 13)
+ (fundamental-mode . 14)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -362,7 +362,7 @@
  (term-mode . 2)
  (counsel-ffdata-firefox-bookmarks . 1)
  (counsel-ffdata-firefox-history . 2)
- (shell-mode . 2)
+ (shell-mode . 3)
  (shell-script-mode . 1)
  (fill-paragraph . 1)
  (swiper-mc . 4)
@@ -392,7 +392,7 @@
  (find-face-definition . 1)
  (xref-find-references . 1)
  (multiple-cursors-mode . 1)
- (helm-colors . 3)
+ (helm-colors . 4)
  (scroll-bar-mode . 1)
  (widen . 43)
  (org-narrow-to-element . 4)
@@ -412,7 +412,7 @@
  (org-ql-view-todo . 2)
  (helm-org-ql-views . 1)
  (helm-org-ql . 1)
- (org-copy-subtree . 5)
+ (org-copy-subtree . 6)
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 378)
+ (tetris . 798)
  (tetris-start-game . 30)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -449,7 +449,7 @@
  (my/count-done-records . 13)
  (org-clock-report . 5)
  (org-cut-subtree . 2)
- (org-paste-subtree . 2)
+ (org-paste-subtree . 3)
  (org-pomodoro . 4)
  (org-agenda-file-to-front . 2)
  (org-timer . 1)
@@ -485,4 +485,19 @@
  (org-clock-cancel . 1)
  (org-babel-view-src-block-info . 2)
  (org-dblock-update . 1)
+ (run-python . 1)
+ (sh-mode . 2)
+ (org-store-link . 1)
+ (avy-goto-char-2 . 5)
+ (display-line-numbers-mode . 2)
+ (org-roam . 4)
+ (copy-to-register . 1)
+ (kill-region . 1)
+ (yank . 1)
+ (eval-print-last-sexp . 1)
+ (tiny-helper . 7)
+ (tiny-expand . 14)
+ (org-download-yank . 3)
+ (image-decrease-size . 3)
+ (org-download-clipboard . 12)
 )

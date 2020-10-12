@@ -11,3 +11,7 @@ LOGNAME=root
 1	5	cron.daily	run-parts --report /etc/cron.daily
 7	10	cron.weekly	run-parts --report /etc/cron.weekly
 @monthly	15	cron.monthly	run-parts --report /etc/cron.monthly
+
+1	5	cron.daily	/data/Sync/scripts/reading-session-stats/main.py /etc/cron.daily
+1	5	cron.daily	/data/Sync/scripts/messages-stats/export.py /etc/cron.daily
+1	5	cron.daily	/data/Sync/scripts/browsers_bookmarks_autoexport/run_export_bookmarks.sh /etc/cron.daily

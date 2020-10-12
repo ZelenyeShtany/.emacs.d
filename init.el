@@ -19,13 +19,14 @@
        ((eq system-type 'windows-nt) "D:/")
        )
       )
-
 (setq my-org-directory (concat data-folder-path "Sync/org/"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["#000000" "#8b0000" "#00ff00" "#ffa500" "#7b68ee" "#dc8cc3" "#93e0e3" "#dcdccc"])
  '(auto-revert-verbose nil)
@@ -42,6 +43,7 @@
      ("html" . "google-chrome")
      ("mp4" . "mpv")
      ("avi" . "mpv")
+     ("webm" . "mpv")
      ("mp3" . "clementine")
      ("ogg" . "clementine")
      ("opus" . "clementine")
@@ -56,7 +58,6 @@
  '(fci-rule-color "#383838")
  '(fringe-mode 0 nil (fringe))
  '(global-auto-revert-non-file-buffers t)
- '(global-display-line-numbers-mode t)
  '(helm-ff-lynx-style-map nil)
  '(help-window-select t)
  '(highlight-indent-guides-method 'character)
@@ -171,7 +172,7 @@
    '((vm . vm-visit-folder-other-frame)
      (vm-imap . vm-visit-imap-folder-other-frame)
      (gnus . org-gnus-no-new-news)
-     (file . find-file-other-frame)
+     (file . find-file)
      (wl . wl-other-frame)))
  '(org-log-note-headings
    '((done . "CLOSING NOTE %t")
@@ -258,7 +259,7 @@
       :super-groups org-super-agenda-groups)))
  '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-mind-map org-roam 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -277,6 +278,27 @@
  '(show-paren-mode t)
  '(temporary-file-directory (concat data-folder-path "org/tmp/"))
  '(tool-bar-mode nil)
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   '((20 . "#d54e53")
+     (40 . "goldenrod")
+     (60 . "#e7c547")
+     (80 . "DarkOliveGreen3")
+     (100 . "#70c0b1")
+     (120 . "DeepSkyBlue1")
+     (140 . "#c397d8")
+     (160 . "#d54e53")
+     (180 . "goldenrod")
+     (200 . "#e7c547")
+     (220 . "DarkOliveGreen3")
+     (240 . "#70c0b1")
+     (260 . "DeepSkyBlue1")
+     (280 . "#c397d8")
+     (300 . "#d54e53")
+     (320 . "goldenrod")
+     (340 . "#e7c547")
+     (360 . "DarkOliveGreen3")))
+ '(vc-annotate-very-old-color nil)
  '(web-mode-enable-current-element-highlight t)
  '(wg-emacs-exit-save-behavior nil))
 (custom-set-faces
@@ -478,7 +500,7 @@ There are two things you can do about this warning:
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (require 'ido)
      (ido-mode t)
-(load-theme 'afternoon t)
+(load-theme 'gruvbox-dark-hard t)
 
 
 
@@ -683,6 +705,15 @@ or calls a menu of last clocked tasks to choose"
   (org-clock-persistence-insinuate)
   ;; /time tracking
   (setq
+   org-file-apps
+   '(
+     (auto-mode . emacs)
+     ;;("\\.x?html?\\'" . "firefox %s")
+     ;;("\\.pdf\\'" . "evince \"%s\"")
+     ;;("\\.pdf::\\([0-9]+\\)\\'" . "evince \"%s\" -p %1")
+     ;;("\\.pdf.xoj" . "xournal %s")
+     ("\\.webm" . "mpv %s")
+     )
    ;; time tracking
    ;; Save the running clock and all clock history when exiting Emacs, load it on startup
    org-clock-persist t
@@ -759,9 +790,14 @@ or calls a menu of last clocked tasks to choose"
      ("podcasts")
 
      ("buy")
+     ("nofap")
+     ("nofap_success")
+     ("nofap_fail")
      ("important")
      ("book")
+     ("video")
      ("sobering")
+     ("sleep")
      ("motivation")
      ("cpp")
      ("health")
@@ -881,7 +917,126 @@ or calls a menu of last clocked tasks to choose"
 	      ("C-c C-x C-q" . 'org-clock-cancel)
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
-	 )
+	      )
+:config
+(defun org-store-log-note ()
+    "Finish taking a log note, and insert it to where it belongs.
+ATTENTION
+This is redefined version of this function. I've redefined it for custom %-escapes.
+My custom %-escapes:
+%e - previous SCHEDULED timestamp, format: '[%Y-%m-%d]'
+"
+    (let ((txt (prog1 (buffer-string)
+		 (kill-buffer)))
+	  (note (cdr (assq org-log-note-purpose org-log-note-headings)))
+	  lines)
+      (while (string-match "\\`# .*\n[ \t\n]*" txt)
+	(setq txt (replace-match "" t t txt)))
+      (when (string-match "\\s-+\\'" txt)
+	(setq txt (replace-match "" t t txt)))
+      (setq lines (and (not (equal "" txt)) (org-split-string txt "\n")))
+      (when (org-string-nw-p note)
+	(setq note
+	      (org-replace-escapes
+	       note
+	       (list
+		(cons "%e" (if (not my/org-previous-scheduled-time) (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point)))
+			     my/org-previous-scheduled-time
+			     ))
+		(cons "%u" (user-login-name))
+		(cons "%U" user-full-name)
+		(cons "%t" (format-time-string
+			    (org-time-stamp-format 'long 'inactive)
+			    org-log-note-effective-time))
+		(cons "%T" (format-time-string
+			    (org-time-stamp-format 'long nil)
+			    org-log-note-effective-time))
+		(cons "%d" (format-time-string
+			    (org-time-stamp-format nil 'inactive)
+			    org-log-note-effective-time))
+		(cons "%D" (format-time-string
+			    (org-time-stamp-format nil nil)
+			    org-log-note-effective-time))
+		(cons "%s" (cond
+			    ((not org-log-note-state) "")
+			    ((string-match-p org-ts-regexp
+					     org-log-note-state)
+			     (format "\"[%s]\""
+				     (substring org-log-note-state 1 -1)))
+			    (t (format "\"%s\"" org-log-note-state))))
+		(cons "%S"
+		      (cond
+		       ((not org-log-note-previous-state) "")
+		       ((string-match-p org-ts-regexp
+					org-log-note-previous-state)
+			(format "\"[%s]\""
+				(substring
+				 org-log-note-previous-state 1 -1)))
+		       (t (format "\"%s\""
+				  org-log-note-previous-state)))))))
+	(when lines (setq note (concat note " \\\\")))
+	(push note lines))
+      (when (and lines (not org-note-abort))
+	(with-current-buffer (marker-buffer org-log-note-marker)
+	  (org-with-wide-buffer
+	   ;; Find location for the new note.
+	   (goto-char org-log-note-marker)
+	   (set-marker org-log-note-marker nil)
+	   ;; Note associated to a clock is to be located right after
+	   ;; the clock.  Do not move point.
+	   (unless (eq org-log-note-purpose 'clock-out)
+	     (goto-char (org-log-beginning t)))
+	   ;; Make sure point is at the beginning of an empty line.
+	   (cond ((not (bolp)) (let ((inhibit-read-only t)) (insert "\n")))
+		 ((looking-at "[ \t]*\\S-") (save-excursion (insert "\n"))))
+	   ;; In an existing list, add a new item at the top level.
+	   ;; Otherwise, indent line like a regular one.
+	   (let ((itemp (org-in-item-p)))
+	     (if itemp
+		 (indent-line-to
+		  (let ((struct (save-excursion
+				  (goto-char itemp) (org-list-struct))))
+		    (org-list-get-ind (org-list-get-top-point struct) struct)))
+	       (org-indent-line)))
+	   (insert (org-list-bullet-string "-") (pop lines))
+	   (let ((ind (org-list-item-body-column (line-beginning-position))))
+	     (dolist (line lines)
+	       (insert "\n")
+	       (indent-line-to ind)
+	       (insert line)))
+	   (message "Note stored")
+	   (org-back-to-heading t))
+	  ;; Fix `buffer-undo-list' when `org-store-log-note' is called
+	  ;; from within `org-add-log-note' because `buffer-undo-list'
+	  ;; is then modified outside of `org-with-remote-undo'.
+	  (when (eq this-command 'org-agenda-todo)
+	    (setcdr buffer-undo-list (cddr buffer-undo-list))))))
+    ;; Don't add undo information when called from `org-agenda-todo'.
+    (let ((buffer-undo-list (eq this-command 'org-agenda-todo)))
+      (set-window-configuration org-log-note-window-configuration)
+      (with-current-buffer (marker-buffer org-log-note-return-to)
+	(goto-char org-log-note-return-to))
+      (move-marker org-log-note-return-to nil)
+      (when org-log-post-message (message "%s" org-log-post-message))))
+(org-add-link-type
+ "tag" 'endless/follow-tag-link)
+
+(defun endless/follow-tag-link (tag)
+  "Display a list of TODO headlines with tag TAG.
+With prefix argument, also display headlines without a TODO keyword."
+  (org-tags-view (null current-prefix-arg) tag))
+
+(setq my/org-previous-scheduled-time nil)
+(defun my/org-set-previous-scheduled-time (&rest args)
+  "Remembers previous scheduled
+time into `my/org-previous-scheduled-time'
+as a inactive timestamp string '[%Y-%m-%d]'"
+  (interactive "P")
+  (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point))))
+  )
+(advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
+(advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
+
 )
 ;; <using key bindings while on russian keyboard layout>
 (use-package reverse-im
@@ -927,10 +1082,21 @@ or calls a menu of last clocked tasks to choose"
   :after
   (org)
   :hook (dired-mode . org-download-enable)
+  :bind (:map global-map
+	 ("C-x p" . #'org-download-screenshot)
+	 )
   :init
   (setq org-download-method 'directory)
   (setq-default org-download-image-dir (concat data-folder-path "Sync/org/img/"))
-  (global-set-key (kbd "C-x p") (lambda () (interactive) (org-download-screenshot)))
+  :config
+  (defun my/org-download-annotate (link)
+  "Annotate LINK with the time of download."
+  (format "#+DOWNLOADED: %s @ %s\n#+ATTR_ORG: :width 100\n"
+          (if (equal link org-download-screenshot-file)
+              "screenshot"
+            link)
+          (format-time-string "%Y-%m-%d %H:%M:%S")))
+  (setq org-download-annotate-function #'my/org-download-annotate)
 )
 ;;  (add-hook 'dired-mode-hook 'org-download-enable)
   
@@ -972,12 +1138,23 @@ or calls a menu of last clocked tasks to choose"
     (org-table-align)
 )
   )
-(with-eval-after-load "org-agenda"
-(define-key org-agenda-mode-map (kbd "r") 'org-agenda-todo)
-(define-key org-agenda-mode-map (kbd "t") 'counsel-org-tag-agenda)
-(define-key org-agenda-mode-map (kbd "C-r") 'org-agenda-redo-all)
-(define-key org-agenda-mode-map (kbd "e") 'org-agenda-redo)
-)
+;; (with-eval-after-load "org-agenda"
+;; (define-key org-agenda-mode-map (kbd "r") 'org-agenda-todo)
+;; (define-key org-agenda-mode-map (kbd "t") 'counsel-org-tag-agenda)
+;; (define-key org-agenda-mode-map (kbd "C-r") 'org-agenda-redo-all)
+;; (define-key org-agenda-mode-map (kbd "e") 'org-agenda-redo)
+;; )
+
+(use-package org-agenda
+  :after (org)
+  :bind (:map org-agenda-mode-map
+	 ("r" . 'org-agenda-todo)
+	 ("t" . 'counsel-org-tag-agenda)
+	 ("C-r" . 'org-agenda-redo-all)
+	 ("e" . 'org-agenda-redo)
+	 ("C-c n" . 'org-agenda-add-note)
+	 )
+  )
 
 
 
@@ -999,12 +1176,13 @@ or calls a menu of last clocked tasks to choose"
 			(load "dired-x")
 			(define-key dired-mode-map (kbd "C-c") 'dired-do-copy)))
   :init
-  (setq dired-guess-shell-alist-user '(
-				     ("\\.pdf\\'" "okular")
-				     ("\\.mp4\\'" "mpv")
-				     ("\\.mkv\\'" "mpv")
-				     ("\\.avi\\'" "mpv")
-				     ))
+  ;; (setq dired-guess-shell-alist-user '(
+  ;; 				     ("\\.pdf\\'" "okular")
+  ;; 				     ("\\.mp4\\'" "mpv")
+  ;; 				     ("\\.mkv\\'" "mpv")
+  ;; 				     ("\\.avi\\'" "mpv")
+  ;; 				     ("\\.webm\\'" "mpv")
+  ;; 				     ))
   ;;(setq dired-dwim-target t)
 
   :bind (:map dired-mode-map
@@ -2005,7 +2183,7 @@ With argument, do this that many times."
 (define-key global-map (kbd "C-e") #'smarter-move-end-of-line)
 
 
-
+(define-key global-map (kbd "M-j") #'avy-goto-char-2)
 
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -2250,116 +2428,74 @@ configuration was previously save, restore that configuration."
 ;; 		  ))
 
       ;;org-add-log-setup for custom org-add-note
-
-(with-eval-after-load "org"
-
- (defun org-store-log-note ()
-    "Finish taking a log note, and insert it to where it belongs.
-ATTENTION
-This is redefined version of this function. I've redefined it for custom %-escapes.
-My custom %-escapes:
-%e - previous SCHEDULED timestamp, format: '[%Y-%m-%d %a]'
-"
-    (let ((txt (prog1 (buffer-string)
-		 (kill-buffer)))
-	  (note (cdr (assq org-log-note-purpose org-log-note-headings)))
-	  lines)
-      (while (string-match "\\`# .*\n[ \t\n]*" txt)
-	(setq txt (replace-match "" t t txt)))
-      (when (string-match "\\s-+\\'" txt)
-	(setq txt (replace-match "" t t txt)))
-      (setq lines (and (not (equal "" txt)) (org-split-string txt "\n")))
-      (when (org-string-nw-p note)
-	(setq note
-	      (org-replace-escapes
-	       note
-	       (list
-		(cons "%e" (if (not my/org-previous-scheduled-time) (org-format-time-string "[%Y-%m-%d %a]" (org-get-scheduled-time (point)))
-			     my/org-previous-scheduled-time
-			     ))
-		(cons "%u" (user-login-name))
-		(cons "%U" user-full-name)
-		(cons "%t" (format-time-string
-			    (org-time-stamp-format 'long 'inactive)
-			    org-log-note-effective-time))
-		(cons "%T" (format-time-string
-			    (org-time-stamp-format 'long nil)
-			    org-log-note-effective-time))
-		(cons "%d" (format-time-string
-			    (org-time-stamp-format nil 'inactive)
-			    org-log-note-effective-time))
-		(cons "%D" (format-time-string
-			    (org-time-stamp-format nil nil)
-			    org-log-note-effective-time))
-		(cons "%s" (cond
-			    ((not org-log-note-state) "")
-			    ((string-match-p org-ts-regexp
-					     org-log-note-state)
-			     (format "\"[%s]\""
-				     (substring org-log-note-state 1 -1)))
-			    (t (format "\"%s\"" org-log-note-state))))
-		(cons "%S"
-		      (cond
-		       ((not org-log-note-previous-state) "")
-		       ((string-match-p org-ts-regexp
-					org-log-note-previous-state)
-			(format "\"[%s]\""
-				(substring
-				 org-log-note-previous-state 1 -1)))
-		       (t (format "\"%s\""
-				  org-log-note-previous-state)))))))
-	(when lines (setq note (concat note " \\\\")))
-	(push note lines))
-      (when (and lines (not org-note-abort))
-	(with-current-buffer (marker-buffer org-log-note-marker)
-	  (org-with-wide-buffer
-	   ;; Find location for the new note.
-	   (goto-char org-log-note-marker)
-	   (set-marker org-log-note-marker nil)
-	   ;; Note associated to a clock is to be located right after
-	   ;; the clock.  Do not move point.
-	   (unless (eq org-log-note-purpose 'clock-out)
-	     (goto-char (org-log-beginning t)))
-	   ;; Make sure point is at the beginning of an empty line.
-	   (cond ((not (bolp)) (let ((inhibit-read-only t)) (insert "\n")))
-		 ((looking-at "[ \t]*\\S-") (save-excursion (insert "\n"))))
-	   ;; In an existing list, add a new item at the top level.
-	   ;; Otherwise, indent line like a regular one.
-	   (let ((itemp (org-in-item-p)))
-	     (if itemp
-		 (indent-line-to
-		  (let ((struct (save-excursion
-				  (goto-char itemp) (org-list-struct))))
-		    (org-list-get-ind (org-list-get-top-point struct) struct)))
-	       (org-indent-line)))
-	   (insert (org-list-bullet-string "-") (pop lines))
-	   (let ((ind (org-list-item-body-column (line-beginning-position))))
-	     (dolist (line lines)
-	       (insert "\n")
-	       (indent-line-to ind)
-	       (insert line)))
-	   (message "Note stored")
-	   (org-back-to-heading t))
-	  ;; Fix `buffer-undo-list' when `org-store-log-note' is called
-	  ;; from within `org-add-log-note' because `buffer-undo-list'
-	  ;; is then modified outside of `org-with-remote-undo'.
-	  (when (eq this-command 'org-agenda-todo)
-	    (setcdr buffer-undo-list (cddr buffer-undo-list))))))
-    ;; Don't add undo information when called from `org-agenda-todo'.
-    (let ((buffer-undo-list (eq this-command 'org-agenda-todo)))
-      (set-window-configuration org-log-note-window-configuration)
-      (with-current-buffer (marker-buffer org-log-note-return-to)
-	(goto-char org-log-note-return-to))
-      (move-marker org-log-note-return-to nil)
-      (when org-log-post-message (message "%s" org-log-post-message)))))
-
-(setq my/org-previous-scheduled-time nil)
-(defun my/org-set-previous-scheduled-time (&rest args)
-  "Remembers previous scheduled
-time into `my/org-previous-scheduled-time'
-as a inactive timestamp string '[%Y-%m-%d %a]'"
-  (interactive "P")
-  (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d %a]" (org-get-scheduled-time (point))))
+(use-package org-roam
+  ;;:ensure t
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  (org-roam-directory "/org/roam")
+  :bind (:map org-roam-mode-map
+	      ("C-c r" . org-roam)
+	      ("C-c s" . org-roam-find-file)
+	      ;;("C-c g" . org-roam-graph)
+	      :map org-mode-map
+	      ("C-c l" . org-roam-insert)
+	      ("C-c I" . org-roam-insert-immediate)
+	      )
   )
-(advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
-(advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
+
+;; This is an Emacs package that creates graphviz directed graphs from
+;; the headings of an org file
+(use-package org-mind-map
+  :init
+  (require 'ox-org)
+  :ensure t
+  ;; Uncomment the below if 'ensure-system-packages` is installed
+  ;;:ensure-system-package (gvgen . graphviz)
+  :bind (
+	 :map org-mode-map
+	      ("C-c g" . org-mind-map-write)
+	      )
+  
+  :config
+  (setq org-mind-map-engine "dot"
+	org-mind-map-include-text t
+	)       ; Default. Directed Graph
+  ;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
+  ;; (setq org-mind-map-engine "twopi")  ; Radial Layout
+  ;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
+  ;; (setq org-mind-map-engine "sfdp")   ; Multiscale version of fdp for the layout of large graphs
+  ;; (setq org-mind-map-engine "twopi")  ; Radial layouts
+  ;; (setq org-mind-map-engine "circo")  ; Circular Layout
+  )
+
+
+
+
+;; (defun my/eval-and-insert()
+;;   "docstring"
+;;   (interactive)
+;;   (let*
+;;       (
+;;        (beg (nth 2 (show-paren--default)))
+;;        (end (point))
+;;        (sexp (buffer-substring-no-properties beg end))
+;;        )
+      
+;;     ;;(my/mark-sexp)
+    
+;;   (kill-region beg end)
+;;   (insert (eval-expression sexp))
+;;   )
+;;   )
+
+(define-key global-map (kbd "C-x C-e") 'eval-print-last-sexp)
+
+;; tiny
+(use-package tiny
+  :config
+  (tiny-setup-default)
+  )
+;; /tiny
+
+

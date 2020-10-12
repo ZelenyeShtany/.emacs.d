@@ -4,8 +4,6 @@
 
 ;; Author: Oleh Krehel
 ;; URL: https://github.com/abo-abo/org-download
-;; Package-Version: 20200615.936
-;; Package-Commit: 768716b6fcc814b06360b99ad70bce44c0eb4a32
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "24.3") (async "1.2"))
 ;; Keywords: multimedia images screenshots download
@@ -77,6 +75,7 @@
 (require 'url-http)
 (require 'org)
 (require 'org-attach)
+(require 'org-element)
 
 (defgroup org-download nil
   "Image drag-and-drop for org-mode."
@@ -156,7 +155,11 @@ will be used."
           (const :tag "grim + slurp" "grim -g \"$(slurp)\" %s")
           (function :tag "Custom function")))
 
-(defcustom org-download-screenshot-file (expand-file-name "screenshot.png" temporary-file-directory)
+(defcustom org-download-screenshot-basename "screenshot.png"
+  "Default base filename to use for screenshots."
+  :type 'string)
+
+(defcustom org-download-screenshot-file (expand-file-name org-download-screenshot-basename temporary-file-directory)
   "The file to capture screenshots."
   :type 'string)
 
@@ -248,7 +251,7 @@ It's `org-download-image-dir', unless it's nil.  Then it's \".\"."
 (defun org-download--dir-2 ()
   "Return the second part of the directory path for `org-download--dir'.
 Unless `org-download-heading-lvl' is nil, it's the name of the current
-`org-download-heading-lvl'-leveled heading.  Otherwise it's \"\"."
+`org-download-heading-lvl'-leveled heading."
   (when org-download-heading-lvl
     (org-download-get-heading
      org-download-heading-lvl)))
@@ -277,9 +280,11 @@ The directory is created if it didn't exist before."
 It's affected by `org-download--dir'.
 EXT can hold the file extension, in case LINK doesn't provide it."
   (let ((filename
-         (file-name-nondirectory
-          (car (url-path-and-query
-                (url-generic-parse-url link)))))
+         (replace-regexp-in-string
+          "%20" " "
+          (file-name-nondirectory
+           (car (url-path-and-query
+                 (url-generic-parse-url link))))))
         (dir (org-download--dir)))
     (when (string-match ".*?\\.\\(?:png\\|jpg\\)\\(.*\\)$" filename)
       (setq filename (replace-match "" nil nil filename 1)))
@@ -365,21 +370,51 @@ COMMAND is a format-style string with two slots for LINK and FILENAME."
   (org-download-image
    (replace-regexp-in-string "\n+$" "" (current-kill 0))))
 
-(defun org-download-screenshot ()
+(defun org-download-screenshot (&optional basename)
   "Capture screenshot and insert the resulting file.
 The screenshot tool is determined by `org-download-screenshot-method'."
   (interactive)
-  (let ((default-directory "~"))
-    (make-directory (file-name-directory org-download-screenshot-file) t)
+  (let* ((screenshot-dir (file-name-directory org-download-screenshot-file))
+         (org-download-screenshot-file
+          (if basename
+              (concat screenshot-dir basename) org-download-screenshot-file)))
+    (make-directory screenshot-dir t)
     (if (functionp org-download-screenshot-method)
         (funcall org-download-screenshot-method
                  org-download-screenshot-file)
       (shell-command-to-string
        (format org-download-screenshot-method
-               org-download-screenshot-file))))
-  (when (file-exists-p org-download-screenshot-file)
-    (org-download-image org-download-screenshot-file)
-    (delete-file org-download-screenshot-file)))
+               org-download-screenshot-file)))
+    (when (file-exists-p org-download-screenshot-file)
+      (org-download-image org-download-screenshot-file)
+      (delete-file org-download-screenshot-file))))
+
+(defun org-download-clipboard (&optional basename)
+  "Capture the image from the clipboard and insert the resulting file."
+  (interactive)
+  (let ((org-download-screenshot-method
+         (cl-case system-type
+           (gnu/linux
+            (if (string= "wayland" (getenv "XDG_SESSION_TYPE"))
+                (if (executable-find "wl-paste")
+                    "wl-paste -t image/png > %s"
+                  (user-error
+                   "Please install the \"wl-paste\" program included in wl-clipboard"))
+              (if (executable-find "xclip")
+                  "xclip -selection clipboard -t image/png -o > %s"
+                (user-error
+                 "Please install the \"xclip\" program"))))
+           ((windows-nt cygwin)
+            (if (executable-find "convert")
+                "convert clipboard: %s"
+              (user-error
+               "Please install the \"convert\" program included in ImageMagick")))
+           ((darwin berkeley-unix)
+            (if (executable-find "pngpaste")
+                "pngpaste %s"
+              (user-error
+               "Please install the \"pngpaste\" program from Homebrew."))))))
+    (org-download-screenshot basename)))
 
 (declare-function org-attach-dir "org-attach")
 (declare-function org-attach-attach "org-attach")

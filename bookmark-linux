@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org.el"
+(("roam"
+ (filename . "/data/Sync/org/roam/")
+ (front-context-string)
+ (rear-context-string . "Қаз 10 22:20 ..\n")
+ (position . 166))
+("pswd"
+ (filename . "/data/Sync/org/pswd.org")
+ (front-context-string . "* spotify\nzeleny")
+ (rear-context-string)
+ (position . 1))
+("content"
+ (filename . "/data/Sync/org/content.org")
+ (front-context-string . "#+TODO: TODO TOR")
+ (rear-context-string)
+ (position . 1))
+("org.el"
  (filename . "~/.emacs.d/elpa/org-9.3.6/org.el")
  (front-context-string . "efun org-store-l")
  (rear-context-string . "ically scoped\n(d")
@@ -133,8 +148,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** https://yqr")
- (rear-context-string . "un 00:56]\n:END:\n")
- (position . 135781))
+ (filename . "/org/roam/20201010234239-c.org")
+ (front-context-string . "#+title: c++\n\n[[")
+ (rear-context-string)
+ (position . 1))
 )
