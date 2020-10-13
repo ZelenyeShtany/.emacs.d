@@ -259,7 +259,9 @@
       :super-groups org-super-agenda-groups)))
  '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(org-mind-map org-roam 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(org-mind-map
+     ;;org-roam
+     0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -596,7 +598,7 @@ There are two things you can do about this warning:
   :defer t
   :mode ("\\.org\\'" . org-mode)
   :init
-;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
+  ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)(org-superstar-mode 1)))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
   ;; (add-hook 'org-mode-hook '(lambda ()
@@ -607,8 +609,164 @@ There are two things you can do about this warning:
 
   ;; redefined for custom %-escapes.
   ;; For example, 
-  
-  
+  (defun my/org-delete-link-at-point ()
+    "docstring"
+    (interactive)
+    (if
+	(my/org-link-at-point-p)
+	(kill-region (match-beginning 0) (match-end 0))
+      nil
+      )
+    )
+
+  (defun my/org-archive-youtube-video-at-point ()
+    "docstring"
+    (interactive)
+    (if 
+	(my/org-link-at-point-p)
+	(let*
+	    (
+	     (download-options (list "video with audio" "only video" "only audio"))
+	     (chosen-download-option
+	      (ivy-read "What to download?" download-options :require-match t))
+	     (video-height-list (list "144" "240" "360" "480" "720" "1080"))
+	     (audio-bitrate-list (list "64" "128" "256"))
+	     (link (my/org-extract-link-at-point))
+	     (desc (my/org-extract-link-descr-at-point))
+	     (desired-audio-bitrate 
+	      (if (or
+		   (string= chosen-download-option "video with audio")
+		   (string= chosen-download-option "only audio")
+		   )
+		  (ivy-read "choose audio bitrate(at least...)" audio-bitrate-list :require-match t))
+	      )
+	     (video-height
+	      (if
+		  (or
+		   (string= chosen-download-option "video with audio")
+		   (string= chosen-download-option "only video")
+		   )
+		  (ivy-read "choose video height(at least...)" video-height-list :require-match t)
+		)
+	      )
+	     (video-id nil)
+	     (filename-with-extension nil)
+	     (filepath-without-file-extension nil)
+	     (filepath-with-extension nil)
+	     (downloaded-file-audio-bitrate nil)
+	     )
+	  
+	  (if (string-match "youtube.com" link)
+	      (let* ()
+		(cond
+		 ((string= chosen-download-option "video with audio")
+		  (shell-command-to-string (concat
+					    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
+					    video-height
+					    "]+worstaudio[abr>="
+					    desired-audio-bitrate 
+					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+					    link))
+
+		  )
+		 ((string= chosen-download-option "only audio")
+		  (shell-command-to-string (concat
+					    "youtube-dl --embed-subs --write-sub --sub-lang en --extract-audio --audio-format 'mp3' -f 'worstaudio[abr>="
+					    desired-audio-bitrate 
+					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+					    link))
+		  )
+		 ((string= chosen-download-option "only video")
+		  (shell-command-to-string (concat
+					    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
+					    video-height
+					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+					    link))
+		  ;; ;;test
+		  ;; (start-process-shell-command "youtube-dl" nil (concat
+		  ;; 		    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
+		  ;; 		    "144"
+		  ;; 		    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+		  ;; 		    "https://www.youtube.com/watch?v=APhhHCBI8xc"))
+		  ;; ;;/test
+
+		  )
+		 )
+		(my/org-delete-link-at-point)
+		;; find file title within shell output buffer, assign to a variable
+
+		;; i dont know exactly what file extension will be after all, so i save only file title
+		(setq video-id (shell-command-to-string
+				(concat
+				 "youtube-dl --get-id "
+				 link
+				 )))
+		;;erasing new-line character at the end
+		(setq video-id (substring video-id 0
+					  (- (length video-id) 1)))
+		;; searching file
+		(save-window-excursion
+		  (save-excursion
+		    
+		    (while (progn
+			     (dired "/org/video/")
+			     (revert-buffer)
+			     (goto-char (point-min))
+			     (message "%s" (buffer-substring-no-properties (point-min) (point-max)))
+			     ;;(find-lisp-find-dired "." video-id)
+			     (message "searchin for '%s'" video-id)
+			     
+			     (eq (search-forward-regexp video-id (point-max)
+							t)
+				 nil)
+			     )
+		      (message "waiting... %s" (buffer-name))
+		      (sleep-for 1)
+		      )
+		    ;; (goto-char (match-beginning 0))
+		    (setq filepath-with-extension (dired-get-filename))
+		    )
+		  )
+
+		;; find file with title and create org-link at point with to this file 
+		(org-insert-link nil (concat "file:" filepath-with-extension))
+		;;(kill-buffer shell-command-buffer-name)
+		)
+	    )
+	  )
+      )
+    )
+
+  (defun my/org-extract-link-descr-at-point ()
+    "docstring"
+    (interactive)
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+	(match-string-no-properties 2)
+      nil
+      )
+    )
+
+  (defun my/org-extract-link-at-point ()
+    "docstring"
+    (interactive)
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+	(match-string-no-properties 1)
+      nil
+      )
+    )
+
+  (defun my/org-link-at-point-p ()
+    "Returns non-nil if point is on a orgmode link
+Взял строчку `(org-in-regexp org-link-bracket-re 1)' из функции `org-insert-link'"
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+	(progn
+	  (message "%s" (match-string-no-properties 1))
+	  t)
+      nil
+      )
+    )
+
+
   (defun my/number-of-spaces-at-point(point)
     "docstring"
     (interactive)
@@ -617,13 +775,13 @@ There are two things you can do about this warning:
 	   (count 0)
 	   )
       (save-excursion
-      (loop-do-while (eq (char-after) ? )
-	(setq count (+ count 1))
-	(forward-char)
+	(loop-do-while (eq (char-after) ? )
+		       (setq count (+ count 1))
+		       (forward-char)
+		       )
 	)
-      )
       count
-    )
+      )
     )
 
   (defun my/toggle-org-columns ()
@@ -642,7 +800,7 @@ There are two things you can do about this warning:
     "docstring"
     (interactive)
     (if (eq (org-element-type (org-element-at-point)) 'headline)
-	 
+	
 	(let* (
 	       (level (org-element-property :level (org-element-at-point)))
 	       (begin (org-element-property :begin (org-element-at-point)))
@@ -655,32 +813,32 @@ There are two things you can do about this warning:
 	  
 	  (if (eq (point) end-of-headline)
 	      (if (org-goto-first-child)
-	      (progn
-		(forward-char -1)
-		(insert "\n")
-		)
-	    
-	    (progn
-	      (if (eq contents-end nil)
 		  (progn
-		    (goto-char end-of-headline)
+		    (forward-char -1)
 		    (insert "\n")
 		    )
-		(goto-char contents-end)
+		
+		(progn
+		  (if (eq contents-end nil)
+		      (progn
+			(goto-char end-of-headline)
+			(insert "\n")
+			)
+		    (goto-char contents-end)
+		    )
+		  
+		  (if (not (eq (char-before) ?\n ) )
+		      (progn (insert "\n") (forward-char -1))
+		    )
+		  )
 		)
-	      
-	      (if (not (eq (char-before) ?\n ) )
-		  (progn (insert "\n") (forward-char -1))
-		)
-	      )
-	    )
 	    (org-return)
 	    )
 	  
 	  )
       (org-return)
       )
-      )
+    )
 
   (defun my/org-clock-in (arg)
     "Clocks into a task at point if in org-mode, 
@@ -693,12 +851,12 @@ or calls a menu of last clocked tasks to choose"
     )
   
   (defun my/copy-id-to-clipboard()
-       (interactive)
-       (when (eq major-mode 'org-mode) ; do this only in org-mode buffers
-	 (setq mytmpid (concat "id:" (funcall 'org-id-get-create)))
-	 (kill-new mytmpid)
-	 (message "Copied %s to killring (clipboard)" mytmpid)
-	 ))
+    (interactive)
+    (when (eq major-mode 'org-mode) ; do this only in org-mode buffers
+      (setq mytmpid (concat "id:" (funcall 'org-id-get-create)))
+      (kill-new mytmpid)
+      (message "Copied %s to killring (clipboard)" mytmpid)
+      ))
 
   ;; time tracking
   ;; Resume clocking task when emacs is restarted
@@ -881,18 +1039,19 @@ or calls a menu of last clocked tasks to choose"
      )
    )
 
-;; web archiving through org-capture + org-board
-(defun do-org-board-dl-hook ()
-  (when (equal (buffer-name) "CAPTURE-webarchive.org")
-    (org-board-archive)))
+  ;; web archiving through org-capture + org-board
+  (defun do-org-board-dl-hook ()
+    (when (equal (buffer-name) "CAPTURE-webarchive.org")
+      (org-board-archive)))
 
-(add-hook 'org-capture-before-finalize-hook 'do-org-board-dl-hook)
+  (add-hook 'org-capture-before-finalize-hook 'do-org-board-dl-hook)
 
-(setq org-board-capture-file (concat data-folder-path "Sync/org/webarchive.org"))
-;; /web archiving through org-capture + org-board  
-(require 'org-download)
-(require 'my-week-day-based-habits)
-:bind (:map org-mode-map
+  (setq org-board-capture-file (concat data-folder-path "Sync/org/webarchive.org"))
+  ;; /web archiving through org-capture + org-board  
+  (require 'org-download)
+  (require 'my-week-day-based-habits)
+  :bind (:map org-mode-map
+	      ("M-a" . 'my/org-archive-youtube-video-at-point)
 	      ("C-c f" . 'org-search-view)
 	      ("C-c C-x C-c" . 'my/toggle-org-columns)
 	      ;;("C-c C-x C-i" . 'my/org-clock-in)
@@ -918,8 +1077,8 @@ or calls a menu of last clocked tasks to choose"
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	      )
-:config
-(defun org-store-log-note ()
+  :config
+  (defun org-store-log-note ()
     "Finish taking a log note, and insert it to where it belongs.
 ATTENTION
 This is redefined version of this function. I've redefined it for custom %-escapes.
@@ -1018,26 +1177,26 @@ My custom %-escapes:
 	(goto-char org-log-note-return-to))
       (move-marker org-log-note-return-to nil)
       (when org-log-post-message (message "%s" org-log-post-message))))
-(org-add-link-type
- "tag" 'endless/follow-tag-link)
+  (org-add-link-type
+   "tag" 'endless/follow-tag-link)
 
-(defun endless/follow-tag-link (tag)
-  "Display a list of TODO headlines with tag TAG.
+  (defun endless/follow-tag-link (tag)
+    "Display a list of TODO headlines with tag TAG.
 With prefix argument, also display headlines without a TODO keyword."
-  (org-tags-view (null current-prefix-arg) tag))
+    (org-tags-view (null current-prefix-arg) tag))
 
-(setq my/org-previous-scheduled-time nil)
-(defun my/org-set-previous-scheduled-time (&rest args)
-  "Remembers previous scheduled
+  (setq my/org-previous-scheduled-time nil)
+  (defun my/org-set-previous-scheduled-time (&rest args)
+    "Remembers previous scheduled
 time into `my/org-previous-scheduled-time'
 as a inactive timestamp string '[%Y-%m-%d]'"
-  (interactive "P")
-  (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point))))
-  )
-(advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
-(advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
+    (interactive "P")
+    (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point))))
+    )
+  (advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
+  (advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
 
-)
+  )
 ;; <using key bindings while on russian keyboard layout>
 (use-package reverse-im
   :ensure t
@@ -1186,18 +1345,19 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   ;;(setq dired-dwim-target t)
 
   :bind (:map dired-mode-map
-	 ("C-S-n" . 'dired-create-directory)
-	 ("<tab>" . 'dired-subtree-toggle)
-	 ("+" . 'dired-create-empty-file)     
-	 ("<f2>" . 'dired-do-rename)
-	 ("X" . 'diredp-move-file)
-	 ("<ret>" . 'dired-open-by-extension)
-	 ("M-?" .  (lambda () (interactive) (find-file-other-window (concat data-folder-path "Sync/org/diredhelp.org"))))
-	 ("<deletechar>" . 'dired-do-delete)
-	 ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
-	 ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
-	 ("d" . 'diredp-delete-this-file)
-	 )
+	      ("C-S-n" . 'dired-create-directory)
+	      ("<f1>" . 'my-help)
+	      ("<tab>" . 'dired-subtree-toggle)
+	      ("+" . 'dired-create-empty-file)     
+	      ("<f2>" . 'dired-do-rename)
+	      ("X" . 'diredp-move-file)
+	      ("<ret>" . 'dired-open-by-extension)
+	      ("M-?" .  (lambda () (interactive) (find-file-other-window (concat data-folder-path "Sync/org/diredhelp.org"))))
+	      ("<deletechar>" . 'dired-do-delete)
+	      ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
+	      ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
+	      ("d" . 'diredp-delete-this-file)
+	      )
   )
 
 
@@ -1493,8 +1653,8 @@ Adapted from `describe-function-or-variable'."
    (concat data-folder-path "Sync/org/help.org")
    )
   )
-(define-key global-map (kbd "<f1>") #'my-help)
 
+(define-key global-map (kbd "<f1>") #'my-help)
 
 
 ;;old params:calid sss
@@ -2396,7 +2556,6 @@ configuration was previously save, restore that configuration."
 ;; showing that window is dedicated in the modeline
 ;; (setq mode-line-misc-info
 ;;       (cons '(:eval (if (window-dedicated-p) "DEDICATED" "NOT-DEDICATED")) mode-line-misc-info))
-
 ;;(push "TEST" global-mode-string)
 
 ;; time tracking
@@ -2428,21 +2587,21 @@ configuration was previously save, restore that configuration."
 ;; 		  ))
 
       ;;org-add-log-setup for custom org-add-note
-(use-package org-roam
-  ;;:ensure t
-  :hook
-  (after-init . org-roam-mode)
-  :custom
-  (org-roam-directory "/org/roam")
-  :bind (:map org-roam-mode-map
-	      ("C-c r" . org-roam)
-	      ("C-c s" . org-roam-find-file)
-	      ;;("C-c g" . org-roam-graph)
-	      :map org-mode-map
-	      ("C-c l" . org-roam-insert)
-	      ("C-c I" . org-roam-insert-immediate)
-	      )
-  )
+;; (use-package org-roam
+;;   ;;:ensure t
+;;   :hook
+;;   (after-init . org-roam-mode)
+;;   :custom
+;;   (org-roam-directory "/org/roam")
+;;   :bind (:map org-roam-mode-map
+;; 	      ("C-c r" . org-roam)
+;; 	      ("C-c s" . org-roam-find-file)
+;; 	      ;;("C-c g" . org-roam-graph)
+;; 	      :map org-mode-map
+;; 	      ("C-c l" . org-roam-insert)
+;; 	      ("C-c I" . org-roam-insert-immediate)
+;; 	      )
+;;   )
 
 ;; This is an Emacs package that creates graphviz directed graphs from
 ;; the headings of an org file
@@ -2491,11 +2650,24 @@ configuration was previously save, restore that configuration."
 
 (define-key global-map (kbd "C-x C-e") 'eval-print-last-sexp)
 
-;; tiny
+;; tiny(abo-abo)
+;; quickly insert text at point
 (use-package tiny
   :config
   (tiny-setup-default)
   )
 ;; /tiny
 
+(use-package proced
+    :commands (proced proced-toggle-auto-update)
+    :bind (:map global-map
+		("C-S-<escape>" . 'proced)
+	   )
+    :config
+    (progn
+      (setq proced-auto-update-interval 2)
 
+      ;; (defun alexm/proced-settings ()
+      ;;   (proced-toggle-auto-update t))
+
+      (add-hook 'proced-mode-hook 'alexm/proced-settings)))

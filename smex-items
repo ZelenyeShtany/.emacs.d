@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- helm-colors
- image-decrease-size
+ proced
+ highlight-phrase
+ emacs-init-time
  tetris
- tiny-expand
- tiny-helper
- counsel-package
- counsel-org-capture
+ edebug-defun
+ dired-mark-files-regexp
+ dired
 )
 
 ;; ----- smex-data -----
@@ -51,7 +51,7 @@
  (org-habit-toggle-display-in-agenda . 1)
  (toggle-debug-on-error . 14)
  (customize . 40)
- (regexp-builder . 49)
+ (regexp-builder . 50)
  (server-start . 1)
  (auto-fill-mode . 6)
  (toggle-text-mode-auto-fill . 4)
@@ -60,7 +60,7 @@
  (my-insert-into-table . 4)
  (insert-char . 2)
  (count-words . 10)
- (dired . 8)
+ (dired . 9)
  (version . 1)
  (dired-launch-command . 1)
  (replace-string . 8)
@@ -123,7 +123,7 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 11)
+ (counsel-load-theme . 12)
  (counsel-yank-pop . 1)
  (counsel-ag . 100)
  (counsel-package . 180)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 111)
+ (emacs-init-time . 119)
  (emacs-uptime . 1)
  (debug . 5)
  (check-parens . 16)
@@ -225,7 +225,7 @@
  (sql-mode-menu . 1)
  (list-matching-lines . 1)
  (org-priority . 4)
- (org-cliplink . 20)
+ (org-cliplink . 24)
  (eval-buffer . 250)
  (org-mode . 19)
  (org-caldav-delete-everything . 7)
@@ -246,7 +246,7 @@
  (dimmer-mode . 13)
  (edebug-stop . 4)
  (edebug-mode . 1)
- (edebug-defun . 132)
+ (edebug-defun . 141)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 1)
  (my/show-scheduling-amendments-status . 2)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 14)
+ (fundamental-mode . 16)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -412,7 +412,7 @@
  (org-ql-view-todo . 2)
  (helm-org-ql-views . 1)
  (helm-org-ql . 1)
- (org-copy-subtree . 6)
+ (org-copy-subtree . 7)
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 798)
+ (tetris . 890)
  (tetris-start-game . 30)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -449,7 +449,7 @@
  (my/count-done-records . 13)
  (org-clock-report . 5)
  (org-cut-subtree . 2)
- (org-paste-subtree . 3)
+ (org-paste-subtree . 4)
  (org-pomodoro . 4)
  (org-agenda-file-to-front . 2)
  (org-timer . 1)
@@ -500,4 +500,12 @@
  (org-download-yank . 3)
  (image-decrease-size . 3)
  (org-download-clipboard . 12)
+ (my/org-delete-link-at-point . 1)
+ (dired-do-find-regexp . 1)
+ (find-dired . 3)
+ (find-name-dired . 1)
+ (dired-mark-files-regexp . 3)
+ (my/test . 6)
+ (proced . 3)
+ (highlight-phrase . 3)
 )
