@@ -20,6 +20,7 @@
        )
       )
 (setq my-org-directory (concat data-folder-path "Sync/org/"))
+(setq my-org-from-smartphone-dir (concat my-org-directory "from-smartphone/"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,21 +38,23 @@
  '(custom-safe-themes
    '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default))
  '(dired-always-read-filesystem t)
- '(dired-open-extensions
-   '(("pdf" . "okular")
-     ("csv" . "konsole -e visidata")
-     ("html" . "google-chrome")
-     ("mp4" . "mpv")
-     ("avi" . "mpv")
-     ("webm" . "mpv")
-     ("mp3" . "clementine")
-     ("ogg" . "clementine")
-     ("opus" . "clementine")
-     ("odt" . "libreoffice")
-     ("doc" . "libreoffice")
-     ("docx" . "libreoffice")))
+ ;; moved to use-package dired :custom
+ ;; '(dired-open-extensions
+ ;;   '(("pdf" . "evince")
+ ;;     ("csv" . "konsole -e visidata")
+ ;;     ("html" . "google-chrome")
+ ;;     ("mp4" . "mpv")
+ ;;     ("avi" . "mpv")
+ ;;     ("webm" . "mpv")
+ ;;     ("mp3" . "clementine")
+ ;;     ("ogg" . "clementine")
+ ;;     ("opus" . "clementine")
+ ;;     ("odt" . "libreoffice")
+ ;;     ("doc" . "libreoffice")
+ ;;     ("docx" . "libreoffice")))
  '(dired-open-functions
    '(dired-open-by-extension diredp-find-file-reuse-dir-buffer))
+ '(diredp-hide-details-initially-flag t)
  '(display-time-mode t)
  '(elpy-modules
    '(elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults))
@@ -155,17 +158,19 @@
 			 (powerline-width rhs))
 	 (powerline-render rhs))))))
  '(org-M-RET-may-split-line '((default)))
- '(org-agenda-files (list org-directory))
+ '(org-agenda-files (list org-directory my-org-from-smartphone-dir))
+ '(org-agenda-log-mode-items '(closed clock state))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-directory my-org-directory)
- '(org-file-apps
-   '((auto-mode . emacs)
-     ("\\.mm\\'" . default)
-     ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "okular \"%s\"")
-     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
+ ;; moved to use-package org :custom
+ ;; '(org-file-apps
+ ;;   '((auto-mode . emacs)
+ ;;     ("\\.mm\\'" . default)
+ ;;     ("\\.x?html?\\'" . default)
+ ;;     ("\\.pdf\\'" . "okular \"%s\"")
+ ;;     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-link-frame-setup
@@ -257,11 +262,12 @@
       :sort
       (priority date)
       :super-groups org-super-agenda-groups)))
- '(org-read-date-prefer-future nil)
  '(package-selected-packages
-   '(org-mind-map
-     ;;org-roam
-     0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(
+     ;;pdf-tools
+     org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+ ;; '(pdf-tools-enabled-modes
+ ;;   '(pdf-history-minor-mode pdf-isearch-minor-mode pdf-links-minor-mode pdf-misc-minor-mode pdf-outline-minor-mode pdf-misc-size-indication-minor-mode pdf-misc-menu-bar-minor-mode pdf-annot-minor-mode pdf-misc-context-menu-minor-mode pdf-cache-prefetch-minor-mode pdf-occur-global-minor-mode))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -597,6 +603,14 @@ There are two things you can do about this warning:
 (use-package org
   :defer t
   :mode ("\\.org\\'" . org-mode)
+  :custom
+  (org-file-apps
+   '((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "evince \"%s\"")
+     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
+  
   :init
   ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)(org-superstar-mode 1)))
@@ -614,7 +628,7 @@ There are two things you can do about this warning:
     (interactive)
     (if
 	(my/org-link-at-point-p)
-	(kill-region (match-beginning 0) (match-end 0))
+	(delete-region (match-beginning 0) (match-end 0))
       nil
       )
     )
@@ -660,28 +674,32 @@ There are two things you can do about this warning:
 	      (let* ()
 		(cond
 		 ((string= chosen-download-option "video with audio")
-		  (shell-command-to-string (concat
-					    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
-					    video-height
-					    "]+worstaudio[abr>="
-					    desired-audio-bitrate 
-					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
-					    link))
+		  (shell-command-to-string
+		   (concat
+		    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstvideo[height>="
+		    video-height
+		    "]+worstaudio[abr>="
+		    desired-audio-bitrate 
+		    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+		    link))
 
 		  )
 		 ((string= chosen-download-option "only audio")
-		  (shell-command-to-string (concat
-					    "youtube-dl --embed-subs --write-sub --sub-lang en --extract-audio --audio-format 'mp3' -f 'worstaudio[abr>="
-					    desired-audio-bitrate 
-					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
-					    link))
+		  (shell-command-to-string
+		   (concat
+		    ;;"youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en --extract-audio --audio-format 'mp3' -f 'worstaudio[abr>="
+		    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstaudio[abr>="
+		    desired-audio-bitrate 
+		    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+		    link))
 		  )
 		 ((string= chosen-download-option "only video")
-		  (shell-command-to-string (concat
-					    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
-					    video-height
-					    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
-					    link))
+		  (shell-command-to-string
+		   (concat
+		    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstvideo[height>="
+		    video-height
+		    "]' -o '/org/video/%(title)s-%(id)s.%(ext)s' "
+		    link))
 		  ;; ;;test
 		  ;; (start-process-shell-command "youtube-dl" nil (concat
 		  ;; 		    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
@@ -863,15 +881,8 @@ or calls a menu of last clocked tasks to choose"
   (org-clock-persistence-insinuate)
   ;; /time tracking
   (setq
-   org-file-apps
-   '(
-     (auto-mode . emacs)
-     ;;("\\.x?html?\\'" . "firefox %s")
-     ;;("\\.pdf\\'" . "evince \"%s\"")
-     ;;("\\.pdf::\\([0-9]+\\)\\'" . "evince \"%s\" -p %1")
-     ;;("\\.pdf.xoj" . "xournal %s")
-     ("\\.webm" . "mpv %s")
-     )
+   org-agenda-start-with-log-mode t
+
    ;; time tracking
    ;; Save the running clock and all clock history when exiting Emacs, load it on startup
    org-clock-persist t
@@ -880,8 +891,10 @@ or calls a menu of last clocked tasks to choose"
    ;; Do not prompt to resume an active clock, just resume it
    org-clock-persist-query-resume nil
    ;; /time tracking
+   
    org-enforce-todo-dependencies t
    engl (concat data-folder-path "Sync/org/engl.org")
+   inbox (concat data-folder-path "Sync/org/inbox.org")
    notes (concat data-folder-path "Sync/org/notes.org")
    regular (concat data-folder-path "Sync/org/regular.org")
    todos (concat data-folder-path "Sync/org/todos.org")
@@ -893,14 +906,14 @@ or calls a menu of last clocked tasks to choose"
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
    sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json")
    org-clock-sound (concat data-folder-path "Sync/org/timer-sounds/bell.wav")
-   org-clock-modeline-total 'current
+   org-clock-mode-line-total 'current
    org-return-follows-link t
    org-use-speed-commands t
    org-use-sub-superscripts nil
    org-use-property-inheritance '("CLOCK_MODELINE_TOTAL")
    org-ellipsis "⤵"
    org-protocol-default-template-key "d"
-   org-read-date-prefer-future nil
+   org-read-date-prefer-future 'time
    org-highest-priority 49
    org-lowest-priority 54
    org-default-priority 52
@@ -940,12 +953,17 @@ or calls a menu of last clocked tasks to choose"
      ("ADHD")
      (:grouptags)
      ("attention")
+     ("forgetfulness")
+     ("working_memory")
      (:endgrouptag)
+     ("заторможенность")
      ("SCT")
      ("quantifiedself")
      ("NSTU")
      ("compression")
      ("podcasts")
+     ("stress")
+     ("постоянство")
 
      ("buy")
      ("nofap")
@@ -995,7 +1013,7 @@ or calls a menu of last clocked tasks to choose"
    org-capture-templates
    '(;; ("t" "Todo" entry (file+headline todos "Tasks")
      ;;  "* TODO %?")
-     ("j" "Add to notes.org" entry (file+datetree notes)
+     ("j" "Add to inbox.org" entry (file+datetree inbox)
       "* %?")
      ;; ("i" "Idea" entry (file+datetree notes)
      ;;  "* IDEA %?")
@@ -1329,21 +1347,35 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;; /telegram
 
 
-
+(use-package dired-open
+  :after (dired)
+  :custom
+  (dired-open-extensions
+	'(("pdf" . "evince")
+	  ("csv" . "konsole -e visidata")
+	  ("html" . "google-chrome")
+	  ("mp4" . "mpv")
+	  ("avi" . "mpv")
+	  ("webm" . "mpv")
+	  ("mp3" . "clementine")
+	  ("ogg" . "clementine")
+	  ("opus" . "clementine")
+	  ("odt" . "libreoffice")
+	  ("doc" . "libreoffice")
+	  ("docx" . "libreoffice")))
+  )
+(use-package dired-x
+  :after (dired)
+  )
 (use-package dired
-  :hook (dired-load . (lambda ()
-			(load "dired-x")
-			(define-key dired-mode-map (kbd "C-c") 'dired-do-copy)))
+  ;; :hook (dired-load . (lambda ()
+  ;; 			(require 'dired-x)
+  ;; 			))
   :init
-  ;; (setq dired-guess-shell-alist-user '(
-  ;; 				     ("\\.pdf\\'" "okular")
-  ;; 				     ("\\.mp4\\'" "mpv")
-  ;; 				     ("\\.mkv\\'" "mpv")
-  ;; 				     ("\\.avi\\'" "mpv")
-  ;; 				     ("\\.webm\\'" "mpv")
-  ;; 				     ))
-  ;;(setq dired-dwim-target t)
-
+  (setq
+   dired-listing-switches "-alh" ;; human-readable file sizes
+   )
+  
   :bind (:map dired-mode-map
 	      ("C-S-n" . 'dired-create-directory)
 	      ("<f1>" . 'my-help)
@@ -1358,6 +1390,14 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 	      ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
 	      ("d" . 'diredp-delete-this-file)
 	      )
+  ;; (setq dired-guess-shell-alist-user '(
+  ;; 				     ("\\.pdf\\'" "evince")
+  ;; 				     ("\\.mp4\\'" "mpv")
+  ;; 				     ("\\.mkv\\'" "mpv")
+  ;; 				     ("\\.avi\\'" "mpv")
+  ;; 				     ("\\.webm\\'" "mpv")
+  ;; 				     ))
+  ;;(setq dired-dwim-target t)
   )
 
 
@@ -1438,7 +1478,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (define-key global-map (kbd "C-x f") 'counsel-find-file)
 
-(require 'dired-open)
+
 
 (kill-buffer "*scratch*")
 (counsel-mode 1)
@@ -1858,6 +1898,8 @@ Adapted from `describe-function-or-variable'."
   (advice-add 'python-mode :before 'elpy-enable)
   (setq elpy-rpc-backend "jedi") 
   :bind (:map elpy-mode-map
+	      ("M-<up>" . 'bm-previous)
+	      ("M-<down>" . 'bm-next)
 	      ("C-j d" . 'elpy-goto-definition)
 	      ("C-j a" . 'elpy-goto-assignment)
 	      ("M-f" . 'elpy-folding-toggle-at-point)
@@ -2649,7 +2691,7 @@ configuration was previously save, restore that configuration."
 ;;   )
 
 (define-key global-map (kbd "C-x C-e") 'eval-print-last-sexp)
-
+(define-key global-map (kbd "C-c v") 'org-ql-view)
 ;; tiny(abo-abo)
 ;; quickly insert text at point
 (use-package tiny
@@ -2665,9 +2707,68 @@ configuration was previously save, restore that configuration."
 	   )
     :config
     (progn
-      (setq proced-auto-update-interval 2)
+      ;;(setq proced-auto-update-interval 2)
 
-      ;; (defun alexm/proced-settings ()
-      ;;   (proced-toggle-auto-update t))
+      (defun alexm/proced-settings ()
+        (proced-toggle-auto-update t))
 
       (add-hook 'proced-mode-hook 'alexm/proced-settings)))
+
+
+;; orgmode autom completion
+(defun add-pcomplete-to-capf ()
+  (add-hook 'completion-at-point-functions 'pcomplete-completions-at-point nil t))
+
+(add-hook 'org-mode-hook #'add-pcomplete-to-capf)
+
+
+(add-to-list 'load-path "~/.emacs.d/org-pandoc-import/")
+(use-package org-pandoc-import)
+
+;; (use-package pdf-tools
+;;   :init
+;;   (require 'pdf-sel)
+;;   :config
+;;   (pdf-tools-install);; Alternatively, and if you care about start-up time, you may want to use (pdf-loader-install)
+;;   (setq pdf-annot-activate-created-annotations t)
+;;   ;; select word by double click
+;;   (add-hook 'pdf-view-mode-hook 'pdf-sel-mode)
+;;   ;; /select word by double click
+;;   :custom
+;;   (pdf-tools-enabled-modes
+;;    '(pdf-history-minor-mode pdf-isearch-minor-mode pdf-links-minor-mode pdf-misc-minor-mode pdf-outline-minor-mode pdf-misc-size-indication-minor-mode pdf-misc-menu-bar-minor-mode pdf-annot-minor-mode pdf-misc-context-menu-minor-mode pdf-cache-prefetch-minor-mode pdf-occur-global-minor-mode))
+   
+;;    )
+
+;; play sound every n second while clocking in
+(defun my/sound-while-clocking-in ()
+  "docstring"
+  ;;(interactive)
+  ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
+  ;;(play-sound-file "/org/timer-sounds/bell.wav")
+  ;;
+  ;;org-clock-clocking-in
+  (setq my/clocking-in-timer
+	;; run with 3 seconds delay at start and repeat every 30secs
+	(run-with-timer 3 30
+			;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
+			'shell-command-to-string "for i in `seq 1 3`; do
+    beep -f 3000 -d 20 -l 80
+done"
+			)
+
+	)
+  )
+(defun my/delete-clocking-in-timer ()
+  "docstring"
+  ;;(interactive)
+  (cancel-timer my/clocking-in-timer)
+  )
+(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
+(add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
+;; /play sound every n second while clocking in
+
+
+(setq visible-bell t)
+
+

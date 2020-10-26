@@ -2,7 +2,42 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("roam"
+(("accels"
+ (filename . "~/.config/evince/accels")
+ (front-context-string . "; evince GtkAcce")
+ (rear-context-string)
+ (position . 1))
+("test"
+ (filename . "/data/Sync/org/test.org")
+ (front-context-string . "* [[file:/org/vi")
+ (rear-context-string)
+ (position . 1))
+("books"
+ (filename . "/data/Books/")
+ (front-context-string . " /data/Books:\n  ")
+ (rear-context-string)
+ (position . 2))
+("inbox"
+ (filename . "/data/Sync/org/inbox.org")
+ (front-context-string . "# OLDTODOSTATES:")
+ (rear-context-string)
+ (position . 1))
+("music"
+ (filename . "/data/music/")
+ (front-context-string . "..\n  drwxrwxrwx ")
+ (rear-context-string . "0K Қаз 14 15:41 ")
+ (position . 155))
+("mtp"
+ (filename . "/data/Sync/org/mtp.org")
+ (front-context-string . "main task planni")
+ (rear-context-string)
+ (position . 3))
+("video"
+ (filename . "/data/Sync/org/video/")
+ (front-context-string . "ata/Sync/org/vid")
+ (rear-context-string)
+ (position . 5))
+("roam"
  (filename . "/data/Sync/org/roam/")
  (front-context-string)
  (rear-context-string . "Қаз 10 22:20 ..\n")
@@ -148,8 +183,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/notes.org")
- (front-context-string . "**** TODO if a c")
- (rear-context-string . "2020-10-14 Wed>\n")
- (position . 159278))
+ (filename . "/data/Sync/org/engl.org")
+ (front-context-string . "** For at the he")
+ (rear-context-string . " as mathematics\n")
+ (position . 8308))
 )

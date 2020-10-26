@@ -9,7 +9,10 @@
 	cua--prefix-override-handler
 	cua-exchange-point-and-mark
 	cua-paste
+	elpy-nav-forward-indent
+	indent-for-tab-command
 	my/mark-sexp
+	my/org-move-left
 	org-backward-sentence
 	org-ctrl-c-ctrl-c
 	org-force-self-insert
@@ -18,6 +21,7 @@
 	org-metaright
 	org-self-insert-command
 	org-shiftright
+	org-todo
 	smarter-move-end-of-line
 	))
 

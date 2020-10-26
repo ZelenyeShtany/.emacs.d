@@ -1,17 +1,52 @@
-# /etc/anacrontab: configuration file for anacron
+# This file lists those modules which we don't want to be loaded by
+# alias expansion, usually so some other driver will be loaded for the
+# device instead.
 
-# See anacron(8) and anacrontab(5) for details.
+# evbug is a debug tool that should be loaded explicitly
+blacklist evbug
 
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-HOME=/root
-LOGNAME=root
+# these drivers are very simple, the HID drivers are usually preferred
+blacklist usbmouse
+blacklist usbkbd
 
-# These replace cron's entries
-1	5	cron.daily	run-parts --report /etc/cron.daily
-7	10	cron.weekly	run-parts --report /etc/cron.weekly
-@monthly	15	cron.monthly	run-parts --report /etc/cron.monthly
+# replaced by e100
+blacklist eepro100
 
-1	5	cron.daily	/data/Sync/scripts/reading-session-stats/main.py /etc/cron.daily
-1	5	cron.daily	/data/Sync/scripts/messages-stats/export.py /etc/cron.daily
-1	5	cron.daily	/data/Sync/scripts/browsers_bookmarks_autoexport/run_export_bookmarks.sh /etc/cron.daily
+# replaced by tulip
+blacklist de4x5
+
+# causes no end of confusion by creating unexpected network interfaces
+blacklist eth1394
+
+# snd_intel8x0m can interfere with snd_intel8x0, doesn't seem to support much
+# hardware on its own (Ubuntu bug #2011, #6810)
+blacklist snd_intel8x0m
+
+# Conflicts with dvb driver (which is better for handling this device)
+blacklist snd_aw2
+
+# replaced by p54pci
+blacklist prism54
+
+# replaced by b43 and ssb.
+blacklist bcm43xx
+
+# most apps now use garmin usb driver directly (Ubuntu: #114565)
+blacklist garmin_gps
+
+# replaced by asus-laptop (Ubuntu: #184721)
+blacklist asus_acpi
+
+# low-quality, just noise when being used for sound playback, causes
+# hangs at desktop session start (Ubuntu: #246969)
+blacklist snd_pcsp
+
+# ugly and loud noise, getting on everyone's nerves; this should be done by a
+# nice pulseaudio bing (Ubuntu: #77010)
+blacklist pcspkr
+
+# EDAC driver for amd76x clashes with the agp driver preventing the aperture
+# from being initialised (Ubuntu: #297750). Blacklist so that the driver
+# continues to build and is installable for the few cases where its
+# really needed.
+blacklist amd76x_edac

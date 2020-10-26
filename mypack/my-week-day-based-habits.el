@@ -268,7 +268,7 @@ Create it if it doesnt exist"
 	  
 	  )
       )
-
+    (message (concat "Scheduled to " (org-entry-get nil "SCHEDULED" nil) ))
     (setq org-read-date-prefer-future org-read-date-prefer-future-default)
     
     )
