@@ -604,17 +604,178 @@ There are two things you can do about this warning:
   :defer t
   :mode ("\\.org\\'" . org-mode)
   :custom
+  (org-clock-mode-line-total 'current)
+  (org-return-follows-link t)
+  (org-use-speed-commands t)
+  (org-use-sub-superscripts nil)
+  (org-use-property-inheritance '("CLOCK_MODELINE_TOTAL"))
+  (org-ellipsis "⤵")
+  (org-protocol-default-template-key "d")
+  (org-read-date-prefer-future 'time)
+  (org-highest-priority 49)
+  (org-lowest-priority 54)
+  (org-default-priority 52)
+  (org-log-reschedule 'time)
+  (org-log-redeadline 'time)
+  (org-log-done 'time)
+  (org-pretty-entities 1)
+  (org-startup-indented 1)
+  (org-log-into-drawer "LOGBOOK")
+  (org-support-shift-select 'always)
+  (org-image-actual-width nil) ;; allowing images to be resized by #+attr_org atribute
+  (org-todo-keywords (list "TODO(1)" "STARTED(2)" "IDEA(6)" "|" "CANCELED(3)"  "MISSED(4)" "DONE(5)"))
+  (org-enforce-todo-dependencies t)
+  (org-agenda-start-with-log-mode t)
+
+  ;; time tracking
+  ;; Save the running clock and all clock history when exiting Emacs, load it on startup
+  (org-clock-persist t)
+  ;; Resume clocking task on clock-in if the clock is open
+  (org-clock-in-resume t)
+  ;; Do not prompt to resume an active clock, just resume it
+  (org-clock-persist-query-resume nil)
+  ;; /time tracking
+
+  
   (org-file-apps
    '((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince \"%s\"")
      ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
-  
+
+  (org-clock-sound (concat data-folder-path "Sync/org/timer-sounds/bell.wav"))
+  (org-todo-keyword-faces
+   '(
+     ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
+     ("DONE" . (:weight bold :background "#ACE1AF" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("TODO" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     
+     ("FEATURE" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TROUBLE" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("SOLUTION" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("BUG" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+
+     ("TOREAD" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOWATCH" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("SOMEDAY" . (:weight bold :background "#6C3333" :foreground "#DCDCCC" :box(:color "#3F3F3F") )) 
+     ("TOBUY" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("NEXT" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOSTUDY" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("STUCK" . (:weight bold  :background "#366060" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("CANCELED" . (:weight bold  :background "#2B2B2B" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("IDEA" . (:weight bold  :background "#ba3244" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ))
+  (org-tag-persistent-alist 
+   '(
+     (:startgrouptag)
+     ("ADHD")
+     (:grouptags)
+     ("attention")
+     ("forgetfulness")
+     ("working_memory")
+     (:endgrouptag)
+     ("заторможенность")
+     ("SCT")
+     ("quantifiedself")
+     ("NSTU")
+     ("compression")
+     ("podcasts")
+     ("stress")
+     ("постоянство")
+
+     ("buy")
+     ("nofap")
+     ("nofap_success")
+     ("nofap_fail")
+     ("important")
+     ("book")
+     ("video")
+     ("sobering")
+     ("sleep")
+     ("motivation")
+     ("cpp")
+     ("health")
+     ("assonfire")
+     ("alcohol")
+     ("organization")
+     ("workflow")
+     
+     (:startgrouptag)
+     ("emacs")
+     (:grouptags)
+     ("emacs_config")
+     ("orgmode")
+     ("elisp")
+     (:endgrouptag)
+     
+     (:startgrouptag)
+     ("mindset")
+     (:grouptags)
+     ("copingcard")
+     (:endgrouptag)
+     
+     
+     (:startgrouptag)
+     ("web")
+     (:grouptags)
+     ("article")
+     (:endgrouptag)
+
+     
+     ("engl")
+     ("music")
+     ("film")
+     ))
+  (org-capture-templates
+   '(;; ("t" "Todo" entry (file+headline todos "Tasks")
+     ;;  "* TODO %?")
+     ("j" "Add to inbox.org" entry (file+datetree inbox)
+      "* %?")
+     ("i" "Idea" entry (file+datetree notes)
+      "* IDEA %?")
+     ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
+     ;; "* frombroser: %a" :immediate-finish t)
+     ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
+      "* %?")
+
+     ("H" "Habits Tracker" plain (file habits-tracker )
+      (function (lambda () (interactive) (my/json-habits habits-tracker))) :immediate-finish t
+      )
+
+     ("g" "Migraines Tracker" plain (file migraines-tracker )
+      (function (lambda () (interactive) (my-json/migraines migraines-tracker))) :immediate-finish t
+      )
+
+     ("p" "Poor Man CBT" plain (file poor-man-cbt )
+      (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
+      )
+
+     ("n" "English Tracker" plain (file english-tracker )
+      (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
+      )
+
+     ("E" "Exercise Tracker" plain (file exercise-tracker )
+      (function (lambda () (interactive) (my/json-exercises exercise-tracker))) :immediate-finish t
+      )
+
+     ("M" "Sleep Tracker Morning" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary nil))) :immediate-finish t
+      )
+
+     ("l" "Sleep Tracker Evening" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary t))) :immediate-finish t
+      )
+
+     
+     ("d" "capture through org protocol" entry
+      (file+headline org-board-capture-file "Unsorted")
+      "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
+     ))
   :init
-  ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)(org-superstar-mode 1)))
   (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
   ;; (add-hook 'org-mode-hook '(lambda ()
   ;;  "Beautify Org Checkbox Symbol"
   ;;  (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
@@ -784,7 +945,6 @@ There are two things you can do about this warning:
       )
     )
 
-
   (defun my/number-of-spaces-at-point(point)
     "docstring"
     (interactive)
@@ -881,18 +1041,6 @@ or calls a menu of last clocked tasks to choose"
   (org-clock-persistence-insinuate)
   ;; /time tracking
   (setq
-   org-agenda-start-with-log-mode t
-
-   ;; time tracking
-   ;; Save the running clock and all clock history when exiting Emacs, load it on startup
-   org-clock-persist t
-   ;; Resume clocking task on clock-in if the clock is open
-   org-clock-in-resume t
-   ;; Do not prompt to resume an active clock, just resume it
-   org-clock-persist-query-resume nil
-   ;; /time tracking
-   
-   org-enforce-todo-dependencies t
    engl (concat data-folder-path "Sync/org/engl.org")
    inbox (concat data-folder-path "Sync/org/inbox.org")
    notes (concat data-folder-path "Sync/org/notes.org")
@@ -904,158 +1052,7 @@ or calls a menu of last clocked tasks to choose"
    migraines-tracker (concat data-folder-path "Sync/tables/migraines/data.json")
    habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/data.json")
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
-   sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json")
-   org-clock-sound (concat data-folder-path "Sync/org/timer-sounds/bell.wav")
-   org-clock-mode-line-total 'current
-   org-return-follows-link t
-   org-use-speed-commands t
-   org-use-sub-superscripts nil
-   org-use-property-inheritance '("CLOCK_MODELINE_TOTAL")
-   org-ellipsis "⤵"
-   org-protocol-default-template-key "d"
-   org-read-date-prefer-future 'time
-   org-highest-priority 49
-   org-lowest-priority 54
-   org-default-priority 52
-   org-log-reschedule 'time
-   org-log-redeadline 'time
-   org-log-done 'time
-   org-pretty-entities 1
-   org-startup-indented 1
-   org-log-into-drawer "LOGBOOK"
-   org-support-shift-select 'always
-   org-image-actual-width nil ;; allowing images to be resized by #+attr_org atribute
-   org-todo-keywords (list "TODO(1)" "STARTED(2)" "|" "CANCELED(3)"  "MISSED(4)" "DONE(5)")
-   org-todo-keyword-faces
-   '(
-     ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
-     ("DONE" . (:weight bold :background "#ACE1AF" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-     ("TODO" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     
-     ("FEATURE" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("TROUBLE" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-     ("SOLUTION" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("BUG" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-
-     ("TOREAD" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("TOWATCH" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("SOMEDAY" . (:weight bold :background "#6C3333" :foreground "#DCDCCC" :box(:color "#3F3F3F") )) 
-     ("TOBUY" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
-     ("NEXT" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("TOSTUDY" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     ("STUCK" . (:weight bold  :background "#366060" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
-     ("CANCELED" . (:weight bold  :background "#2B2B2B" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
-     ("IDEA" . (:weight bold  :background "#ba3244" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
-     )
-   org-tag-persistent-alist 
-   '(
-     (:startgrouptag)
-     ("ADHD")
-     (:grouptags)
-     ("attention")
-     ("forgetfulness")
-     ("working_memory")
-     (:endgrouptag)
-     ("заторможенность")
-     ("SCT")
-     ("quantifiedself")
-     ("NSTU")
-     ("compression")
-     ("podcasts")
-     ("stress")
-     ("постоянство")
-
-     ("buy")
-     ("nofap")
-     ("nofap_success")
-     ("nofap_fail")
-     ("important")
-     ("book")
-     ("video")
-     ("sobering")
-     ("sleep")
-     ("motivation")
-     ("cpp")
-     ("health")
-     ("assonfire")
-     ("alcohol")
-     ("organization")
-     ("workflow")
-     
-     (:startgrouptag)
-     ("emacs")
-     (:grouptags)
-     ("emacs_config")
-     ("orgmode")
-     ("elisp")
-     (:endgrouptag)
-     
-     (:startgrouptag)
-     ("mindset")
-     (:grouptags)
-     ("copingcard")
-     (:endgrouptag)
-     
-     
-     (:startgrouptag)
-     ("web")
-     (:grouptags)
-     ("article")
-     (:endgrouptag)
-
-     
-     ("engl")
-     ("music")
-     ("film")
-     )
-
-   
-   org-capture-templates
-   '(;; ("t" "Todo" entry (file+headline todos "Tasks")
-     ;;  "* TODO %?")
-     ("j" "Add to inbox.org" entry (file+datetree inbox)
-      "* %?")
-     ;; ("i" "Idea" entry (file+datetree notes)
-     ;;  "* IDEA %?")
-     ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
-     ;; "* frombroser: %a" :immediate-finish t)
-     ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
-      "* %?")
-
-     ("H" "Habits Tracker" plain (file habits-tracker )
-      (function (lambda () (interactive) (my/json-habits habits-tracker))) :immediate-finish t
-      )
-
-     ("g" "Migraines Tracker" plain (file migraines-tracker )
-      (function (lambda () (interactive) (my-json/migraines migraines-tracker))) :immediate-finish t
-      )
-
-     ("p" "Poor Man CBT" plain (file poor-man-cbt )
-      (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
-      )
-
-     ("n" "English Tracker" plain (file english-tracker )
-      (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
-      )
-
-     ("E" "Exercise Tracker" plain (file exercise-tracker )
-      (function (lambda () (interactive) (my/json-exercises exercise-tracker))) :immediate-finish t
-      )
-
-     ("M" "Sleep Tracker Morning" plain (file sleepdiary )
-      (function (lambda () (interactive) (my/json-sleep sleepdiary nil))) :immediate-finish t
-      )
-
-     ("l" "Sleep Tracker Evening" plain (file sleepdiary )
-      (function (lambda () (interactive) (my/json-sleep sleepdiary t))) :immediate-finish t
-      )
-
-     
-     ("d" "capture through org protocol" entry
-      (file+headline org-board-capture-file "Unsorted")
-      "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
-     )
-   )
+   sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json"))
 
   ;; web archiving through org-capture + org-board
   (defun do-org-board-dl-hook ()
@@ -1066,8 +1063,8 @@ or calls a menu of last clocked tasks to choose"
 
   (setq org-board-capture-file (concat data-folder-path "Sync/org/webarchive.org"))
   ;; /web archiving through org-capture + org-board  
-  (require 'org-download)
-  (require 'my-week-day-based-habits)
+  ;;(require 'org-download)
+  ;;(require 'my-week-day-based-habits)
   :bind (:map org-mode-map
 	      ("M-a" . 'my/org-archive-youtube-video-at-point)
 	      ("C-c f" . 'org-search-view)
@@ -1093,6 +1090,7 @@ or calls a menu of last clocked tasks to choose"
 	      ("C-c C-x C-o" . 'org-clock-out)
 	      ("C-c C-x C-q" . 'org-clock-cancel)
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
+	      ("C-c i" . (lambda () (interactive) (org-capture nil "i")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	      )
   :config
@@ -1252,12 +1250,14 @@ as a inactive timestamp string '[%Y-%m-%d]'"
           `((".*" ,temporary-file-directory t)))
 ;; </placing backup files (with ~ in the end) in special directory>
 
+(use-package my-week-day-based-habits
+  :requires (org)
+  )
 
 ;;<org-download - drag-n-drop images>
 ;; Drag-and-drop to `dired`
 (use-package org-download
-  :after
-  (org)
+  :requires (org)
   :hook (dired-mode . org-download-enable)
   :bind (:map global-map
 	 ("C-x p" . #'org-download-screenshot)
@@ -1323,7 +1323,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;; )
 
 (use-package org-agenda
-  :after (org)
+  :requires (org)
   :bind (:map org-agenda-mode-map
 	 ("r" . 'org-agenda-todo)
 	 ("t" . 'counsel-org-tag-agenda)

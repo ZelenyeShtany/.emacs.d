@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ proced
+ profiler-find-profile-other-window
+ tetris
+ check-parens
+ emacs-init-time
  fill-region
- counsel-package
- pdf-tools-install
- pdf-sync-minor-mode
- fill-paragraph
- emacs-uptime
- avy-goto-char-timer
+ counsel-org-capture
 )
 
 ;; ----- smex-data -----
@@ -43,7 +43,7 @@
  (org-board-open . 1)
  (org-id-get-create . 5)
  (org-id-copy . 1)
- (org-id-goto . 1)
+ (org-id-goto . 2)
  (org-id-store-link . 6)
  (org-customize . 1)
  (revert-buffer . 22)
@@ -192,10 +192,10 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 121)
+ (emacs-init-time . 122)
  (emacs-uptime . 2)
  (debug . 5)
- (check-parens . 16)
+ (check-parens . 18)
  (benchmark-init/show-durations-tabulated . 11)
  (mc/mark-all-in-region-regexp . 2)
  (cperl-perldoc-at-point . 2)
@@ -421,7 +421,7 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 959)
+ (tetris . 979)
  (tetris-start-game . 35)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -447,7 +447,7 @@
  (org-timestamp-up-day . 3)
  (my/kkk . 11)
  (my/count-done-records . 13)
- (org-clock-report . 6)
+ (org-clock-report . 8)
  (org-cut-subtree . 3)
  (org-paste-subtree . 5)
  (org-pomodoro . 4)
@@ -472,7 +472,7 @@
  (handwrite . 1)
  (bubbles . 1)
  (snake . 2)
- (org-agenda-clockreport-mode . 4)
+ (org-agenda-clockreport-mode . 5)
  (global-so-long-mode . 1)
  (org-indent-mode . 7)
  (dedicated-window-mode . 2)
@@ -506,7 +506,7 @@
  (find-name-dired . 1)
  (dired-mark-files-regexp . 3)
  (my/test . 6)
- (proced . 6)
+ (proced . 7)
  (highlight-phrase . 3)
  (where-is . 1)
  (markdown-export . 1)
@@ -526,4 +526,8 @@
  (pdf-sync-minor-mode . 1)
  (org-agenda-undo . 1)
  (fill-region . 2)
+ (org-agenda-quit . 1)
+ (profiler-find-profile-other-window . 1)
+ (profiler-report-mode . 1)
+ (profiler-report . 1)
 )
