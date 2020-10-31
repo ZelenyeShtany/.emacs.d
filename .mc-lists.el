@@ -23,6 +23,7 @@
 	org-shiftright
 	org-todo
 	smarter-move-end-of-line
+	sp-splice-sexp
 	))
 
 (setq mc/cmds-to-run-once

@@ -38,20 +38,6 @@
  '(custom-safe-themes
    '("b89a4f5916c29a235d0600ad5a0849b1c50fab16c2c518e1d98f0412367e7f97" "af8c277f4aa7dab97fe4e2d5ae78d4d12de7364eb1e93a0d3e0739d10adc08b5" "0ac7d13bc30eac2f92bbc3008294dafb5ba5167f2bf25c0a013f29f62763b996" "6ec768e90ce4b95869e859323cb3ee506c544a764e954ac436bd44702bd666c0" default))
  '(dired-always-read-filesystem t)
- ;; moved to use-package dired :custom
- ;; '(dired-open-extensions
- ;;   '(("pdf" . "evince")
- ;;     ("csv" . "konsole -e visidata")
- ;;     ("html" . "google-chrome")
- ;;     ("mp4" . "mpv")
- ;;     ("avi" . "mpv")
- ;;     ("webm" . "mpv")
- ;;     ("mp3" . "clementine")
- ;;     ("ogg" . "clementine")
- ;;     ("opus" . "clementine")
- ;;     ("odt" . "libreoffice")
- ;;     ("doc" . "libreoffice")
- ;;     ("docx" . "libreoffice")))
  '(dired-open-functions
    '(dired-open-by-extension diredp-find-file-reuse-dir-buffer))
  '(diredp-hide-details-initially-flag t)
@@ -164,13 +150,6 @@
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
  '(org-directory my-org-directory)
- ;; moved to use-package org :custom
- ;; '(org-file-apps
- ;;   '((auto-mode . emacs)
- ;;     ("\\.mm\\'" . default)
- ;;     ("\\.x?html?\\'" . default)
- ;;     ("\\.pdf\\'" . "okular \"%s\"")
- ;;     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
  '(org-habit-graph-column 0)
  '(org-insert-heading-respect-content t)
  '(org-link-frame-setup
@@ -263,11 +242,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(
-     ;;pdf-tools
-     org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
- ;; '(pdf-tools-enabled-modes
- ;;   '(pdf-history-minor-mode pdf-isearch-minor-mode pdf-links-minor-mode pdf-misc-minor-mode pdf-outline-minor-mode pdf-misc-size-indication-minor-mode pdf-misc-menu-bar-minor-mode pdf-annot-minor-mode pdf-misc-context-menu-minor-mode pdf-cache-prefetch-minor-mode pdf-occur-global-minor-mode))
+   '(lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -2772,3 +2747,79 @@ done"
 (setq visible-bell t)
 
 
+;; LSP-MODE
+;; (setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
+;;     projectile hydra flycheck company avy which-key helm-xref dap-mode))
+
+;; (when (cl-find-if-not #'package-installed-p package-selected-packages)
+;;   (package-refresh-contents)
+;;   (mapc #'package-install package-selected-packages))
+
+;; ;; sample `helm' configuration use https://github.com/emacs-helm/helm/ for details
+;; (helm-mode)
+;; (require 'helm-xref)
+;; (define-key global-map [remap find-file] #'helm-find-files)
+;; (define-key global-map [remap execute-extended-command] #'helm-M-x)
+;; (define-key global-map [remap switch-to-buffer] #'helm-mini)
+
+;; (which-key-mode)
+;; (add-hook 'c-mode-hook 'lsp)
+;; (add-hook 'cpp-mode-hook 'lsp)
+
+;; (setq gc-cons-threshold (* 100 1024 1024)
+;;       read-process-output-max (* 1024 1024)
+;;       treemacs-space-between-root-nodes nil
+;;       company-idle-delay 0.0
+;;       company-minimum-prefix-length 1
+;;       lsp-idle-delay 0.1 ;; clangd is fast
+;;       ;; be more ide-ish
+;;       lsp-headerline-breadcrumb-enable t)
+
+;; (with-eval-after-load 'lsp-mode
+;;   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+;;   (require 'dap-cpptools)
+;;   (yas-global-mode))
+;; /LSP-MODE
+
+
+;; LSP NEW
+(add-to-list 'load-path "~/.emacs.d/emacs-ccls/")
+
+;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+(setq lsp-keymap-prefix "s-l")
+
+;; To defer LSP server startup (and DidOpen notifications)
+;; until the buffer is visible you can use lsp-deferred instead of lsp
+(use-package lsp-mode
+    :hook (XXX-mode . lsp-deferred)
+    :commands (lsp lsp-deferred))
+
+;; optionally
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+;; if you are helm user
+;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+;; optional if you want which-key integration
+(use-package which-key
+    :config
+    (which-key-mode))
+(use-package company-lsp
+:ensure t
+)
+
+(use-package emacs-ccls
+  :init
+  (setq ccls-executable "/usr/local/bin/ccls")
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp)))
+  )
+;; LSP NEW

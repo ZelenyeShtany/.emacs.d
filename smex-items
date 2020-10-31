@@ -1,12 +1,12 @@
 
 ;; ----- smex-history -----
 (
+ emacs-version
+ emacs-init-time
  proced
  profiler-find-profile-other-window
  tetris
  check-parens
- emacs-init-time
- fill-region
  counsel-org-capture
 )
 
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 122)
+ (emacs-init-time . 125)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 18)
@@ -416,7 +416,7 @@
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
- (emacs-version . 2)
+ (emacs-version . 7)
  (my/json-point . 19)
  (json-pretty-print-buffer . 1)
  (test42 . 6)
@@ -530,4 +530,5 @@
  (profiler-find-profile-other-window . 1)
  (profiler-report-mode . 1)
  (profiler-report . 1)
+ (lsp-org . 4)
 )
