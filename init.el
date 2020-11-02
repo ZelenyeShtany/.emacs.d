@@ -1,5 +1,16 @@
 ;; speeds up initialization
-(setq gc-cons-threshold 64000000)
+(setq gc-cons-threshold 100000000)
+
+
+;; for better lsp-mode performance
+
+;; Increase the amount of data which Emacs
+;; reads from the process. Again the emacs default
+;; is too low 4k considering that the some of the
+;; language server responses are in 800k - 3M range
+(setq read-process-output-max (* 1024 1024))
+;; /for better lsp-mode performance
+
 (add-hook 'after-init-hook #'(lambda ()
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
@@ -242,7 +253,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -613,7 +624,8 @@ There are two things you can do about this warning:
 
   
   (org-file-apps
-   '((auto-mode . emacs)
+   '((directory . emacs) ;; for opening folders via emacs (dired-mode)
+     (auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince \"%s\"")
@@ -707,15 +719,15 @@ There are two things you can do about this warning:
      ;;  "* TODO %?")
      ("j" "Add to inbox.org" entry (file+datetree inbox)
       "* %?")
-     ("i" "Idea" entry (file+datetree notes)
+     ("i" "Idea" entry (file+datetree inbox)
       "* IDEA %?")
      ;;("d" "TEST" entry (file+datetree (concat data-folder-path "Sync/org/notes.org"))
      ;; "* frombroser: %a" :immediate-finish t)
      ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
       "* %?")
 
-     ("H" "Habits Tracker" plain (file habits-tracker )
-      (function (lambda () (interactive) (my/json-habits habits-tracker))) :immediate-finish t
+     ("H" "Meditations Tracker" plain (file meditations-tracker )
+      (function (lambda () (interactive) (my/json-meditations meditations-tracker))) :immediate-finish t
       )
 
      ("g" "Migraines Tracker" plain (file migraines-tracker )
@@ -1025,7 +1037,7 @@ or calls a menu of last clocked tasks to choose"
    poor-man-cbt (concat data-folder-path "Sync/tables/poor-man-CBT/data.json")
    english-tracker (concat data-folder-path "Sync/tables/english tracker/data.json")
    migraines-tracker (concat data-folder-path "Sync/tables/migraines/data.json")
-   habits-tracker (concat data-folder-path "Sync/tables/habits tracker/2020/data.json")
+   meditations-tracker (concat data-folder-path "Sync/tables/meditations/2020/data.json")
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
    sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json"))
 
@@ -1865,25 +1877,25 @@ Adapted from `describe-function-or-variable'."
   )
 
 ;; if you want to defer Elpy loading:
-(use-package elpy
-  :ensure t
-  :defer t
-  :init
-  (highlight-indentation-mode 0)
-  (advice-add 'python-mode :before 'elpy-enable)
-  (setq elpy-rpc-backend "jedi") 
-  :bind (:map elpy-mode-map
-	      ("M-<up>" . 'bm-previous)
-	      ("M-<down>" . 'bm-next)
-	      ("C-j d" . 'elpy-goto-definition)
-	      ("C-j a" . 'elpy-goto-assignment)
-	      ("M-f" . 'elpy-folding-toggle-at-point)
-	      ("C-<down>" . 'forward-paragraph)
-	      ("C-<up>" . 'backward-paragraph)
-	      ("<f2>" . 'elpy-multiedit-python-symbol-at-point)
-	      )
+;; (use-package elpy
+;;   :ensure t
+;;   :defer t
+;;   :init
+;;   (highlight-indentation-mode 0)
+;;   (advice-add 'python-mode :before 'elpy-enable)
+;;   (setq elpy-rpc-backend "jedi") 
+;;   :bind (:map elpy-mode-map
+;; 	      ("M-<up>" . 'bm-previous)
+;; 	      ("M-<down>" . 'bm-next)
+;; 	      ("C-j d" . 'elpy-goto-definition)
+;; 	      ("C-j a" . 'elpy-goto-assignment)
+;; 	      ("M-f" . 'elpy-folding-toggle-at-point)
+;; 	      ("C-<down>" . 'forward-paragraph)
+;; 	      ("C-<up>" . 'backward-paragraph)
+;; 	      ("<f2>" . 'elpy-multiedit-python-symbol-at-point)
+;; 	      )
 
-  )
+;;   )
 
 
 (define-key global-map (kbd "M-f") 'hs-toggle-hiding)
@@ -2791,7 +2803,9 @@ done"
 ;; To defer LSP server startup (and DidOpen notifications)
 ;; until the buffer is visible you can use lsp-deferred instead of lsp
 (use-package lsp-mode
-    :hook (XXX-mode . lsp-deferred)
+  :hook (
+	 ((python-mode c++-mode c-mode) . lsp-deferred)
+	 )
     :commands (lsp lsp-deferred))
 
 ;; optionally
@@ -2816,10 +2830,39 @@ done"
 :ensure t
 )
 
-(use-package emacs-ccls
+(use-package ccls
   :init
   (setq ccls-executable "/usr/local/bin/ccls")
   :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp)))
+         (lambda () (require 'ccls) (lsp)
+	   (add-to-list 'lsp-enabled-clients 'ccls)
+	   ))
   )
+;; (use-package lsp-jedi ;; python
+;;   :ensure t
+;;   :config
+;;   (with-eval-after-load "lsp-mode"
+;;     (add-to-list 'lsp-disabled-clients 'pyls)
+;;     (add-to-list 'lsp-enabled-clients 'jedi)))
+
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           ;;(lsp); or lsp-deferred
+;; 			  (lsp-deferred)
+;; 			  (add-to-list 'lsp-enabled-clients 'pyright)
+;; 			  )))
 ;; LSP NEW
+(add-hook
+ 'org-after-todo-state-change-hook
+ #'(lambda () (interactive)
+     (if
+	 (and
+	  ;; id of meditation habit headline
+	  (string= (org-entry-get nil "id") "45540784-a689-4f67-87ae-fb015f30c651")
+	  
+	  (or
+	   (string= (org-element-property :todo-keyword (org-element-at-point)) "MISSED")
+	   (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE")))
+	 (my/json-meditations meditations-tracker))))

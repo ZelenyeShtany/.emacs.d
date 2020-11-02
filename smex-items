@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- emacs-version
- emacs-init-time
- proced
- profiler-find-profile-other-window
+ smartparens-mode
+ org-version
  tetris
- check-parens
- counsel-org-capture
+ org-ql-search
+ emacs-init-time
+ emacs-version
+ proced
 )
 
 ;; ----- smex-data -----
@@ -16,7 +16,7 @@
  (org-ql-view . 25)
  (package-list-packages . 8)
  (package-delete . 5)
- (org-ql-search . 53)
+ (org-ql-search . 55)
  (org-cycle-agenda-files . 1)
  (org-agenda . 17)
  (org-todo . 3)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 125)
+ (emacs-init-time . 129)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 18)
@@ -396,7 +396,7 @@
  (scroll-bar-mode . 1)
  (widen . 43)
  (org-narrow-to-element . 4)
- (org-version . 2)
+ (org-version . 3)
  (counsel-org-tag . 1)
  (org-tags-view . 2)
  (xml-mode . 1)
@@ -416,19 +416,19 @@
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
- (emacs-version . 7)
+ (emacs-version . 9)
  (my/json-point . 19)
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 979)
+ (tetris . 994)
  (tetris-start-game . 35)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
  (split-window-below . 1)
  (customize-face . 1)
  (open-line . 1)
- (smartparens-mode . 1)
+ (smartparens-mode . 2)
  (sp-comment . 2)
  (sp-cheat-sheet . 1)
  (sp-beginning-of-sexp . 1)
@@ -531,4 +531,8 @@
  (profiler-report-mode . 1)
  (profiler-report . 1)
  (lsp-org . 4)
+ (lsp-rename . 1)
+ (company-diag . 2)
+ (ccls-reload . 1)
+ (lsp-ui-doc-show . 1)
 )

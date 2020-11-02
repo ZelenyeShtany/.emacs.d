@@ -215,7 +215,7 @@ If nil, create morning record"
     "" 
     )
   )
-(defun my/json-habits (filename)
+(defun my/json-meditations (filename)
   "docstring"
   (interactive)
   (require 'loop)
@@ -228,72 +228,75 @@ If nil, create morning record"
 		 chosen-option
 		 )
 	    (loop-while t
-			(setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
-			(if (not(eq(my/search-for-date tmpdate filename) nil))
-			    (progn
-			      (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
-			      (cond
-			       ;; выбрать другую дату
-			       ((string= chosen-option (nth 0 options) ) (loop-continue)) 
+	      (setq tmpdate (read-string "date:" (format-time-string "%Y-%m-%d") ))
+	      (if (not(eq(my/search-for-date tmpdate filename) nil))
+		  (progn
+		    (setq chosen-option (ivy-read "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+		    (cond
+		     ;; выбрать другую дату
+		     ((string= chosen-option (nth 0 options) ) (loop-continue)) 
 
-			       ;; перезаписать запись
-			       ((string= chosen-option (nth 1 options) ) 
-				(setq redefine-record t)
-				(loop-break)
-				)
-			       )
-			      )
-			  (loop-break)
-			  )
+		     ;; перезаписать запись
+		     ((string= chosen-option (nth 1 options) ) 
+		      (setq redefine-record t)
+		      (loop-break)
+		      )
+		     )
+		    )
+		(loop-break)
+		)
 
-			)
+	      )
 	    tmpdate
 	    )
 	  )
 	 (mins '(15 30 45 60))
 	 (one-or-zero (list "0" "1"))
 	 
-	 (taking-charge-adhd-p (string-to-number (ivy-read "taking-charge-adhd?" one-or-zero :require-match t)))
-	 (taking-charge-adhd-planned-p (string-to-number (ivy-read "taking-charge-adhd-planned?" one-or-zero :require-match t)))
+	 ;; (taking-charge-adhd-p (string-to-number (ivy-read "taking-charge-adhd?" one-or-zero :require-match t)))
+	 ;; (taking-charge-adhd-planned-p (string-to-number (ivy-read "taking-charge-adhd-planned?" one-or-zero :require-match t)))
 	 
-	 (soc-skills-p (string-to-number (ivy-read "soc-skills?" one-or-zero :require-match t)))
-	 (soc-skills-planned-p (string-to-number (ivy-read "soc-skills-planned?" one-or-zero :require-match t)))
+	 ;; (soc-skills-p (string-to-number (ivy-read "soc-skills?" one-or-zero :require-match t)))
+	 ;; (soc-skills-planned-p (string-to-number (ivy-read "soc-skills-planned?" one-or-zero :require-match t)))
 	 
-	 (nstu-3h-p (string-to-number (ivy-read "nstu-3h?" one-or-zero :require-match t)))
-	 (nstu-3h-planned-p (string-to-number (ivy-read "nstu-3h-planned?" one-or-zero :require-match t)))
+	 ;; (nstu-3h-p (string-to-number (ivy-read "nstu-3h?" one-or-zero :require-match t)))
+	 ;; (nstu-3h-planned-p (string-to-number (ivy-read "nstu-3h-planned?" one-or-zero :require-match t)))
 
-	 (discr-2h-p (string-to-number (ivy-read "discr-2h?" one-or-zero :require-match t)))
-	 (discr-2h-planned-p (string-to-number (ivy-read "discr-2h-planned?" one-or-zero :require-match t)))
+	 ;; (discr-2h-p (string-to-number (ivy-read "discr-2h?" one-or-zero :require-match t)))
+	 ;; (discr-2h-planned-p (string-to-number (ivy-read "discr-2h-planned?" one-or-zero :require-match t)))
 	 
-	 (nofap-p (string-to-number (ivy-read "nofap?" one-or-zero :require-match t)))
+	 ;; (nofap-p (string-to-number (ivy-read "nofap?" one-or-zero :require-match t)))
 
-	 (meditation-p (string-to-number (ivy-read "meditation?" one-or-zero :require-match t)))
-	 (meditation-planned-p (string-to-number (ivy-read "meditation-planned?" one-or-zero :require-match t)))
-	 (meditation-duration (if (eq meditation-p 0) 0 (string-to-number(ivy-read "duration(mins):" mins))))
 	 
-	 (teeth-morning-p (string-to-number (ivy-read "teeth-morning?" one-or-zero :require-match t)))
-	 (teeth-evening-p (string-to-number (ivy-read "teeth-evening?" one-or-zero :require-match t)))
+	 
+	 ;; (teeth-morning-p (string-to-number (ivy-read "teeth-morning?" one-or-zero :require-match t)))
+	 ;; (teeth-evening-p (string-to-number (ivy-read "teeth-evening?" one-or-zero :require-match t)))
 
-	 (shower-p (string-to-number (ivy-read "shower?" one-or-zero :require-match t)))
+	 ;; (shower-p (string-to-number (ivy-read "shower?" one-or-zero :require-match t)))
 
-	 (cold-shower-p (string-to-number (ivy-read "cold-shower?" one-or-zero :require-match t)))
-	 (cold-shower-planned-p (string-to-number (ivy-read "cold-shower-planned?" one-or-zero :require-match t)))
+	 ;; (cold-shower-p (string-to-number (ivy-read "cold-shower?" one-or-zero :require-match t)))
+	 ;; (cold-shower-planned-p (string-to-number (ivy-read "cold-shower-planned?" one-or-zero :require-match t)))
 
+	 ;;(meditation-p (string-to-number (ivy-read "meditation?" one-or-zero :require-match t)))
+	 ;;(meditation-planned-p (string-to-number (ivy-read "meditation-planned?" one-or-zero :require-match t)))
+	 (meditation-duration (string-to-number(ivy-read "duration(mins):" mins)))
+	 
 	 (notes (read-string "notes:" ""))
 
 
 	 (json-object (vector date
-			    (vector taking-charge-adhd-p taking-charge-adhd-planned-p)
-			    (vector soc-skills-p soc-skills-planned-p)
-			    (vector nstu-3h-p nstu-3h-planned-p)
-			    (vector discr-2h-p discr-2h-planned-p)
-			    nofap-p
-			    (vector meditation-p meditation-planned-p meditation-duration)
-			    (vector teeth-morning-p teeth-evening-p)
-			    shower-p
-			    (vector cold-shower-p cold-shower-planned-p)
-			    notes
-			    ))
+			      ;;(vector taking-charge-adhd-p taking-charge-adhd-planned-p)
+			      ;;(vector soc-skills-p soc-skills-planned-p)
+			      ;;(vector nstu-3h-p nstu-3h-planned-p)
+			      ;;(vector discr-2h-p discr-2h-planned-p)
+			      ;;nofap-p
+			      ;;(vector meditation-p meditation-planned-p meditation-duration)
+			      meditation-duration
+			      ;;(vector teeth-morning-p teeth-evening-p)
+			      ;;shower-p
+			      ;;(vector cold-shower-p cold-shower-planned-p)
+			      notes
+			      ))
 	 
 	 )
     ;; appending to "data" array

@@ -1,8 +1,13 @@
-;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("accels"
+(("projects / cpp"
+ (filename . "/data/Sync/projects/cpp/")
+ (front-context-string . ".ccls-cache\n  -r")
+ (rear-context-string . " 0 Қаз 31 14:08 ")
+ (position . 213))
+("accels"
  (filename . "~/.config/evince/accels")
  (front-context-string . "; evince GtkAcce")
  (rear-context-string)
@@ -78,10 +83,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "/data/Sync/org/brench.org")
- (front-context-string . "** general it sk")
- (rear-context-string . "de-sublevels 1)\n")
- (position . 14551))
+ (filename . "/data/Sync/org/утррит.org")
+ (front-context-string . "** TODO решить п")
+ (rear-context-string . "ыл сделать днём\n")
+ (position . 8468))
 ("data"
  (filename . "/data/")
  (front-context-string . "$RECYCLE.BIN\n  d")
@@ -183,8 +188,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/inbox.org")
- (front-context-string . "**** TODO тестов")
- (rear-context-string . "2020-11-07 Sat>\n")
- (position . 172173))
+ (filename . "/data/Sync/tables/habits tracker/2020/data.json")
+ (front-context-string)
+ (rear-context-string . "],\"\"]\n]\n\n    \n}\n")
+ (position . 2085))
 )
