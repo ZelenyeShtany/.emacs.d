@@ -2884,7 +2884,7 @@ done"
 
 
 (when (my/phone-p)
-  (define-key global-map (kbd "C-i") #'org-mru-clock-in)
-  (define-key global-map (kbd "C-o") #'org-clock-out)
-  (define-key global-map (kbd "C-q") #'org-clock-cancel)
+  (define-key global-map (kbd "<prior>") #'org-mru-clock-in)
+  (define-key global-map (kbd "<next>") #'org-clock-out)
+  (define-key global-map (kbd "<end>") #'org-clock-cancel)
   )

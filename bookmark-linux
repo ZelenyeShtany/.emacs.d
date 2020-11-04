@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("projects / cpp"
+(("discr / github_solutions"
+ (filename . "/data/cs70_github/")
+ (front-context-string . "..\n  drwxrwxrwx ")
+ (rear-context-string . "0K Қар  4 14:09 ")
+ (position . 160))
+("discr / discussions"
+ (filename . "/data/websites/CS70 Discrete Maths and Probability Theory(2015)/www-inst.eecs.berkeley.edu/_cs70/sp15/section/")
+ (front-context-string . "..\n  -rwxrwxrwx ")
+ (rear-context-string . "0K Там 28 17:37 ")
+ (position . 253))
+("dta"
+ (filename . "/data/cs70_github/cs70-2018/")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+("projects / cpp"
  (filename . "/data/Sync/projects/cpp/")
  (front-context-string . ".ccls-cache\n  -r")
  (rear-context-string . " 0 Қаз 31 14:08 ")
@@ -188,8 +203,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/org/inbox.org")
- (front-context-string . "**** android-при")
- (rear-context-string . "0-11-03 Tuesday\n")
- (position . 174734))
+ (filename . "/data/Sync/tables/sleep diary/2020/data.json")
+ (front-context-string)
+ (rear-context-string . "\",4],null]\n]\n\n}\n")
+ (position . 2491))
 )

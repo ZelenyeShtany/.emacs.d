@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ fundamental-mode
  emacs-init-time
  smartparens-mode
  LaTeX-mode
  tetris
  calc
  org-version
- org-ql-search
 )
 
 ;; ----- smex-data -----
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 17)
+ (fundamental-mode . 18)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
