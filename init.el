@@ -17,16 +17,17 @@
 ;; /speeds up initialization
 (require 'package)
 (package-initialize)
+(defun my/phone-p ()
+  (and (equal (system-name) "localhost") 
+       (not (equal user-login-name "zelenyeshtany"))))
 (setq bookmark-file
       (cond
+       ((my/phone-p) "~/.emacs.d/bookmark-android")
        ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
        ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
        )
       )
 
-(defun my/phone-p ()
-  (and (equal (system-name) "localhost") 
-       (not (equal user-login-name "zelenyeshtany"))))
 (setq data-folder-path
       (cond
        ((my/phone-p) "~/storage/shared/")
