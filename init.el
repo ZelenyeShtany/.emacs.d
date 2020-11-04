@@ -672,6 +672,7 @@ There are two things you can do about this warning:
      ("постоянство")
 
      ("buy")
+     ("android")
      ("nofap")
      ("nofap_success")
      ("nofap_fail")
@@ -738,9 +739,9 @@ There are two things you can do about this warning:
       (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
       )
 
-     ("n" "English Tracker" plain (file english-tracker )
-      (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
-      )
+     ;; ("n" "English Tracker" plain (file english-tracker )
+     ;;  (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
+     ;;  )
 
      ("E" "Exercise Tracker" plain (file exercise-tracker )
       (function (lambda () (interactive) (my/json-exercises exercise-tracker))) :immediate-finish t
@@ -1035,7 +1036,7 @@ or calls a menu of last clocked tasks to choose"
    todos (concat data-folder-path "Sync/org/todos.org")
    timerasp (concat data-folder-path "Sync/org/timerasp.org")
    poor-man-cbt (concat data-folder-path "Sync/tables/poor-man-CBT/data.json")
-   english-tracker (concat data-folder-path "Sync/tables/english tracker/data.json")
+   ;; english-tracker (concat data-folder-path "Sync/tables/english tracker/data.json")
    migraines-tracker (concat data-folder-path "Sync/tables/migraines/data.json")
    meditations-tracker (concat data-folder-path "Sync/tables/meditations/2020/data.json")
    exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
@@ -1244,10 +1245,13 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;;<org-download - drag-n-drop images>
 ;; Drag-and-drop to `dired`
 (use-package org-download
+  :ensure t
   :requires (org)
-  :hook (dired-mode . org-download-enable)
+  :hook (
+	 (dired-mode org-mode) . org-download-enable
+		    )
   :bind (:map global-map
-	 ("C-x p" . #'org-download-screenshot)
+	 ("C-x p" . 'org-download-screenshot)
 	 )
   :init
   (setq org-download-method 'directory)
@@ -1317,6 +1321,8 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 	 ("C-r" . 'org-agenda-redo-all)
 	 ("e" . 'org-agenda-redo)
 	 ("C-c n" . 'org-agenda-add-note)
+	 ("C-s" . 'org-save-all-org-buffers)
+	 ("s" . 'org-agenda-schedule)
 	 )
   )
 
@@ -2737,7 +2743,7 @@ configuration was previously save, restore that configuration."
   ;;org-clock-clocking-in
   (setq my/clocking-in-timer
 	;; run with 3 seconds delay at start and repeat every 30secs
-	(run-with-timer 3 30
+	(run-with-timer 3 60
 			;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
 			'shell-command-to-string "for i in `seq 1 3`; do
     beep -f 3000 -d 20 -l 80

@@ -9,19 +9,23 @@
 	cua--prefix-override-handler
 	cua-exchange-point-and-mark
 	cua-paste
+	dired-mark
 	elpy-nav-forward-indent
 	indent-for-tab-command
 	my/mark-sexp
 	my/org-move-left
 	org-backward-sentence
 	org-ctrl-c-ctrl-c
+	org-fill-paragraph
 	org-force-self-insert
 	org-forward-sentence
 	org-metaleft
 	org-metaright
+	org-open-line
 	org-self-insert-command
 	org-shiftright
 	org-todo
+	smarter-move-beginning-of-line
 	smarter-move-end-of-line
 	sp-splice-sexp
 	))

@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- smartparens-mode
- org-version
- tetris
- org-ql-search
  emacs-init-time
- emacs-version
- proced
+ smartparens-mode
+ LaTeX-mode
+ tetris
+ calc
+ org-version
+ org-ql-search
 )
 
 ;; ----- smex-data -----
@@ -29,7 +29,7 @@
  (kill-word . 2)
  (kill-line . 1)
  (customize-variable . 14)
- (org-download-screenshot . 3)
+ (org-download-screenshot . 4)
  (org-download-image . 1)
  (eww-list-bookmarks . 1)
  (eww . 2)
@@ -94,7 +94,7 @@
  (package-menu-mark-upgrades . 1)
  (helm-imenu . 3)
  (list-packages . 2)
- (calc . 1)
+ (calc . 2)
  (cua-exchange-point-and-mark . 3)
  (prettify-symbols-mode . 18)
  (font-lock-mode . 2)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 129)
+ (emacs-init-time . 130)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 18)
@@ -421,14 +421,14 @@
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 994)
+ (tetris . 999)
  (tetris-start-game . 35)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
  (split-window-below . 1)
  (customize-face . 1)
  (open-line . 1)
- (smartparens-mode . 2)
+ (smartparens-mode . 4)
  (sp-comment . 2)
  (sp-cheat-sheet . 1)
  (sp-beginning-of-sexp . 1)
@@ -535,4 +535,7 @@
  (company-diag . 2)
  (ccls-reload . 1)
  (lsp-ui-doc-show . 1)
+ (LaTeX-mode . 1)
+ (org-latex-preview . 1)
+ (c-c++-menu . 1)
 )

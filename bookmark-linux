@@ -188,8 +188,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/habits tracker/2020/data.json")
- (front-context-string)
- (rear-context-string . "],\"\"]\n]\n\n    \n}\n")
- (position . 2085))
+ (filename . "/data/Sync/org/inbox.org")
+ (front-context-string . "**** android-при")
+ (rear-context-string . "0-11-03 Tuesday\n")
+ (position . 174734))
 )
