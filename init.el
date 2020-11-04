@@ -29,7 +29,7 @@
        (not (equal user-login-name "zelenyeshtany"))))
 (setq data-folder-path
       (cond
-       ((my/phone-p) "/storage/emulated/0/")
+       ((my/phone-p) "~/storage/shared/")
        ((eq system-type 'gnu/linux) "/data/")
        ((eq system-type 'windows-nt) "D:/")
        )
@@ -275,7 +275,10 @@
      (org-confirm-babel-evaluate)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(temporary-file-directory (concat data-folder-path "org/tmp/"))
+ '(temporary-file-directory
+   (if (my/phone-p)
+       (concat data-folder-path "emacs-tmp/")   
+     (concat data-folder-path "org/tmp/")))
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
