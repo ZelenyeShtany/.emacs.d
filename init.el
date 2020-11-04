@@ -24,12 +24,17 @@
        )
       )
 
+(defun my/phone-p ()
+  (and (equal (system-name) "localhost") 
+       (not (equal user-login-name "zelenyeshtany"))))
 (setq data-folder-path
       (cond
+       ((my/phone-p) "/storage/emulated/0/")
        ((eq system-type 'gnu/linux) "/data/")
        ((eq system-type 'windows-nt) "D:/")
        )
       )
+
 (setq my-org-directory (concat data-folder-path "Sync/org/"))
 (setq my-org-from-smartphone-dir (concat my-org-directory "from-smartphone/"))
 (custom-set-variables
@@ -2872,3 +2877,5 @@ done"
 	   (string= (org-element-property :todo-keyword (org-element-at-point)) "MISSED")
 	   (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE")))
 	 (my/json-meditations meditations-tracker))))
+
+
