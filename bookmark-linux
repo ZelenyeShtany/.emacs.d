@@ -203,8 +203,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/sleep diary/2020/data.json")
- (front-context-string)
- (rear-context-string . "\",4],null]\n]\n\n}\n")
- (position . 2491))
+ (filename . "/data/Sync/org/inbox.org")
+ (front-context-string . "**** [[https://o")
+ (rear-context-string . "          :cpp:\n")
+ (position . 190361))
 )

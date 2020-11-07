@@ -1,0 +1,21 @@
+;; Object semanticdb-project-database-file-15921424f168
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-15921424f168"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-159212f58e40"
+      :major-mode c-mode
+      :tags 
+        '( ("abc_ilya" variable
+               (:default-value "15"
+                :type "int")
+                nil [11 29])
+            ("myfunc" function (:type "int") nil [30 58]))          
+      :file "gavno.h"
+      :pointmax 59
+      :fsize 58
+      :lastmodtime '(24486 29995 0 0)
+      :unmatched-syntax nil))
+  :file "!sudo:root@localhost:!usr!include!c++!9!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

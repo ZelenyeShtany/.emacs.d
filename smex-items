@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- fundamental-mode
- emacs-init-time
- smartparens-mode
- LaTeX-mode
+ counsel-package
+ semantic-mode
+ company-semantic
+ ggtags-find-tag-dwim
+ getenv
+ ff-find-other-file
  tetris
- calc
- org-version
 )
 
 ;; ----- smex-data -----
@@ -25,7 +25,7 @@
  (grep . 2)
  (eval-expression . 67)
  (org-evaluate-time-range . 2)
- (getenv . 2)
+ (getenv . 11)
  (kill-word . 2)
  (kill-line . 1)
  (customize-variable . 14)
@@ -72,7 +72,7 @@
  (replace-regexp . 12)
  (org-schedule . 1)
  (xah-elisp-mode . 7)
- (load-theme . 3)
+ (load-theme . 4)
  (doctor . 1)
  (org-sidebar . 2)
  (org-sidebar-toggle . 4)
@@ -107,7 +107,7 @@
  (emojify-mode . 19)
  (emojify-apropos-mode . 2)
  (emojify-apropos-quit . 1)
- (shell . 1)
+ (shell . 2)
  (icomplete-mode . 1)
  (icomplete-force-complete-and-exit . 1)
  (ivy-mode . 4)
@@ -123,10 +123,10 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 15)
+ (counsel-load-theme . 20)
  (counsel-yank-pop . 1)
  (counsel-ag . 100)
- (counsel-package . 185)
+ (counsel-package . 187)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
  (company-mode . 107)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 130)
+ (emacs-init-time . 131)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 18)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 25)
  (eval-buffer . 250)
- (org-mode . 19)
+ (org-mode . 20)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 3)
- (fundamental-mode . 18)
+ (fundamental-mode . 19)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -416,12 +416,12 @@
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
- (emacs-version . 9)
+ (emacs-version . 10)
  (my/json-point . 19)
  (json-pretty-print-buffer . 1)
  (test42 . 6)
  (elisp-index-search . 1)
- (tetris . 999)
+ (tetris . 1010)
  (tetris-start-game . 35)
  (my-json/prettify-array-at-point . 9)
  (my-json/engl . 1)
@@ -538,4 +538,19 @@
  (LaTeX-mode . 1)
  (org-latex-preview . 1)
  (c-c++-menu . 1)
+ (lsp-treemacs-errors-list . 1)
+ (lsp-treemacs-symbols . 1)
+ (treemacs-collapse-lsp-error-list . 1)
+ (lsp-treemacs-error-list-mode . 1)
+ (ff-find-other-file . 5)
+ (ggtags-find-tag-dwim . 25)
+ (lsp-mode . 2)
+ (er-sudo-edit . 1)
+ (ggtags-find-file . 1)
+ (semantic-mode . 7)
+ (semantic-ia-fast-jump . 17)
+ (semantic-complete-jump . 3)
+ (semantic-symref-find-references-by-name . 1)
+ (semantic-symref . 1)
+ (company-semantic . 2)
 )

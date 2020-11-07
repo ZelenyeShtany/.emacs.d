@@ -1,0 +1,22 @@
+;; Object semanticdb-project-database-file-1587e9b91b7c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1587e9b91b7c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1587ea731384"
+      :major-mode c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [90 108])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [109 129])
+            ("main" function (:type "int") nil [131 262]))          
+      :file "main.cpp"
+      :pointmax 264
+      :fsize 263
+      :lastmodtime '(24485 24086 693685 900000)
+      :unmatched-syntax nil))
+  :file "!data!Sync!projects!cpp!my!.ccls-cache!@data@Sync@projects@cpp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

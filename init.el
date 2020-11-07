@@ -15,6 +15,8 @@
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 ;; /speeds up initialization
+
+
 (require 'package)
 (package-initialize)
 (defun my/phone-p ()
@@ -259,7 +261,7 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -277,8 +279,9 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(temporary-file-directory
-   (if (my/phone-p)
-       (concat data-folder-path "emacs-tmp/")   
+   (if
+       (my/phone-p)
+       (concat data-folder-path "emacs-tmp/")
      (concat data-folder-path "org/tmp/")))
  '(tool-bar-mode nil)
  '(vc-annotate-background nil)
@@ -503,7 +506,7 @@ There are two things you can do about this warning:
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (require 'ido)
      (ido-mode t)
-(load-theme 'gruvbox-dark-hard t)
+(load-theme 'cyberpunk t)
 
 
 
@@ -635,6 +638,7 @@ There are two things you can do about this warning:
   (org-file-apps
    '((directory . emacs) ;; for opening folders via emacs (dired-mode)
      (auto-mode . emacs)
+     ("\\.webm\\'" . "mpv \"%s\"")
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
      ("\\.pdf\\'" . "evince \"%s\"")
@@ -1087,6 +1091,7 @@ or calls a menu of last clocked tasks to choose"
 	      ("C-c C-x C-o" . 'org-clock-out)
 	      ("C-c C-x C-q" . 'org-clock-cancel)
 	      ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
+	      ("C-c e" . (lambda () (interactive) (org-capture nil "e")))
 	      ("C-c i" . (lambda () (interactive) (org-capture nil "i")))
 	      ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
 	      )
@@ -2813,7 +2818,7 @@ done"
 (add-to-list 'load-path "~/.emacs.d/emacs-ccls/")
 
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-(setq lsp-keymap-prefix "s-l")
+(setq lsp-keymap-prefix "C-c l")
 
 ;; To defer LSP server startup (and DidOpen notifications)
 ;; until the buffer is visible you can use lsp-deferred instead of lsp
@@ -2831,7 +2836,10 @@ done"
 ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
 ;; if you are ivy user
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs :commands
+  lsp-treemacs-errors-list
+  lsp-treemacs-symbols
+  )
 
 ;; optionally if you want to use debugger
 (use-package dap-mode)
@@ -2845,14 +2853,6 @@ done"
 :ensure t
 )
 
-(use-package ccls
-  :init
-  (setq ccls-executable "/usr/local/bin/ccls")
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp)
-	   (add-to-list 'lsp-enabled-clients 'ccls)
-	   ))
-  )
 ;; (use-package lsp-jedi ;; python
 ;;   :ensure t
 ;;   :config
@@ -2868,7 +2868,7 @@ done"
 ;; 			  (lsp-deferred)
 ;; 			  (add-to-list 'lsp-enabled-clients 'pyright)
 ;; 			  )))
-;; LSP NEW
+;; / LSP NEW
 (add-hook
  'org-after-todo-state-change-hook
  #'(lambda () (interactive)
@@ -2888,3 +2888,38 @@ done"
   (define-key global-map (kbd "<next>") #'org-clock-out)
   (define-key global-map (kbd "<end>") #'org-clock-cancel)
   )
+
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+;;               (ggtags-mode 1))))
+
+
+;; C/C++ development:
+;;emacs / ggtags / config to make GNU Global see cpp system header files
+;; added to ~/.bashrc also
+;;(setenv "GTAGSLIBPATH" (concat (getenv "HOME")"/.gtags/"))
+(use-package ccls
+  :init
+  (setq ccls-executable "/usr/local/bin/ccls")
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp-deferred)
+	   (add-to-list 'lsp-enabled-clients 'ccls)
+	   ))
+  )
+
+(use-package semantic
+  :config
+  (semantic-add-system-include "/usr/local/include")
+  (semantic-add-system-include "/usr/include")
+  )
+
+;;(define-key c++-mode-map (kbd "C-j") 'semantic-ia-fast-jump)
+
+(use-package cc-mode
+  :hook ((c++-mode) . semantic-mode)
+  :bind (:map c++-mode-map
+	      ("C-j" . 'semantic-ia-fast-jump)
+	 )
+  )
+;; / C/C++ development:
