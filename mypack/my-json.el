@@ -25,6 +25,145 @@
 ;;     )
 ;;   )
 
+(defun whitespace-p ()
+  "returns t if character after point is a whitespace"
+  (interactive)
+  (eq(string-match "[[:space:]\n]" (char-to-string(char-after))) 0)
+  )
+
+(defun my/get-approppriate-location-to-insert(filepath subheading-title)
+    "docstring"
+    (interactive)
+    ;; prompt for a date
+    (let (
+
+          (success 0)
+          )
+    (require 'loop)
+    (loop-do-while (eq success 0)
+      (let* (
+             (date-element-begin 0)
+             (date-element-end 0)
+             (date (read-string "date:" (concat "[" (format-time-string "%Y-%m-%d") "]")))
+             (files (list filepath))
+             (dates  (org-map-entries 'org-element-at-point "LEVEL=1" files ) )
+             ;;                      [  function to call  ]        [list of files]
+             (datefound 0)
+             (date-element nil)
+             )
+        ;; (setq datefound 1) if entered date exists within the file DONE
+        (catch 'datefound
+          (when (> (length dates) 0)
+          (dolist (curdate dates);;(goto-char(org-element-property :begin curdate))
+            (if (string= (org-element-property :title curdate) date)
+                (progn
+                  (setq date-element-end (org-element-property :end curdate))
+                  (setq date-element-begin (org-element-property :begin curdate))
+                  (setq datefound 1)
+                  (throw 'datefound 1)
+                  )
+              )
+            )
+          )
+          )
+
+        ;; if typed date found,
+        (if (eq datefound 1)
+            ;;check if it has a sugheading subheading-title
+            (let* (
+                   (elements (progn
+                               (goto-char date-element-begin)
+                               (org-map-entries 'org-element-at-point "LEVEL=2" 'tree)
+                               ))
+                   (morningfound 0)
+                   )
+              ;; try to find subheading-title heading. DONE
+              (catch 'morningfound
+                (dolist (cur-element elements)
+                  (message "%s" (org-element-property :title cur-element))
+                  (if (string= (org-element-property :title cur-element) subheading-title)
+                      (progn
+                        (setq morningfound 1)
+                        (setq morning cur-element)
+                        (throw 'morningfound 1)
+                        )
+                    )
+                  )
+                )
+              ;;If morning heading exists 
+              (if (eq morningfound 1)
+                  ;;then prompt for an option
+                  (let*
+                      (
+                       (options  (list "выбрать другую дату" (concat "перезаписать запись \"" subheading-title "\""))  )
+                       (chosen-option (ivy-read
+                                       "запись уже есть. Изменить запись или выбрать другую дату?" options :require-match t))
+
+                       )
+
+                    (cond
+                     ;; skip the rest of the loop (continue)
+                     ((string= chosen-option (nth 0 options))
+                      (loop-continue)
+                      )
+
+                     ;; cut subheading subheading-title create a new one, return a point
+                     ((string= chosen-option (nth 1 options) )
+                      (let*
+                          ()
+                        (goto-char (org-element-property :begin morning))
+                        (org-cut-subtree)
+                        (goto-char date-element-end)
+                        (org-insert-subheading 4)
+                        (insert (concat subheading-title "\n"))
+                        (setq success 1)
+                        (point)
+                        )
+                      )
+                     )
+                    )
+
+                ;;else insert subheading-title subheading and return a point
+                (let* ()
+                  (goto-char date-element-end)
+                  (org-insert-subheading 4)
+                  (insert (concat subheading-title "\n"))
+                  (setq success 1)
+                  (point)
+                  )
+                )
+              )
+          ;; date not found
+          (let* (
+                 (tvar 0)
+                 (morning nil)
+                 )
+            (goto-char
+             (if (> (length dates) 0)
+                 (org-element-property :begin (car dates) )
+                 (goto-char (point-max))
+               ) )
+            (org-insert-heading)
+            (insert date)
+            ;;(org-end-of-subtree) ;;skipping properties and other automatically set drawers
+            (org-insert-subheading 4)
+            (setq morning (org-element-at-point))
+            (insert (concat subheading-title "\n"))
+            ;;(org-end-of-subtree)
+            ;;(if (not (eq (forward-char 1) nil) ) (insert "\n") )
+            (setq success 1)
+            )
+          )
+
+
+        ;; if the date exists within the file
+
+      ;; if
+      )
+    )
+    )
+    )
+
 (defun my/json-sleep (filename evening-p)
   "if evening-p non-nil, create evening record.
 If nil, create morning record"

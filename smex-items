@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- counsel-package
- semantic-mode
- company-semantic
- ggtags-find-tag-dwim
- getenv
- ff-find-other-file
- tetris
+ counsel-load-theme
+ company-mode
+ org-edit-src-code
+ emacs-init-time
+ hs-minor-mode
+ xref-find-references
+ cua-mode
 )
 
 ;; ----- smex-data -----
@@ -95,7 +95,7 @@
  (helm-imenu . 3)
  (list-packages . 2)
  (calc . 2)
- (cua-exchange-point-and-mark . 3)
+ (cua-exchange-point-and-mark . 4)
  (prettify-symbols-mode . 18)
  (font-lock-mode . 2)
  (global-prettify-symbols-mode . 5)
@@ -123,13 +123,13 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 20)
+ (counsel-load-theme . 21)
  (counsel-yank-pop . 1)
  (counsel-ag . 100)
  (counsel-package . 187)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 107)
+ (company-mode . 109)
  (company-complete . 2)
  (counsel-org-capture . 333)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 131)
+ (emacs-init-time . 137)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 18)
@@ -202,7 +202,7 @@
  (package-initialize . 1)
  (sync-state-modeline . 5)
  (counsel-org-tag-agenda . 1)
- (yas-new-snippet . 1)
+ (yas-new-snippet . 2)
  (counsel-rhythmbox . 3)
  (counsel-rhythmbox-playpause-current-song . 1)
  (org-recur-mode . 6)
@@ -227,7 +227,7 @@
  (org-priority . 4)
  (org-cliplink . 25)
  (eval-buffer . 250)
- (org-mode . 20)
+ (org-mode . 27)
  (org-caldav-delete-everything . 7)
  (widget-narrow-to-field . 1)
  (org-gcal-sync . 83)
@@ -259,7 +259,7 @@
  (ace-jump-line-mode . 2)
  (ace-jump-mode-pop-mark . 1)
  (eval-last-sexp . 1)
- (company-yasnippet . 11)
+ (company-yasnippet . 12)
  (sql-postgres . 1)
  (eval-region . 57)
  (reverse-region . 2)
@@ -271,7 +271,7 @@
  (windower-toggle-split . 1)
  (windower-move-border-above . 1)
  (find-variable-other-frame . 1)
- (highlight-symbol-mode . 12)
+ (highlight-symbol-mode . 13)
  (ido-switch-buffer . 1)
  (ag . 29)
  (debug-on-entry . 1)
@@ -288,7 +288,7 @@
  (pixel-scroll-mode . 4)
  (origami-toggle-node . 19)
  (origami-close-node . 1)
- (hs-minor-mode . 9)
+ (hs-minor-mode . 13)
  (hs-show-block . 7)
  (hs-hide-all . 1)
  (hs-hide-block . 6)
@@ -316,7 +316,7 @@
  (my-is-region-active . 2)
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
- (org-edit-src-code . 3)
+ (org-edit-src-code . 13)
  (fundamental-mode . 19)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
@@ -385,12 +385,12 @@
  (powerline-vim-theme . 3)
  (find-file-at-point . 1)
  (powerline-default-theme . 3)
- (emacs-lisp-mode . 8)
+ (emacs-lisp-mode . 15)
  (org-insert-heading-respect-content . 1)
  (org-time-stamp-inactive . 3)
  (my/get-approppriate-location-to-insert . 42)
  (find-face-definition . 1)
- (xref-find-references . 1)
+ (xref-find-references . 2)
  (multiple-cursors-mode . 1)
  (helm-colors . 4)
  (scroll-bar-mode . 1)
@@ -428,7 +428,7 @@
  (split-window-below . 1)
  (customize-face . 1)
  (open-line . 1)
- (smartparens-mode . 4)
+ (smartparens-mode . 6)
  (sp-comment . 2)
  (sp-cheat-sheet . 1)
  (sp-beginning-of-sexp . 1)
@@ -553,4 +553,5 @@
  (semantic-symref-find-references-by-name . 1)
  (semantic-symref . 1)
  (company-semantic . 2)
+ (cua-mode . 4)
 )
