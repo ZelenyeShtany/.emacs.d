@@ -1,8 +1,18 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("discr / github_solutions"
+(("okular / core"
+ (filename . "/data/Sync/projects/okular/core/")
+ (front-context-string . "action.cpp\n  -rw")
+ (rear-context-string . "3K Қар  6 21:25 ")
+ (position . 220))
+("okular"
+ (filename . "/data/Sync/projects/okular/")
+ (front-context-string . "core\n  -rwxrwxrw")
+ (rear-context-string . "6K Қар  8 17:44 ")
+ (position . 1317))
+("discr / github_solutions"
  (filename . "/data/cs70_github/")
  (front-context-string . "..\n  drwxrwxrwx ")
  (rear-context-string . "0K Қар  4 14:09 ")
@@ -12,11 +22,6 @@
  (front-context-string . "..\n  -rwxrwxrwx ")
  (rear-context-string . "0K Там 28 17:37 ")
  (position . 253))
-("dta"
- (filename . "/data/cs70_github/cs70-2018/")
- (front-context-string)
- (rear-context-string)
- (position . 1))
 ("projects / cpp"
  (filename . "/data/Sync/projects/cpp/")
  (front-context-string . ".ccls-cache\n  -r")
@@ -204,7 +209,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/Sync/org/inbox.org")
- (front-context-string . "**** [[https://o")
- (rear-context-string . "          :cpp:\n")
- (position . 190361))
+ (front-context-string . "**** [[file:/org")
+ (rear-context-string . "Rlg6C23jM.mkv]]\n")
+ (position . 193798))
 )

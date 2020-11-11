@@ -1,0 +1,315 @@
+;; Object semanticdb-project-database-file-15609e89bfc0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-15609e89bfc0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-15609e0f1364"
+      :major-mode c++-mode
+      :tags 
+        '( ("POPPLER_GLOBAL_H" variable (:constant-flag t) nil [984 1000])
+            ("LIB_EXPORT" variable (:constant-flag t) nil [1130 1140])
+            ("LIB_IMPORT" variable (:constant-flag t) nil [1153 1163])
+            ("POPPLER_CPP_EXPORT" variable (:constant-flag t) nil [1265 1283])
+            ("iosfwd" include (:system-flag t) nil [1303 1320])
+            ("string" include (:system-flag t) nil [1321 1338])
+            ("vector" include (:system-flag t) nil [1339 1356])
+            ("poppler" type
+               (:members 
+                  ( ("detail" type
+                       (:members 
+                          ( ("noncopyable" type
+                               (:members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [1466 1473])
+                                    ("protected" label nil (reparse-symbol classsubparts) [1586 1596])
+                                    ("noncopyable" function
+                                       (:prototype-flag t
+                                        :constructor-flag t
+                                        :type ("noncopyable" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [1601 1615])
+                                    ("noncopyable" function
+                                       (:prototype-flag t
+                                        :destructor-flag t
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [1620 1635]))                                  
+                                :type "class")
+                                (reparse-symbol namespacesubparts) [1427 1638]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [1407 1641])
+                    ("noncopyable" type
+                       (:typedef ("detail::noncopyable" type (:type "class") nil nil)
+                        :type "typedef")
+                        (reparse-symbol namespacesubparts) [1643 1683])
+                    ("rotation_enum" type
+                       (:members 
+                          ( ("rotate_0" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1723 1732])
+                            ("rotate_90" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1737 1747])
+                            ("rotate_180" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1752 1763])
+                            ("rotate_270" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1768 1780]))                          
+                        :type "enum")
+                        (reparse-symbol namespacesubparts) [1698 1781])
+                    ("page_box_enum" type
+                       (:members 
+                          ( ("media_box" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1808 1818])
+                            ("crop_box" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1823 1832])
+                            ("bleed_box" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1837 1847])
+                            ("trim_box" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1852 1861])
+                            ("art_box" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1866 1875]))                          
+                        :type "enum")
+                        (reparse-symbol namespacesubparts) [1783 1876])
+                    ("permission_enum" type
+                       (:members 
+                          ( ("perm_print" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1905 1916])
+                            ("perm_change" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1921 1933])
+                            ("perm_copy" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1938 1948])
+                            ("perm_add_notes" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1953 1968])
+                            ("perm_fill_forms" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1973 1989])
+                            ("perm_accessibility" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1994 2013])
+                            ("perm_assemble" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [2018 2032])
+                            ("perm_print_high_resolution" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [2037 2065]))                          
+                        :type "enum")
+                        (reparse-symbol namespacesubparts) [1878 2066])
+                    ("case_sensitivity_enum" type
+                       (:members 
+                          ( ("case_sensitive" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [2101 2116])
+                            ("case_insensitive" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [2121 2139]))                          
+                        :type "enum")
+                        (reparse-symbol namespacesubparts) [2068 2140])
+                    ("byte_array" type
+                       (:typedef ("std::vector" type
+                             (:template-specifier 
+                                ( ("char" type nil nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :type "typedef")
+                        (reparse-symbol namespacesubparts) [2142 2179])
+                    ("time_type" type
+                       (:typedef ("unsigned int")
+                        :type "typedef")
+                        (reparse-symbol namespacesubparts) [2181 2225])
+                    ("ustring" type
+                       (:superclasses 
+                          ( ("std::basic_string" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [2521 2528])
+                            ("ustring" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2533 2543])
+                            ("ustring" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :arguments 
+                                  ( ("len" variable (:type ("size_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2556 2570])
+                                    ("ch" variable (:type ("value_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2571 2585]))                                  
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2548 2586])
+                            ("ustring" function
+                               (:prototype-flag t
+                                :destructor-flag t
+                                :type "void")
+                                (reparse-symbol classsubparts) [2591 2602])
+                            ("to_utf8" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("byte_array" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2608 2635])
+                            ("to_latin1" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2640 2670])
+                            ("from_utf8" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("str" variable
+                                       (:pointer 1
+                                        :constant-flag t
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [2701 2717])
+                                    ("len" variable
+                                       (:default-value "-1"
+                                        :type "int")
+                                        (reparse-symbol arg-sub-list) [2718 2730]))                                  
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2676 2732])
+                            ("from_latin1" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("str" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2764 2787]))                                  
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2737 2788])
+                            ("private" label nil (reparse-symbol classsubparts) [2790 2798])
+                            ("ustring" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :arguments 
+                                  ( ("" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2858 2878]))                                  
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2850 2879])
+                            ("string" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :parent "std"
+                                :type "int")
+                                (reparse-symbol classsubparts) [2893 2913])
+                            ("=" function
+                               (:prototype-flag t
+                                :operator-flag t
+                                :arguments 
+                                  ( ("" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2937 2957]))                                  
+                                :type ("ustring" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2918 2958]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [2443 2961])
+                    ("convert_date" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("date" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3053 3077]))                          
+                        :type ("time_type" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [3030 3078])
+                    ("<<" function
+                       (:prototype-flag t
+                        :operator-flag t
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::ostream" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3124 3145])
+                            ("array" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("byte_array" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3146 3170]))                          
+                        :type ("std::ostream" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [3099 3171])
+                    ("set_data_dir" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("new_data_dir" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3210 3242]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [3192 3243])
+                    ("debug_func" function
+                       (:prototype-flag t
+                        :function-pointer t
+                        :arguments 
+                          ( ("" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3272 3292])
+                            ("" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [3293 3300]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3253 3301])
+                    ("set_debug_error_function" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("debug_function" variable (:type ("debug_func" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3352 3378])
+                            ("closure" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [3379 3393]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3322 3394]))                  
+                :type "namespace")
+                nil [1358 3397]))          
+      :file "poppler-global.h"
+      :pointmax 3406
+      :fsize 3405
+      :lastmodtime '(24478 65364 0 0)
+      :unmatched-syntax '((TYPEDEF 3245 . 3252) (OPERATOR 2884 . 2892) (punctuation 1583 . 1584) (DELETE 1577 . 1583) (punctuation 1575 . 1576) (semantic-list 1553 . 1574) (punctuation 1552 . 1553) (OPERATOR 1544 . 1552) (punctuation 1543 . 1544) (symbol 1531 . 1542) (CONST 1525 . 1530) (punctuation 1519 . 1520) (DELETE 1513 . 1519) (punctuation 1511 . 1512) (semantic-list 1489 . 1510) (symbol 1478 . 1489))
+      :lexical-table 
+        '(("LIB_EXPORT")
+          ("LIB_IMPORT")
+          ("POPPLER_CPP_EXPORT" . ((symbol "LIB_IMPORT" 1284 . 1294)))
+          ("POPPLER_GLOBAL_H")
+          )
+))
+  :file "!data!Dictionaries!poppler-20.11.0!cpp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

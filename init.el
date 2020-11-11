@@ -20,7 +20,6 @@
 ;; /speeds up initialization
 
 
-(require 'package)
 (package-initialize)
 (defun my/phone-p ()
   (and (equal (system-name) "localhost") 
@@ -64,7 +63,7 @@
  '(dired-open-functions
    '(dired-open-by-extension diredp-find-file-reuse-dir-buffer))
  '(diredp-hide-details-initially-flag t)
- '(display-time-mode t)
+ '(display-time-mode -1)
  '(elpy-modules
    '(elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults))
  '(fci-rule-color "#383838")
@@ -265,7 +264,15 @@
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(lsp-clangd dired-du ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+ '(powerline-display-buffer-size (if (my/phone-p)
+				     nil
+				   t
+				   ))
+ '(global-mode-string (if (my/phone-p)
+			  '("")
+			'("" display-time-string)
+			))
  '(safe-local-variable-values
    '((eval progn
 	   (org-babel-goto-named-src-block "update-content")
@@ -325,7 +332,13 @@ There are two things you can do about this warning:
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
-(require 'org)
+
 (org-babel-load-file
  (expand-file-name "org-babel-init.org"
                    user-emacs-directory))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

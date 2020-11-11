@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-1592130879e0
+;; Object semanticdb-project-database-file-155dfe60d2e0
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-1592130879e0"
+(semanticdb-project-database-file "semanticdb-project-database-file-155dfe60d2e0"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-1592130879fc"
+    (semanticdb-table "semanticdb-table-155dfe5fb298"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOSTREAM" variable (:constant-flag t) nil [1249 1266])
@@ -59,7 +59,7 @@
         '(("_GLIBCXX_IOSTREAM" . ((number "1" 1267 . 1268)))
           )
 )
-    (semanticdb-table "semanticdb-table-159213a6eb1c"
+    (semanticdb-table "semanticdb-table-155dfe5fb2b8"
       :major-mode c-mode
       :tags 
         '( ("abc_ilya" variable
@@ -72,7 +72,7 @@
       :fsize 58
       :lastmodtime '(24486 29995 991720 20000)
       :unmatched-syntax '((symbol 1 . 10)))
-    (semanticdb-table "semanticdb-table-159212e65100"
+    (semanticdb-table "semanticdb-table-155dfe5fb2d8"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_OSTREAM" variable (:constant-flag t) nil [1227 1243])
@@ -730,7 +730,7 @@
         '(("_GLIBCXX_OSTREAM" . ((number "1" 1244 . 1245)))
           )
 )
-    (semanticdb-table "semanticdb-table-159212e65120"
+    (semanticdb-table "semanticdb-table-155dfe5fc280"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_ISTREAM" variable (:constant-flag t) nil [1225 1241])
@@ -1592,7 +1592,7 @@
         '(("_GLIBCXX_ISTREAM" . ((number "1" 1242 . 1243)))
           )
 )
-    (semanticdb-table "semanticdb-table-15921449a0b4"
+    (semanticdb-table "semanticdb-table-155dfe5fc2a0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOS" variable (:constant-flag t) nil [1233 1245])
@@ -1612,7 +1612,7 @@
         '(("_GLIBCXX_IOS" . ((number "1" 1246 . 1247)))
           )
 )
-    (semanticdb-table "semanticdb-table-1592130d1640"
+    (semanticdb-table "semanticdb-table-155dfe5fc2c0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOSFWD" variable (:constant-flag t) nil [1244 1259])
@@ -1957,7 +1957,7 @@
         '(("_GLIBCXX_IOSFWD" . ((number "1" 1260 . 1261)))
           )
 )
-    (semanticdb-table "semanticdb-table-1592130d1660"
+    (semanticdb-table "semanticdb-table-155dfe5fc2e0"
       :major-mode c++-mode
       :tags 
         '( ("__EXCEPTION__" variable (:constant-flag t) nil [1161 1174])
@@ -2010,7 +2010,7 @@
         '(("__EXCEPTION__")
           )
 )
-    (semanticdb-table "semanticdb-table-1592130ae48c"
+    (semanticdb-table "semanticdb-table-155dfe609a80"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBXX_STREAMBUF" variable (:constant-flag t) nil [1235 1252])
@@ -2641,7 +2641,7 @@
         '(("_GLIBXX_STREAMBUF" . ((number "1" 1253 . 1254)))
           )
 )
-    (semanticdb-table "semanticdb-table-159213b449d4"
+    (semanticdb-table "semanticdb-table-155dfe609aa0"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1555 1582])
@@ -2801,7 +2801,7 @@
         '(("_GLIBCXX_CWCHAR" . ((number "1" 1685 . 1686)))
           )
 )
-    (semanticdb-table "semanticdb-table-15921385fbdc"
+    (semanticdb-table "semanticdb-table-155dfe609ac0"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1559 1586])
@@ -2833,7 +2833,7 @@
         '(("_GLIBCXX_CCTYPE" . ((number "1" 1655 . 1656)))
           )
 )
-    (semanticdb-table "semanticdb-table-159213bad3c0"
+    (semanticdb-table "semanticdb-table-155dfe609ae0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_SYSTEM_ERROR" variable (:constant-flag t) nil [1189 1210])
@@ -3142,7 +3142,7 @@
         '(("_GLIBCXX_SYSTEM_ERROR" . ((number "1" 1211 . 1212)))
           )
 )
-    (semanticdb-table "semanticdb-table-15921424f2dc"
+    (semanticdb-table "semanticdb-table-155dfe60ae80"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1589 1616])
@@ -3164,7 +3164,7 @@
         '(("_GLIBCXX_CLOCALE" . ((number "1" 1688 . 1689)))
           )
 )
-    (semanticdb-table "semanticdb-table-159213185e0c"
+    (semanticdb-table "semanticdb-table-155dfe60aea0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_STRING" variable (:constant-flag t) nil [1259 1274])
@@ -3193,7 +3193,7 @@
         '(("_GLIBCXX_STRING" . ((number "1" 1275 . 1276)))
           )
 )
-    (semanticdb-table "semanticdb-table-159212fd7800"
+    (semanticdb-table "semanticdb-table-155dfe60aec0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_STDEXCEPT" variable (:constant-flag t) nil [1238 1256])
@@ -3461,7 +3461,7 @@
         '(("_GLIBCXX_STDEXCEPT" . ((number "1" 1257 . 1258)))
           )
 )
-    (semanticdb-table "semanticdb-table-159214342874"
+    (semanticdb-table "semanticdb-table-155dfe60aee0"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1562 1589])
@@ -3501,7 +3501,7 @@
         '(("_GLIBCXX_CWCTYPE" . ((number "1" 1823 . 1824)))
           )
 )
-    (semanticdb-table "semanticdb-table-159212ed1938"
+    (semanticdb-table "semanticdb-table-155dfe60d280"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_TYPE_TRAITS" variable (:constant-flag t) nil [1192 1212])
@@ -6379,7 +6379,7 @@
           ("_GLIBCXX_TYPE_TRAITS" . ((number "1" 1213 . 1214)))
           )
 )
-    (semanticdb-table "semanticdb-table-159214436774"
+    (semanticdb-table "semanticdb-table-155dfe60d2a0"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1566 1593])
@@ -6396,7 +6396,7 @@
           ("errno" . ((symbol "errno" 1750 . 1755)))
           )
 )
-    (semanticdb-table "semanticdb-table-15921440692c"
+    (semanticdb-table "semanticdb-table-155dfe60d2c0"
       :major-mode c++-mode
       :tags 
         '( ("_NEW" variable (:constant-flag t) nil [1347 1351])
@@ -6459,6 +6459,26 @@
       :unmatched-syntax '((symbol 7999 . 8002) (symbol 7988 . 7998) (symbol 7984 . 7987) (symbol 7977 . 7983) (punctuation 7976 . 7977) (semantic-list 6700 . 6703) (semantic-list "()" 6678 . 6699) (THROW "throw" 6678 . 6699) (semantic-list 6663 . 6677) (semantic-list 6661 . 6663) (DELETE 6655 . 6661) (OPERATOR 6646 . 6654) (VOID 6641 . 6645) (INLINE 6634 . 6640) (semantic-list 6630 . 6633) (semantic-list "()" 6608 . 6629) (THROW "throw" 6608 . 6629) (semantic-list 6593 . 6607) (DELETE 6585 . 6591) (OPERATOR 6576 . 6584) (VOID 6571 . 6575) (INLINE 6564 . 6570) (semantic-list 6497 . 6512) (semantic-list "()" 6475 . 6496) (THROW "throw" 6475 . 6496) (semantic-list 6450 . 6474) (semantic-list 6448 . 6450) (NEW 6445 . 6448) (OPERATOR 6436 . 6444) (punctuation 6434 . 6435) (VOID 6430 . 6434) (INLINE 6423 . 6429) (semantic-list 6388 . 6403) (semantic-list "()" 6366 . 6387) (THROW "throw" 6366 . 6387) (semantic-list 6341 . 6365) (NEW 6338 . 6341) (OPERATOR 6329 . 6337) (punctuation 6327 . 6328) (VOID 6323 . 6327) (INLINE 6316 . 6322) (punctuation 4823 . 4824) (semantic-list "()" 4760 . 4781) (THROW "throw" 4760 . 4781) (semantic-list 4729 . 4759) (semantic-list 4727 . 4729) (DELETE 4721 . 4727) (OPERATOR 4712 . 4720) (VOID 4707 . 4711) (punctuation 4705 . 4706) (semantic-list "()" 4642 . 4663) (THROW "throw" 4642 . 4663) (semantic-list 4611 . 4641) (DELETE 4605 . 4611) (OPERATOR 4596 . 4604) (VOID 4591 . 4595) (punctuation 4589 . 4590) (semantic-list "()" 4514 . 4535) (THROW "throw" 4514 . 4535) (semantic-list 4477 . 4513) (semantic-list 4475 . 4477) (NEW 4472 . 4475) (OPERATOR 4463 . 4471) (punctuation 4461 . 4462) (VOID 4457 . 4461) (punctuation 4436 . 4437) (semantic-list "()" 4361 . 4382) (THROW "throw" 4361 . 4382) (semantic-list 4324 . 4360) (NEW 4321 . 4324) (OPERATOR 4312 . 4320) (punctuation 4310 . 4311) (VOID 4306 . 4310) (punctuation 4278 . 4279) (semantic-list "()" 4215 . 4236) (THROW "throw" 4215 . 4236) (semantic-list 4194 . 4214) (semantic-list 4192 . 4194) (DELETE 4186 . 4192) (OPERATOR 4177 . 4185) (VOID 4172 . 4176) (punctuation 4170 . 4171) (semantic-list "()" 4107 . 4128) (THROW "throw" 4107 . 4128) (semantic-list 4086 . 4106) (DELETE 4080 . 4086) (OPERATOR 4071 . 4079) (VOID 4066 . 4070) (punctuation 4035 . 4036) (semantic-list "()" 3972 . 3993) (THROW "throw" 3972 . 3993) (semantic-list 3964 . 3971) (semantic-list 3962 . 3964) (DELETE 3956 . 3962) (OPERATOR 3947 . 3955) (VOID 3942 . 3946) (punctuation 3940 . 3941) (semantic-list "()" 3877 . 3898) (THROW "throw" 3877 . 3898) (semantic-list 3869 . 3876) (DELETE 3863 . 3869) (OPERATOR 3854 . 3862) (VOID 3849 . 3853) (punctuation 3847 . 3848) (semantic-list #("(_EXC)" 0 1 (macros (("_EXC" symbol "std" 3790 . 3793)))) 3774 . 3805) (THROW "throw" 3774 . 3805) (semantic-list 3760 . 3773) (semantic-list 3758 . 3760) (NEW 3755 . 3758) (OPERATOR 3746 . 3754) (punctuation 3744 . 3745) (VOID 3740 . 3744) (punctuation 3719 . 3720) (semantic-list #("(_EXC)" 0 1 (macros (("_EXC" symbol "std" 3662 . 3665)))) 3646 . 3677) (THROW "throw" 3646 . 3677) (semantic-list 3632 . 3645) (NEW 3629 . 3632) (OPERATOR 3620 . 3628) (punctuation 3618 . 3619) (VOID 3614 . 3618) (TYPEDEF 2844 . 2851) (semantic-list 1457 . 1466) (symbol 1453 . 1457) (DEFAULT 1458 . 1465) (symbol 1442 . 1452) (DEFAULT 1458 . 1465) (symbol 1438 . 1441) (symbol 1431 . 1437) (punctuation 1430 . 1431) (symbol 1365 . 1378) (symbol 1361 . 1364) (symbol 1354 . 1360) (punctuation 1353 . 1354))
       :lexical-table 
         '(("_NEW")
+          )
+)
+    (semanticdb-table "semanticdb-table-155dfe2f0874"
+      :major-mode c++-mode
+      :tags 
+        '( ("_GLIBCXX_MEMORY" variable (:constant-flag t) nil [1733 1748])
+            ("bits/stl_algobase.h" include (:system-flag t) nil [2017 2047])
+            ("bits/allocator.h" include (:system-flag t) nil [2048 2075])
+            ("bits/stl_construct.h" include (:system-flag t) nil [2076 2107])
+            ("bits/stl_uninitialized.h" include (:system-flag t) nil [2108 2143])
+            ("bits/stl_tempbuf.h" include (:system-flag t) nil [2144 2173])
+            ("bits/stl_raw_storage_iter.h" include (:system-flag t) nil [2174 2212])
+            ("backward/auto_ptr.h" include (:system-flag t) nil [2819 2851]))          
+      :file "memory"
+      :pointmax 12507
+      :fsize 12506
+      :lastmodtime '(24366 38117 0 0)
+      :unmatched-syntax '((symbol 1764 . 1777) (symbol 1760 . 1763) (symbol 1753 . 1759) (punctuation 1752 . 1753))
+      :lexical-table 
+        '(("_GLIBCXX_MEMORY" . ((number "1" 1749 . 1750)))
           )
 ))
   :file "!usr!include!c++!9!semantic.cache"

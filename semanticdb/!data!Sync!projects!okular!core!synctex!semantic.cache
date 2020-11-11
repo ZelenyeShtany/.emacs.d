@@ -1,0 +1,498 @@
+;; Object semanticdb-project-database-file-155dfd9cffc8
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-155dfd9cffc8"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-155dfd9cffe4"
+      :major-mode c-mode
+      :tags 
+        '( ("__SYNCTEX_PARSER__" variable (:constant-flag t) nil [1952 1970])
+            ("synctex_node_box_depth" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17478 17498]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17451 17499])
+            ("synctex_node_box_height" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17429 17449]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17401 17450])
+            ("synctex_node_box_width" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17379 17399]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17352 17400])
+            ("synctex_node_box_v" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17330 17350]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17307 17351])
+            ("synctex_node_box_h" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17285 17305]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17262 17306])
+            ("synctex_node_depth" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17059 17079]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [17036 17080])
+            ("synctex_node_height" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17014 17034]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16990 17035])
+            ("synctex_node_width" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16968 16988]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16945 16989])
+            ("synctex_node_v" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16923 16943]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16904 16944])
+            ("synctex_node_h" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16882 16902]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16863 16903])
+            ("synctex_node_display" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16673 16693]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16647 16694])
+            ("synctex_node_log" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16625 16645]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16603 16646])
+            ("synctex_form_content" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16408 16434])
+                    ("tag" variable (:type "int") (reparse-symbol arg-sub-list) [16435 16443]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16372 16444])
+            ("synctex_form" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16335 16361])
+                    ("tag" variable (:type "int") (reparse-symbol arg-sub-list) [16362 16370]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16307 16371])
+            ("synctex_sheet_content" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16269 16295])
+                    ("page" variable (:type "int") (reparse-symbol arg-sub-list) [16296 16305]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16232 16306])
+            ("synctex_sheet" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16194 16220])
+                    ("page" variable (:type "int") (reparse-symbol arg-sub-list) [16221 16230]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [16165 16231])
+            ("synctex_node_next" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15863 15883]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15830 15884])
+            ("synctex_node_arg_sibling" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15808 15828]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15768 15829])
+            ("synctex_node_last_sibling" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15746 15766]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15705 15767])
+            ("synctex_node_sibling" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15683 15703]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15647 15704])
+            ("synctex_node_last_child" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15625 15645]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15586 15646])
+            ("synctex_node_child" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15564 15584]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15530 15585])
+            ("synctex_node_parent_form" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15508 15528]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15468 15529])
+            ("synctex_node_parent_sheet" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15446 15466]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15405 15467])
+            ("synctex_node_parent" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15383 15403]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [15348 15404])
+            ("synctex_scanner_magnification" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14025 14051]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13989 14052])
+            ("synctex_scanner_y_offset" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13961 13987]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13932 13988])
+            ("synctex_scanner_x_offset" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13904 13930]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13875 13931])
+            ("synctex_scanner_get_synctex" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13361 13387]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13321 13388])
+            ("synctex_scanner_get_output" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13293 13319]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13254 13320])
+            ("synctex_scanner_input_with_tag" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13217 13243])
+                    ("tag" variable (:type "int") (reparse-symbol arg-sub-list) [13244 13252]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13171 13253])
+            ("synctex_scanner_input" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13143 13169]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13106 13170])
+            ("synctex_scanner_get_tag" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13059 13085])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [13086 13103]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [13031 13104])
+            ("synctex_scanner_get_name" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12993 13019])
+                    ("tag" variable (:type "int") (reparse-symbol arg-sub-list) [13020 13028]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [12956 13029])
+            ("synctex_scanner_display" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11972 11998]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11943 11999])
+            ("synctex_node_page" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11717 11737]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11695 11738])
+            ("synctex_node_get_name" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "char"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11577 11597]))                  
+                :constant-flag t
+                :pointer 1
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11543 11598])
+            ("synctex_node_column" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11521 11541]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11497 11542])
+            ("synctex_node_line" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11475 11495]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11453 11496])
+            ("synctex_node_tag" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11431 11451]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [11410 11452])
+            ("synctex_node_visible_depth" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10922 10942]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10889 10943])
+            ("synctex_node_visible_height" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10867 10887]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10833 10888])
+            ("synctex_node_visible_width" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10811 10831]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10778 10832])
+            ("synctex_node_visible_v" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10756 10776]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10727 10777])
+            ("synctex_node_visible_h" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10705 10725]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [10676 10726])
+            ("synctex_node_box_visible_depth" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9991 10011]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9954 10012])
+            ("synctex_node_box_visible_height" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9932 9952]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9894 9953])
+            ("synctex_node_box_visible_width" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9872 9892]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9835 9893])
+            ("synctex_node_box_visible_v" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9813 9833]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9780 9834])
+            ("synctex_node_box_visible_h" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "float"
+                :arguments 
+                  ( ("node" variable (:type ("synctex_node_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9758 9778]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [9725 9779])
+            ("synctex_scanner_reset_result" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_status_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8413 8439]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [8367 8440])
+            ("synctex_scanner_next_result" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_node_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8339 8365]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [8296 8366])
+            ("synctex_edit_query" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_status_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8240 8266])
+                    ("page" variable (:type "int") (reparse-symbol arg-sub-list) [8267 8276])
+                    ("h" variable (:type "float") (reparse-symbol arg-sub-list) [8277 8285])
+                    ("v" variable (:type "float") (reparse-symbol arg-sub-list) [8286 8294]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [8204 8295])
+            ("synctex_display_query" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_status_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8121 8147])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8148 8165])
+                    ("line" variable (:type "int") (reparse-symbol arg-sub-list) [8166 8175])
+                    ("column" variable (:type "int") (reparse-symbol arg-sub-list) [8176 8187])
+                    ("page_hint" variable (:type "int") (reparse-symbol arg-sub-list) [8188 8202]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [8082 8203])
+            ("synctex_status_t" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("long"))
+                (reparse-symbol extern-c-contents) [7812 7842])
+            ("synctex_node_p" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :pointer 1
+                :typedef ("synctex_node_s" type (:type "class") nil nil))
+                (reparse-symbol extern-c-contents) [5640 5679])
+            ("synctex_node_s" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("synctex_node_t" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [5594 5639])
+            ("synctex_scanner_parse" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_scanner_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5367 5393]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5327 5394])
+            ("synctex_scanner_free" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("scanner" variable (:type ("synctex_scanner_p" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4745 4771]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4720 4772])
+            ("synctex_scanner_new_with_output_file" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("synctex_scanner_p" type (:type "class") nil nil)
+                :arguments 
+                  ( ("output" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4379 4398])
+                    ("build_directory" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4399 4427])
+                    ("parse" variable (:type "int") (reparse-symbol arg-sub-list) [4428 4438]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4324 4439])
+            ("synctex_scanner_p" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :pointer 1
+                :typedef ("synctex_scanner_s" type (:type "class") nil nil))
+                (reparse-symbol extern-c-contents) [2486 2531])
+            ("synctex_scanner_s" type
+               (:typemodifiers ("extern" "\"C\"")
+                :type "typedef"
+                :typedef ("synctex_scanner_t" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                (reparse-symbol extern-c-contents) [2434 2485])
+            ("SYNCTEX_VERSION_STRING" variable
+               (:typemodifiers ("extern" "\"C\"")
+                :constant-flag t)
+                (reparse-symbol extern-c-contents) [2020 2042]))          
+      :file "synctex_parser.h"
+      :pointmax 17537
+      :fsize 17536
+      :lastmodtime '(24485 27343 489436 500000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("SYNCTEX_VERSION_STRING" . ((string "\"1.19\"" 2043 . 2049)))
+          ("__SYNCTEX_PARSER__")
+          )
+))
+  :file "!data!Sync!projects!okular!core!synctex!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

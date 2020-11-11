@@ -1,0 +1,423 @@
+;; Object semanticdb-project-database-file-1588f49b80e0
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1588f49b80e0"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1588f49b80fc"
+      :major-mode c++-mode
+      :tags 
+        '( ("OKULAR_SCRIPT_EVENT_P_H" variable (:constant-flag t) nil [659 682])
+            ("QString" include (:system-flag t) nil [684 702])
+            ("QVariant" include (:system-flag t) nil [703 722])
+            ("memory" include (:system-flag t) nil [724 741])
+            ("Okular" type
+               (:members 
+                  ( ("FormField" type
+                       (:prototype t
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [762 778])
+                    ("Page" type
+                       (:prototype t
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [779 790])
+                    ("Event" type
+                       (:members 
+                          ( ("private" label nil (reparse-symbol classsubparts) [1331 1339])
+                            ("Event" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :type ("Event" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1344 1352])
+                            ("public" label nil (reparse-symbol classsubparts) [1354 1361])
+                            ("EventType" type
+                               (:members 
+                                  ( ("UnknownEvent" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1391 1404])
+                                    ("AppInit" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1430 1438])
+                                    ("BatchExec" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1478 1488])
+                                    ("BookmarkMouseUp" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1526 1542])
+                                    ("ConsoleExec" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1574 1586])
+                                    ("DocDidPrint" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1622 1634])
+                                    ("DocDidSave" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1670 1681])
+                                    ("DocOpen" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1718 1726])
+                                    ("DocWillClose" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1766 1779])
+                                    ("DocWillPrint" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1814 1827])
+                                    ("DocWillSave" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1862 1874])
+                                    ("ExternalExec" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1910 1923])
+                                    ("FieldBlur" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [1958 1968])
+                                    ("FieldCalculate" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2006 2021])
+                                    ("FieldFocus" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2086 2097])
+                                    ("FieldFormat" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2176 2188])
+                                    ("FieldKeystroke" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2240 2255])
+                                    ("FieldMouseDown" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2309 2324])
+                                    ("FieldMouseEnter" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2357 2373])
+                                    ("FieldMouseExit" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2405 2420])
+                                    ("FieldMouseUp" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2453 2466])
+                                    ("FieldValidate" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2675 2689])
+                                    ("LinkMouseUp" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2698 2710])
+                                    ("MenuExec" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2742 2751])
+                                    ("PageOpen" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2786 2795])
+                                    ("PageClose" variable
+                                       (:constant-flag t
+                                        :type "int")
+                                        (reparse-symbol enumsubparts) [2830 2840]))                                  
+                                :type "enum")
+                                (reparse-symbol classsubparts) [1366 2872])
+                            ("Event" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :arguments 
+                                  ( ("type" variable (:type ("EventType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2893 2908]))                                  
+                                :type ("Event" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2887 2909])
+                            ("eventType" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("EventType" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2956 2984])
+                            ("name" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("QString" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2990 3011])
+                            ("type" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("QString" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3017 3038])
+                            ("targetName" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("QString" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3044 3071])
+                            ("setTargetName" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("val" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("QString" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3095 3114]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3076 3115])
+                            ("targetPage" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :pointer 1
+                                :type ("Page" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3121 3146])
+                            ("setTargetPage" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("val" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3170 3180]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3151 3181])
+                            ("source" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :pointer 1
+                                :type ("FormField" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3187 3213])
+                            ("setSource" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("val" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3233 3248]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3218 3249])
+                            ("sourcePage" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :pointer 1
+                                :type ("Page" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3255 3280])
+                            ("setSourcePage" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("val" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3304 3314]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3285 3315])
+                            ("target" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :pointer 1
+                                :type "void")
+                                (reparse-symbol classsubparts) [3321 3342])
+                            ("setTarget" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type "void")
+                                        (reparse-symbol arg-sub-list) [3362 3375]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3347 3376])
+                            ("value" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type ("QVariant" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3382 3405])
+                            ("setValue" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("val" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("QVariant" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3424 3444]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3410 3445])
+                            ("returnCode" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type "bool")
+                                (reparse-symbol classsubparts) [3451 3475])
+                            ("setReturnCode" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("returnCode" variable (:type "bool") (reparse-symbol arg-sub-list) [3499 3515]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3480 3516])
+                            ("shiftModifier" function
+                               (:prototype-flag t
+                                :methodconst-flag t
+                                :type "bool")
+                                (reparse-symbol classsubparts) [3587 3614])
+                            ("setShiftModifier" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("shiftModifier" variable (:type "bool") (reparse-symbol arg-sub-list) [3641 3660]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3619 3661])
+                            ("createFormCalculateEvent" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3722 3740])
+                                    ("targetPage" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3741 3758])
+                                    ("source" variable
+                                       (:pointer 1
+                                        :default-value "nullptr"
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3759 3786])
+                                    ("sourcePage" variable
+                                       (:pointer 1
+                                        :default-value "nullptr"
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3788 3814])
+                                    ("targetName" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :default-value "QString()"
+                                        :type ("QString" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3816 3853]))                                  
+                                :type ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("Event" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol classsubparts) [3667 3855])
+                            ("createFormatEvent" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3908 3926])
+                                    ("targetPage" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3927 3944])
+                                    ("targetName" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :default-value "QString()"
+                                        :type ("QString" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3945 3982]))                                  
+                                :type ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("Event" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol classsubparts) [3860 3984])
+                            ("createKeystrokeEvent" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4040 4058])
+                                    ("targetPage" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4059 4076]))                                  
+                                :type ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("Event" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol classsubparts) [3989 4077])
+                            ("createFormFocusEvent" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4133 4151])
+                                    ("targetPage" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4152 4169])
+                                    ("targetName" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :default-value "QString()"
+                                        :type ("QString" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4170 4207]))                                  
+                                :type ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("Event" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol classsubparts) [4082 4209])
+                            ("createFormValidateEvent" function
+                               (:prototype-flag t
+                                :typemodifiers ("static")
+                                :arguments 
+                                  ( ("target" variable
+                                       (:pointer 1
+                                        :type ("FormField" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4268 4286])
+                                    ("targetPage" variable
+                                       (:pointer 1
+                                        :type ("Page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4287 4304])
+                                    ("targetName" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :default-value "QString()"
+                                        :type ("QString" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4305 4342]))                                  
+                                :type ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("Event" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol classsubparts) [4214 4344])
+                            ("private" label nil (reparse-symbol classsubparts) [4346 4354])
+                            ("Private" type
+                               (:prototype t
+                                :type "class")
+                                (reparse-symbol classsubparts) [4359 4373])
+                            ("d" variable (:type ("std::shared_ptr" type
+                                 (:template-specifier 
+                                    ( ("Private" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol classsubparts) [4378 4405]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1317 4434]))                  
+                :type "namespace")
+                nil [743 4437]))          
+      :file "event_p.h"
+      :pointmax 4492
+      :fsize 4491
+      :lastmodtime '(24488 9077 306650 700000)
+      :unmatched-syntax '((semantic-list 4424 . 4431) (symbol 4410 . 4424) (EXPLICIT 2878 . 2886))
+      :lexical-table 
+        '(("OKULAR_SCRIPT_EVENT_P_H")
+          )
+))
+  :file "!data!Sync!projects!ok2!okular!core!script!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,27 +1,48 @@
-(defun my/phone-p ()
-  (and (equal (system-name) "localhost") 
-       (not (equal user-login-name "zelenyeshtany"))))
+(setq comp-deferred-compilation nil)
 
-(setq bookmark-file
+;; phone
+(setq display-time-default-load-average nil)
+(size-indication-mode -1)
+(setq global-mode-string '(""))
+;; /phone
+(defun my/phone-p ()
+  "Return non-nil if current device is my phone."
+    (and (equal (system-name) "localhost")
+         (not (equal user-login-name "zelenyeshtany"))))
+  (when (my/phone-p)
+    ;;(setq global-mode-string "")
+    (define-key global-map (kbd "<prior>") #'org-mru-clock-in)
+    (define-key global-map (kbd "<next>") #'org-clock-out)
+    (define-key global-map (kbd "<end>") #'org-clock-cancel)
+    (diminish 'which-key-mode)
+    (setq display-time-default-load-average nil)
+    )
+
+(defvar bookmark-file
       (cond
        ((my/phone-p) "~/.emacs.d/bookmark-android")
        ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
        ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
        )
+      "Path to bookmarks file, depending on current operating system."
       )
 
-(setq data-folder-path
+(defvar data-folder-path
       (cond
        ((my/phone-p) "~/storage/shared/")
        ((eq system-type 'gnu/linux) "/data/")
        ((eq system-type 'windows-nt) "D:/")
        )
+"Path to folder with all my data."
       )
 
-(setq my-org-directory (concat data-folder-path "Sync/org/"))
-(setq my-org-from-smartphone-dir (concat my-org-directory "from-smartphone/"))
-
-
+(defvar my-org-directory (concat data-folder-path "Sync/org/")
+"Path to my org folder.
+Probably not required))."
+)
+(defvar my-org-from-smartphone-dir (concat my-org-directory "from-smartphone/")
+"Path to folder with smartphone-only org files."
+)
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -42,28 +63,24 @@ There are two things you can do about this warning:
   (require 'use-package))
 
 (defun my/create-tmp-buffer ()
-  "docstring"
-  (interactive)
+"Create(or switch to existing) temporary buffer with name \"drafts\"."
+(interactive)
 
-  (let* (
-         (files (list "/data/Sync/org/atomoxetine_research.org"))
-         (tmpbuf nil)
-         )
-    (save-excursion
-      (find-file "/data/Sync/org/atomoxetine_research.org")
-      (when (buffer-narrowed-p) (widen) )
-      (goto-char (point-min))
-      (if
-          ;;(buffer-substring (line-beginning-position)(line-end-position))
-          (if
-           (string-match "[0-9]" (org-element-property :title (org-element-at-point))))
-
-          )
-
-   x )
-
-    )
+(let* (
+       (files (list "/data/Sync/org/atomoxetine_research.org"))
+       (tmpbuf nil)
+       )
+  (save-excursion
+    (find-file "/data/Sync/org/atomoxetine_research.org")
+    (when (buffer-narrowed-p) (widen) )
+    (goto-char (point-min))
+    ;;(buffer-substring (line-beginning-position)(line-end-position))
+    (if
+        (string-match "[0-9]" (org-element-property :title (org-element-at-point))))
   )
+
+  )
+)
 (defun my/mark-sexp ()
   "docstring"
   (interactive)
@@ -573,7 +590,6 @@ Narrow to defun if it's not."
     (org-table-align)
 )
   )  
-
   (add-to-list 'load-path "~/.emacs.d/mypack/")
   (load "mypack")
   (require 'my-json)
@@ -621,18 +637,20 @@ Narrow to defun if it's not."
   :after (dired)
   :custom
   (dired-open-extensions
-	'(("pdf" . "evince")
-	  ("csv" . "konsole -e visidata")
-	  ("html" . "google-chrome")
-	  ("mp4" . "mpv")
-	  ("avi" . "mpv")
-	  ("webm" . "mpv")
-	  ("mp3" . "clementine")
-	  ("ogg" . "clementine")
-	  ("opus" . "clementine")
-	  ("odt" . "libreoffice")
-	  ("doc" . "libreoffice")
-	  ("docx" . "libreoffice")))
+        '(("pdf" . "evince")
+          ("csv" . "konsole -e visidata")
+          ("html" . "google-chrome")
+          ("mp4" . "mpv")
+          ("webp" . "mpv")
+          ("avi" . "mpv")
+          ("webm" . "mpv")
+          ("mkv" . "vlc")
+          ("mp3" . "clementine")
+          ("ogg" . "clementine")
+          ("opus" . "clementine")
+          ("odt" . "libreoffice")
+          ("doc" . "libreoffice")
+          ("docx" . "libreoffice")))
   )
 
 (use-package dired-x
@@ -742,13 +760,6 @@ Narrow to defun if it's not."
 
 (load-theme 'gruvbox-dark-hard t)
 
-(when (my/phone-p)
-  (define-key global-map (kbd "<prior>") #'org-mru-clock-in)
-  (define-key global-map (kbd "<next>") #'org-clock-out)
-  (define-key global-map (kbd "<end>") #'org-clock-cancel)
-  )
-
-
 (define-key global-map (kbd "C-e") #'smarter-move-end-of-line)
 (define-key global-map (kbd "C-x C-e") 'eval-print-last-sexp)
 (define-key global-map (kbd "C-c v") 'org-ql-view)
@@ -767,7 +778,7 @@ Narrow to defun if it's not."
 (set-language-environment "UTF-8")
 
 (define-key global-map (kbd "C-x i")
-  (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+  (lambda () (interactive) (find-file "~/.emacs.d/org-babel-init.org")))
 
 ;; open agenda
 (define-key global-map (kbd "C-c a")
@@ -1216,74 +1227,74 @@ Narrow to defun if it's not."
     )
 
   (defun my/org-at-source-block-p ()
-  "returns non-nil if point is at source block"
-  (eq (my-org-element-type (org-element-at-point)) 'src-block)
-  )
-
-(defun my/org-mode-p ()
-  "Return `t' if major-mode or derived-mode-p equals 'org-mode, otherwise `nil'."
-  (or (eq major-mode 'org-mode) (when (derived-mode-p 'org-mode) t)))
-
-(defun org-cua-rectangle-conflict-resolving (&optional arg)
-  (interactive "P")
-  (if (eq major-mode 'org-mode)
-      (org-insert-heading arg)
-    (cua-rectangle-mark-mode arg)))
-
-(defun my/org-move-right ()
-  "docstring"
-  (interactive)
-  (if(org-at-table-p)
-      (org-table-next-field)
-    (right-word)
+    "returns non-nil if point is at source block"
+    (eq (my-org-element-type (org-element-at-point)) 'src-block)
     )
-  )
-(defun my/org-move-left ()
-  "docstring"
-  (interactive)
-  (if(org-at-table-p)
-      (org-table-previous-field)
-    (left-word)
+
+  (defun my/org-mode-p ()
+    "Return `t' if major-mode or derived-mode-p equals 'org-mode, otherwise `nil'."
+    (or (eq major-mode 'org-mode) (when (derived-mode-p 'org-mode) t)))
+
+  (defun org-cua-rectangle-conflict-resolving (&optional arg)
+    (interactive "P")
+    (if (eq major-mode 'org-mode)
+        (org-insert-heading arg)
+      (cua-rectangle-mark-mode arg)))
+
+  (defun my/org-move-right ()
+    "docstring"
+    (interactive)
+    (if(org-at-table-p)
+        (org-table-next-field)
+      (right-word)
+      )
     )
-  )
+  (defun my/org-move-left ()
+    "docstring"
+    (interactive)
+    (if(org-at-table-p)
+        (org-table-previous-field)
+      (left-word)
+      )
+    )
 
 
-(defun my-org-set-todo-state (todostate)
-  "Change TODO state of current heading to todostate"
-  (save-excursion
-    (let* (
-           (todo-state (concat todostate " "))
-           (regexp "\\([[:word:]]+ \\)\\(.*\\)")
-           (heading-level (car (my-org-get-current-heading-level-and-point)))
-           (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
-           )
-      (progn
-        (if (eq (org-get-todo-state) nil)
-            (setq new-line (concat todo-state (org-get-heading)))
-          (progn
-            (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
+  (defun my-org-set-todo-state (todostate)
+    "Change TODO state of current heading to todostate"
+    (save-excursion
+      (let* (
+             (todo-state (concat todostate " "))
+             (regexp "\\([[:word:]]+ \\)\\(.*\\)")
+             (heading-level (car (my-org-get-current-heading-level-and-point)))
+             (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
+             )
+        (progn
+          (if (eq (org-get-todo-state) nil)
+              (setq new-line (concat todo-state (org-get-heading)))
+            (progn
+              (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
+              )
             )
+          (goto-char (+ heading-point heading-level 1))
+          (zap-up-to-char -1 ?*)
+          (zap-up-to-char 1 ?\n)
+          (insert (concat " " new-line))
           )
-        (goto-char (+ heading-point heading-level 1))
-        (zap-up-to-char -1 ?*)
-        (zap-up-to-char 1 ?\n)
-        (insert (concat " " new-line))
         )
       )
     )
-  )
 
-(defun my-org-element-type (element)
-  "Return type of ELEMENT.
+  (defun my-org-element-type (element)
+    "Return type of ELEMENT.
 
 The function returns the type of the element or object provided.
 It can also return the following special value:
   `plain-text'       for a string
   `org-data'         for a complete document
   nil                in any other case."
-  (cond
-   ((not (consp element)) (and (stringp element) 'plain-text))
-   ((symbolp (car element)) (car element))))
+    (cond
+     ((not (consp element)) (and (stringp element) 'plain-text))
+     ((symbolp (car element)) (car element))))
 
   (defun my/org-archive-youtube-video-at-point ()
     "docstring"
@@ -1406,13 +1417,13 @@ It can also return the following special value:
           )
       )
     )
-(defun org-ql-view-todo ()
-  "docstring"
-  (interactive)
-  (call-interactively 'org-agenda-todo)
-  (org-ql-view-refresh)
+  (defun org-ql-view-todo ()
+    "docstring"
+    (interactive)
+    (call-interactively 'org-agenda-todo)
+    (org-ql-view-refresh)
 
-  )
+    )
   (defun my/org-extract-link-descr-at-point ()
     "docstring"
     (interactive)
@@ -1593,17 +1604,17 @@ or calls a menu of last clocked tasks to choose"
               )
   :config
   (add-hook
- 'org-after-todo-state-change-hook
- #'(lambda () (interactive)
-     (if
-         (and
-          ;; id of meditation habit headline
-          (string= (org-entry-get nil "id") "45540784-a689-4f67-87ae-fb015f30c651")
+   'org-after-todo-state-change-hook
+   #'(lambda () (interactive)
+       (if
+           (and
+            ;; id of meditation habit headline
+            (string= (org-entry-get nil "id") "45540784-a689-4f67-87ae-fb015f30c651")
 
-          (or
-           (string= (org-element-property :todo-keyword (org-element-at-point)) "MISSED")
-           (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE")))
-         (my/json-meditations meditations-tracker))))
+            (or
+             (string= (org-element-property :todo-keyword (org-element-at-point)) "MISSED")
+             (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE")))
+           (my/json-meditations meditations-tracker))))
 
   (defun org-store-log-note ()
     "Finish taking a log note, and insert it to where it belongs.
@@ -1722,7 +1733,6 @@ as a inactive timestamp string '[%Y-%m-%d]'"
     )
   (advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
   (advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
-
   )
 
 (use-package reverse-im
@@ -1906,6 +1916,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;;   )
 
 (use-package company
+  :defer t
   :diminish company-mode
   )
 
@@ -1957,9 +1968,9 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   ;;:defer t
   :bind (
 	 :map org-mode-map
-	 ("C-c C-x C-i" . 'org-mru-clock-in)
+	 ("C-c C-x C-i" . 'my/sound-while-clocking-in)
 	 :map global-map
-	 ("C-c C-x C-i" . 'org-mru-clock-in)
+	 ("C-c C-x C-i" . 'my/sound-while-clocking-in)
 	 )
   :commands (org-mru-clock-in org-mru-clock-select-recent-task)
   :config
@@ -2035,35 +2046,56 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;;    '(pdf-history-minor-mode pdf-isearch-minor-mode pdf-links-minor-mode pdf-misc-minor-mode pdf-outline-minor-mode pdf-misc-size-indication-minor-mode pdf-misc-menu-bar-minor-mode pdf-annot-minor-mode pdf-misc-context-menu-minor-mode pdf-cache-prefetch-minor-mode pdf-occur-global-minor-mode))
 ;;    )
 
-;; play sound every n second while clocking in
-(defun my/sound-while-clocking-in ()
-  "docstring"
-  ;;(interactive)
-  ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
-  ;;(play-sound-file "/org/timer-sounds/bell.wav")
-  ;;
-  ;;org-clock-clocking-in
-  (setq my/clocking-in-timer
-	;; run with 3 seconds delay at start and repeat every 30secs
-	(run-with-timer 3 60
-			;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
-			'shell-command-to-string "for i in `seq 1 3`; do
-    beep -f 3000 -d 20 -l 80
-done"
-			)
+(defun mytest (&optional arg)
+    "docstring"
+    (interactive "P")
+    (message "%s" (eq arg nil))
 
-	)
-  )
-(defun my/delete-clocking-in-timer ()
-  "docstring"
-  ;;(interactive)
-  (cancel-timer my/clocking-in-timer)
-  )
-(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
-(add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
-;; /play sound every n second while clocking in
+    )
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; play sound every n second while clocking in
+  (defun my/sound-while-clocking-in (&optional arg)
+    "Run `org-clock-in' with interminent beeping.
+
+This function runs timer that runs `beep'
+terminal command periodically.
+
+If ARG is non-nil, clock-in without beeping at all.
+Useful when you're listening lectures, podcasts or whatever.
+  "
+    (interactive "P")
+    ;;(interactive)
+    ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
+    ;;(play-sound-file "/org/timer-sounds/bell.wav")
+    ;;
+    ;;org-clock-clocking-in
+    (org-mru-clock-in)
+    (when (eq arg nil)
+     (setq my/clocking-in-timer
+          ;; run with 3 seconds delay at start and repeat every 30secs
+          (run-with-timer 3 60
+                          ;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
+                          'shell-command-to-string "
+  for i in `seq 1 1`; do
+      beep -f 3000 -d 20 -l 80
+  done
+  "
+                          )
+
+          ))
+    )
+  (defun my/delete-clocking-in-timer ()
+    "docstring"
+    ;;(interactive)
+    (cancel-timer my/clocking-in-timer)
+    )
+  ;;(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
+  (add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
+  (add-hook 'org-clock-cancel-hook 'my/delete-clocking-in-timer)
+
+  ;; /play sound every n second while clocking in
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; LSP-MODE
 ;; (setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
@@ -2100,7 +2132,7 @@ done"
 ;; /LSP-MODE
 
 ;; LSP NEW
-(add-to-list 'load-path "~/.emacs.d/emacs-ccls/")
+;;(add-to-list 'load-path "~/.emacs.d/emacs-ccls/")
 
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
 (setq lsp-keymap-prefix "C-c l")
@@ -2108,10 +2140,20 @@ done"
 ;; To defer LSP server startup (and DidOpen notifications)
 ;; until the buffer is visible you can use lsp-deferred instead of lsp
 (use-package lsp-mode
+  :defer t
   :hook (
          ((python-mode c++-mode c-mode) . lsp-deferred)
+         ;;(lsp-mode . lsp-headerline-breadcrumb-mode)
+
          )
-    :commands (lsp lsp-deferred))
+  :commands (lsp lsp-deferred)
+  :custom
+  (lsp-headerline-breadcrumb-enable t)
+  (lsp-clients-clangd-executable "/usr/bin/clangd")
+  (add-to-list 'lsp-enabled-clients 'clang)
+  (add-hook 'c-mode--hook #'lsp-clangd-c-enable)
+  (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
+  (add-hook 'objc-mode-hook #'lsp-clangd-objc-enable))
 
 ;; optionally
 (use-package lsp-ui
@@ -2132,11 +2174,12 @@ done"
 
 ;; optional if you want which-key integration
 (use-package which-key
-    :config
-    (which-key-mode))
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
 (use-package company-lsp
-:ensure t
-)
+  :ensure t
+  )
 
 ;; (use-package lsp-jedi ;; python
 ;;   :ensure t
@@ -2163,26 +2206,37 @@ done"
 ;;emacs / ggtags / config to make GNU Global see cpp system header files
 ;; added to ~/.bashrc also
 ;;(setenv "GTAGSLIBPATH" (concat (getenv "HOME")"/.gtags/"))
-(use-package ccls
-  :init
-  (setq ccls-executable "/usr/local/bin/ccls")
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp-deferred)
-	   (add-to-list 'lsp-enabled-clients 'ccls)
-	   ))
-  )
+;; (use-package ccls
+;;   :defer t
+;;   :init
+;;   (setq ccls-executable "/usr/local/bin/ccls")
+;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;          (lambda () (require 'ccls) (lsp-deferred)
+;;            (add-to-list 'lsp-enabled-clients 'ccls)
+;;            ))
+;;   )
 
 (use-package semantic
   :config
   (semantic-add-system-include "/usr/local/include")
   (semantic-add-system-include "/usr/include")
+  (semantic-add-system-include "/usr/include/x86_64-linux-gnu/qt5/QtWidgets/")
   )
 
 ;;(define-key c++-mode-map (kbd "C-j") 'semantic-ia-fast-jump)
 
 (use-package cc-mode
-  :hook ((c++-mode) . semantic-mode)
-  :bind (:map c++-mode-map
-	      ("C-j" . 'semantic-ia-fast-jump)
-	 )
+  :defer t
+  :hook ((c++-mode c-mode) . semantic-mode)
+  :bind (:map
+         c++-mode-map
+         ("C-j" . 'semantic-ia-fast-jump)
+         ("M-<left>" . 'backward-sexp)
+         ("M-<right>" . 'forward-sexp)
+         :map
+         c-mode-map
+         ("C-j" . 'semantic-ia-fast-jump)
+         ("M-<left>" . 'backward-sexp)
+         ("M-<right>" . 'forward-sexp)
+         )
   )

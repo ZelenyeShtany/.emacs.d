@@ -1,0 +1,33 @@
+;; Object semanticdb-project-database-file-15792250cad8
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-15792250cad8"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-15792250caf4"
+      :major-mode c-mode
+      :tags 
+        '( ("__POPPLER_FEATURES_H__" variable (:constant-flag t) nil [838 860])
+            ("POPPLER_HAS_CAIRO" variable (:constant-flag t) nil [1409 1426])
+            ("POPPLER_MAJOR_VERSION" variable (:constant-flag t) nil [1595 1616])
+            ("POPPLER_MINOR_VERSION" variable (:constant-flag t) nil [1787 1808])
+            ("POPPLER_MICRO_VERSION" variable (:constant-flag t) nil [1980 2001])
+            ("POPPLER_CHECK_VERSION" variable (:constant-flag t) nil [2389 2410]))          
+      :file "poppler-features.h"
+      :pointmax 2698
+      :fsize 2697
+      :lastmodtime '(24190 10827 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__POPPLER_FEATURES_H__")
+          ("POPPLER_CHECK_VERSION" (spp-arg-list ("major" "minor" "micro") 2410 . 2429) . ((semantic-list "(POPPLER_MAJOR_VERSION > (major) || \\
+   (POPPLER_MAJOR_VERSION == (major) && POPPLER_MINOR_VERSION > (minor)) || \\
+   (POPPLER_MAJOR_VERSION == (major) && POPPLER_MINOR_VERSION == (minor) && POPPLER_MICRO_VERSION >= (micro)))" 2434 . 2660)))
+          ("POPPLER_HAS_CAIRO" . ((number "1" 1427 . 1428)))
+          ("POPPLER_MINOR_VERSION" . ((semantic-list "(86)" 1809 . 1813)))
+          ("POPPLER_MAJOR_VERSION" . ((semantic-list "(0)" 1617 . 1620)))
+          ("POPPLER_MICRO_VERSION" . ((semantic-list "(1)" 2002 . 2005)))
+          )
+))
+  :file "!usr!include!poppler!glib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -7,15 +7,14 @@
 	backward-delete-word
 	counsel-M-x
 	cua--prefix-override-handler
-	cua-exchange-point-and-mark
 	cua-paste
 	dired-mark
 	elpy-nav-forward-indent
 	indent-for-tab-command
 	my/mark-sexp
 	my/org-move-left
+	my/org-move-right
 	org-backward-sentence
-	org-ctrl-c-ctrl-c
 	org-fill-paragraph
 	org-force-self-insert
 	org-forward-sentence
