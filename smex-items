@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ tool-bar-mode
  my/lookup-at-stardict
  dired
  tar-mode
  tetris
  eval-buffer
  emacs-init-time
- edebug-defun
 )
 
 ;; ----- smex-data -----
@@ -616,4 +616,5 @@
  (tar-view . 1)
  (posframe-delete-all . 1)
  (my/lookup-at-stardict . 5)
+ (tool-bar-mode . 2)
 )

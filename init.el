@@ -479,7 +479,7 @@ Probably not required))."
        (my/phone-p)
        (concat data-folder-path "emacs-tmp/")
      (concat data-folder-path "org/tmp/")))
- '(tool-bar-mode nil)
+ (when (not (my/phone-p))'(tool-bar-mode nil))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#d54e53")

@@ -136,6 +136,11 @@ There are two things you can do about this warning:
   :commands (reddit md4rd)
   ))
 
+(setenv "STARDICT_DATA_DIR"
+	(if (my/phone-p)
+	    "~/stardict/"
+	    "/data/Dictionaries/stardict/")
+	)
 (defun my/lookup-at-stardict()
   "Look up a WORD in sdcv (stardict CLI tool)."
   (interactive)
@@ -144,12 +149,18 @@ There are two things you can do about this warning:
        (word-or-colloc (read-string "word or collocation: ")))
   (message "%s"
    (shell-command-to-string
-   (concat "s " word-or-colloc) ;; see 's' alias for sdcv command is ~/.bashrc 
+    (concat "sdcv "
+	    word-or-colloc
+	    " | sed ':a;N;$!ba;s/\\n/<br>/g' | html2text"
+	    ) ;; see 's' alias for sdcv command is ~/.bashrc 
    ))
   )
   )
+(when (my/phone-p)
+(define-key global-map (kbd "<home>") 'my/lookup-at-stardict)
+  )
 
-
+;;sdcv $1 | sed ':a;N;$!ba;s/\n/<br>/g' | html2text
 (defun my/create-tmp-buffer ()
 "Create(or switch to existing) temporary buffer with name \"drafts\"."
 (interactive)
