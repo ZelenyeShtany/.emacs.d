@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-15843fd815a0
+;; Object semanticdb-project-database-file-155b66992b50
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-15843fd815a0"
+(semanticdb-project-database-file "semanticdb-project-database-file-155b66992b50"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-15843fa4da78"
+    (semanticdb-table "semanticdb-table-155b66a9ded0"
       :major-mode c++-mode
       :tags 
         '( ("annotations.h" include nil nil [619 643])
@@ -2798,8 +2798,8 @@
       :fsize 88638
       :lastmodtime '(24486 16447 957760 500000)
       :unmatched-syntax '((semantic-list 86474 . 86476) (symbol 86451 . 86474) (punctuation 86450 . 86451) (symbol 86432 . 86449) (semantic-list 86395 . 86417) (symbol 86372 . 86395) (VOID 86367 . 86371) (semantic-list 86350 . 86352) (symbol 86324 . 86350) (punctuation 86323 . 86324) (semantic-list 84165 . 84167) (symbol 84142 . 84165) (punctuation 84141 . 84142) (symbol 84123 . 84140) (semantic-list 84086 . 84108) (symbol 84063 . 84086) (VOID 84058 . 84062) (semantic-list 84041 . 84043) (symbol 84018 . 84041) (punctuation 84017 . 84018) (semantic-list 81531 . 81533) (symbol 81508 . 81531) (punctuation 81507 . 81508) (symbol 81489 . 81506) (semantic-list 81452 . 81474) (symbol 81429 . 81452) (VOID 81424 . 81428) (semantic-list 81406 . 81408) (symbol 81383 . 81406) (punctuation 81382 . 81383) (semantic-list 79714 . 79716) (symbol 79691 . 79714) (punctuation 79690 . 79691) (symbol 79672 . 79689) (semantic-list 79635 . 79657) (symbol 79612 . 79635) (VOID 79607 . 79611) (semantic-list 79572 . 79601) (symbol 79559 . 79567) (semantic-list 79556 . 79558) (symbol 79534 . 79556) (punctuation 79533 . 79534) (semantic-list 77569 . 77571) (symbol 77546 . 77569) (punctuation 77545 . 77546) (symbol 77527 . 77544) (semantic-list 77490 . 77512) (symbol 77467 . 77490) (VOID 77462 . 77466) (semantic-list 77427 . 77456) (symbol 77414 . 77422) (semantic-list 77411 . 77413) (symbol 77389 . 77411) (punctuation 77388 . 77389) (semantic-list 75089 . 75091) (symbol 75066 . 75089) (punctuation 75065 . 75066) (symbol 75047 . 75064) (semantic-list 75010 . 75032) (symbol 74987 . 75010) (VOID 74982 . 74986) (semantic-list 74945 . 74976) (symbol 74932 . 74940) (semantic-list 74929 . 74931) (symbol 74898 . 74929) (punctuation 74897 . 74898) (semantic-list 72118 . 72120) (symbol 72095 . 72118) (punctuation 72094 . 72095) (symbol 72076 . 72093) (semantic-list 72039 . 72061) (symbol 72016 . 72039) (VOID 72011 . 72015) (semantic-list 66147 . 66149) (symbol 66124 . 66147) (punctuation 66123 . 66124) (symbol 66105 . 66122) (semantic-list 66068 . 66090) (symbol 66045 . 66068) (VOID 66040 . 66044) (semantic-list 65995 . 66025) (symbol 65986 . 65995) (VOID 65981 . 65985) (semantic-list 65910 . 65960) (symbol 65899 . 65910) (DOUBLE 65892 . 65898) (semantic-list 65875 . 65877) (symbol 65856 . 65875) (VOID 65851 . 65855) (semantic-list 65810 . 65836) (symbol 65797 . 65810) (VOID 65792 . 65796) (semantic-list 65751 . 65777) (symbol 65742 . 65751) (VOID 65737 . 65741) (semantic-list 63573 . 63575) (symbol 63550 . 63573) (punctuation 63549 . 63550) (symbol 63531 . 63548) (semantic-list 63508 . 63510) (symbol 63496 . 63508) (BOOL 63491 . 63495) (semantic-list 63454 . 63476) (symbol 63431 . 63454) (VOID 63426 . 63430) (semantic-list 56392 . 56394) (symbol 56369 . 56392) (punctuation 56368 . 56369) (symbol 56350 . 56367) (semantic-list 56313 . 56335) (symbol 56290 . 56313) (VOID 56285 . 56289) (semantic-list 56214 . 56264) (symbol 56203 . 56214) (DOUBLE 56196 . 56202) (semantic-list 56155 . 56181) (symbol 56142 . 56155) (VOID 56137 . 56141) (semantic-list 56096 . 56122) (symbol 56087 . 56096) (VOID 56082 . 56086) (semantic-list 48157 . 48207) (symbol 48146 . 48157) (DOUBLE 48139 . 48145) (semantic-list 48122 . 48124) (symbol 48099 . 48122) (punctuation 48098 . 48099) (symbol 48080 . 48097) (semantic-list 48057 . 48059) (symbol 48045 . 48057) (BOOL 48040 . 48044) (semantic-list 48003 . 48025) (symbol 47980 . 48003) (VOID 47975 . 47979) (semantic-list 38586 . 38588) (symbol 38563 . 38586) (punctuation 38562 . 38563) (symbol 38544 . 38561) (semantic-list 38507 . 38529) (symbol 38484 . 38507) (VOID 38479 . 38483) (semantic-list 38408 . 38458) (symbol 38397 . 38408) (DOUBLE 38390 . 38396) (semantic-list 38345 . 38375) (symbol 38336 . 38345) (VOID 38331 . 38335) (semantic-list 38314 . 38316) (symbol 38295 . 38314) (VOID 38290 . 38294) (semantic-list 38249 . 38275) (symbol 38236 . 38249) (VOID 38231 . 38235) (semantic-list 38190 . 38216) (symbol 38181 . 38190) (VOID 38176 . 38180) (semantic-list 28484 . 28486) (symbol 28461 . 28484) (punctuation 28460 . 28461) (symbol 28442 . 28459) (semantic-list 28419 . 28421) (symbol 28407 . 28419) (BOOL 28402 . 28406) (semantic-list 28365 . 28387) (symbol 28342 . 28365) (VOID 28337 . 28341) (semantic-list 28314 . 28316) (symbol 28291 . 28314) (BOOL 28286 . 28290) (semantic-list 28241 . 28271) (symbol 28232 . 28241) (VOID 28227 . 28231) (semantic-list 28210 . 28212) (symbol 28191 . 28210) (VOID 28186 . 28190) (semantic-list 28145 . 28171) (symbol 28132 . 28145) (VOID 28127 . 28131) (semantic-list 28086 . 28112) (symbol 28077 . 28086) (VOID 28072 . 28076)))
-    (semanticdb-table "semanticdb-table-15843fa4da98"
-      :major-mode c-mode
+    (semanticdb-table "semanticdb-table-155b66a9def0"
+      :major-mode c++-mode
       :tags 
         '( ("_OKULAR_ANNOTATIONS_H_" variable (:constant-flag t) nil [658 680])
             ("QDateTime" include (:system-flag t) nil [682 702])
@@ -2941,7 +2941,7 @@
         '(("_OKULAR_ANNOTATIONS_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa4dab8"
+    (semanticdb-table "semanticdb-table-155b66a9df10"
       :major-mode c++-mode
       :tags 
         '( ("OKULAR_ANNOTATIONS_P_H" variable (:constant-flag t) nil [658 680])
@@ -3114,7 +3114,7 @@
         '(("OKULAR_ANNOTATIONS_P_H")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa4dad8"
+    (semanticdb-table "semanticdb-table-155b66992910"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_ACTION_H_" variable (:constant-flag t) nil [653 670])
@@ -3204,7 +3204,7 @@
         '(("_OKULAR_ACTION_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa4daf8"
+    (semanticdb-table "semanticdb-table-155b66992930"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_DOCUMENT_H_" variable (:constant-flag t) nil [963 982])
@@ -3374,7 +3374,7 @@
           ("PART_SEARCH_ID" . ((number "1" 1911 . 1912)))
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa4db18"
+    (semanticdb-table "semanticdb-table-155b66992950"
       :major-mode c++-mode
       :tags 
         '( ("_OKULAR_DOCUMENT_P_H_" variable (:constant-flag t) nil [734 755])
@@ -4383,7 +4383,7 @@
         '(("_OKULAR_DOCUMENT_P_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa4db38"
+    (semanticdb-table "semanticdb-table-155b66992970"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_MOVIE_H_" variable (:constant-flag t) nil [729 745])
@@ -4411,7 +4411,7 @@
         '(("_OKULAR_MOVIE_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa868dc"
+    (semanticdb-table "semanticdb-table-155b66992990"
       :major-mode c++-mode
       :tags 
         '( ("_OKULAR_PAGE_PRIVATE_H_" variable (:constant-flag t) nil [967 990])
@@ -4803,7 +4803,7 @@
         '(("_OKULAR_PAGE_PRIVATE_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa868fc"
+    (semanticdb-table "semanticdb-table-155b669929b0"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_SOUND_H_" variable (:constant-flag t) nil [652 668])
@@ -4827,7 +4827,7 @@
         '(("_OKULAR_SOUND_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa8691c"
+    (semanticdb-table "semanticdb-table-155b669929d0"
       :major-mode c++-mode
       :tags 
         '( ("_OKULAR_AREA_H_" variable (:constant-flag t) nil [651 666])
@@ -5233,7 +5233,7 @@
         '(("_OKULAR_AREA_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa8693c"
+    (semanticdb-table "semanticdb-table-155b669929f0"
       :major-mode c-mode
       :tags 
         '( ("OKULAR_GLOBAL_H" variable (:constant-flag t) nil [651 666])
@@ -5374,7 +5374,7 @@
         '(("OKULAR_GLOBAL_H")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa8695c"
+    (semanticdb-table "semanticdb-table-155b66992a10"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_PAGESIZE_H_" variable (:constant-flag t) nil [655 674])
@@ -5403,7 +5403,7 @@
         '(("_OKULAR_PAGESIZE_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa8697c"
+    (semanticdb-table "semanticdb-table-155b66992a30"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_FONTINFO_H_" variable (:constant-flag t) nil [655 674])
@@ -5433,7 +5433,7 @@
         '(("_OKULAR_FONTINFO_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa8699c"
+    (semanticdb-table "semanticdb-table-155b66992a50"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_GENERATOR_H_" variable (:constant-flag t) nil [1041 1061])
@@ -5574,7 +5574,7 @@
           ("OkularGeneratorInterface_iid" . ((string "\"org.kde.okular.Generator\"" 25002 . 25028)))
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa869bc"
+    (semanticdb-table "semanticdb-table-155b66992a70"
       :major-mode c++-mode
       :tags 
         '( ("action.h" include nil nil [619 638])
@@ -6285,13 +6285,13 @@
       :file "action.cpp"
       :pointmax 12293
       :fsize 12292
-      :lastmodtime '(24485 27343 401175 0)
-      :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-15843fa869dc"
+      :lastmodtime '(24492 51931 359408 900000)
+      :unmatched-syntax '((semantic-list 6935 . 6966) (symbol 6922 . 6930) (semantic-list 6919 . 6921) (symbol 6901 . 6919) (punctuation 6900 . 6901) (punctuation 5201 . 5202) (punctuation 5200 . 5201) (punctuation 1079 . 1080) (DELETE 1073 . 1079) (punctuation 1071 . 1072) (semantic-list 1047 . 1070) (punctuation 1046 . 1047) (OPERATOR 1038 . 1046) (punctuation 1037 . 1038) (symbol 1023 . 1036) (punctuation 1017 . 1018) (DELETE 1011 . 1017) (punctuation 1009 . 1010) (semantic-list 985 . 1008) (symbol 972 . 985)))
+    (semanticdb-table "semanticdb-table-155b66992a90"
       :file "sourcereference_p.h"
       :fsize 909
       :lastmodtime '(24485 27343 472234 800000))
-    (semanticdb-table "semanticdb-table-15843fa869fc"
+    (semanticdb-table "semanticdb-table-155b66992ab0"
       :major-mode c-mode
       :tags 
         '( ("_OKULAR_AUDIOPLAYER_H_" variable (:constant-flag t) nil [658 680])
@@ -6327,7 +6327,7 @@
         '(("_OKULAR_AUDIOPLAYER_H_")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa86a1c"
+    (semanticdb-table "semanticdb-table-155b66992ad0"
       :major-mode c++-mode
       :tags 
         '( ("chooseenginedialog_p.h" include nil nil [619 652])
@@ -6373,11 +6373,11 @@
       :fsize 2264
       :lastmodtime '(24485 27343 417711 700000)
       :unmatched-syntax nil)
-    (semanticdb-table "semanticdb-table-15843fa86a3c"
+    (semanticdb-table "semanticdb-table-155b66992af0"
       :file "chooseenginedialog_p.h"
       :fsize 1077
       :lastmodtime '(24485 27343 418403 400000))
-    (semanticdb-table "semanticdb-table-15843fa86a5c"
+    (semanticdb-table "semanticdb-table-155b66992b10"
       :major-mode c-mode
       :tags 
         '( ("FILEPRINTER_H" variable (:constant-flag t) nil [849 862])
@@ -6407,7 +6407,7 @@
         '(("FILEPRINTER_H")
           )
 )
-    (semanticdb-table "semanticdb-table-15843fa86a7c"
+    (semanticdb-table "semanticdb-table-155b66992b30"
       :major-mode c++-mode
       :tags 
         '( ("tilesmanager_p.h" include nil nil [542 569])
@@ -6994,15 +6994,15 @@
         '(("TILES_MAXSIZE" . ((number "2000000" 688 . 695)))
           )
 )
-    (semanticdb-table "semanticdb-table-15843fd81500"
+    (semanticdb-table "semanticdb-table-155b665e8546"
       :file "tilesmanager_p.h"
       :fsize 6696
       :lastmodtime '(24485 27343 502524 400000))
-    (semanticdb-table "semanticdb-table-15843fd81520"
+    (semanticdb-table "semanticdb-table-155b665e8566"
       :file "tile.h"
       :fsize 1297
       :lastmodtime '(24485 27343 501318 500000))
-    (semanticdb-table "semanticdb-table-15843fd81540"
+    (semanticdb-table "semanticdb-table-155b665e8586"
       :major-mode c++-mode
       :tags 
         '( ("area.h" include nil nil [619 636])
@@ -7549,15 +7549,15 @@
       :fsize 14829
       :lastmodtime '(24485 27343 412160 900000)
       :unmatched-syntax '((punctuation 6864 . 6865) (DEFAULT 6857 . 6864) (punctuation 6855 . 6856) (semantic-list 6852 . 6854) (symbol 6838 . 6852) (punctuation 6837 . 6838) (punctuation 6836 . 6837) (punctuation 6835 . 6836) (symbol 6821 . 6835) (punctuation 6818 . 6819) (DEFAULT 6811 . 6818) (punctuation 6809 . 6810) (semantic-list 6783 . 6808) (punctuation 6782 . 6783) (OPERATOR 6774 . 6782) (punctuation 6773 . 6774) (punctuation 6772 . 6773) (symbol 6758 . 6772) (punctuation 6757 . 6758) (symbol 6742 . 6756) (punctuation 4939 . 4940) (DEFAULT 4932 . 4939) (punctuation 4930 . 4931) (semantic-list 4901 . 4929) (symbol 4887 . 4901) (punctuation 4886 . 4887) (punctuation 4885 . 4886) (symbol 4871 . 4885) (punctuation 1352 . 1353) (DEFAULT 1345 . 1352) (punctuation 1343 . 1344) (semantic-list 1340 . 1342) (symbol 1325 . 1340) (punctuation 1324 . 1325) (punctuation 1323 . 1324) (punctuation 1322 . 1323) (symbol 1307 . 1322) (punctuation 1305 . 1306) (DEFAULT 1298 . 1305) (punctuation 1296 . 1297) (semantic-list 1270 . 1295) (symbol 1255 . 1270) (punctuation 1254 . 1255) (punctuation 1253 . 1254) (symbol 1238 . 1253) (punctuation 1236 . 1237) (DEFAULT 1229 . 1236) (punctuation 1227 . 1228) (semantic-list 1200 . 1226) (punctuation 1199 . 1200) (OPERATOR 1191 . 1199) (punctuation 1190 . 1191) (punctuation 1189 . 1190) (symbol 1174 . 1189) (punctuation 1173 . 1174) (symbol 1157 . 1172)))
-    (semanticdb-table "semanticdb-table-15843fd81560"
+    (semanticdb-table "semanticdb-table-155b665e85a6"
       :file "debug_p.h"
       :fsize 827
       :lastmodtime '(24485 27343 419799 700000))
-    (semanticdb-table "semanticdb-table-15843fd81580"
+    (semanticdb-table "semanticdb-table-155b665e85c6"
       :file "sourcereference.h"
       :fsize 1613
       :lastmodtime '(24485 27343 471711 500000))
-    (semanticdb-table "semanticdb-table-15843f0f7444"
+    (semanticdb-table "semanticdb-table-155b665e85e6"
       :major-mode c-mode
       :tags 
         '( ("OKULARCORE_EXPORT_H" variable (:constant-flag t) nil [38 57])

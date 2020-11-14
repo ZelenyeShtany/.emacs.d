@@ -1,0 +1,173 @@
+# mbsyncrc based on
+# http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
+# ACCOUNT INFORMATION
+IMAPAccount zelenyeshtany-gmail
+# Address to connect to
+Host imap.gmail.com
+User zelenyeshtany@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/mu4e/.mbsyncpass-zelenyeshtany.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
+# - THE REMOTE STORAGE IS WHERE WE GET THE MAIL FROM (E.G., THE
+#   SPECIFICATION OF AN IMAP ACCOUNT)
+# - THE LOCAL STORAGE IS WHERE WE STORE THE EMAIL ON OUR COMPUTER
+
+# REMOTE STORAGE (USE THE IMAP ACCOUNT SPECIFIED ABOVE)
+IMAPStore zelenyeshtany-gmail-remote
+Account zelenyeshtany-gmail
+
+# LOCAL STORAGE (CREATE DIRECTORIES with mkdir -p ~/Maildir/zelenyeshtany-gmail)
+MaildirStore zelenyeshtany-gmail-local
+Path ~/Maildir/zelenyeshtany-gmail/
+Inbox ~/Maildir/zelenyeshtany-gmail/INBOX
+# REQUIRED ONLY IF YOU WANT TO DOWNLOAD ALL SUBFOLDERS; SYNCING SLOWS DOWN
+# SubFolders Verbatim
+
+# CONNECTIONS SPECIFY LINKS BETWEEN REMOTE AND LOCAL FOLDERS
+#
+# CONNECTIONS ARE SPECIFIED USING PATTERNS, WHICH MATCH REMOTE MAIl
+# FOLDERS. SOME COMMONLY USED PATTERS INCLUDE:
+#
+# 1 "*" TO MATCH EVERYTHING
+# 2 "!DIR" TO EXCLUDE "DIR"
+# 3 "DIR" TO MATCH DIR
+
+Channel zelenyeshtany-gmail-inbox
+Master :zelenyeshtany-gmail-remote:
+Slave :zelenyeshtany-gmail-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+Channel zelenyeshtany-gmail-trash
+Master :zelenyeshtany-gmail-remote:"[Gmail]/Bin"
+Slave :zelenyeshtany-gmail-local:"[zelenyeshtany].Bin"
+Create Both
+Expunge Both
+SyncState *
+
+Channel zelenyeshtany-gmail-sent
+Master :zelenyeshtany-gmail-remote:"[Gmail]/Sent Mail"
+Slave :zelenyeshtany-gmail-local:"[zelenyeshtany].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel zelenyeshtany-gmail-all
+Master :zelenyeshtany-gmail-remote:"[Gmail]/All Mail"
+Slave :zelenyeshtany-gmail-local:"[zelenyeshtany].All Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel zelenyeshtany-gmail-starred
+Master :zelenyeshtany-gmail-remote:"[Gmail]/Starred"
+Slave :zelenyeshtany-gmail-local:"[zelenyeshtany].Starred"
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
+# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
+#
+# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM
+# "gmail-inbox", "gmail-sent", and "gmail-trash"
+#
+Group zelenyeshtany-gmail
+Channel zelenyeshtany-gmail-inbox
+Channel zelenyeshtany-gmail-sent
+Channel zelenyeshtany-gmail-trash
+Channel zelenyeshtany-gmail-all
+Channel zelenyeshtany-gmail-starred
+
+
+# ================================================================================
+
+
+# ACCOUNT INFORMATION
+IMAPAccount chandlerkhaki-gmail
+# Address to connect to
+Host imap.gmail.com
+User chandlerkhaki@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.emacs.d/mu4e/.mbsyncpass-chandlerkhaki.gpg"
+AuthMechs LOGIN
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
+# - THE REMOTE STORAGE IS WHERE WE GET THE MAIL FROM (E.G., THE
+#   SPECIFICATION OF AN IMAP ACCOUNT)
+# - THE LOCAL STORAGE IS WHERE WE STORE THE EMAIL ON OUR COMPUTER
+
+# REMOTE STORAGE (USE THE IMAP ACCOUNT SPECIFIED ABOVE)
+IMAPStore chandlerkhaki-gmail-remote
+Account chandlerkhaki-gmail
+
+# LOCAL STORAGE (CREATE DIRECTORIES with mkdir -p ~/Maildir/chandlerkhaki-gmail)
+MaildirStore chandlerkhaki-gmail-local
+Path ~/Maildir/chandlerkhaki-gmail/
+Inbox ~/Maildir/chandlerkhaki-gmail/INBOX
+
+# CONNECTIONS SPECIFY LINKS BETWEEN REMOTE AND LOCAL FOLDERS
+#
+# CONNECTIONS ARE SPECIFIED USING PATTERNS, WHICH MATCH REMOTE MAIl
+# FOLDERS. SOME COMMONLY USED PATTERS INCLUDE:
+#
+# 1 "*" TO MATCH EVERYTHING
+# 2 "!DIR" TO EXCLUDE "DIR"
+# 3 "DIR" TO MATCH DIR
+
+Channel chandlerkhaki-gmail-inbox
+Master :chandlerkhaki-gmail-remote:
+Slave :chandlerkhaki-gmail-local:
+Patterns "INBOX"
+Create Both
+Expunge Both
+SyncState *
+
+Channel chandlerkhaki-gmail-trash
+Master :chandlerkhaki-gmail-remote:"[Gmail]/Trash"
+Slave :chandlerkhaki-gmail-local:"[chandlerkhaki].Trash"
+Create Both
+Expunge Both
+SyncState *
+
+Channel chandlerkhaki-gmail-sent
+Master :chandlerkhaki-gmail-remote:"[Gmail]/Sent Mail"
+Slave :chandlerkhaki-gmail-local:"[chandlerkhaki].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel chandlerkhaki-gmail-all
+Master :chandlerkhaki-gmail-remote:"[Gmail]/All Mail"
+Slave :chandlerkhaki-gmail-local:"[chandlerkhaki].All Mail"
+Create Both
+Expunge Both
+SyncState *
+
+Channel chandlerkhaki-gmail-starred
+Master :chandlerkhaki-gmail-remote:"[Gmail]/Starred"
+Slave :chandlerkhaki-gmail-local:"[chandlerkhaki].Starred"
+Create Both
+Expunge Both
+SyncState *
+
+# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
+# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
+#
+# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM
+# "gmail-inbox", "gmail-sent", and "gmail-trash"
+#
+Group chandlerkhaki-gmail
+Channel chandlerkhaki-gmail-inbox
+Channel chandlerkhaki-gmail-sent
+Channel chandlerkhaki-gmail-trash
+Channel chandlerkhaki-gmail-all
+Channel chandlerkhaki-gmail-starred

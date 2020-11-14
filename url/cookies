@@ -4,10 +4,25 @@
 (setq url-cookie-storage
  '(("localhost"
   [url-cookie "nc_sameSiteCookielax" "true" "Fri, 31-Dec-2100 23:59:59 GMT" "/nextcloud" "localhost" nil]
-  [url-cookie "nc_sameSiteCookiestrict" "true" "Fri, 31-Dec-2100 23:59:59 GMT" "/nextcloud" "localhost" nil]))
+  [url-cookie "nc_sameSiteCookiestrict" "true" "Fri, 31-Dec-2100 23:59:59 GMT" "/nextcloud" "localhost" nil])
+ ("pragmaticemacs.com"
+  [url-cookie "wordpress_clef_state" "tiYDustaoTq1STI2L63xyqYQ" "Sat Nov 14 19:49:29 2020 GMT" "/" "pragmaticemacs.com" nil]))
 )
 (setq url-cookie-secure-storage
- 'nil)
+ '((".reddit.com"
+  [url-cookie "csv" "1" "Sun Nov 13 19:42:52 2022 GMT" "/" ".reddit.com" t]
+  [url-cookie "loid" "00000000008vlwyg27.2.1605296570000.Z0FBQUFBQmZydUc2M0wteldJcWhNOE81c1g2Z1o3Um1nZ0xqQzZsRVF2QjQ2cVNIT3hpMG11ZXdLT2d2UFYzSVZCQ0Rib3ZFaG14OE1wVEc4R0tWOF80VjZWT3Njbk1jRFY3RVE0WVZoSFlvNzZWNDNwM2FDZWNuTGNDalBTNlQzQUlidTY1QVNDSnk" "Sun, 13 Nov 2022 19:42:50 GMT" "/" ".reddit.com" t])
+ ("github.com"
+  [url-cookie "logged_in" "no" "Sat, 13 Nov 2021 19:43:42 GMT" "/" "github.com" t]
+  [url-cookie "_octo" "GH1.1.1567809523.1605296622" "Sat, 13 Nov 2021 19:43:42 GMT" "/" "github.com" t])
+ ("en.wikipedia.org"
+  [url-cookie "WMF-Last-Access" "14-Nov-2020" "Wed, 16 Dec 2020 00:00:00 GMT" "/" "en.wikipedia.org" t])
+ (".wikipedia.org"
+  [url-cookie "WMF-Last-Access-Global" "14-Nov-2020" "Wed, 16 Dec 2020 00:00:00 GMT" "/" ".wikipedia.org" t])
+ ("reddit.com"
+  [url-cookie "edgebucket" "JKWGamvIchTlX4QUZU" "Sun Nov 13 19:42:51 2022 GMT" "/" "reddit.com" t]
+  [url-cookie "token_v2" "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUzMDAwNTAsInN1YiI6Ii1nZDgwei1USzFVRmhTY3ZYTnZvQ0JlZ1l4S2ciLCJsb2dnZWRJbiI6ZmFsc2UsInNjb3BlcyI6WyIqIiwiZW1haWwiXX0.qyDW83CSlTo-QH36d02bcaTDeq7fnorRP9wYKM6EiKc" "Sun, 13 Nov 2022 19:42:50 GMT" "/" "reddit.com" t]))
+)
 
 ;; Local Variables:
 ;; version-control: never

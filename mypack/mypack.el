@@ -342,3 +342,4 @@ no CREATED property"
 ;;          (list (y-or-n-p "Update time for further days also? ")))
 ;;  (message "pashol von" )
 ;;  )
+(provide 'mypack)

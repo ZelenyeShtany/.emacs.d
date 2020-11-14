@@ -10,6 +10,7 @@
 	cua-paste
 	dired-mark
 	elpy-nav-forward-indent
+	eww-browse-with-external-browser
 	indent-for-tab-command
 	my/mark-sexp
 	my/org-move-left

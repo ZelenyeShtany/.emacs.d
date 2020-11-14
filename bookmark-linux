@@ -209,7 +209,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/Sync/org/inbox.org")
- (front-context-string . "**** [[file:/org")
- (rear-context-string . "Rlg6C23jM.mkv]]\n")
- (position . 193798))
+ (front-context-string . "**** TODO [[file")
+ (rear-context-string . "нспектировать]]\n")
+ (position . 195719))
 )

@@ -2063,8 +2063,7 @@ rather than FUN itself, to `minibuffer-setup-hook'."
 ;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(provide 'dired+)
-(require 'dired+)                       ; Ensure loaded before compile this.
+;;(require 'dired+)                       ; Ensure loaded before compile this.
 
 ;; Quiet the byte-compiler.
 (defvar bmkp-copied-tags)                         ; In `bookmark+-1.el'
@@ -14094,3 +14093,4 @@ If no one is selected, symmetric encryption will be performed.  "
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; dired+.el ends here
+(provide 'dired+)
