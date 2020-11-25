@@ -241,7 +241,7 @@ If nil, create morning record"
        (when-go-to-bed (if (eq evening-p nil)(ivy-read "когда пошел спать вчера?" '("0000")) nil))
        (when-got-up (if (eq evening-p nil)(ivy-read "когда встал утром сегодня?" '("0000")) nil))
 
-       (how-many-hours-of-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько часов спал?:" hours)) nil))
+       ;;(how-many-hours-of-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько часов спал?:" hours)) nil))
        (mins-before-sleep (if (eq evening-p nil) (string-to-number(ivy-read "сколько минут засыпал? " mins)) nil))
 
        (medication (if (eq evening-p nil)(ivy-read "какие медикаменты принимал, чтобы уснуть?" '("-" "мелатонин 3мг" "мелатонин 6мг")) nil))
@@ -264,7 +264,7 @@ If nil, create morning record"
 	  (list 2300-0000-0800-0900-p
 		when-go-to-bed
 		when-got-up
-		how-many-hours-of-sleep
+		;;how-many-hours-of-sleep
 		mins-before-sleep
 		medication
 		general-sostoyanie-after-wake-up

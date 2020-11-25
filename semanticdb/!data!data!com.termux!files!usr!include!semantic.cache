@@ -1,0 +1,17 @@
+;; Object semanticdb-project-database-file-1eb756fb20
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1eb756fb20"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1eb756fb64"
+      :major-mode c-mode
+      :tags 
+        '( ("sys/cdefs.h" include (:system-flag t) nil [1518 1540]))          
+      :file "features.h"
+      :pointmax 1541
+      :fsize 1540
+      :lastmodtime '(24326 22050 0 0)
+      :unmatched-syntax '((symbol 1408 . 1412) (symbol 1401 . 1407) (punctuation 1400 . 1401))))
+  :file "!data!data!com.termux!files!usr!include!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

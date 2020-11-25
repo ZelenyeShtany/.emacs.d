@@ -1,24 +1,46 @@
-;; Object semanticdb-project-database-file-1587ea127564
+;; Object semanticdb-project-database-file-15558883535c
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-1587ea127564"
+(semanticdb-project-database-file "semanticdb-project-database-file-15558883535c"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-1587ea127544"
+    (semanticdb-table "semanticdb-table-155588a16d1a"
       :major-mode c++-mode
       :tags 
         '( ("iostream" include (:system-flag t) nil [90 109])
-            ("gavno.h" include nil nil [110 128])
-            ("string" include (:system-flag t) nil [129 146])
+            ("string" include (:system-flag t) nil [178 195])
             ("std" using (:type ("std" type
                  (:prototype t
                   :type "namespace")
-                  nil nil)) nil [147 167])
-            ("main" function (:type "int") nil [169 270]))          
+                  nil nil)) nil [196 216])
+            ("main" function (:type "int") nil [218 623]))          
       :file "main.cpp"
-      :pointmax 272
-      :fsize 271
-      :lastmodtime '(24486 31414 266123 500000)
-      :unmatched-syntax nil))
+      :pointmax 625
+      :fsize 624
+      :lastmodtime '(24499 35311 920204 400000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-15558883531c"
+      :major-mode c-mode
+      :tags nil
+      :file "config.h"
+      :pointmax 1
+      :fsize 0
+      :lastmodtime '(24498 38456 248405 600000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-15558883533c"
+      :major-mode c-mode
+      :tags 
+        '( ("Tutorial_VERSION_MAJOR" variable (:constant-flag t) nil [61 83])
+            ("Tutorial_VERSION_MINOR" variable (:constant-flag t) nil [94 116]))          
+      :file "config.h.in"
+      :pointmax 119
+      :fsize 118
+      :lastmodtime '(24498 41061 382035 200000)
+      :unmatched-syntax '((number 84 . 85))
+      :lexical-table 
+        '(("Tutorial_VERSION_MAJOR" . ((number "1" 84 . 85)))
+          ("Tutorial_VERSION_MINOR" . ((number "0" 117 . 118)))
+          )
+))
   :file "!data!Sync!projects!cpp!my!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

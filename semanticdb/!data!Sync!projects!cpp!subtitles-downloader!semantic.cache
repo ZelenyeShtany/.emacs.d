@@ -1,0 +1,16 @@
+;; Object semanticdb-project-database-file-155fb8b5a5c4
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-155fb8b5a5c4"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-155fb8b5a5d6"
+      :major-mode c++-mode
+      :tags nil
+      :file "main.cpp"
+      :pointmax 1
+      :fsize 0
+      :lastmodtime '(24510 32435 965237 100000)
+      :unmatched-syntax nil))
+  :file "!data!Sync!projects!cpp!subtitles-downloader!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

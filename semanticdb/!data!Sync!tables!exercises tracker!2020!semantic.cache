@@ -1,0 +1,16 @@
+;; Object semanticdb-project-database-file-155b9f135398
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-155b9f135398"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-155b9ea2941c"
+      :major-mode js-mode
+      :tags nil
+      :file "data.json"
+      :pointmax 4600
+      :fsize 5552
+      :lastmodtime '(24506 41596 101124 800000)
+      :unmatched-syntax nil))
+  :file "!data!Sync!tables!exercises tracker!2020!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

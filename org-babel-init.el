@@ -1,10 +1,6 @@
 (setq comp-deferred-compilation nil)
 
-(defun my/phone-p ()
-  "Return non-nil if current device is my phone."
-  (and (equal (system-name) "localhost")
-       (not (equal user-login-name "zelenyeshtany"))))
-(when (my/phone-p)
+(when my/phone-p
   ;;(setq global-mode-string "")
   (define-key global-map (kbd "<prior>") #'org-mru-clock-in)
   (define-key global-map (kbd "<next>") #'org-clock-out)
@@ -64,81 +60,86 @@ There are two things you can do about this warning:
   (erc-update-modules)
   )
 
-(use-package gnus
-  :commands (gnus)
-  :config
-  (setq gnus-have-read-active-file nil)
-  :custom
-  ;;For instance, if the ‘news.somewhere.edu’ NNTP server is where you
-  ;;want to get your daily dosage of news from, you’d say:
-  (gnus-select-method
-   '(nntp "news.gmane.io")
-   ;;'(nnmaildir "emacs-devel archive" (directory "~/Maildir/2000-11"))
-   ;; '(nnmbox ""
-   ;; 	    (nnmbox-mbox-file "~/mbox/2020-11")
-   ;; 	    )
-   )
-  ;; (setq nnmail-split-methods
-  ;; 	’(("mail.junk" "^From:.*Lars Ingebrigtsen")
-  ;; 	  ("mail.crazy" "^Subject:.*die\\|^Organization:.*flabby")
-  ;; 	  ("mail.other" "")))
-  ;;(gnus-select-method '(nnnil ""))
-  ;; (gnus-secondary-select-methods
-  ;;  ;;'(nnimap "gmail"
-  ;;  ;;(nnimap-address "imap.gmail.com")
-  ;;  ;;(nnimap-server-port 993)
-  ;;  ;;(nnimap-stream ssl)
-  ;;  ;;	 )
-  ;;  '(
-  ;;    ;; (nnmaildir "gmail|zelenyeshtany" (directory "~/Maildir/zelenyeshtany-gmail"))
-  ;;    ;; (nnmaildir "gmail|chandlerkhaki" (directory "~/Maildir/chandlerkhaki-gmail"))
-  ;;    ;; (nnmaildir "emacs-devel archive" (directory "~/Maildir/2000-11"))
-  ;;    )
-  ;;  )
+;; (use-package gnus
+;;   :commands (gnus)
+;;   :config
+;;   (setq gnus-have-read-active-file nil)
+;;   :custom
+;;   ;;For instance, if the ‘news.somewhere.edu’ NNTP server is where you
+;;   ;;want to get your daily dosage of news from, you’d say:
+;;   (gnus-select-method
+;;    '(nntp "news.gmane.io")
+;;    ;;'(nnmaildir "emacs-devel archive" (directory "~/Maildir/2000-11"))
+;;    ;; '(nnmbox ""
+;;    ;; 	    (nnmbox-mbox-file "~/mbox/2020-11")
+;;    ;; 	    )
+;;    )
+;;   ;; (setq nnmail-split-methods
+;;   ;; 	’(("mail.junk" "^From:.*Lars Ingebrigtsen")
+;;   ;; 	  ("mail.crazy" "^Subject:.*die\\|^Organization:.*flabby")
+;;   ;; 	  ("mail.other" "")))
+;;   ;;(gnus-select-method '(nnnil ""))
+;;   ;; (gnus-secondary-select-methods
+;;   ;;  ;;'(nnimap "gmail"
+;;   ;;  ;;(nnimap-address "imap.gmail.com")
+;;   ;;  ;;(nnimap-server-port 993)
+;;   ;;  ;;(nnimap-stream ssl)
+;;   ;;  ;;	 )
+;;   ;;  '(
+;;   ;;    ;; (nnmaildir "gmail|zelenyeshtany" (directory "~/Maildir/zelenyeshtany-gmail"))
+;;   ;;    ;; (nnmaildir "gmail|chandlerkhaki" (directory "~/Maildir/chandlerkhaki-gmail"))
+;;   ;;    ;; (nnmaildir "emacs-devel archive" (directory "~/Maildir/2000-11"))
+;;   ;;    )
+;;   ;;  )
 
-  ;;If you want to read directly from the local spool, say:
-  ;;(gnus-select-method '(nnspool ""))
+;;   ;;If you want to read directly from the local spool, say:
+;;   ;;(gnus-select-method '(nnspool ""))
 
-  ;; You can turn off writing the ‘.newsrc’ file by setting
-  ;; ‘gnus-save-newsrc-file’ to ‘nil’, which means you can delete the file
-  ;; and save some space, as well as exiting from Gnus faster.  However, this
-  ;; will make it impossible to use other newsreaders than Gnus.  But hey,
-  ;; who would want to, right?
-  ;;(gnus-save-newsrc-file nil)
-  ;;(gnus-read-newsrc-file nil)
+;;   ;; You can turn off writing the ‘.newsrc’ file by setting
+;;   ;; ‘gnus-save-newsrc-file’ to ‘nil’, which means you can delete the file
+;;   ;; and save some space, as well as exiting from Gnus faster.  However, this
+;;   ;; will make it impossible to use other newsreaders than Gnus.  But hey,
+;;   ;; who would want to, right?
+;;   ;;(gnus-save-newsrc-file nil)
+;;   ;;(gnus-read-newsrc-file nil)
 
 
-  ;; nnmbox
-  ;;(nnmbox-mbox-file   "~/mbox/2000-09")
-  ;;(nnmbox-active-file "~/.mbox-active")
-  ;;(nnmbox-get-new-mail nil)
-  ;; /nnmbox
+;;   ;; nnmbox
+;;   ;;(nnmbox-mbox-file   "~/mbox/2000-09")
+;;   ;;(nnmbox-active-file "~/.mbox-active")
+;;   ;;(nnmbox-get-new-mail nil)
+;;   ;; /nnmbox
   
-  (gnus-startup-file "~/.newsrc.el") ;; ???
-  (nnml-directory "~/gmail")
-  (message-directory "~/gmail")
-  (gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\”]\”[#’()]")
-  (mm-text-html-renderer 'gnus-w3m)
-  ;; The following configures gnus to use the Gmail SMTP server for sending email.
-  (message-send-mail-function 'smtpmail-send-it)
-  ;;(smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
-  ;;(smtpmail-auth-credentials '(("smtp.gmail.com" 587 "your-name@gmail.com" nil)))
-  ;;(smtpmail-default-smtp-server "smtp.gmail.com")
-  ;;(smtpmail-smtp-server "smtp.gmail.com")
-  ;;(smtpmail-smtp-service 587)
-  )
+;;   (gnus-startup-file "~/.newsrc.el") ;; ???
+;;   (nnml-directory "~/gmail")
+;;   (message-directory "~/gmail")
+;;   (gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\”]\”[#’()]")
+;;   (mm-text-html-renderer 'gnus-w3m)
+;;   ;; The following configures gnus to use the Gmail SMTP server for sending email.
+;;   (message-send-mail-function 'smtpmail-send-it)
+;;   ;;(smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
+;;   ;;(smtpmail-auth-credentials '(("smtp.gmail.com" 587 "your-name@gmail.com" nil)))
+;;   ;;(smtpmail-default-smtp-server "smtp.gmail.com")
+;;   ;;(smtpmail-smtp-server "smtp.gmail.com")
+;;   ;;(smtpmail-smtp-service 587)
+;;   )
 ;; WIEGLEY
 
 ;; /WIEGLEY
 
-(when (not (my/phone-p))(use-package md4rd
+(use-package cmake-mode
+:commands (cmake-mode)
+:mode ("\\(CMakeLists\\.txt\\)\\|\\(\\.cmake$\\)" . cmake-mode)
+)
+
+(when (not my/phone-p)(use-package md4rd
   :load-path "~/.emacs.d/elpa/md4rd-20201108.2202"
   :commands (reddit md4rd)
   ))
 
 (setenv "STARDICT_DATA_DIR"
-	(if (my/phone-p)
-	    "~/stardict/"
+	(if my/phone-p
+	    "/data/data/com.termux/files/home/stardict/"
 	    "/data/Dictionaries/stardict/")
 	)
 (defun my/lookup-at-stardict()
@@ -147,16 +148,18 @@ There are two things you can do about this warning:
   (let*
       (
        (word-or-colloc (read-string "word or collocation: ")))
-  (message "%s"
-   (shell-command-to-string
-    (concat "sdcv "
-	    word-or-colloc
-	    " | sed ':a;N;$!ba;s/\\n/<br>/g' | html2text"
-	    ) ;; see 's' alias for sdcv command is ~/.bashrc 
-   ))
-  )
-  )
-(when (my/phone-p)
+    (message
+     "%s"
+     (replace-regexp-in-string "[^[:print:]
+]" "" 
+ (shell-command-to-string
+  (concat
+   "sdcv "
+   word-or-colloc
+   " | sed ':a;N;$!ba;s/\\n/<br>/g' | html2text"
+   ) ;; see 's' alias for sdcv command is ~/.bashrc 
+  )))))
+(when my/phone-p
 (define-key global-map (kbd "<home>") 'my/lookup-at-stardict)
   )
 
@@ -539,7 +542,7 @@ buffer is not visiting a file."
   "docstring"
   (interactive)
   (find-file
-   (concat data-folder-path "Sync/org/help.org")
+   (concat my-org-directory "help.org")
    )
   )
 (defun chunyang-elisp-function-or-variable-quickhelp (symbol)
@@ -710,6 +713,719 @@ Narrow to defun if it's not."
   :after (org)
   )
 
+(use-package org
+  :defer t
+  :mode ("\\.org\\'" . org-mode)
+  :custom
+  (org-agenda-files (list my-org-directory))
+  (org-edit-src-content-indentation 0)
+  (org-clock-mode-line-total 'current)
+  (org-return-follows-link t)
+  (org-use-speed-commands t)
+  (org-use-sub-superscripts nil)
+  (org-use-property-inheritance '("CLOCK_MODELINE_TOTAL"))
+  (org-ellipsis "⤵")
+  (org-protocol-default-template-key "d")
+  (org-read-date-prefer-future 'time)
+  (org-highest-priority 49)
+  (org-lowest-priority 54)
+  (org-default-priority 52)
+  (org-log-reschedule 'time)
+  (org-log-redeadline 'time)
+  (org-log-done 'time)
+  (org-pretty-entities 1)
+  (org-startup-indented 1)
+  (org-log-into-drawer "LOGBOOK")
+  (org-support-shift-select 'always)
+  (org-image-actual-width nil) ;; allowing images to be resized by #+attr_org atribute
+  (org-todo-keywords (list "TODO(1)" "STARTED(2)" "IDEA(6)" "|" "CANCELED(3)"  "MISSED(4)" "DONE(5)"))
+  (org-enforce-todo-dependencies t)
+  (org-agenda-start-with-log-mode t)
+
+  ;; time tracking
+  ;; Save the running clock and all clock history when exiting Emacs, load it on startup
+  (org-clock-persist t)
+  ;; Resume clocking task on clock-in if the clock is open
+  (org-clock-in-resume t)
+  ;; Do not prompt to resume an active clock, just resume it
+  (org-clock-persist-query-resume nil)
+  ;; /time tracking
+
+
+  (org-file-apps
+   '((directory . emacs) ;; for opening folders via emacs (dired-mode)
+     (auto-mode . emacs)
+     ("\\.webm\\'" . "mpv \"%s\"")
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "evince \"%s\"")
+     ("\\.csv\\'" . "konsole -e visidata \"%s\"")))
+
+  (org-clock-sound (concat my-org-directory "timer-sounds/bell.wav"))
+  (org-todo-keyword-faces
+   '(
+     ("STARTED" . (:weight bold :background "#f5e3ae" :foreground "#3F3F3F" :box(:color "#3F3F3F")))
+     ("DONE" . (:weight bold :background "#ACE1AF" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("TODO" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+
+     ("FEATURE" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TROUBLE" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("SOLUTION" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("BUG" . (:weight bold :background "#DCA3A3" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+
+     ("TOREAD" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOWATCH" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("SOMEDAY" . (:weight bold :background "#6C3333" :foreground "#DCDCCC" :box(:color "#3F3F3F") )) 
+     ("TOBUY" . (:weight bold :background "#CC9393" :foreground "#3F3F3F" :box(:color "#3F3F3F") )) 
+     ("NEXT" . (:weight bold :background "#93E0E3" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("TOSTUDY" . (:weight bold :background "#F0DFAF" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ("STUCK" . (:weight bold  :background "#366060" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("CANCELED" . (:weight bold  :background "#2B2B2B" :foreground "#DCDCCC" :box(:color "#3F3F3F") ))
+     ("IDEA" . (:weight bold  :background "#ba3244" :foreground "#3F3F3F" :box(:color "#3F3F3F") ))
+     ))
+  (org-tag-persistent-alist 
+   '(
+     (:startgrouptag)
+     ("ADHD")
+     (:grouptags)
+     ("attention")
+     ("forgetfulness")
+     ("working_memory")
+     (:endgrouptag)
+     ("заторможенность")
+     ("SCT")
+     ("quantifiedself")
+     ("NSTU")
+     ("compression")
+     ("podcasts")
+     ("stress")
+     ("постоянство")
+
+     ("buy")
+     ("android")
+     ("nofap")
+     ("nofap_success")
+     ("nofap_fail")
+     ("important")
+     ("book")
+     ("video")
+     ("sobering")
+     ("sleep")
+     ("motivation")
+     ("cpp")
+     ("health")
+     ("assonfire")
+     ("alcohol")
+     ("organization")
+     ("workflow")
+
+     (:startgrouptag)
+     ("emacs")
+     (:grouptags)
+     ("emacs_config")
+     ("orgmode")
+     ("elisp")
+     (:endgrouptag)
+
+     (:startgrouptag)
+     ("mindset")
+     (:grouptags)
+     ("copingcard")
+     (:endgrouptag)
+
+
+     (:startgrouptag)
+     ("web")
+     (:grouptags)
+     ("article")
+     (:endgrouptag)
+
+
+     ("engl")
+     ("music")
+     ("film")
+     ))
+  (org-capture-templates
+   '(;; ("t" "Todo" entry (file+headline todos "Tasks")
+     ;;  "* TODO %?")
+     ("j" "Add to inbox.org" entry (file+datetree inbox)
+      "* %?")
+     ("i" "Idea" entry (file+datetree inbox)
+      "* IDEA %?")
+     ;;("d" "TEST" entry (file+datetree (concat my-org-directory "notes.org"))
+     ;; "* frombroser: %a" :immediate-finish t)
+     ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
+      "* %?")
+
+     ("H" "Meditations Tracker" plain (file meditations-tracker )
+      (function (lambda () (interactive) (my/json-meditations meditations-tracker))) :immediate-finish t
+      )
+
+     ("g" "Migraines Tracker" plain (file migraines-tracker )
+      (function (lambda () (interactive) (my-json/migraines migraines-tracker))) :immediate-finish t
+      )
+
+     ("p" "Poor Man CBT" plain (file poor-man-cbt )
+      (function (lambda () (interactive) (my-json/poor-man-CBT poor-man-cbt))) :immediate-finish t
+      )
+
+     ;; ("n" "English Tracker" plain (file english-tracker )
+     ;;  (function (lambda () (interactive) (my-json/engl english-tracker))) :immediate-finish t
+     ;;  )
+
+     ("E" "Exercise Tracker" plain (file exercise-tracker )
+      (function (lambda () (interactive) (my/json-exercises exercise-tracker))) :immediate-finish t
+      )
+
+     ("M" "Sleep Tracker Morning" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary nil))) :immediate-finish t
+      )
+
+     ("l" "Sleep Tracker Evening" plain (file sleepdiary )
+      (function (lambda () (interactive) (my/json-sleep sleepdiary t))) :immediate-finish t
+      )
+
+
+     ("d" "capture through org protocol" entry
+      (file+headline org-board-capture-file "Unsorted")
+      "* %?%:description\n:PROPERTIES:\n:URL: %:link\n:END:\n\n Added %U" :immediate-finish t)
+     ))
+  :init
+  (add-hook 'org-mode-hook '(lambda () (setq fill-column 50)))
+  (add-hook 'org-mode-hook 'turn-on-auto-fill)
+  ;;(add-hook 'org-after-todo-state-change-hook 'my-org-recur-finish)
+  ;; (add-hook 'org-mode-hook '(lambda ()
+  ;;  "Beautify Org Checkbox Symbol"
+  ;;  (push '(":PROPERTIES:" .  "P") prettify-symbols-alist)
+  ;;  (push '(":LOGBOOK:" .  "L") prettify-symbols-alist)
+  ;;  (prettify-symbols-mode)))
+
+  ;; redefined for custom %-escapes.
+  ;; For example, 
+  (defun my/org-delete-link-at-point ()
+    "docstring"
+    (interactive)
+    (if
+        (my/org-link-at-point-p)
+        (delete-region (match-beginning 0) (match-end 0))
+      nil
+      )
+    )
+
+  (defun my/org-at-source-block-p ()
+    "returns non-nil if point is at source block"
+    (eq (my-org-element-type (org-element-at-point)) 'src-block)
+    )
+
+  (defun my/org-mode-p ()
+    "Return `t' if major-mode or derived-mode-p equals 'org-mode, otherwise `nil'."
+    (or (eq major-mode 'org-mode) (when (derived-mode-p 'org-mode) t)))
+
+  (defun org-cua-rectangle-conflict-resolving (&optional arg)
+    (interactive "P")
+    (if (eq major-mode 'org-mode)
+        (org-insert-heading arg)
+      (cua-rectangle-mark-mode arg)))
+
+  (defun my/org-move-right ()
+    "docstring"
+    (interactive)
+    (if(org-at-table-p)
+        (org-table-next-field)
+      (right-word)
+      )
+    )
+  (defun my/org-move-left ()
+    "docstring"
+    (interactive)
+    (if(org-at-table-p)
+        (org-table-previous-field)
+      (left-word)
+      )
+    )
+
+
+  (defun my-org-set-todo-state (todostate)
+    "Change TODO state of current heading to todostate"
+    (save-excursion
+      (let* (
+             (todo-state (concat todostate " "))
+             (regexp "\\([[:word:]]+ \\)\\(.*\\)")
+             (heading-level (car (my-org-get-current-heading-level-and-point)))
+             (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
+             )
+        (progn
+          (if (eq (org-get-todo-state) nil)
+              (setq new-line (concat todo-state (org-get-heading)))
+            (progn
+              (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
+              )
+            )
+          (goto-char (+ heading-point heading-level 1))
+          (zap-up-to-char -1 ?*)
+          (zap-up-to-char 1 ?\n)
+          (insert (concat " " new-line))
+          )
+        )
+      )
+    )
+
+  (defun my-org-element-type (element)
+    "Return type of ELEMENT.
+
+The function returns the type of the element or object provided.
+It can also return the following special value:
+  `plain-text'       for a string
+  `org-data'         for a complete document
+  nil                in any other case."
+    (cond
+     ((not (consp element)) (and (stringp element) 'plain-text))
+     ((symbolp (car element)) (car element))))
+
+  (defun my/org-archive-youtube-video-at-point ()
+    "docstring"
+    (interactive)
+    (if 
+        (my/org-link-at-point-p)
+        (let*
+            (
+	     (video-dir "/data/gitserver/org/video/")
+             (download-options (list "video with audio" "only video" "only audio"))
+             (chosen-download-option
+              (ivy-read "What to download?" download-options :require-match t))
+             (video-height-list (list "144" "240" "360" "480" "720" "1080"))
+             (audio-bitrate-list (list "64" "128" "256"))
+             (link (my/org-extract-link-at-point))
+             (desc (my/org-extract-link-descr-at-point))
+             (desired-audio-bitrate 
+              (if (or
+                   (string= chosen-download-option "video with audio")
+                   (string= chosen-download-option "only audio")
+                   )
+                  (ivy-read "choose audio bitrate(at least...)" audio-bitrate-list :require-match t))
+              )
+             (video-height
+              (if
+                  (or
+                   (string= chosen-download-option "video with audio")
+                   (string= chosen-download-option "only video")
+                   )
+                  (ivy-read "choose video height(at least...)" video-height-list :require-match t)
+                )
+              )
+             (video-id nil)
+             (filename-with-extension nil)
+             (filepath-without-file-extension nil)
+             (filepath-with-extension nil)
+             (downloaded-file-audio-bitrate nil)
+             )
+
+          (if (string-match "youtube.com" link)
+              (let* ()
+                (cond
+                 ((string= chosen-download-option "video with audio")
+                  (shell-command-to-string
+                   (concat
+                    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstvideo[height>="
+                    video-height
+                    "]+worstaudio[abr>="
+                    desired-audio-bitrate 
+                    "]' -o '" video-dir "%(title)s-%(id)s.%(ext)s' "
+                    link))
+
+                  )
+                 ((string= chosen-download-option "only audio")
+                  (shell-command-to-string
+                   (concat
+                    ;;"youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en --extract-audio --audio-format 'mp3' -f 'worstaudio[abr>="
+                    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstaudio[abr>="
+                    desired-audio-bitrate 
+                    "]' -o '" video-dir "%(title)s-%(id)s.%(ext)s' "
+                    link))
+                  )
+                 ((string= chosen-download-option "only video")
+                  (shell-command-to-string
+                   (concat
+                    "youtube-dl --embed-subs --write-sub --write-auto-sub --sub-lang en -f 'worstvideo[height>="
+                    video-height
+                    "]' -o '" video-dir "%(title)s-%(id)s.%(ext)s' "
+                    link))
+                  ;; ;;test
+                  ;; (start-process-shell-command "youtube-dl" nil (concat
+                  ;; 		    "youtube-dl --embed-subs --write-sub --sub-lang en -f 'worstvideo[height>="
+                  ;; 		    "144"
+                  ;; 		    "]' -o '" video-dir "%(title)s-%(id)s.%(ext)s' "
+                  ;; 		    "https://www.youtube.com/watch?v=APhhHCBI8xc"))
+                  ;; ;;/test
+
+                  )
+                 )
+                (my/org-delete-link-at-point)
+                ;; find file title within shell output buffer, assign to a variable
+
+                ;; i dont know exactly what file extension will be after all, so i save only file title
+                (setq video-id (shell-command-to-string
+                                (concat
+                                 "youtube-dl --get-id "
+                                 link
+                                 )))
+                ;;erasing new-line character at the end
+                (setq video-id (substring video-id 0
+                                          (- (length video-id) 1)))
+                ;; searching file
+                (save-window-excursion
+                  (save-excursion
+
+                    (while (progn
+                             (dired video-dir)
+                             (revert-buffer)
+                             (goto-char (point-min))
+                             (message "%s" (buffer-substring-no-properties (point-min) (point-max)))
+                             ;;(find-lisp-find-dired "." video-id)
+                             (message "searchin for '%s'" video-id)
+
+                             (eq (search-forward-regexp video-id (point-max)
+                                                        t)
+                                 nil)
+                             )
+                      (message "waiting... %s" (buffer-name))
+                      (sleep-for 1)
+                      )
+                    ;; (goto-char (match-beginning 0))
+                    (setq filepath-with-extension (dired-get-filename))
+                    )
+                  )
+
+                ;; find file with title and create org-link at point with to this file 
+                (org-insert-link nil (concat "file:" filepath-with-extension))
+                ;;(kill-buffer shell-command-buffer-name)
+                )
+            )
+          )
+      )
+    )
+  (defun org-ql-view-todo ()
+    "docstring"
+    (interactive)
+    (call-interactively 'org-agenda-todo)
+    (org-ql-view-refresh)
+
+    )
+  (defun my/org-extract-link-descr-at-point ()
+    "docstring"
+    (interactive)
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+        (match-string-no-properties 2)
+      nil
+      )
+    )
+
+  (defun my/org-extract-link-at-point ()
+    "docstring"
+    (interactive)
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+        (match-string-no-properties 1)
+      nil
+      )
+    )
+
+  (defun my/org-link-at-point-p ()
+    "Returns non-nil if point is on a orgmode link
+Взял строчку `(org-in-regexp org-link-bracket-re 1)' из функции `org-insert-link'"
+    (if (not(eq (org-in-regexp org-link-bracket-re 1) nil))
+        (progn
+          (message "%s" (match-string-no-properties 1))
+          t)
+      nil
+      )
+    )
+
+  (defun my/number-of-spaces-at-point(point)
+    "docstring"
+    (interactive)
+    (require 'loop)
+    (let* (
+           (count 0)
+           )
+      (save-excursion
+        (loop-do-while (eq (char-after) ? )
+                       (setq count (+ count 1))
+                       (forward-char)
+                       )
+        )
+      count
+      )
+    )
+
+  (defun my/toggle-org-columns ()
+    "docstring"
+    (interactive)
+
+    (if (and (boundp 'org-columns-current-fmt)
+             (not (eq org-columns-current-fmt nil))
+             )
+        (org-columns-quit)
+      (org-columns)
+      )
+    )
+
+  (defun my/org-headline-return ()
+    "docstring"
+    (interactive)
+    (if (eq (org-element-type (org-element-at-point)) 'headline)
+
+        (let* (
+               (level (org-element-property :level (org-element-at-point)))
+               (begin (org-element-property :begin (org-element-at-point)))
+               (title-length (length (org-element-property :title (org-element-at-point))))
+               (contents-end (org-element-property :contents-end (org-element-at-point)))
+               (end-of-headline (+ begin level
+                                   (my/number-of-spaces-at-point(+ begin level))
+                                   title-length))
+               )
+
+          (if (eq (point) end-of-headline)
+              (if (org-goto-first-child)
+                  (progn
+                    (forward-char -1)
+                    (insert "\n")
+                    )
+
+                (progn
+                  (if (eq contents-end nil)
+                      (progn
+                        (goto-char end-of-headline)
+                        (insert "\n")
+                        )
+                    (goto-char contents-end)
+                    )
+
+                  (if (not (eq (char-before) ?\n ) )
+                      (progn (insert "\n") (forward-char -1))
+                    )
+                  )
+                )
+            (org-return)
+            )
+
+          )
+      (org-return)
+      )
+    )
+
+  (defun my/org-clock-in (arg)
+    "Clocks into a task at point if in org-mode, 
+or calls a menu of last clocked tasks to choose"
+    (interactive "P")
+    (if (derived-mode-p 'org-mode)
+        (org-clock-in)
+      (org-clock-in '(4))
+      )
+    )
+
+  (defun my/copy-id-to-clipboard()
+    (interactive)
+    (when (eq major-mode 'org-mode) ; do this only in org-mode buffers
+      (setq mytmpid (concat "id:" (funcall 'org-id-get-create)))
+      (kill-new mytmpid)
+      (message "Copied %s to killring (clipboard)" mytmpid)
+      ))
+
+  ;; time tracking
+  ;; Resume clocking task when emacs is restarted
+  (org-clock-persistence-insinuate)
+  ;; /time tracking
+  (setq
+   engl (concat my-org-directory "engl.org")
+   inbox (concat my-org-directory "inbox.org")
+   notes (concat my-org-directory "notes.org")
+   regular (concat my-org-directory "regular.org")
+   todos (concat my-org-directory "todos.org")
+   timerasp (concat my-org-directory "timerasp.org")
+   poor-man-cbt (concat data-folder-path "Sync/tables/poor-man-CBT/data.json")
+   ;; english-tracker (concat data-folder-path "Sync/tables/english tracker/data.json")
+   migraines-tracker (concat data-folder-path "Sync/tables/migraines/data.json")
+   meditations-tracker (concat data-folder-path "Sync/tables/meditations/2020/data.json")
+   exercise-tracker (concat data-folder-path "Sync/tables/exercises tracker/2020/data.json")
+   sleepdiary (concat data-folder-path "Sync/tables/sleep diary/2020/data.json"))
+
+  ;; web archiving through org-capture + org-board
+  (defun do-org-board-dl-hook ()
+    (when (equal (buffer-name) "CAPTURE-webarchive.org")
+      (org-board-archive)))
+
+  (add-hook 'org-capture-before-finalize-hook 'do-org-board-dl-hook)
+
+  (setq org-board-capture-file (concat my-org-directory "webarchive.org"))
+  ;; /web archiving through org-capture + org-board  
+  ;;(use-package org-download
+;;:defer t
+;;)
+  ;;(use-package my-week-day-based-habits
+;;:defer t
+;;)
+  :bind (:map org-mode-map
+              ("M-a" . 'my/org-archive-youtube-video-at-point)
+              ("C-c f" . 'org-search-view)
+              ("C-c C-x C-c" . 'my/toggle-org-columns)
+              ;;("C-c C-x C-i" . 'my/org-clock-in)
+              ("C-<RET>" . 'org-return)
+              ("C-c n" . 'org-add-note)
+              ("<f5>" . 'my/copy-id-to-clipboard)
+              ("M-r" . 'org-todo)
+              ("M-t" . 'counsel-org-tag)
+              ("M-s" . 'org-schedule)
+              ("M-d" . 'org-deadline)
+              ("M-<return>" . 'org-insert-subheading)
+              ("C-j" . nil)
+              ("C-c i" . 'org-time-stamp-inactive)
+              ("C-c 1" . (lambda() (interactive) (my-insert-into-table "DONE")))
+              ("C-c 2" . (lambda() (interactive) (my-insert-into-table "MISSED")))
+              ("C-c 3" . (lambda() (interactive) (my-insert-into-table "TODO")))
+              ("C-c 0" . (lambda() (interactive) (org-table-blank-field)))
+              :map global-map 
+              ;;("C-c C-x C-i" . 'my/org-clock-in)
+              ("C-c f" . 'org-search-view)
+              ("C-c C-x C-o" . 'org-clock-out)
+              ("C-c C-x C-q" . 'org-clock-cancel)
+              ("C-c j" . (lambda () (interactive) (org-capture nil "j")))
+              ("C-c e" . (lambda () (interactive) (org-capture nil "e")))
+              ("C-c i" . (lambda () (interactive) (org-capture nil "i")))
+              ("C-c x" . (lambda () (interactive) (org-capture nil "t")))
+              )
+  :config
+  (add-hook
+   'org-after-todo-state-change-hook
+   #'(lambda () (interactive)
+       (if
+           (and
+            ;; id of meditation habit headline
+            (string= (org-entry-get nil "id") "45540784-a689-4f67-87ae-fb015f30c651")
+
+            (or
+             (string= (org-element-property :todo-keyword (org-element-at-point)) "MISSED")
+             (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE")))
+           (my/json-meditations meditations-tracker))))
+
+  (defun org-store-log-note ()
+    "Finish taking a log note, and insert it to where it belongs.
+ATTENTION
+This is redefined version of this function. I've redefined it for custom %-escapes.
+My custom %-escapes:
+%e - previous SCHEDULED timestamp, format: '[%Y-%m-%d]'
+"
+    (let ((txt (prog1 (buffer-string)
+                 (kill-buffer)))
+          (note (cdr (assq org-log-note-purpose org-log-note-headings)))
+          lines)
+      (while (string-match "\\`# .*\n[ \t\n]*" txt)
+        (setq txt (replace-match "" t t txt)))
+      (when (string-match "\\s-+\\'" txt)
+        (setq txt (replace-match "" t t txt)))
+      (setq lines (and (not (equal "" txt)) (org-split-string txt "\n")))
+      (when (org-string-nw-p note)
+        (setq note
+              (org-replace-escapes
+               note
+               (list
+                (cons "%e" (if (not my/org-previous-scheduled-time) (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point)))
+                             my/org-previous-scheduled-time
+                             ))
+                (cons "%u" (user-login-name))
+                (cons "%U" user-full-name)
+                (cons "%t" (format-time-string
+                            (org-time-stamp-format 'long 'inactive)
+                            org-log-note-effective-time))
+                (cons "%T" (format-time-string
+                            (org-time-stamp-format 'long nil)
+                            org-log-note-effective-time))
+                (cons "%d" (format-time-string
+                            (org-time-stamp-format nil 'inactive)
+                            org-log-note-effective-time))
+                (cons "%D" (format-time-string
+                            (org-time-stamp-format nil nil)
+                            org-log-note-effective-time))
+                (cons "%s" (cond
+                            ((not org-log-note-state) "")
+                            ((string-match-p org-ts-regexp
+                                             org-log-note-state)
+                             (format "\"[%s]\""
+                                     (substring org-log-note-state 1 -1)))
+                            (t (format "\"%s\"" org-log-note-state))))
+                (cons "%S"
+                      (cond
+                       ((not org-log-note-previous-state) "")
+                       ((string-match-p org-ts-regexp
+                                        org-log-note-previous-state)
+                        (format "\"[%s]\""
+                                (substring
+                                 org-log-note-previous-state 1 -1)))
+                       (t (format "\"%s\""
+                                  org-log-note-previous-state)))))))
+        (when lines (setq note (concat note " \\\\")))
+        (push note lines))
+      (when (and lines (not org-note-abort))
+        (with-current-buffer (marker-buffer org-log-note-marker)
+          (org-with-wide-buffer
+           ;; Find location for the new note.
+           (goto-char org-log-note-marker)
+           (set-marker org-log-note-marker nil)
+           ;; Note associated to a clock is to be located right after
+           ;; the clock.  Do not move point.
+           (unless (eq org-log-note-purpose 'clock-out)
+             (goto-char (org-log-beginning t)))
+           ;; Make sure point is at the beginning of an empty line.
+           (cond ((not (bolp)) (let ((inhibit-read-only t)) (insert "\n")))
+                 ((looking-at "[ \t]*\\S-") (save-excursion (insert "\n"))))
+           ;; In an existing list, add a new item at the top level.
+           ;; Otherwise, indent line like a regular one.
+           (let ((itemp (org-in-item-p)))
+             (if itemp
+                 (indent-line-to
+                  (let ((struct (save-excursion
+                                  (goto-char itemp) (org-list-struct))))
+                    (org-list-get-ind (org-list-get-top-point struct) struct)))
+               (org-indent-line)))
+           (insert (org-list-bullet-string "-") (pop lines))
+           (let ((ind (org-list-item-body-column (line-beginning-position))))
+             (dolist (line lines)
+               (insert "\n")
+               (indent-line-to ind)
+               (insert line)))
+           (message "Note stored")
+           (org-back-to-heading t))
+          ;; Fix `buffer-undo-list' when `org-store-log-note' is called
+          ;; from within `org-add-log-note' because `buffer-undo-list'
+          ;; is then modified outside of `org-with-remote-undo'.
+          (when (eq this-command 'org-agenda-todo)
+            (setcdr buffer-undo-list (cddr buffer-undo-list))))))
+    ;; Don't add undo information when called from `org-agenda-todo'.
+    (let ((buffer-undo-list (eq this-command 'org-agenda-todo)))
+      (set-window-configuration org-log-note-window-configuration)
+      (with-current-buffer (marker-buffer org-log-note-return-to)
+        (goto-char org-log-note-return-to))
+      (move-marker org-log-note-return-to nil)
+      (when org-log-post-message (message "%s" org-log-post-message))))
+  (org-add-link-type
+   "tag" 'endless/follow-tag-link)
+
+  (defun endless/follow-tag-link (tag)
+    "Display a list of TODO headlines with tag TAG.
+With prefix argument, also display headlines without a TODO keyword."
+    (org-tags-view (null current-prefix-arg) tag))
+
+  (setq my/org-previous-scheduled-time nil)
+  (defun my/org-set-previous-scheduled-time (&rest args)
+    "Remembers previous scheduled
+time into `my/org-previous-scheduled-time'
+as a inactive timestamp string '[%Y-%m-%d]'"
+    (interactive "P")
+    (setq my/org-previous-scheduled-time (org-format-time-string "[%Y-%m-%d]" (org-get-scheduled-time (point))))
+    )
+  (advice-add 'org-schedule :before 'my/org-set-previous-scheduled-time)
+  (advice-add 'org-todo :before 'my/org-set-previous-scheduled-time)
+  )
+
 (add-to-list 'load-path "~/.emacs.d/dired+/")
 (use-package dired+
   :after (dired)
@@ -730,7 +1446,7 @@ Narrow to defun if it's not."
 	      ("<f2>" . 'dired-do-rename)
 	      ;;("X" . 'diredp-move-file)
 	      ("<ret>" . 'dired-open-by-extension)
-	      ("M-?" .  (lambda () (interactive) (find-file-other-window (concat data-folder-path "Sync/org/diredhelp.org"))))
+	      ("M-?" .  (lambda () (interactive) (find-file-other-window (concat my-org-directory "diredhelp.org"))))
 	      ("<deletechar>" . 'dired-do-delete)
 	      ("<DEL>" . 'diredp-up-directory-reuse-dir-buffer)
 	      ("<ret>" . 'diredp-find-file-reuse-dir-buffer)
@@ -757,6 +1473,7 @@ Narrow to defun if it's not."
           ("webp" . "mpv")
           ("avi" . "mpv")
           ("webm" . "mpv")
+          ("wav" . "mpv")
           ("mkv" . "vlc")
           ("mp3" . "clementine")
           ("ogg" . "clementine")
@@ -795,11 +1512,8 @@ Narrow to defun if it's not."
   )
 
 (add-to-list 'load-path "~/.emacs.d/smartparens")
-(use-package smartparens
-  :defer t
-  :hook ((emacs-lisp-mode cc-mode) . smartparens-mode)
-)
 (use-package smartparens-config
+  :commands (sp-point-in-string)
   :diminish smartparens-mode
   :hook ((emacs-lisp-mode cc-mode) . smartparens-mode)
 
@@ -928,18 +1642,34 @@ Narrow to defun if it's not."
 )
 
 (add-to-list 'load-path "~/.emacs.d/org-pandoc-import/")
+
+(use-package swiper
+  :commands (swiper)
+  :bind (
+	 ("C-f" . 'swiper)
+	 )
+  )
+
+(use-package expand-region
+  :commands (er/expand-region)
+  :bind
+  (
+   ("M-w" . 'er/expand-region)
+   )
+  )
+
 (use-package org-pandoc-import)
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
   :after (org)
   )
-;; tiny(abo-abo)
-;; quickly insert text at point
-;; (use-package tiny
-;;   :config
-;;   (tiny-setup-default)
-;;   )
-;; /tiny
+;;tiny(abo-abo)
+;;quickly insert text at point
+(use-package tiny
+  :config
+  (tiny-setup-default)
+  )
+''/tiny
 
 (use-package org-branch
 :defer t
@@ -984,7 +1714,7 @@ Narrow to defun if it's not."
 :defer t
 )
 (use-package visual-regexp
-:defer t
+:commands (vr/replace)
 )
 (use-package ido
 :defer t
@@ -1043,8 +1773,12 @@ Narrow to defun if it's not."
 ;;(ivy-rich-mode 1)
 ;;)
 
-(use-package gruvbox)
-(load-theme 'gruvbox-dark-hard t)
+;;(use-package afternoon-theme)
+;;(load-theme 'afternoon t)
+
+(define-key global-map (kbd "<prior>") #'my/sound-while-clocking-in)
+(define-key global-map (kbd "<next>") #'org-clock-out)
+(define-key global-map (kbd "<end>") #'org-clock-cancel)
 
 (define-key global-map (kbd "C-e") #'smarter-move-end-of-line)
 (define-key global-map (kbd "C-x C-e") 'eval-print-last-sexp)
@@ -1059,7 +1793,6 @@ Narrow to defun if it's not."
 (define-key global-map (kbd "C-y") 'yas-new-snippet)
 (define-key global-map (kbd "M-n") 'my-toggle-narrow-to-sth)
 (define-key global-map (kbd "C-s") 'save-buffer)
-(define-key global-map (kbd "C-f") 'swiper)
 
 (set-language-environment "UTF-8")
 
@@ -1199,7 +1932,10 @@ Narrow to defun if it's not."
 (setq visible-bell t)
 
 ;;(fringe-mode '(8 . 0))
-
+(use-package fringe
+:after (flycheck)
+:hook ((flycheck-mode) . (lambda () (fringe-mode (cons 8 0))))
+)
 (define-key global-map (kbd "C-c c") #'counsel-org-capture)
 (define-key global-map (kbd "M-<backspace>") #'sp-splice-sexp)
 
@@ -1323,8 +2059,8 @@ Narrow to defun if it's not."
 ;;  :init
 ;;  (setq org-caldav-url "http://localhost/nextcloud/remote.php/dav/calendars/zelenyeshtany"
 ;;	org-caldav-calendar-id "mycal"
-;;	org-caldav-inbox (concat data-folder-path "Sync/org/inboxcal.org")
-;;	org-caldav-files '((concat data-folder-path "Sync/org/todos.org") (concat data-folder-path "Sync/org/notes.org") (concat data-folder-path "Sync/org/habits.org"))
+;;	org-caldav-inbox (concat my-org-directory "inboxcal.org")
+;;	org-caldav-files '((concat my-org-directory "todos.org") (concat data-folder-path "Sync/org/notes.org") (concat data-folder-path "Sync/org/habits.org"))
 ;;	org-icalendar-timezone "Kazakhstan/Almaty"
 ;;	org-icalendar-use-deadline '(event-if-not-todo event-if-todo)
 ;;	org-icalendar-use-scheduled '(todo-start event-if-todo )
@@ -1343,7 +2079,7 @@ Narrow to defun if it's not."
 	 )
   :init
   (setq org-download-method 'directory)
-  (setq-default org-download-image-dir (concat data-folder-path "Sync/org/img/"))
+  (setq-default org-download-image-dir (concat my-org-directory "img/"))
   :config
   (defun my/org-download-annotate (link)
   "Annotate LINK with the time of download."
@@ -1390,7 +2126,7 @@ Narrow to defun if it's not."
 ;;)
 ;;(setq org-gcal-client-id "333013805673-varidbf7tnsge2tv22u3af6admtc60qv.apps.googleusercontent.com"
 ;;      org-gcal-client-secret "KOKdhQLYYJkil_zE3ufDUCa1"
-;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . (concat data-folder-path "Sync/org/gcal.org"))))
+;;      org-gcal-file-alist '(("1emonvv6qe3lm3tto7huqr8hh8@group.calendar.google.com" . (concat my-org-directory "gcal.org"))))
 
 (use-package ivy
   :diminish ivy-mode
@@ -1435,6 +2171,7 @@ Narrow to defun if it's not."
   )
 
 (use-package ace-window
+  :commands (ace-window)
   :bind (
 	 ("M-o" . 'ace-window)
 	 )
@@ -1464,6 +2201,11 @@ Narrow to defun if it's not."
   )
 
 (use-package counsel
+  :commands (counsel-M-x
+	     counsel-org-capture
+	     counsel-package
+	     counsel-describe-symbol
+             counsel-bookmark)
   :after (ivy)
   :diminish counsel-mode
   :config
@@ -1666,21 +2408,19 @@ Useful when you're listening lectures, podcasts or whatever.
     (when (eq arg nil)
      (setq my/clocking-in-timer
           ;; run with 3 seconds delay at start and repeat every 30secs
-          (run-with-timer 3 60
+          (run-with-timer 3 30
                           ;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
                           'shell-command-to-string "
   for i in `seq 1 1`; do
       beep -f 3000 -d 20 -l 80
   done
   "
-                          )
-
-          ))
+                          )))
     )
   (defun my/delete-clocking-in-timer ()
     "docstring"
     ;;(interactive)
-    (cancel-timer my/clocking-in-timer)
+    (when (boundp 'my/clocking-in-timer) (cancel-timer my/clocking-in-timer))
     )
   ;;(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
   (add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
@@ -1734,8 +2474,12 @@ Useful when you're listening lectures, podcasts or whatever.
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
 (setq lsp-keymap-prefix "C-c l")
 
-(use-package lsp-modeline)
-(use-package lsp-headerline)
+(use-package lsp-modeline
+:after (lsp-mode)
+)
+(use-package lsp-headerline
+:after (lsp-mode)
+)
 ;; To defer LSP server startup (and DidOpen notifications)
 ;; until the buffer is visible you can use lsp-deferred instead of lsp
 (use-package lsp-mode
@@ -1811,7 +2555,9 @@ Useful when you're listening lectures, podcasts or whatever.
 
 (use-package flycheck
 :after (lsp-mode)
-:hook ((c-mode c++-mode) . flycheck-mode)
+:hook ((lsp-mode cc-mode) . flycheck-mode)
+:custom
+(flycheck-checker 'c/c++-clang)
 )
 
 
