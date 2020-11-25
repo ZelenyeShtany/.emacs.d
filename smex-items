@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- outline-minor-mode
- markdown-table-align
- zap-up-to-char
- wdired-change-to-wdired-mode
- smartparens-mode
- erc
- tetris
+ esup
+ emacs-init-time
+ outline-demote
+ outline-promote
+ outline-cycle
+ outline-show-all
+ outline-hide-entry
 )
 
 ;; ----- smex-data -----
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 219)
+ (emacs-init-time . 221)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 24)
@@ -579,7 +579,7 @@
  (benchmark-init/activate . 1)
  (benchmark-init/deactivate . 1)
  (benchmark-init/install . 1)
- (esup . 9)
+ (esup . 13)
  (lsp . 1)
  (lsp-ui-flycheck-list-mode . 1)
  (erc . 18)
@@ -622,4 +622,10 @@
  (elisp-benchmarks-run . 1)
  (zap-up-to-char . 2)
  (markdown-table-align . 1)
+ (outline-insert-heading . 1)
+ (outline-promote . 2)
+ (outline-hide-entry . 2)
+ (outline-show-all . 1)
+ (outline-cycle . 3)
+ (outline-demote . 2)
 )
