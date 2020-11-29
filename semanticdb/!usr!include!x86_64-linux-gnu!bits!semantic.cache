@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-155dff3a167c
+;; Object semanticdb-project-database-file-157457d16418
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-155dff3a167c"
+(semanticdb-project-database-file "semanticdb-project-database-file-157457d16418"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-155dff3a135c"
+    (semanticdb-table "semanticdb-table-157457d16258"
       :major-mode c-mode
       :tags 
         '( ("__WORDSIZE" variable (:constant-flag t) nil [117 127])
@@ -20,7 +20,7 @@
           ("__WORDSIZE" . ((number "64" 128 . 130)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a137c"
+    (semanticdb-table "semanticdb-table-157457d16278"
       :major-mode c-mode
       :tags 
         '( ("__LONG_DOUBLE_USES_FLOAT128" variable (:constant-flag t) nil [933 960]))          
@@ -33,7 +33,7 @@
         '(("__LONG_DOUBLE_USES_FLOAT128" . ((number "0" 961 . 962)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a139c"
+    (semanticdb-table "semanticdb-table-157457d16298"
       :major-mode c-mode
       :tags 
         '( ("features.h" include (:system-flag t) nil [1433 1454])
@@ -57,7 +57,7 @@
           ("__GLIBC_USE_IEC_60559_FUNCS_EXT_C2X" . ((number "0" 2987 . 2988)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a13bc"
+    (semanticdb-table "semanticdb-table-157457d162b8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_FLOATN_H" variable (:constant-flag t) nil [877 891])
@@ -80,7 +80,7 @@
           ("__HAVE_FLOAT64X_LONG_DOUBLE" . ((number "1" 2203 . 2204)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a13dc"
+    (semanticdb-table "semanticdb-table-157457d162d8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_WCHAR_H" variable (:constant-flag t) nil [858 871])
@@ -98,7 +98,7 @@
           ("__WCHAR_MIN" . ((semantic-list "(-__WCHAR_MAX - 1)" 1854 . 1872)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a13fc"
+    (semanticdb-table "semanticdb-table-157457d162f8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_TYPES_H" variable (:constant-flag t) nil [961 974])
@@ -257,7 +257,7 @@
           ("__SLONGWORD_TYPE" . ((LONG "long" 4247 . 4251) (INT "int" 4252 . 4255)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a141c"
+    (semanticdb-table "semanticdb-table-157457d16318"
       :major-mode c-mode
       :tags 
         '( ("_BITS_ENDIAN_H" variable (:constant-flag t) nil [861 875])
@@ -279,7 +279,7 @@
           ("__BIG_ENDIAN" . ((number "4321" 1422 . 1426)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a143c"
+    (semanticdb-table "semanticdb-table-157457d16338"
       :major-mode c-mode
       :tags 
         '( ("_BITS_FLOATN_COMMON_H" variable (:constant-flag t) nil [941 962])
@@ -369,7 +369,7 @@
           ("__builtin_nanf32" (spp-arg-list ("x") 6850 . 6853) . ((semantic-list "(__builtin_nanf (x))" 6854 . 6874)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a145c"
+    (semanticdb-table "semanticdb-table-157457d16358"
       :major-mode c-mode
       :tags 
         '( ("_BITS_LOCALE_H" variable (:constant-flag t) nil [999 1013])
@@ -408,7 +408,7 @@
           ("__LC_NAME" . ((number "8" 1228 . 1229)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a147c"
+    (semanticdb-table "semanticdb-table-157457d16378"
       :major-mode c-mode
       :tags 
         '( ("__TIMESIZE" variable (:constant-flag t) nil [1053 1063]))          
@@ -421,7 +421,7 @@
         '(("__TIMESIZE" . ((symbol "__WORDSIZE" 1064 . 1074)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a149c"
+    (semanticdb-table "semanticdb-table-157457d16398"
       :major-mode c-mode
       :tags 
         '( ("_BITS_TYPESIZES_H" variable (:constant-flag t) nil [1007 1024])
@@ -512,7 +512,7 @@
           ("__SSIZE_T_TYPE" . ((symbol "__SWORD_TYPE" 2784 . 2796)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a14bc"
+    (semanticdb-table "semanticdb-table-157457d163b8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_TIME64_H" variable (:constant-flag t) nil [1000 1014])
@@ -527,7 +527,7 @@
           ("_BITS_TIME64_H" . ((number "1" 1015 . 1016)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a14dc"
+    (semanticdb-table "semanticdb-table-157457d163d8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_ENDIANNESS_H" variable (:constant-flag t) nil [36 54])
@@ -542,7 +542,7 @@
           ("__BYTE_ORDER" . ((symbol "__LITTLE_ENDIAN" 226 . 241)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a14fc"
+    (semanticdb-table "semanticdb-table-157457d163f8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_WCTYPE_WCHAR_H" variable (:constant-flag t) nil [929 949])
@@ -805,7 +805,7 @@
           ("_BITS_WCTYPE_WCHAR_H" . ((number "1" 950 . 951)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a151c"
+    (semanticdb-table "semanticdb-table-157457d16b78"
       :major-mode c-mode
       :tags 
         '( ("_BITS_PTHREADTYPES_COMMON_H" variable (:constant-flag t) nil [898 925])
@@ -955,7 +955,7 @@
           ("_BITS_PTHREADTYPES_COMMON_H" . ((number "1" 926 . 927)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a153c"
+    (semanticdb-table "semanticdb-table-157457d16b98"
       :major-mode c-mode
       :tags 
         '( ("_BITS_SETJMP_H" variable (:constant-flag t) nil [891 905])
@@ -973,7 +973,7 @@
         '(("_BITS_SETJMP_H" . ((number "1" 907 . 908)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a155c"
+    (semanticdb-table "semanticdb-table-157457d16bb8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_ERRNO_H" variable (:constant-flag t) nil [866 879])
@@ -999,7 +999,7 @@
           ("ERFKILL" . ((number "132" 1333 . 1336)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a157c"
+    (semanticdb-table "semanticdb-table-157457d16bd8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_SCHED_H" variable (:constant-flag t) nil [916 929])
@@ -1140,7 +1140,7 @@
           ("_BITS_SCHED_H" . ((number "1" 930 . 931)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a159c"
+    (semanticdb-table "semanticdb-table-157457d16bf8"
       :major-mode c-mode
       :tags 
         '( ("_BITS_CPU_SET_H" variable (:constant-flag t) nil [920 935])
@@ -1264,7 +1264,7 @@
           ("__CPU_FREE" (spp-arg-list ("cpuset") 4216 . 4224) . ((symbol "__sched_cpufree" 4225 . 4240) (semantic-list "(cpuset)" 4241 . 4249)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a15bc"
+    (semanticdb-table "semanticdb-table-157457d16c18"
       :major-mode c-mode
       :tags 
         '( ("_BITS_TIME_H" variable (:constant-flag t) nil [943 955])
@@ -1295,7 +1295,7 @@
           ("_BITS_TIME_H" . ((number "1" 956 . 957)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a15dc"
+    (semanticdb-table "semanticdb-table-157457d16c38"
       :major-mode c-mode
       :tags 
         '( ("_THREAD_SHARED_TYPES_H" variable (:constant-flag t) nil [897 919])
@@ -1385,7 +1385,7 @@
         '(("_THREAD_SHARED_TYPES_H" . ((number "1" 920 . 921)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a15fc"
+    (semanticdb-table "semanticdb-table-157457d16c58"
       :major-mode c-mode
       :tags 
         '( ("_BITS_TIMEX_H" variable (:constant-flag t) nil [821 834])
@@ -1510,7 +1510,7 @@
           ("MOD_NANO" . ((symbol "ADJ_NANO" 3408 . 3416)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a161c"
+    (semanticdb-table "semanticdb-table-157457d16c78"
       :major-mode c-mode
       :tags 
         '( ("_BITS_PTHREADTYPES_ARCH_H" variable (:constant-flag t) nil [833 858])
@@ -1546,7 +1546,7 @@
           ("__SIZEOF_PTHREAD_COND_T" . ((number "48" 1487 . 1489)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a163c"
+    (semanticdb-table "semanticdb-table-157457d16c98"
       :major-mode c-mode
       :tags 
         '( ("_THREAD_MUTEX_INTERNAL_H" variable (:constant-flag t) nil [873 897])
@@ -1576,7 +1576,7 @@
           ("__PTHREAD_MUTEX_HAVE_PREV" . ((number "1" 1288 . 1289)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dff3a165c"
+    (semanticdb-table "semanticdb-table-157457d16cb8"
       :major-mode c-mode
       :tags 
         '( ("_RWLOCK_INTERNAL_H" variable (:constant-flag t) nil [869 887])
@@ -1614,7 +1614,7 @@
               ((number "0" 1342 . 1343) (punctuation "," 1343 . 1344) (semantic-list "{ 0, 0, 0, 0, 0, 0, 0 }" 1345 . 1368)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfdadb760"
+    (semanticdb-table "semanticdb-table-157457d16cd8"
       :major-mode c-mode
       :tags 
         '( ("__MATHCALL" function
@@ -2046,7 +2046,7 @@
       :fsize 13210
       :lastmodtime '(24378 57964 0 0)
       :unmatched-syntax '((punctuation 13202 . 13203) (close-paren 13201 . 13202) (close-paren 13200 . 13201) (symbol 13197 . 13200) (symbol 13187 . 13196) (punctuation 13185 . 13186) (symbol 13182 . 13185) (symbol 13172 . 13181) (open-paren 13171 . 13172) (punctuation 13169 . 13170) (punctuation 13168 . 13169) (symbol 13163 . 13168) (open-paren 13162 . 13163) (symbol 13151 . 13161) (symbol 13083 . 13106) (punctuation 13082 . 13083) (punctuation 13080 . 13081) (punctuation 13079 . 13080) (close-paren 13069 . 13070) (close-paren 13068 . 13069) (number "1" 13054 . 13068) (symbol 13046 . 13053) (punctuation 13045 . 13046) (punctuation 13043 . 13044) (punctuation 13042 . 13043) (symbol 13007 . 13030) (punctuation 13005 . 13006) (punctuation 13004 . 13005) (semantic-list 10709 . 10754) (semantic-list 10614 . 10625) (semantic-list 10582 . 10612) (semantic-list 10497 . 10508) (semantic-list 10465 . 10495) (semantic-list 10361 . 10391) (semantic-list 10271 . 10286) (semantic-list 10203 . 10218) (semantic-list 10070 . 10085) (semantic-list 10003 . 10018) (semantic-list 9812 . 9854) (semantic-list 9599 . 9610) (semantic-list 9582 . 9597) (semantic-list 9444 . 9455) (semantic-list 9427 . 9442) (semantic-list 9303 . 9318) (semantic-list 9115 . 9144) (semantic-list 8837 . 8852) (semantic-list 8714 . 8738) (semantic-list 8594 . 8624) (semantic-list 8237 . 8269) (semantic-list 8099 . 8129) (semantic-list 7998 . 8013) (semantic-list 7793 . 7821) (semantic-list 7549 . 7560) (semantic-list 7367 . 7378) (semantic-list 7276 . 7287) (semantic-list 7241 . 7252) (semantic-list 7208 . 7219) (semantic-list 7080 . 7096) (semantic-list 7049 . 7060) (semantic-list 7018 . 7029) (semantic-list 6982 . 6998) (semantic-list 6951 . 6962) (semantic-list 6920 . 6931) (semantic-list 6350 . 6370) (semantic-list 6236 . 6247) (semantic-list 6204 . 6234) (semantic-list 6060 . 6075) (semantic-list 5928 . 5958) (semantic-list 5822 . 5841) (semantic-list 5275 . 5305) (semantic-list 5194 . 5205) (semantic-list 5177 . 5192) (semantic-list 5098 . 5109) (semantic-list 5081 . 5096) (semantic-list 5018 . 5029) (semantic-list 5001 . 5016) (semantic-list 4840 . 4855) (semantic-list 4689 . 4719) (semantic-list 4569 . 4584) (semantic-list 4480 . 4510) (semantic-list 4374 . 4389) (semantic-list 4298 . 4313) (semantic-list 4193 . 4208) (semantic-list 4099 . 4114) (semantic-list 4034 . 4049) (semantic-list 3752 . 3786) (semantic-list 3659 . 3674) (semantic-list 3588 . 3603) (semantic-list 3500 . 3531) (semantic-list 3405 . 3437) (semantic-list 3292 . 3307) (semantic-list 3163 . 3178) (semantic-list 3089 . 3104) (semantic-list 3018 . 3033) (semantic-list 2842 . 2895) (semantic-list 2745 . 2760) (semantic-list 2676 . 2691) (semantic-list 2610 . 2625) (semantic-list 2511 . 2526) (semantic-list 2454 . 2469) (semantic-list 2396 . 2411) (semantic-list 2320 . 2350) (semantic-list 2255 . 2270) (semantic-list 2193 . 2208) (semantic-list 2134 . 2149) (string 1978 . 2048) (symbol 1972 . 1977) (punctuation 1970 . 1971)))
-    (semanticdb-table "semanticdb-table-155dfdadb798"
+    (semanticdb-table "semanticdb-table-157457d16cf8"
       :major-mode c-mode
       :tags 
         '( ("__MATHDECL_1" function
@@ -2103,7 +2103,7 @@
       :fsize 1765
       :lastmodtime '(24378 57964 0 0)
       :unmatched-syntax '((semantic-list 1711 . 1730) (semantic-list 1611 . 1641) (semantic-list 1507 . 1526) (semantic-list 1379 . 1398) (semantic-list 1219 . 1238) (semantic-list 1042 . 1061) (semantic-list 922 . 941)))
-    (semanticdb-table "semanticdb-table-155dfe95880c"
+    (semanticdb-table "semanticdb-table-157457d16d18"
       :major-mode c-mode
       :tags nil
       :file "fp-fast.h"
@@ -2111,7 +2111,7 @@
       :fsize 1216
       :lastmodtime '(24378 57964 0 0)
       :unmatched-syntax '((string 843 . 907) (symbol 837 . 842) (punctuation 835 . 836)))
-    (semanticdb-table "semanticdb-table-155dfe958844"
+    (semanticdb-table "semanticdb-table-157457d16d38"
       :major-mode c-mode
       :tags 
         '( ("__FP_LOGB0_IS_MIN" variable (:constant-flag t) nil [963 980])
@@ -2126,7 +2126,7 @@
           ("__FP_LOGBNAN_IS_MIN" . ((number "1" 1011 . 1012)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe95887c"
+    (semanticdb-table "semanticdb-table-157457d16d58"
       :major-mode c-mode
       :tags 
         '( ("__GLIBC_FLT_EVAL_METHOD" variable (:constant-flag t) nil [1056 1079])
@@ -2140,7 +2140,7 @@
         '(("__GLIBC_FLT_EVAL_METHOD" . ((number "0" 1166 . 1167)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe9588cc"
+    (semanticdb-table "semanticdb-table-157457d16d78"
       :major-mode c-mode
       :tags 
         '( ("bits/libm-simd-decl-stubs.h" include (:system-flag t) nil [1016 1054]))          
@@ -2149,7 +2149,7 @@
       :fsize 2308
       :lastmodtime '(24378 57964 0 0)
       :unmatched-syntax '((string 873 . 947) (symbol 867 . 872) (punctuation 865 . 866)))
-    (semanticdb-table "semanticdb-table-155dff171b90"
+    (semanticdb-table "semanticdb-table-157457d16d98"
       :major-mode c-mode
       :tags 
         '( ("_BITS_LIBM_SIMD_DECL_STUBS_H" variable (:constant-flag t) nil [1323 1351])
@@ -2280,6 +2280,1059 @@
           ("__DECL_SIMD_sinf32x")
           ("__DECL_SIMD_logf32x")
           ("__DECL_SIMD_powf32x")
+          )
+)
+    (semanticdb-table "semanticdb-table-157457d16dda"
+      :major-mode c-mode
+      :tags 
+        '( ("sys_nerr" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [1061 1081])
+            ("sys_errlist" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [1082 1121])
+            ("_sys_nerr" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [1147 1168])
+            ("_sys_errlist" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :type "char")
+                nil [1169 1209]))          
+      :file "sys_errlist.h"
+      :pointmax 1217
+      :fsize 1216
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((string 892 . 961) (symbol 886 . 891) (punctuation 884 . 885)))
+    (semanticdb-table "semanticdb-table-157457d16e24"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_STDIO_LIM_H" variable (:constant-flag t) nil [825 842])
+            ("L_tmpnam" variable (:constant-flag t) nil [955 963])
+            ("TMP_MAX" variable (:constant-flag t) nil [975 982])
+            ("FILENAME_MAX" variable (:constant-flag t) nil [998 1010])
+            ("L_ctermid" variable (:constant-flag t) nil [1045 1054])
+            ("L_cuserid" variable (:constant-flag t) nil [1116 1125])
+            ("FOPEN_MAX" variable (:constant-flag t) nil [1170 1179]))          
+      :file "stdio_lim.h"
+      :pointmax 1214
+      :fsize 1213
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((string 871 . 938) (symbol 865 . 870) (punctuation 863 . 864))
+      :lexical-table 
+        '(("FOPEN_MAX" . ((number "16" 1180 . 1182)))
+          ("_BITS_STDIO_LIM_H" . ((number "1" 843 . 844)))
+          ("L_cuserid" . ((number "9" 1126 . 1127)))
+          ("FILENAME_MAX" . ((number "4096" 1011 . 1015)))
+          ("TMP_MAX" . ((number "238328" 983 . 989)))
+          ("L_tmpnam" . ((number "20" 964 . 966)))
+          ("L_ctermid" . ((number "9" 1055 . 1056)))
+          )
+)
+    (semanticdb-table "semanticdb-table-15745741409e"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_POSIX1_LIM_H" variable (:constant-flag t) nil [958 976])
+            ("bits/wordsize.h" include (:system-flag t) nil [980 1006])
+            ("_POSIX_AIO_LISTIO_MAX" variable (:constant-flag t) nil [1130 1151])
+            ("_POSIX_AIO_MAX" variable (:constant-flag t) nil [1229 1243])
+            ("_POSIX_ARG_MAX" variable (:constant-flag t) nil [1327 1341])
+            ("_POSIX_CHILD_MAX" variable (:constant-flag t) nil [1435 1451])
+            ("_POSIX_DELAYTIMER_MAX" variable (:constant-flag t) nil [1557 1578])
+            ("_POSIX_HOST_NAME_MAX" variable (:constant-flag t) nil [1711 1731])
+            ("_POSIX_LINK_MAX" variable (:constant-flag t) nil [1782 1797])
+            ("_POSIX_LOGIN_NAME_MAX" variable (:constant-flag t) nil [1847 1868])
+            ("_POSIX_MAX_CANON" variable (:constant-flag t) nil [1940 1956])
+            ("_POSIX_MAX_INPUT" variable (:constant-flag t) nil [2057 2073])
+            ("_POSIX_MQ_OPEN_MAX" variable (:constant-flag t) nil [2147 2165])
+            ("_POSIX_MQ_PRIO_MAX" variable (:constant-flag t) nil [2232 2250])
+            ("_POSIX_NAME_MAX" variable (:constant-flag t) nil [2301 2316])
+            ("_POSIX_NGROUPS_MAX" variable (:constant-flag t) nil [2419 2437])
+            ("_POSIX_OPEN_MAX" variable (:constant-flag t) nil [2572 2587])
+            ("_POSIX_FD_SETSIZE" variable (:constant-flag t) nil [2777 2794])
+            ("_POSIX_PATH_MAX" variable (:constant-flag t) nil [2865 2880])
+            ("_POSIX_PIPE_BUF" variable (:constant-flag t) nil [2960 2975])
+            ("_POSIX_RE_DUP_MAX" variable (:constant-flag t) nil [3125 3142])
+            ("_POSIX_RTSIG_MAX" variable (:constant-flag t) nil [3228 3244])
+            ("_POSIX_SEM_NSEMS_MAX" variable (:constant-flag t) nil [3304 3324])
+            ("_POSIX_SEM_VALUE_MAX" variable (:constant-flag t) nil [3375 3395])
+            ("_POSIX_SIGQUEUE_MAX" variable (:constant-flag t) nil [3454 3473])
+            ("_POSIX_SSIZE_MAX" variable (:constant-flag t) nil [3523 3539])
+            ("_POSIX_STREAM_MAX" variable (:constant-flag t) nil [3613 3630])
+            ("_POSIX_SYMLINK_MAX" variable (:constant-flag t) nil [3689 3707])
+            ("_POSIX_SYMLOOP_MAX" variable (:constant-flag t) nil [3840 3858])
+            ("_POSIX_TIMER_MAX" variable (:constant-flag t) nil [3908 3924])
+            ("_POSIX_TTY_NAME_MAX" variable (:constant-flag t) nil [3988 4007])
+            ("_POSIX_TZNAME_MAX" variable (:constant-flag t) nil [4105 4122])
+            ("_POSIX_QLIMIT" variable (:constant-flag t) nil [4294 4307])
+            ("_POSIX_HIWAT" variable (:constant-flag t) nil [4409 4421])
+            ("_POSIX_UIO_MAXIOV" variable (:constant-flag t) nil [4504 4521])
+            ("_POSIX_CLOCKRES_MIN" variable (:constant-flag t) nil [4589 4608])
+            ("bits/local_lim.h" include (:system-flag t) nil [4681 4708])
+            ("SSIZE_MAX" variable (:constant-flag t) nil [4970 4979])
+            ("NGROUPS_MAX" variable (:constant-flag t) nil [5136 5147]))          
+      :file "posix1_lim.h"
+      :pointmax 5190
+      :fsize 5189
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_POSIX_LINK_MAX" . ((number "8" 1799 . 1800)))
+          ("_POSIX_SIGQUEUE_MAX" . ((number "32" 3474 . 3476)))
+          ("_POSIX_MAX_CANON" . ((number "255" 1957 . 1960)))
+          ("_POSIX_HIWAT" . ((symbol "_POSIX_PIPE_BUF" 4423 . 4438)))
+          ("_POSIX_UIO_MAXIOV" . ((number "16" 4522 . 4524)))
+          ("_POSIX_NGROUPS_MAX" . ((number "8" 2438 . 2439)))
+          ("_POSIX_LOGIN_NAME_MAX" . ((number "9" 1869 . 1870)))
+          ("_POSIX_QLIMIT" . ((number "1" 4309 . 4310)))
+          ("_POSIX_HOST_NAME_MAX" . ((number "255" 1732 . 1735)))
+          ("_POSIX_RTSIG_MAX" . ((number "8" 3245 . 3246)))
+          ("_POSIX_SSIZE_MAX" . ((number "32767" 3540 . 3545)))
+          ("_POSIX_SYMLINK_MAX" . ((number "255" 3708 . 3711)))
+          ("_POSIX_TZNAME_MAX" . ((number "6" 4123 . 4124)))
+          ("_POSIX_CLOCKRES_MIN" . ((number "20000000" 4609 . 4617)))
+          ("_POSIX_AIO_MAX" . ((number "1" 1245 . 1246)))
+          ("_POSIX_MQ_OPEN_MAX" . ((number "8" 2166 . 2167)))
+          ("_POSIX_PIPE_BUF" . ((number "512" 2977 . 2980)))
+          ("_POSIX_TIMER_MAX" . ((number "32" 3925 . 3927)))
+          ("_POSIX_AIO_LISTIO_MAX" . ((number "2" 1152 . 1153)))
+          ("_POSIX_MAX_INPUT" . ((number "255" 2074 . 2077)))
+          ("_POSIX_OPEN_MAX" . ((number "20" 2588 . 2590)))
+          ("_POSIX_SEM_NSEMS_MAX" . ((number "256" 3325 . 3328)))
+          ("_POSIX_SYMLOOP_MAX" . ((number "8" 3859 . 3860)))
+          ("_POSIX_DELAYTIMER_MAX" . ((number "32" 1579 . 1581)))
+          ("_POSIX_NAME_MAX" . ((number "14" 2318 . 2320)))
+          ("_POSIX_PATH_MAX" . ((number "256" 2882 . 2885)))
+          ("_POSIX_CHILD_MAX" . ((number "25" 1452 . 1454)))
+          ("_POSIX_TTY_NAME_MAX" . ((number "9" 4008 . 4009)))
+          ("SSIZE_MAX" . ((symbol "INT_MAX" 4980 . 4987)))
+          ("_BITS_POSIX1_LIM_H" . ((number "1" 977 . 978)))
+          ("_POSIX_ARG_MAX" . ((number "4096" 1343 . 1347)))
+          ("_POSIX_MQ_PRIO_MAX" . ((number "32" 2251 . 2253)))
+          ("_POSIX_FD_SETSIZE" . ((symbol "_POSIX_OPEN_MAX" 2795 . 2810)))
+          ("_POSIX_RE_DUP_MAX" . ((number "255" 3143 . 3146)))
+          ("_POSIX_SEM_VALUE_MAX" . ((number "32767" 3396 . 3401)))
+          ("_POSIX_STREAM_MAX" . ((number "8" 3631 . 3632)))
+          ("NGROUPS_MAX" . ((number "8" 5148 . 5149)))
+          )
+)
+    (semanticdb-table "semanticdb-table-1574574140d8"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_POSIX2_LIM_H" variable (:constant-flag t) nil [899 917])
+            ("_POSIX2_BC_BASE_MAX" variable (:constant-flag t) nil [1005 1024])
+            ("_POSIX2_BC_DIM_MAX" variable (:constant-flag t) nil [1117 1135])
+            ("_POSIX2_BC_SCALE_MAX" variable (:constant-flag t) nil [1213 1233])
+            ("_POSIX2_BC_STRING_MAX" variable (:constant-flag t) nil [1324 1345])
+            ("_POSIX2_COLL_WEIGHTS_MAX" variable (:constant-flag t) nil [1499 1523])
+            ("_POSIX2_EXPR_NEST_MAX" variable (:constant-flag t) nil [1640 1661])
+            ("_POSIX2_LINE_MAX" variable (:constant-flag t) nil [1730 1746])
+            ("_POSIX2_RE_DUP_MAX" variable (:constant-flag t) nil [1893 1911])
+            ("_POSIX2_CHARCLASS_NAME_MAX" variable (:constant-flag t) nil [2039 2065])
+            ("BC_BASE_MAX" variable (:constant-flag t) nil [2246 2257])
+            ("BC_DIM_MAX" variable (:constant-flag t) nil [2313 2323])
+            ("BC_SCALE_MAX" variable (:constant-flag t) nil [2380 2392])
+            ("BC_STRING_MAX" variable (:constant-flag t) nil [2452 2465])
+            ("COLL_WEIGHTS_MAX" variable (:constant-flag t) nil [2529 2545])
+            ("EXPR_NEST_MAX" variable (:constant-flag t) nil [2587 2600])
+            ("LINE_MAX" variable (:constant-flag t) nil [2656 2664])
+            ("CHARCLASS_NAME_MAX" variable (:constant-flag t) nil [2725 2743])
+            ("RE_DUP_MAX" variable (:constant-flag t) nil [2816 2826]))          
+      :file "posix2_lim.h"
+      :pointmax 2868
+      :fsize 2867
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_BITS_POSIX2_LIM_H" . ((number "1" 918 . 919)))
+          ("_POSIX2_CHARCLASS_NAME_MAX" . ((number "14" 2066 . 2068)))
+          ("BC_BASE_MAX" . ((symbol "_POSIX2_BC_BASE_MAX" 2259 . 2278)))
+          ("_POSIX2_COLL_WEIGHTS_MAX" . ((number "2" 1524 . 1525)))
+          ("BC_STRING_MAX" . ((symbol "_POSIX2_BC_STRING_MAX" 2467 . 2488)))
+          ("_POSIX2_BC_DIM_MAX" . ((number "2048" 1137 . 1141)))
+          ("_POSIX2_BC_STRING_MAX" . ((number "1000" 1347 . 1351)))
+          ("_POSIX2_LINE_MAX" . ((number "2048" 1748 . 1752)))
+          ("BC_DIM_MAX" . ((symbol "_POSIX2_BC_DIM_MAX" 2325 . 2343)))
+          ("BC_SCALE_MAX" . ((symbol "_POSIX2_BC_SCALE_MAX" 2394 . 2414)))
+          ("EXPR_NEST_MAX" . ((symbol "_POSIX2_EXPR_NEST_MAX" 2602 . 2623)))
+          ("_POSIX2_BC_SCALE_MAX" . ((number "99" 1235 . 1237)))
+          ("_POSIX2_EXPR_NEST_MAX" . ((number "32" 1663 . 1665)))
+          ("CHARCLASS_NAME_MAX" . ((number "2048" 2744 . 2748)))
+          ("LINE_MAX" . ((symbol "_POSIX2_LINE_MAX" 2666 . 2682)))
+          ("_POSIX2_BC_BASE_MAX" . ((number "99" 1026 . 1028)))
+          ("_POSIX2_RE_DUP_MAX" . ((number "255" 1913 . 1916)))
+          ("COLL_WEIGHTS_MAX" . ((number "255" 2546 . 2549)))
+          ("RE_DUP_MAX" . ((semantic-list "(0x7fff)" 2827 . 2835)))
+          )
+)
+    (semanticdb-table "semanticdb-table-15745741411a"
+      :major-mode c-mode
+      :tags 
+        '( ("_XOPEN_LIM_H" variable (:constant-flag t) nil [1209 1221])
+            ("_XOPEN_IOV_MAX" variable (:constant-flag t) nil [2042 2056])
+            ("bits/uio_lim.h" include (:system-flag t) nil [2076 2101])
+            ("NL_ARGMAX" variable (:constant-flag t) nil [2316 2325])
+            ("NL_LANGMAX" variable (:constant-flag t) nil [2418 2428])
+            ("NL_MSGMAX" variable (:constant-flag t) nil [2505 2514])
+            ("NL_NMAX" variable (:constant-flag t) nil [2664 2671])
+            ("NL_SETMAX" variable (:constant-flag t) nil [2742 2751])
+            ("NL_TEXTMAX" variable (:constant-flag t) nil [2833 2843])
+            ("NZERO" variable (:constant-flag t) nil [2894 2899])
+            ("WORD_BIT" variable (:constant-flag t) nil [3321 3329])
+            ("LONG_BIT" variable (:constant-flag t) nil [3686 3694]))          
+      :file "xopen_lim.h"
+      :pointmax 3859
+      :fsize 3858
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_XOPEN_LIM_H" . ((number "1" 1222 . 1223)))
+          ("NL_ARGMAX" . ((symbol "_POSIX_ARG_MAX" 2326 . 2340)))
+          ("LONG_BIT" . ((number "64" 3695 . 3697)))
+          ("_XOPEN_IOV_MAX" . ((symbol "_POSIX_UIO_MAXIOV" 2057 . 2074)))
+          ("NL_NMAX" . ((symbol "INT_MAX" 2672 . 2679)))
+          ("NL_TEXTMAX" . ((symbol "INT_MAX" 2844 . 2851)))
+          ("NZERO" . ((number "20" 2901 . 2903)))
+          ("NL_SETMAX" . ((symbol "INT_MAX" 2752 . 2759)))
+          ("NL_MSGMAX" . ((symbol "INT_MAX" 2515 . 2522)))
+          ("NL_LANGMAX" . ((symbol "_POSIX2_LINE_MAX" 2429 . 2445)))
+          ("WORD_BIT" . ((number "64" 3330 . 3332)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457b82602"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_STDINT_INTN_H" variable (:constant-flag t) nil [851 870])
+            ("bits/types.h" include (:system-flag t) nil [874 897])
+            ("int8_t" type
+               (:typedef ("__int8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [899 923])
+            ("int16_t" type
+               (:typedef ("__int16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [924 950])
+            ("int32_t" type
+               (:typedef ("__int32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [951 977])
+            ("int64_t" type
+               (:typedef ("__int64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [978 1004]))          
+      :file "stdint-intn.h"
+      :pointmax 1038
+      :fsize 1037
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("_BITS_STDINT_INTN_H" . ((number "1" 871 . 872)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457d19c38"
+      :major-mode c-mode
+      :tags 
+        '( ("__BITS_SOCKET_H" variable (:constant-flag t) nil [886 901])
+            ("__need_size_t" variable (:constant-flag t) nil [1019 1032])
+            ("stddef.h" include (:system-flag t) nil [1033 1052])
+            ("sys/types.h" include (:system-flag t) nil [1054 1076])
+            ("socklen_t" type
+               (:typedef ("__socklen_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [1156 1186])
+            ("__socklen_t_defined" variable (:constant-flag t) nil [1196 1215])
+            ("bits/socket_type.h" include (:system-flag t) nil [1296 1325])
+            ("PF_UNSPEC" variable (:constant-flag t) nil [1361 1370])
+            ("PF_LOCAL" variable (:constant-flag t) nil [1401 1409])
+            ("PF_UNIX" variable (:constant-flag t) nil [1466 1473])
+            ("PF_FILE" variable (:constant-flag t) nil [1524 1531])
+            ("PF_INET" variable (:constant-flag t) nil [1597 1604])
+            ("PF_AX25" variable (:constant-flag t) nil [1643 1650])
+            ("PF_IPX" variable (:constant-flag t) nil [1690 1696])
+            ("PF_APPLETALK" variable (:constant-flag t) nil [1741 1753])
+            ("PF_NETROM" variable (:constant-flag t) nil [1786 1795])
+            ("PF_BRIDGE" variable (:constant-flag t) nil [1835 1844])
+            ("PF_ATMPVC" variable (:constant-flag t) nil [1884 1893])
+            ("PF_X25" variable (:constant-flag t) nil [1921 1927])
+            ("PF_INET6" variable (:constant-flag t) nil [1973 1981])
+            ("PF_ROSE" variable (:constant-flag t) nil [2014 2021])
+            ("PF_DECnet" variable (:constant-flag t) nil [2065 2074])
+            ("PF_NETBEUI" variable (:constant-flag t) nil [2122 2132])
+            ("PF_SECURITY" variable (:constant-flag t) nil [2182 2193])
+            ("PF_KEY" variable (:constant-flag t) nil [2241 2247])
+            ("PF_NETLINK" variable (:constant-flag t) nil [2294 2304])
+            ("PF_ROUTE" variable (:constant-flag t) nil [2316 2324])
+            ("PF_PACKET" variable (:constant-flag t) nil [2376 2385])
+            ("PF_ASH" variable (:constant-flag t) nil [2419 2425])
+            ("PF_ECONET" variable (:constant-flag t) nil [2450 2459])
+            ("PF_ATMSVC" variable (:constant-flag t) nil [2492 2501])
+            ("PF_RDS" variable (:constant-flag t) nil [2530 2536])
+            ("PF_SNA" variable (:constant-flag t) nil [2569 2575])
+            ("PF_IRDA" variable (:constant-flag t) nil [2612 2619])
+            ("PF_PPPOX" variable (:constant-flag t) nil [2653 2661])
+            ("PF_WANPIPE" variable (:constant-flag t) nil [2695 2705])
+            ("PF_LLC" variable (:constant-flag t) nil [2745 2751])
+            ("PF_IB" variable (:constant-flag t) nil [2782 2787])
+            ("PF_MPLS" variable (:constant-flag t) nil [2834 2841])
+            ("PF_CAN" variable (:constant-flag t) nil [2867 2873])
+            ("PF_TIPC" variable (:constant-flag t) nil [2918 2925])
+            ("PF_BLUETOOTH" variable (:constant-flag t) nil [2959 2971])
+            ("PF_IUCV" variable (:constant-flag t) nil [3009 3016])
+            ("PF_RXRPC" variable (:constant-flag t) nil [3050 3058])
+            ("PF_ISDN" variable (:constant-flag t) nil [3092 3099])
+            ("PF_PHONET" variable (:constant-flag t) nil [3134 3143])
+            ("PF_IEEE802154" variable (:constant-flag t) nil [3178 3191])
+            ("PF_CAIF" variable (:constant-flag t) nil [3233 3240])
+            ("PF_ALG" variable (:constant-flag t) nil [3274 3280])
+            ("PF_NFC" variable (:constant-flag t) nil [3319 3325])
+            ("PF_VSOCK" variable (:constant-flag t) nil [3358 3366])
+            ("PF_KCM" variable (:constant-flag t) nil [3395 3401])
+            ("PF_QIPCRTR" variable (:constant-flag t) nil [3452 3462])
+            ("PF_SMC" variable (:constant-flag t) nil [3502 3508])
+            ("PF_XDP" variable (:constant-flag t) nil [3541 3547])
+            ("PF_MAX" variable (:constant-flag t) nil [3580 3586])
+            ("AF_UNSPEC" variable (:constant-flag t) nil [3642 3651])
+            ("AF_LOCAL" variable (:constant-flag t) nil [3670 3678])
+            ("AF_UNIX" variable (:constant-flag t) nil [3696 3703])
+            ("AF_FILE" variable (:constant-flag t) nil [3721 3728])
+            ("AF_INET" variable (:constant-flag t) nil [3746 3753])
+            ("AF_AX25" variable (:constant-flag t) nil [3771 3778])
+            ("AF_IPX" variable (:constant-flag t) nil [3796 3802])
+            ("AF_APPLETALK" variable (:constant-flag t) nil [3819 3831])
+            ("AF_NETROM" variable (:constant-flag t) nil [3853 3862])
+            ("AF_BRIDGE" variable (:constant-flag t) nil [3881 3890])
+            ("AF_ATMPVC" variable (:constant-flag t) nil [3909 3918])
+            ("AF_X25" variable (:constant-flag t) nil [3937 3943])
+            ("AF_INET6" variable (:constant-flag t) nil [3960 3968])
+            ("AF_ROSE" variable (:constant-flag t) nil [3986 3993])
+            ("AF_DECnet" variable (:constant-flag t) nil [4011 4020])
+            ("AF_NETBEUI" variable (:constant-flag t) nil [4039 4049])
+            ("AF_SECURITY" variable (:constant-flag t) nil [4069 4080])
+            ("AF_KEY" variable (:constant-flag t) nil [4101 4107])
+            ("AF_NETLINK" variable (:constant-flag t) nil [4124 4134])
+            ("AF_ROUTE" variable (:constant-flag t) nil [4154 4162])
+            ("AF_PACKET" variable (:constant-flag t) nil [4180 4189])
+            ("AF_ASH" variable (:constant-flag t) nil [4208 4214])
+            ("AF_ECONET" variable (:constant-flag t) nil [4231 4240])
+            ("AF_ATMSVC" variable (:constant-flag t) nil [4259 4268])
+            ("AF_RDS" variable (:constant-flag t) nil [4287 4293])
+            ("AF_SNA" variable (:constant-flag t) nil [4310 4316])
+            ("AF_IRDA" variable (:constant-flag t) nil [4333 4340])
+            ("AF_PPPOX" variable (:constant-flag t) nil [4358 4366])
+            ("AF_WANPIPE" variable (:constant-flag t) nil [4384 4394])
+            ("AF_LLC" variable (:constant-flag t) nil [4414 4420])
+            ("AF_IB" variable (:constant-flag t) nil [4437 4442])
+            ("AF_MPLS" variable (:constant-flag t) nil [4458 4465])
+            ("AF_CAN" variable (:constant-flag t) nil [4483 4489])
+            ("AF_TIPC" variable (:constant-flag t) nil [4506 4513])
+            ("AF_BLUETOOTH" variable (:constant-flag t) nil [4531 4543])
+            ("AF_IUCV" variable (:constant-flag t) nil [4565 4572])
+            ("AF_RXRPC" variable (:constant-flag t) nil [4590 4598])
+            ("AF_ISDN" variable (:constant-flag t) nil [4616 4623])
+            ("AF_PHONET" variable (:constant-flag t) nil [4641 4650])
+            ("AF_IEEE802154" variable (:constant-flag t) nil [4669 4682])
+            ("AF_CAIF" variable (:constant-flag t) nil [4705 4712])
+            ("AF_ALG" variable (:constant-flag t) nil [4730 4736])
+            ("AF_NFC" variable (:constant-flag t) nil [4753 4759])
+            ("AF_VSOCK" variable (:constant-flag t) nil [4776 4784])
+            ("AF_KCM" variable (:constant-flag t) nil [4802 4808])
+            ("AF_QIPCRTR" variable (:constant-flag t) nil [4825 4835])
+            ("AF_SMC" variable (:constant-flag t) nil [4855 4861])
+            ("AF_XDP" variable (:constant-flag t) nil [4878 4884])
+            ("AF_MAX" variable (:constant-flag t) nil [4901 4907])
+            ("SOL_RAW" variable (:constant-flag t) nil [5104 5111])
+            ("SOL_DECNET" variable (:constant-flag t) nil [5125 5135])
+            ("SOL_X25" variable (:constant-flag t) nil [5153 5160])
+            ("SOL_PACKET" variable (:constant-flag t) nil [5181 5191])
+            ("SOL_ATM" variable (:constant-flag t) nil [5204 5211])
+            ("SOL_AAL" variable (:constant-flag t) nil [5256 5263])
+            ("SOL_IRDA" variable (:constant-flag t) nil [5319 5327])
+            ("SOL_NETBEUI" variable (:constant-flag t) nil [5340 5351])
+            ("SOL_LLC" variable (:constant-flag t) nil [5364 5371])
+            ("SOL_DCCP" variable (:constant-flag t) nil [5385 5393])
+            ("SOL_NETLINK" variable (:constant-flag t) nil [5406 5417])
+            ("SOL_TIPC" variable (:constant-flag t) nil [5430 5438])
+            ("SOL_RXRPC" variable (:constant-flag t) nil [5451 5460])
+            ("SOL_PPPOL2TP" variable (:constant-flag t) nil [5473 5485])
+            ("SOL_BLUETOOTH" variable (:constant-flag t) nil [5498 5511])
+            ("SOL_PNPIPE" variable (:constant-flag t) nil [5524 5534])
+            ("SOL_RDS" variable (:constant-flag t) nil [5547 5554])
+            ("SOL_IUCV" variable (:constant-flag t) nil [5568 5576])
+            ("SOL_CAIF" variable (:constant-flag t) nil [5589 5597])
+            ("SOL_ALG" variable (:constant-flag t) nil [5610 5617])
+            ("SOL_NFC" variable (:constant-flag t) nil [5631 5638])
+            ("SOL_KCM" variable (:constant-flag t) nil [5652 5659])
+            ("SOL_TLS" variable (:constant-flag t) nil [5673 5680])
+            ("SOL_XDP" variable (:constant-flag t) nil [5694 5701])
+            ("SOMAXCONN" variable (:constant-flag t) nil [5767 5776])
+            ("bits/sockaddr.h" include (:system-flag t) nil [5861 5887])
+            ("sockaddr" type
+               (:members 
+                  ( ("__SOCKADDR_COMMON" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("" variable (:type ("sa_" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5986 5990]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [5967 5991])
+                    ("sa_data" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [6043 6060]))                  
+                :type "struct")
+                nil [5943 6087])
+            ("__ss_aligntype" variable (:constant-flag t) nil [6202 6216])
+            ("_SS_PADSIZE" variable (:constant-flag t) nil [6243 6254])
+            ("sockaddr_storage" type
+               (:members 
+                  ( ("__SOCKADDR_COMMON" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("" variable (:type ("ss_" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6373 6377]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [6354 6378])
+                    ("__ss_padding" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [6411 6442])
+                    ("__ss_align" variable (:type "unsigned long int") (reparse-symbol classsubparts) [6447 6473]))                  
+                :type "struct")
+                nil [6322 6510])
+            ("" type
+               (:members 
+                  ( ("MSG_OOB" variable
+                       (:constant-flag t
+                        :default-value (6597 6601)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [6586 6601])
+                    ("MSG_PEEK" variable
+                       (:constant-flag t
+                        :default-value (6677 6681)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [6665 6681])
+                    ("MSG_DONTROUTE" variable
+                       (:constant-flag t
+                        :default-value (6763 6767)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [6747 6767])
+                    ("MSG_TRYHARD" variable
+                       (:constant-flag t
+                        :default-value (6914 6927)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [6899 6927])
+                    ("MSG_CTRUNC" variable
+                       (:constant-flag t
+                        :default-value (6989 6993)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [6975 6993])
+                    ("MSG_PROXY" variable
+                       (:constant-flag t
+                        :default-value (7084 7088)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7071 7088])
+                    ("MSG_TRUNC" variable
+                       (:constant-flag t
+                        :default-value (7172 7176)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7159 7176])
+                    ("MSG_DONTWAIT" variable
+                       (:constant-flag t
+                        :default-value (7225 7229)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7210 7229])
+                    ("MSG_EOR" variable
+                       (:constant-flag t
+                        :default-value (7303 7307)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7292 7307])
+                    ("MSG_WAITALL" variable
+                       (:constant-flag t
+                        :default-value (7375 7380)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7360 7380])
+                    ("MSG_FIN" variable
+                       (:constant-flag t
+                        :default-value (7461 7466)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7450 7466])
+                    ("MSG_SYN" variable
+                       (:constant-flag t
+                        :default-value (7508 7513)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7497 7513])
+                    ("MSG_CONFIRM" variable
+                       (:constant-flag t
+                        :default-value (7559 7564)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7544 7564])
+                    ("MSG_RST" variable
+                       (:constant-flag t
+                        :default-value (7643 7649)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7632 7649])
+                    ("MSG_ERRQUEUE" variable
+                       (:constant-flag t
+                        :default-value (7695 7701)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7680 7701])
+                    ("MSG_NOSIGNAL" variable
+                       (:constant-flag t
+                        :default-value (7795 7801)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7780 7801])
+                    ("MSG_MORE" variable
+                       (:constant-flag t
+                        :default-value (7885 7891)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7873 7891])
+                    ("MSG_WAITFORONE" variable
+                       (:constant-flag t
+                        :default-value (7971 7978)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [7954 7978])
+                    ("MSG_BATCH" variable
+                       (:constant-flag t
+                        :default-value (8080 8087)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [8067 8087])
+                    ("MSG_ZEROCOPY" variable
+                       (:constant-flag t
+                        :default-value (8175 8184)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [8160 8184])
+                    ("MSG_FASTOPEN" variable
+                       (:constant-flag t
+                        :default-value (8276 8286)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [8261 8286])
+                    ("MSG_CMSG_CLOEXEC" variable
+                       (:constant-flag t
+                        :default-value (8375 8385)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [8356 8385]))                  
+                :type "enum")
+                nil [6573 8522])
+            ("msghdr" type
+               (:members 
+                  ( ("msg_name" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [8632 8647])
+                    ("msg_namelen" variable (:type ("socklen_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [8693 8715])
+                    ("msg_iov" variable
+                       (:pointer 1
+                        :type ("iovec" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [8752 8774])
+                    ("msg_iovlen" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [8823 8841])
+                    ("msg_control" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [8889 8907])
+                    ("msg_controllen" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [8961 8983])
+                    ("msg_flags" variable (:type "int") (reparse-symbol classsubparts) [9139 9153]))                  
+                :type "struct")
+                nil [8610 9193])
+            ("cmsghdr" type
+               (:members 
+                  ( ("cmsg_len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [9290 9306])
+                    ("cmsg_level" variable (:type "int") (reparse-symbol classsubparts) [9501 9516])
+                    ("cmsg_type" variable (:type "int") (reparse-symbol classsubparts) [9551 9565])
+                    ("__cmsg_data" variable
+                       (:dereference 1
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [9650 9686]))                  
+                :type "struct")
+                nil [9267 9721])
+            ("CMSG_DATA" variable (:constant-flag t) nil [9816 9825])
+            ("CMSG_NXTHDR" variable (:constant-flag t) nil [9952 9963])
+            ("CMSG_FIRSTHDR" variable (:constant-flag t) nil [10011 10024])
+            ("CMSG_ALIGN" variable (:constant-flag t) nil [10180 10190])
+            ("CMSG_SPACE" variable (:constant-flag t) nil [10276 10286])
+            ("CMSG_LEN" variable (:constant-flag t) nil [10364 10372])
+            ("__cmsg_nxthdr" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("__mhdr" variable
+                       (:pointer 1
+                        :type ("msghdr" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [10466 10488])
+                    ("__cmsg" variable
+                       (:pointer 1
+                        :type ("cmsghdr" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [10499 10522]))                  
+                :type ("cmsghdr" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [10428 10531])
+            ("" type
+               (:members 
+                  ( ("SCM_RIGHTS" variable
+                       (:constant-flag t
+                        :default-value (11477 11481)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [11464 11481])
+                    ("SCM_CREDENTIALS" variable
+                       (:constant-flag t
+                        :default-value (11588 11592)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [11570 11592]))                  
+                :type "enum")
+                nil [11451 11673])
+            ("ucred" type
+               (:members 
+                  ( ("pid" variable (:type ("pid_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [11766 11776])
+                    ("uid" variable (:type ("uid_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [11812 11822])
+                    ("gid" variable (:type ("gid_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [11858 11868]))                  
+                :type "struct")
+                nil [11749 11904])
+            ("bits/types/time_t.h" include (:system-flag t) nil [11931 11962])
+            ("asm/socket.h" include (:system-flag t) nil [11963 11987])
+            ("linger" type
+               (:members 
+                  ( ("l_onoff" variable (:type "int") (reparse-symbol classsubparts) [12138 12150])
+                    ("l_linger" variable (:type "int") (reparse-symbol classsubparts) [12191 12204]))                  
+                :type "struct")
+                nil [12116 12233]))          
+      :file "socket.h"
+      :pointmax 12262
+      :fsize 12261
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((spp-macro-def 11630 . 11645) (spp-macro-def 11525 . 11535) (spp-macro-def 8484 . 8500) (spp-macro-def 8325 . 8337) (spp-macro-def 8231 . 8243) (spp-macro-def 8136 . 8145) (spp-macro-def 8033 . 8047) (spp-macro-def 7932 . 7940) (spp-macro-def 7843 . 7855) (spp-macro-def 7750 . 7762) (spp-macro-def 7659 . 7666) (spp-macro-def 7604 . 7615) (spp-macro-def 7523 . 7530) (spp-macro-def 7476 . 7483) (spp-macro-def 7422 . 7433) (spp-macro-def 7339 . 7346) (spp-macro-def 7262 . 7274) (spp-macro-def 7186 . 7195) (spp-macro-def 7135 . 7144) (spp-macro-def 7045 . 7055) (spp-macro-def 6938 . 6949) (spp-macro-def 6809 . 6822) (spp-macro-def 6725 . 6733) (spp-macro-def 6644 . 6651) (string 933 . 1002) (symbol 927 . 932) (punctuation 925 . 926))
+      :lexical-table 
+        '(("PF_ROSE" . ((number "11" 2023 . 2025)))
+          ("PF_IEEE802154" . ((number "36" 3192 . 3194)))
+          ("AF_LOCAL" . ((symbol "PF_LOCAL" 3679 . 3687)))
+          ("AF_X25" . ((symbol "PF_X25" 3945 . 3951)))
+          ("AF_DECnet" . ((symbol "PF_DECnet" 4021 . 4030)))
+          ("AF_TIPC" . ((symbol "PF_TIPC" 4515 . 4522)))
+          ("SOL_NETBEUI" . ((number "267" 5352 . 5355)))
+          ("SOL_DCCP" . ((number "269" 5394 . 5397)))
+          ("SOL_TLS" . ((number "282" 5682 . 5685)))
+          ("PF_AX25" . ((number "3" 1652 . 1653)))
+          ("PF_IUCV" . ((number "32" 3018 . 3020)))
+          ("AF_IB" . ((symbol "PF_IB" 4444 . 4449)))
+          ("AF_BLUETOOTH" . ((symbol "PF_BLUETOOTH" 4544 . 4556)))
+          ("SOL_NETLINK" . ((number "270" 5418 . 5421)))
+          ("CMSG_LEN" (spp-arg-list ("len") 10372 . 10377) . ((semantic-list "(CMSG_ALIGN (sizeof (struct cmsghdr)) + (len))" 10380 . 10426)))
+          ("MSG_OOB" . ((symbol "MSG_OOB" 6653 . 6660)))
+          ("MSG_DONTROUTE" . ((symbol "MSG_DONTROUTE" 6823 . 6836)))
+          ("MSG_SYN" . ((symbol "MSG_SYN" 7532 . 7539)))
+          ("MSG_MORE" . ((symbol "MSG_MORE" 7941 . 7949)))
+          ("MSG_BATCH" . ((symbol "MSG_BATCH" 8146 . 8155)))
+          ("MSG_FASTOPEN" . ((symbol "MSG_FASTOPEN" 8338 . 8350)))
+          ("SCM_CREDENTIALS" . ((symbol "SCM_CREDENTIALS" 11646 . 11661)))
+          ("PF_NETROM" . ((number "6" 1796 . 1797)))
+          ("PF_SECURITY" . ((number "14" 2194 . 2196)))
+          ("PF_ROUTE" . ((symbol "PF_NETLINK" 2325 . 2335)))
+          ("PF_LLC" . ((number "26" 2753 . 2755)))
+          ("PF_TIPC" . ((number "30" 2927 . 2929)))
+          ("PF_NFC" . ((number "39" 3327 . 3329)))
+          ("PF_KCM" . ((number "41" 3403 . 3405)))
+          ("AF_UNSPEC" . ((symbol "PF_UNSPEC" 3652 . 3661)))
+          ("AF_FILE" . ((symbol "PF_FILE" 3730 . 3737)))
+          ("AF_ATMPVC" . ((symbol "PF_ATMPVC" 3919 . 3928)))
+          ("AF_KEY" . ((symbol "PF_KEY" 4109 . 4115)))
+          ("AF_ASH" . ((symbol "PF_ASH" 4216 . 4222)))
+          ("AF_ECONET" . ((symbol "PF_ECONET" 4241 . 4250)))
+          ("AF_PPPOX" . ((symbol "PF_PPPOX" 4367 . 4375)))
+          ("AF_ISDN" . ((symbol "PF_ISDN" 4625 . 4632)))
+          ("SOL_CAIF" . ((number "278" 5598 . 5601)))
+          ("CMSG_NXTHDR" (spp-arg-list ("mhdr" "cmsg") 9963 . 9975) . ((symbol "__cmsg_nxthdr" 9976 . 9989) (semantic-list "(mhdr, cmsg)" 9990 . 10002)))
+          ("MSG_CTRUNC" . ((symbol "MSG_CTRUNC" 7056 . 7066)))
+          ("PF_CAN" . ((number "29" 2875 . 2877)))
+          ("PF_SMC" . ((number "43" 3510 . 3512)))
+          ("AF_IPX" . ((symbol "PF_IPX" 3804 . 3810)))
+          ("AF_ATMSVC" . ((symbol "PF_ATMSVC" 4269 . 4278)))
+          ("AF_RXRPC" . ((symbol "PF_RXRPC" 4599 . 4607)))
+          ("AF_QIPCRTR" . ((symbol "PF_QIPCRTR" 4836 . 4846)))
+          ("AF_XDP" . ((symbol "PF_XDP" 4886 . 4892)))
+          ("SOL_ATM" . ((number "264" 5213 . 5216)))
+          ("SOL_LLC" . ((number "268" 5373 . 5376)))
+          ("SOL_NFC" . ((number "280" 5640 . 5643)))
+          ("SOL_KCM" . ((number "281" 5661 . 5664)))
+          ("CMSG_DATA" (spp-arg-list ("cmsg") 9825 . 9831) . ((semantic-list "((cmsg)->__cmsg_data)" 9832 . 9853)))
+          ("MSG_WAITFORONE" . ((symbol "MSG_WAITFORONE" 8048 . 8062)))
+          ("MSG_CMSG_CLOEXEC" . ((symbol "MSG_CMSG_CLOEXEC" 8501 . 8517)))
+          ("PF_FILE" . ((symbol "PF_LOCAL" 1533 . 1541)))
+          ("PF_SNA" . ((number "22" 2577 . 2579)))
+          ("PF_ISDN" . ((number "34" 3101 . 3103)))
+          ("PF_PHONET" . ((number "35" 3144 . 3146)))
+          ("AF_INET6" . ((symbol "PF_INET6" 3969 . 3977)))
+          ("AF_PACKET" . ((symbol "PF_PACKET" 4190 . 4199)))
+          ("AF_RDS" . ((symbol "PF_RDS" 4295 . 4301)))
+          ("AF_VSOCK" . ((symbol "PF_VSOCK" 4785 . 4793)))
+          ("SOL_IUCV" . ((number "277" 5577 . 5580)))
+          ("MSG_PROXY" . ((symbol "MSG_PROXY" 7145 . 7154)))
+          ("PF_X25" . ((number "9" 1929 . 1930)))
+          ("PF_DECnet" . ((number "12" 2075 . 2077)))
+          ("PF_QIPCRTR" . ((number "42" 3463 . 3465)))
+          ("AF_INET" . ((symbol "PF_INET" 3755 . 3762)))
+          ("AF_APPLETALK" . ((symbol "PF_APPLETALK" 3832 . 3844)))
+          ("SOL_RAW" . ((number "255" 5113 . 5116)))
+          ("SOL_TIPC" . ((number "271" 5439 . 5442)))
+          ("SOL_RXRPC" . ((number "272" 5461 . 5464)))
+          ("MSG_TRUNC" . ((symbol "MSG_TRUNC" 7196 . 7205)))
+          ("MSG_EOR" . ((symbol "MSG_EOR" 7348 . 7355)))
+          ("MSG_FIN" . ((symbol "MSG_FIN" 7485 . 7492)))
+          ("MSG_NOSIGNAL" . ((symbol "MSG_NOSIGNAL" 7856 . 7868)))
+          ("PF_LOCAL" . ((number "1" 1410 . 1411)))
+          ("PF_BLUETOOTH" . ((number "31" 2972 . 2974)))
+          ("AF_BRIDGE" . ((symbol "PF_BRIDGE" 3891 . 3900)))
+          ("AF_IRDA" . ((symbol "PF_IRDA" 4342 . 4349)))
+          ("AF_ALG" . ((symbol "PF_ALG" 4738 . 4744)))
+          ("SOL_DECNET" . ((number "261" 5141 . 5144)))
+          ("SOL_X25" . ((number "262" 5169 . 5172)))
+          ("MSG_RST" . ((symbol "MSG_RST" 7668 . 7675)))
+          ("__need_size_t")
+          ("PF_UNSPEC" . ((number "0" 1371 . 1372)))
+          ("PF_INET" . ((number "2" 1606 . 1607)))
+          ("PF_ATMPVC" . ((number "8" 1894 . 1895)))
+          ("PF_KEY" . ((number "15" 2249 . 2251)))
+          ("PF_ASH" . ((number "18" 2427 . 2429)))
+          ("PF_ECONET" . ((number "19" 2460 . 2462)))
+          ("PF_IB" . ((number "27" 2789 . 2791)))
+          ("AF_UNIX" . ((symbol "PF_UNIX" 3705 . 3712)))
+          ("AF_WANPIPE" . ((symbol "PF_WANPIPE" 4395 . 4405)))
+          ("AF_MAX" . ((symbol "PF_MAX" 4909 . 4915)))
+          ("SOL_PPPOL2TP" . ((number "273" 5486 . 5489)))
+          ("SOL_BLUETOOTH" . ((number "274" 5512 . 5515)))
+          ("_SS_PADSIZE" . ((semantic-list "(_SS_SIZE - __SOCKADDR_COMMON_SIZE - sizeof (__ss_aligntype))" 6259 . 6320)))
+          ("SCM_RIGHTS" . ((symbol "SCM_RIGHTS" 11536 . 11546)))
+          ("PF_IPX" . ((number "4" 1698 . 1699)))
+          ("PF_ATMSVC" . ((number "20" 2502 . 2504)))
+          ("PF_IRDA" . ((number "23" 2621 . 2623)))
+          ("PF_PPPOX" . ((number "24" 2662 . 2664)))
+          ("PF_XDP" . ((number "44" 3549 . 3551)))
+          ("AF_NETBEUI" . ((symbol "PF_NETBEUI" 4050 . 4060)))
+          ("AF_MPLS" . ((symbol "PF_MPLS" 4467 . 4474)))
+          ("CMSG_ALIGN" (spp-arg-list ("len") 10190 . 10195) . ((semantic-list "(((len) + sizeof (size_t) - 1) \\
+			 & (size_t) ~(sizeof (size_t) - 1))" 10196 . 10267)))
+          ("MSG_WAITALL" . ((symbol "MSG_WAITALL" 7434 . 7445)))
+          ("MSG_ERRQUEUE" . ((symbol "MSG_ERRQUEUE" 7763 . 7775)))
+          ("__BITS_SOCKET_H")
+          ("PF_UNIX" . ((symbol "PF_LOCAL" 1475 . 1483)))
+          ("PF_PACKET" . ((number "17" 2386 . 2388)))
+          ("PF_RDS" . ((number "21" 2538 . 2540)))
+          ("PF_WANPIPE" . ((number "25" 2706 . 2708)))
+          ("PF_RXRPC" . ((number "33" 3059 . 3061)))
+          ("AF_SECURITY" . ((symbol "PF_SECURITY" 4081 . 4092)))
+          ("AF_NETLINK" . ((symbol "PF_NETLINK" 4135 . 4145)))
+          ("AF_ROUTE" . ((symbol "PF_ROUTE" 4163 . 4171)))
+          ("SOL_XDP" . ((number "283" 5703 . 5706)))
+          ("MSG_TRYHARD" . ((symbol "MSG_DONTROUTE" 6950 . 6963)))
+          ("__socklen_t_defined")
+          ("PF_APPLETALK" . ((number "5" 1754 . 1755)))
+          ("PF_INET6" . ((number "10" 1982 . 1984)))
+          ("PF_NETBEUI" . ((number "13" 2133 . 2135)))
+          ("PF_MPLS" . ((number "28" 2843 . 2845)))
+          ("PF_VSOCK" . ((number "40" 3367 . 3369)))
+          ("AF_NETROM" . ((symbol "PF_NETROM" 3863 . 3872)))
+          ("AF_LLC" . ((symbol "PF_LLC" 4422 . 4428)))
+          ("AF_CAIF" . ((symbol "PF_CAIF" 4714 . 4721)))
+          ("AF_NFC" . ((symbol "PF_NFC" 4761 . 4767)))
+          ("AF_KCM" . ((symbol "PF_KCM" 4810 . 4816)))
+          ("SOL_PACKET" . ((number "263" 5192 . 5195)))
+          ("SOL_AAL" . ((number "265" 5265 . 5268)))
+          ("SOL_PNPIPE" . ((number "275" 5535 . 5538)))
+          ("SOL_RDS" . ((number "276" 5556 . 5559)))
+          ("SOMAXCONN" . ((number "4096" 5777 . 5781)))
+          ("PF_BRIDGE" . ((number "7" 1845 . 1846)))
+          ("PF_NETLINK" . ((number "16" 2305 . 2307)))
+          ("PF_ALG" . ((number "38" 3282 . 3284)))
+          ("AF_ROSE" . ((symbol "PF_ROSE" 3995 . 4002)))
+          ("AF_CAN" . ((symbol "PF_CAN" 4491 . 4497)))
+          ("AF_IEEE802154" . ((symbol "PF_IEEE802154" 4683 . 4696)))
+          ("AF_SMC" . ((symbol "PF_SMC" 4863 . 4869)))
+          ("SOL_IRDA" . ((number "266" 5328 . 5331)))
+          ("__ss_aligntype" . 
+              ((UNSIGNED "unsigned" 6217 . 6225) (LONG "long" 6226 . 6230) (INT "int" 6231 . 6234)))
+          ("CMSG_FIRSTHDR" (spp-arg-list ("mhdr") 10024 . 10030) . ((semantic-list "((size_t) (mhdr)->msg_controllen >= sizeof (struct cmsghdr)		      \\
+   ? (struct cmsghdr *) (mhdr)->msg_control : (struct cmsghdr *) 0)" 10035 . 10171)))
+          ("MSG_PEEK" . ((symbol "MSG_PEEK" 6734 . 6742)))
+          ("MSG_DONTWAIT" . ((symbol "MSG_DONTWAIT" 7275 . 7287)))
+          ("MSG_CONFIRM" . ((symbol "MSG_CONFIRM" 7616 . 7627)))
+          ("PF_CAIF" . ((number "37" 3242 . 3244)))
+          ("PF_MAX" . ((number "45" 3588 . 3590)))
+          ("AF_AX25" . ((symbol "PF_AX25" 3780 . 3787)))
+          ("AF_SNA" . ((symbol "PF_SNA" 4318 . 4324)))
+          ("AF_IUCV" . ((symbol "PF_IUCV" 4574 . 4581)))
+          ("AF_PHONET" . ((symbol "PF_PHONET" 4651 . 4660)))
+          ("SOL_ALG" . ((number "279" 5619 . 5622)))
+          ("CMSG_SPACE" (spp-arg-list ("len") 10286 . 10291) . ((semantic-list "(CMSG_ALIGN (len) \\
+			 + CMSG_ALIGN (sizeof (struct cmsghdr)))" 10292 . 10355)))
+          ("MSG_ZEROCOPY" . ((symbol "MSG_ZEROCOPY" 8244 . 8256)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457b50b6a"
+      :major-mode c-mode
+      :tags 
+        '( ("__undef_NR_OPEN" variable (:constant-flag t) nil [1238 1253])
+            ("__undef_LINK_MAX" variable (:constant-flag t) nil [1287 1303])
+            ("__undef_OPEN_MAX" variable (:constant-flag t) nil [1337 1353])
+            ("__undef_ARG_MAX" variable (:constant-flag t) nil [1386 1401])
+            ("linux/limits.h" include (:system-flag t) nil [1484 1509])
+            ("_POSIX_THREAD_KEYS_MAX" variable (:constant-flag t) nil [1976 1998])
+            ("PTHREAD_KEYS_MAX" variable (:constant-flag t) nil [2066 2082])
+            ("_POSIX_THREAD_DESTRUCTOR_ITERATIONS" variable (:constant-flag t) nil [2172 2207])
+            ("PTHREAD_DESTRUCTOR_ITERATIONS" variable (:constant-flag t) nil [2272 2301])
+            ("_POSIX_THREAD_THREADS_MAX" variable (:constant-flag t) nil [2389 2414])
+            ("AIO_PRIO_DELTA_MAX" variable (:constant-flag t) nil [2610 2628])
+            ("PTHREAD_STACK_MIN" variable (:constant-flag t) nil [2718 2735])
+            ("DELAYTIMER_MAX" variable (:constant-flag t) nil [2803 2817])
+            ("TTY_NAME_MAX" variable (:constant-flag t) nil [2870 2882])
+            ("LOGIN_NAME_MAX" variable (:constant-flag t) nil [2950 2964])
+            ("HOST_NAME_MAX" variable (:constant-flag t) nil [3012 3025])
+            ("MQ_PRIO_MAX" variable (:constant-flag t) nil [3084 3095])
+            ("SEM_VALUE_MAX" variable (:constant-flag t) nil [3157 3170]))          
+      :file "local_lim.h"
+      :pointmax 3186
+      :fsize 3185
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("PTHREAD_KEYS_MAX" . ((number "1024" 2083 . 2087)))
+          ("LOGIN_NAME_MAX" . ((number "256" 2966 . 2969)))
+          ("HOST_NAME_MAX" . ((number "64" 3027 . 3029)))
+          ("_POSIX_THREAD_DESTRUCTOR_ITERATIONS" . ((number "4" 2208 . 2209)))
+          ("_POSIX_THREAD_KEYS_MAX" . ((number "128" 1999 . 2002)))
+          ("DELAYTIMER_MAX" . ((number "2147483647" 2818 . 2828)))
+          ("PTHREAD_DESTRUCTOR_ITERATIONS" . ((symbol "_POSIX_THREAD_DESTRUCTOR_ITERATIONS" 2302 . 2337)))
+          ("_POSIX_THREAD_THREADS_MAX" . ((number "64" 2415 . 2417)))
+          ("MQ_PRIO_MAX" . ((number "32768" 3097 . 3102)))
+          ("TTY_NAME_MAX" . ((number "32" 2884 . 2886)))
+          ("SEM_VALUE_MAX" . ((semantic-list "(2147483647)" 3173 . 3185)))
+          ("AIO_PRIO_DELTA_MAX" . ((number "20" 2629 . 2631)))
+          ("PTHREAD_STACK_MIN" . ((number "16384" 2736 . 2741)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457b48de2"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_UIO_LIM_H" variable (:constant-flag t) nil [886 901])
+            ("__IOV_MAX" variable (:constant-flag t) nil [1363 1372]))          
+      :file "uio_lim.h"
+      :pointmax 1386
+      :fsize 1385
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__IOV_MAX" . ((number "1024" 1373 . 1377)))
+          ("_BITS_UIO_LIM_H" . ((number "1" 902 . 903)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457a35ea0"
+      :major-mode c-mode
+      :tags 
+        '( ("bits/wordsize.h" include (:system-flag t) nil [899 925])
+            ("__FD_ZERO_STOS" variable (:constant-flag t) nil [1039 1053])
+            ("__FD_ZERO" variable (:constant-flag t) nil [1080 1089])
+            ("__FD_SET" variable (:constant-flag t) nil [1851 1859])
+            ("__FD_CLR" variable (:constant-flag t) nil [1939 1947])
+            ("__FD_ISSET" variable (:constant-flag t) nil [2028 2038]))          
+      :file "select.h"
+      :pointmax 2107
+      :fsize 2106
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((string 821 . 890) (symbol 815 . 820) (punctuation 813 . 814))
+      :lexical-table 
+        '(("__FD_ZERO_STOS" . ((string "\"stosl\"" 1054 . 1061)))
+          ("__FD_ISSET" (spp-arg-list ("d" "set") 2038 . 2046) . ((semantic-list "((__FDS_BITS (set)[__FD_ELT (d)] & __FD_MASK (d)) != 0)" 2051 . 2106)))
+          ("__FD_SET" (spp-arg-list ("d" "set") 1859 . 1867) . ((semantic-list "((void) (__FDS_BITS (set)[__FD_ELT (d)] |= __FD_MASK (d)))" 1872 . 1930)))
+          ("__FD_ZERO" (spp-arg-list ("fdsp") 1089 . 1095) . 
+              ((DO "do" 1100 . 1102) (semantic-list "{									      \\
+    int __d0, __d1;							      \\
+    __asm__ __volatile__ (\"cld; rep; \" __FD_ZERO_STOS			      \\
+			  : \"=c\" (__d0), \"=D\" (__d1)			      \\
+			  : \"a\" (0), \"0\" (sizeof (fd_set)		      \\
+					  / sizeof (__fd_mask)),	      \\
+			    \"1\" (&__FDS_BITS (fdsp)[0])			      \\
+			  : \"memory\");					      \\
+  }" 1103 . 1423) (WHILE "while" 1424 . 1429) (semantic-list "(0)" 1430 . 1433)))
+          ("__FD_CLR" (spp-arg-list ("d" "set") 1947 . 1955) . ((semantic-list "((void) (__FDS_BITS (set)[__FD_ELT (d)] &= ~__FD_MASK (d)))" 1960 . 2019)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457ae5790"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_BYTESWAP_H" variable (:constant-flag t) nil [1060 1076])
+            ("features.h" include (:system-flag t) nil [1080 1101])
+            ("bits/types.h" include (:system-flag t) nil [1102 1125])
+            ("__bswap_constant_16" variable (:constant-flag t) nil [1170 1189])
+            ("__bswap_16" function
+               (:arguments 
+                  ( ("__bsx" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1300 1317]))                  
+                :type ("__uint16_t" type (:type "class") nil nil))
+                nil [1277 1433])
+            ("__bswap_constant_32" variable (:constant-flag t) nil [1478 1497])
+            ("__bswap_32" function
+               (:arguments 
+                  ( ("__bsx" variable (:type ("__uint32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1672 1689]))                  
+                :type ("__uint32_t" type (:type "class") nil nil))
+                nil [1649 1805])
+            ("__bswap_constant_64" variable (:constant-flag t) nil [1850 1869])
+            ("__bswap_64" function
+               (:arguments 
+                  ( ("__bsx" variable (:type ("__uint64_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2286 2303]))                  
+                :type ("__uint64_t" type (:type "class") nil nil))
+                nil [2263 2419]))          
+      :file "byteswap.h"
+      :pointmax 2451
+      :fsize 2450
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((symbol 2254 . 2262) (STATIC 2247 . 2253) (symbol 1640 . 1648) (STATIC 1633 . 1639) (symbol 1268 . 1276) (STATIC 1261 . 1267) (string 949 . 1018) (symbol 943 . 948) (punctuation 941 . 942))
+      :lexical-table 
+        '(("__bswap_constant_32" (spp-arg-list ("x") 1497 . 1500) . ((semantic-list "((((x) & 0xff000000u) >> 24) | (((x) & 0x00ff0000u) >> 8)	\\
+   | (((x) & 0x0000ff00u) << 8) | (((x) & 0x000000ffu) << 24))" 1509 . 1631)))
+          ("_BITS_BYTESWAP_H" . ((number "1" 1077 . 1078)))
+          ("__bswap_constant_16" (spp-arg-list ("x") 1189 . 1192) . ((semantic-list "((__uint16_t) ((((x) >> 8) & 0xff) | (((x) & 0xff) << 8)))" 1201 . 1259)))
+          ("__bswap_constant_64" (spp-arg-list ("x") 1869 . 1872) . ((semantic-list "((((x) & 0xff00000000000000ull) >> 56)	\\
+   | (((x) & 0x00ff000000000000ull) >> 40)	\\
+   | (((x) & 0x0000ff0000000000ull) >> 24)	\\
+   | (((x) & 0x000000ff00000000ull) >> 8)	\\
+   | (((x) & 0x00000000ff000000ull) << 8)	\\
+   | (((x) & 0x0000000000ff0000ull) << 24)	\\
+   | (((x) & 0x000000000000ff00ull) << 40)	\\
+   | (((x) & 0x00000000000000ffull) << 56))" 1879 . 2231)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457b2e886"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_UINTN_IDENTITY_H" variable (:constant-flag t) nil [1052 1074])
+            ("bits/types.h" include (:system-flag t) nil [1078 1101])
+            ("__uint16_identity" function
+               (:arguments 
+                  ( ("__x" variable (:type ("__uint16_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1308 1323]))                  
+                :type ("__uint16_t" type (:type "class") nil nil))
+                nil [1278 1341])
+            ("__uint32_identity" function
+               (:arguments 
+                  ( ("__x" variable (:type ("__uint32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1389 1404]))                  
+                :type ("__uint32_t" type (:type "class") nil nil))
+                nil [1359 1422])
+            ("__uint64_identity" function
+               (:arguments 
+                  ( ("__x" variable (:type ("__uint64_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1470 1485]))                  
+                :type ("__uint64_t" type (:type "class") nil nil))
+                nil [1440 1503]))          
+      :file "uintn-identity.h"
+      :pointmax 1543
+      :fsize 1542
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((symbol 1431 . 1439) (STATIC 1424 . 1430) (symbol 1350 . 1358) (STATIC 1343 . 1349) (symbol 1269 . 1277) (STATIC 1262 . 1268) (string 913 . 1004) (symbol 907 . 912) (punctuation 905 . 906))
+      :lexical-table 
+        '(("_BITS_UINTN_IDENTITY_H" . ((number "1" 1075 . 1076)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457c712ba"
+      :major-mode c-mode
+      :tags 
+        '( ("__socket_type" type
+               (:members 
+                  ( ("SOCK_STREAM" variable
+                       (:constant-flag t
+                        :default-value (1014 1015)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1000 1015])
+                    ("SOCK_DGRAM" variable
+                       (:constant-flag t
+                        :default-value (1131 1132)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1118 1132])
+                    ("SOCK_RAW" variable
+                       (:constant-flag t
+                        :default-value (1254 1255)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1243 1255])
+                    ("SOCK_RDM" variable
+                       (:constant-flag t
+                        :default-value (1329 1330)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1318 1330])
+                    ("SOCK_SEQPACKET" variable
+                       (:constant-flag t
+                        :default-value (1415 1416)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1398 1416])
+                    ("SOCK_DCCP" variable
+                       (:constant-flag t
+                        :default-value (1559 1560)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1547 1560])
+                    ("SOCK_PACKET" variable
+                       (:constant-flag t
+                        :default-value (1652 1654)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1638 1654])
+                    ("SOCK_CLOEXEC" variable
+                       (:constant-flag t
+                        :default-value (1971 1979)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1956 1979])
+                    ("SOCK_NONBLOCK" variable
+                       (:constant-flag t
+                        :default-value (2108 2116)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2092 2116]))                  
+                :type "enum")
+                nil [977 2216]))          
+      :file "socket_type.h"
+      :pointmax 2217
+      :fsize 2216
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax '((spp-macro-def 2186 . 2199) (spp-macro-def 2064 . 2076) (spp-macro-def 1803 . 1814) (spp-macro-def 1616 . 1625) (spp-macro-def 1515 . 1529) (spp-macro-def 1378 . 1386) (spp-macro-def 1298 . 1306) (spp-macro-def 1219 . 1229) (spp-macro-def 1092 . 1103) (string 869 . 943) (symbol 863 . 868) (punctuation 861 . 862))
+      :lexical-table 
+        '(("SOCK_CLOEXEC" . ((symbol "SOCK_CLOEXEC" 2077 . 2089)))
+          ("SOCK_STREAM" . ((symbol "SOCK_STREAM" 1104 . 1115)))
+          ("SOCK_PACKET" . ((symbol "SOCK_PACKET" 1815 . 1826)))
+          ("SOCK_NONBLOCK" . ((symbol "SOCK_NONBLOCK" 2200 . 2213)))
+          ("SOCK_RDM" . ((symbol "SOCK_RDM" 1387 . 1395)))
+          ("SOCK_RAW" . ((symbol "SOCK_RAW" 1307 . 1315)))
+          ("SOCK_SEQPACKET" . ((symbol "SOCK_SEQPACKET" 1530 . 1544)))
+          ("SOCK_DGRAM" . ((symbol "SOCK_DGRAM" 1230 . 1240)))
+          ("SOCK_DCCP" . ((symbol "SOCK_DCCP" 1626 . 1635)))
+          )
+)
+    (semanticdb-table "semanticdb-table-157457c72900"
+      :major-mode c-mode
+      :tags 
+        '( ("_BITS_SOCKADDR_H" variable (:constant-flag t) nil [975 991])
+            ("sa_family_t" type
+               (:typedef ("unsigned short int")
+                :type "typedef")
+                nil [1065 1104])
+            ("__SOCKADDR_COMMON" variable (:constant-flag t) nil [1298 1315])
+            ("__SOCKADDR_COMMON_SIZE" variable (:constant-flag t) nil [1370 1392])
+            ("_SS_SIZE" variable (:constant-flag t) nil [1472 1480]))          
+      :file "sockaddr.h"
+      :pointmax 1515
+      :fsize 1514
+      :lastmodtime '(24378 57964 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__SOCKADDR_COMMON" (spp-arg-list ("sa_prefix") 1315 . 1326) . ((symbol "sa_family_t" 1331 . 1342) (spp-symbol-merge ((symbol "sa_prefix" 1343 . 1352) (symbol "family" 1354 . 1360)) 1343 . 1360)))
+          ("_BITS_SOCKADDR_H" . ((number "1" 992 . 993)))
+          ("_SS_SIZE" . ((number "128" 1481 . 1484)))
+          ("__SOCKADDR_COMMON_SIZE" . ((semantic-list "(sizeof (unsigned short int))" 1393 . 1422)))
           )
 ))
   :file "!usr!include!x86_64-linux-gnu!bits!semantic.cache"

@@ -1,16 +1,25 @@
-;; Object semanticdb-project-database-file-155fb8b5a5c4
+;; Object semanticdb-project-database-file-157fae2d88e8
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-155fb8b5a5c4"
+(semanticdb-project-database-file "semanticdb-project-database-file-157fae2d88e8"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-155fb8b5a5d6"
+    (semanticdb-table "semanticdb-table-157faf012348"
       :major-mode c++-mode
-      :tags nil
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [24 42])
+            ("map" include (:system-flag t) nil [44 58])
+            ("iostream" include (:system-flag t) nil [59 78])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [79 99])
+            ("main" function (:type "int") nil [100 588]))          
       :file "main.cpp"
-      :pointmax 1
-      :fsize 0
-      :lastmodtime '(24510 32435 965237 100000)
-      :unmatched-syntax nil))
+      :pointmax 590
+      :fsize 589
+      :lastmodtime '(24511 55798 991063 900000)
+      :unmatched-syntax nil)
+)
   :file "!data!Sync!projects!cpp!subtitles-downloader!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

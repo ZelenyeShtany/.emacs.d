@@ -23,6 +23,8 @@
 	org-metaright
 	org-open-line
 	org-self-insert-command
+	org-shiftmetaleft
+	org-shiftmetaright
 	org-shiftright
 	org-todo
 	smarter-move-beginning-of-line

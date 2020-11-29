@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-155dfe60d2e0
+;; Object semanticdb-project-database-file-158a1f9f2dc6
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-155dfe60d2e0"
+(semanticdb-project-database-file "semanticdb-project-database-file-158a1f9f2dc6"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-155dfe5fb298"
+    (semanticdb-table "semanticdb-table-158a1faa5ecc"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOSTREAM" variable (:constant-flag t) nil [1249 1266])
@@ -59,7 +59,7 @@
         '(("_GLIBCXX_IOSTREAM" . ((number "1" 1267 . 1268)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe5fb2b8"
+    (semanticdb-table "semanticdb-table-158a1f89cd96"
       :major-mode c-mode
       :tags 
         '( ("abc_ilya" variable
@@ -72,7 +72,7 @@
       :fsize 58
       :lastmodtime '(24486 29995 991720 20000)
       :unmatched-syntax '((symbol 1 . 10)))
-    (semanticdb-table "semanticdb-table-155dfe5fb2d8"
+    (semanticdb-table "semanticdb-table-158a1f9f2d14"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_OSTREAM" variable (:constant-flag t) nil [1227 1243])
@@ -730,7 +730,7 @@
         '(("_GLIBCXX_OSTREAM" . ((number "1" 1244 . 1245)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe5fc280"
+    (semanticdb-table "semanticdb-table-158a1fe097f0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_ISTREAM" variable (:constant-flag t) nil [1225 1241])
@@ -1592,7 +1592,7 @@
         '(("_GLIBCXX_ISTREAM" . ((number "1" 1242 . 1243)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe5fc2a0"
+    (semanticdb-table "semanticdb-table-158a1ff3ce9c"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOS" variable (:constant-flag t) nil [1233 1245])
@@ -1612,7 +1612,7 @@
         '(("_GLIBCXX_IOS" . ((number "1" 1246 . 1247)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe5fc2c0"
+    (semanticdb-table "semanticdb-table-158a1f9f2de2"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_IOSFWD" variable (:constant-flag t) nil [1244 1259])
@@ -1957,7 +1957,7 @@
         '(("_GLIBCXX_IOSFWD" . ((number "1" 1260 . 1261)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe5fc2e0"
+    (semanticdb-table "semanticdb-table-158a1f9f2e02"
       :major-mode c++-mode
       :tags 
         '( ("__EXCEPTION__" variable (:constant-flag t) nil [1161 1174])
@@ -2010,7 +2010,7 @@
         '(("__EXCEPTION__")
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe609a80"
+    (semanticdb-table "semanticdb-table-158a1fe0985e"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBXX_STREAMBUF" variable (:constant-flag t) nil [1235 1252])
@@ -2641,7 +2641,7 @@
         '(("_GLIBXX_STREAMBUF" . ((number "1" 1253 . 1254)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe609aa0"
+    (semanticdb-table "semanticdb-table-158a1fe0987e"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1555 1582])
@@ -2801,7 +2801,7 @@
         '(("_GLIBCXX_CWCHAR" . ((number "1" 1685 . 1686)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe609ac0"
+    (semanticdb-table "semanticdb-table-158a1fa0bf50"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1559 1586])
@@ -2833,7 +2833,7 @@
         '(("_GLIBCXX_CCTYPE" . ((number "1" 1655 . 1656)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe609ae0"
+    (semanticdb-table "semanticdb-table-158a1fa0bf70"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_SYSTEM_ERROR" variable (:constant-flag t) nil [1189 1210])
@@ -3142,7 +3142,7 @@
         '(("_GLIBCXX_SYSTEM_ERROR" . ((number "1" 1211 . 1212)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60ae80"
+    (semanticdb-table "semanticdb-table-158a1fa0bf90"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1589 1616])
@@ -3164,7 +3164,7 @@
         '(("_GLIBCXX_CLOCALE" . ((number "1" 1688 . 1689)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60aea0"
+    (semanticdb-table "semanticdb-table-158a1fa0bfb0"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_STRING" variable (:constant-flag t) nil [1259 1274])
@@ -3193,7 +3193,7 @@
         '(("_GLIBCXX_STRING" . ((number "1" 1275 . 1276)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60aec0"
+    (semanticdb-table "semanticdb-table-158a2057fa8c"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_STDEXCEPT" variable (:constant-flag t) nil [1238 1256])
@@ -3461,7 +3461,7 @@
         '(("_GLIBCXX_STDEXCEPT" . ((number "1" 1257 . 1258)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60aee0"
+    (semanticdb-table "semanticdb-table-158a2057faac"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1562 1589])
@@ -3501,7 +3501,7 @@
         '(("_GLIBCXX_CWCTYPE" . ((number "1" 1823 . 1824)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60d280"
+    (semanticdb-table "semanticdb-table-158a2057facc"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_TYPE_TRAITS" variable (:constant-flag t) nil [1192 1212])
@@ -6379,7 +6379,7 @@
           ("_GLIBCXX_TYPE_TRAITS" . ((number "1" 1213 . 1214)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60d2a0"
+    (semanticdb-table "semanticdb-table-158a2057faec"
       :major-mode c++-mode
       :tags 
         '( ("bits/c++config.h" include (:system-flag t) nil [1566 1593])
@@ -6396,7 +6396,7 @@
           ("errno" . ((symbol "errno" 1750 . 1755)))
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe60d2c0"
+    (semanticdb-table "semanticdb-table-158a2057fb0c"
       :major-mode c++-mode
       :tags 
         '( ("_NEW" variable (:constant-flag t) nil [1347 1351])
@@ -6461,7 +6461,7 @@
         '(("_NEW")
           )
 )
-    (semanticdb-table "semanticdb-table-155dfe2f0874"
+    (semanticdb-table "semanticdb-table-158a2057fb2c"
       :major-mode c++-mode
       :tags 
         '( ("_GLIBCXX_MEMORY" variable (:constant-flag t) nil [1733 1748])
@@ -6479,6 +6479,24 @@
       :unmatched-syntax '((symbol 1764 . 1777) (symbol 1760 . 1763) (symbol 1753 . 1759) (punctuation 1752 . 1753))
       :lexical-table 
         '(("_GLIBCXX_MEMORY" . ((number "1" 1749 . 1750)))
+          )
+)
+    (semanticdb-table "semanticdb-table-158a202bc74a"
+      :major-mode c++-mode
+      :tags 
+        '( ("_GLIBCXX_MAP" variable (:constant-flag t) nil [2267 2279])
+            ("bits/stl_tree.h" include (:system-flag t) nil [2310 2336])
+            ("bits/stl_map.h" include (:system-flag t) nil [2337 2362])
+            ("bits/stl_multimap.h" include (:system-flag t) nil [2363 2393])
+            ("bits/range_access.h" include (:system-flag t) nil [2394 2424])
+            ("bits/erase_if.h" include (:system-flag t) nil [2425 2451]))          
+      :file "map"
+      :pointmax 3986
+      :fsize 3985
+      :lastmodtime '(24366 38117 0 0)
+      :unmatched-syntax '((symbol 2295 . 2308) (symbol 2291 . 2294) (symbol 2284 . 2290) (punctuation 2283 . 2284))
+      :lexical-table 
+        '(("_GLIBCXX_MAP" . ((number "1" 2280 . 2281)))
           )
 ))
   :file "!usr!include!c++!9!semantic.cache"

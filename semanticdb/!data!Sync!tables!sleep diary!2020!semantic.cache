@@ -1,15 +1,15 @@
-;; Object semanticdb-project-database-file-155fb833b0e4
+;; Object semanticdb-project-database-file-15639b0a4272
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-155fb833b0e4"
+(semanticdb-project-database-file "semanticdb-project-database-file-15639b0a4272"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-155fb833b0c4"
+    (semanticdb-table "semanticdb-table-15639b403ffa"
       :major-mode js-mode
       :tags nil
       :file "data.json"
-      :pointmax 3429
-      :fsize 3761
-      :lastmodtime '(24510 27326 587648 0)
+      :pointmax 3477
+      :fsize 3809
+      :lastmodtime '(24511 57842 578368 300000)
       :unmatched-syntax nil))
   :file "!data!Sync!tables!sleep diary!2020!semantic.cache"
   :semantic-tag-version "2.0"

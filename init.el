@@ -1,7 +1,4 @@
 
-;;(require 'package)
-;;(package-initialize)
-
 ;; speeds up initialization
 (setq gc-cons-threshold 100000000)
 ;; for better lsp-mode performance
@@ -13,13 +10,18 @@
 (setq read-process-output-max (* 1024 1024))
 ;; /for better lsp-mode performance
 
-(require 'package)
+;;(require 'package)
 ;;; benchmarking
-  ;; won't work
-    ;; (add-to-list 'load-path "~/.emacs.d/elpa/benchmark-init-20150905.938")
-    ;; (require 'benchmark-init)
-    ;; To disable collection of benchmark data after init is done.
-    ;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
+;; won't work
+;; (add-to-list 'load-path "~/.emacs.d/elpa/benchmark-init-20150905.938")
+;; (require 'benchmark-init)
+;; To disable collection of benchmark data after init is done.
+;;(add-hook 'after-init-hook 'benchmark-init/deactivate)
+
+
+;;(setenv "PATH" (concat ":" (getenv "PATH") ))
+
+(add-to-list 'exec-path "/home/zelenyeshtany/.nvm/versions/node/v14.9.0/bin")
 
 (add-to-list 'load-path "~/.emacs.d/elpa/esup-20200814.1400")
 (require 'esup)
@@ -190,11 +192,10 @@
 ;;(add-to-list 'load-path "~/.emacs.d/elpa/xah-find-20190314.2039")
 (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20200604.246")
 ;;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-snippets-20200606.1149")
-(add-to-list 'load-path "~/.emacs.d/elpa/zenburn-theme-20200701.1333")
+;;(add-to-list 'load-path "~/.emacs.d/elpa/zenburn-theme-20200701.1333")
 (add-to-list 'load-path "~/.emacs.d/sticky-windows")
 (require 'sticky-windows)
 (require 'diminish)
-
 
 (eval-when-compile
   (require 'bind-key)
@@ -205,7 +206,7 @@
 ;; /speeds up initialization
 
 ;; disabling some packages from autoloading
-(setq package-load-list '((magit nil) all))
+;;(setq package-load-list '((magit nil) all))
 
 ;;(package-initialize)
 (defvar my/phone-p
@@ -214,31 +215,31 @@
 
 
 (defvar bookmark-file
-      (cond
-       (my/phone-p "~/.emacs.d/bookmark-android")
-       ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
-       ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
-       )
-      "Path to bookmarks file, depending on current operating system."
-      )
+  (cond
+   (my/phone-p "~/.emacs.d/bookmark-android")
+   ((eq system-type 'gnu/linux) "~/.emacs.d/bookmark-linux")
+   ((eq system-type 'windows-nt) "~/.emacs.d/bookmark-win")
+   )
+  "Path to bookmarks file, depending on current operating system."
+  )
 
 (defvar data-folder-path
-      (cond
-       (my/phone-p "~/../../")
-       ((eq system-type 'gnu/linux) "/data/")
-       ((eq system-type 'windows-nt) "D:/")
-       )
-"Path to folder with all my data."
-      )
+  (cond
+   (my/phone-p "~/../../")
+   ((eq system-type 'gnu/linux) "/data/")
+   ((eq system-type 'windows-nt) "D:/")
+   )
+  "Path to folder with all my data."
+  )
 
 
 (defvar my-org-directory (concat data-folder-path (when (not my/phone-p) "gitserver/") "org/")
-"Path to my org folder.
+  "Path to my org folder.
 Probably not required))."
-)
+  )
 (defvar my-org-from-smartphone-dir (concat my-org-directory "from-smartphone/")
-"Path to folder with smartphone-only org files."
-)
+  "Path to folder with smartphone-only org files."
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -359,8 +360,8 @@ Probably not required))."
 			 (powerline-width rhs))
 	 (powerline-render rhs))))))
  '(org-M-RET-may-split-line '((default)))
-;; '(org-agenda-files
-;;   '("/data/data/com.termux/files/home/storage/shared/Sync/org/atomoxetine_research.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/brench.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/browsers_bookmarks.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/content.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/copingcards.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/cpp_roadmap.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/diredhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/emacs-todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/engl.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/helmhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/help.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/inbox.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/mtp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/newreflex.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/notes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/pswd.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/regular.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/sleephygiene.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/takingChargeOfAdultADHDnotes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/test.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/webarchive.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/вечрит.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/утррит.org"))
+ ;; '(org-agenda-files
+ ;;   '("/data/data/com.termux/files/home/storage/shared/Sync/org/atomoxetine_research.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/brench.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/browsers_bookmarks.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/content.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/copingcards.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/cpp_roadmap.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/diredhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/emacs-todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/engl.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/helmhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/help.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/inbox.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/mtp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/newreflex.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/notes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/pswd.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/regular.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/sleephygiene.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/takingChargeOfAdultADHDnotes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/test.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/webarchive.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/вечрит.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/утррит.org"))
  '(org-agenda-log-mode-items '(closed clock state))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
@@ -513,16 +514,16 @@ which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
   )
 (when (not my/phone-p)
- (use-package tool-bar
-  :custom
-  (tool-bar-mode nil)
-  ))
+  (use-package tool-bar
+    :custom
+    (tool-bar-mode nil)
+    ))
 (setq comp-deferred-compilation nil)
 
 ;;; phone config
@@ -543,7 +544,7 @@ which is unsafe because it allows man-in-the-middle attacks.
 There are two things you can do about this warning:
 1. Install an Emacs version that does support SSL and be safe.
 2. Remove this warning from your init file so you won't see it again."))
-  (add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  ;;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
@@ -552,8 +553,14 @@ There are two things you can do about this warning:
   :bind
   (:map
    outline-minor-mode-map
-   ("<tab>" . 'outline-cycle)
+   ("<tab>" . 'my/outline-cycle)
    )
+  )
+
+(defun my/outline-cycle (&optional arg)
+  "Cycle visibility when point is on heading."
+  (interactive "P")
+  (if (outline-on-heading-p) (outline-cycle) (indent-for-tab-command arg))
   )
 
 ;;; IRC
@@ -643,7 +650,7 @@ There are two things you can do about this warning:
 ;;   ;;(nnmbox-active-file "~/.mbox-active")
 ;;   ;;(nnmbox-get-new-mail nil)
 ;;   ;; /nnmbox
-  
+
 ;;   (gnus-startup-file "~/.newsrc.el") ;; ???
 ;;   (nnml-directory "~/gmail")
 ;;   (message-directory "~/gmail")
@@ -662,19 +669,19 @@ There are two things you can do about this warning:
 ;; /WIEGLEY
 
 (use-package cmake-mode
-:commands (cmake-mode)
-:mode ("\\(CMakeLists\\.txt\\)\\|\\(\\.cmake$\\)" . cmake-mode)
-)
+  :commands (cmake-mode)
+  :mode ("\\(CMakeLists\\.txt\\)\\|\\(\\.cmake$\\)" . cmake-mode)
+  )
 
 (when (not my/phone-p)(use-package md4rd
-  :load-path "~/.emacs.d/elpa/md4rd-20201108.2202"
-  :commands (reddit md4rd)
-  ))
+			:load-path "~/.emacs.d/elpa/md4rd-20201108.2202"
+			:commands (reddit md4rd)
+			))
 
 (setenv "STARDICT_DATA_DIR"
 	(if my/phone-p
 	    "/data/data/com.termux/files/home/stardict/"
-	    "/data/Dictionaries/stardict/")
+	  "/data/Dictionaries/stardict/")
 	)
 (defun my/lookup-at-stardict()
   "Look up a WORD in sdcv (stardict CLI tool)."
@@ -694,29 +701,29 @@ There are two things you can do about this warning:
    ) ;; see 's' alias for sdcv command is ~/.bashrc 
   )))))
 (when my/phone-p
-(define-key global-map (kbd "<home>") 'my/lookup-at-stardict)
+  (define-key global-map (kbd "<home>") 'my/lookup-at-stardict)
   )
 
 ;;sdcv $1 | sed ':a;N;$!ba;s/\n/<br>/g' | html2text
 (defun my/create-tmp-buffer ()
-"Create(or switch to existing) temporary buffer with name \"drafts\"."
-(interactive)
+  "Create(or switch to existing) temporary buffer with name \"drafts\"."
+  (interactive)
 
-(let* (
-       (files (list "/data/Sync/org/atomoxetine_research.org"))
-       (tmpbuf nil)
-       )
-  (save-excursion
-    (find-file "/data/Sync/org/atomoxetine_research.org")
-    (when (buffer-narrowed-p) (widen) )
-    (goto-char (point-min))
-    ;;(buffer-substring (line-beginning-position)(line-end-position))
-    (if
-        (string-match "[0-9]" (org-element-property :title (org-element-at-point))))
-  )
+  (let* (
+	 (files (list "/data/Sync/org/atomoxetine_research.org"))
+	 (tmpbuf nil)
+	 )
+    (save-excursion
+      (find-file "/data/Sync/org/atomoxetine_research.org")
+      (when (buffer-narrowed-p) (widen) )
+      (goto-char (point-min))
+      ;;(buffer-substring (line-beginning-position)(line-end-position))
+      (if
+          (string-match "[0-9]" (org-element-property :title (org-element-at-point))))
+      )
 
+    )
   )
-)
 (defun my/mark-sexp ()
   "docstring"
   (interactive)
@@ -747,34 +754,34 @@ There are two things you can do about this warning:
    )
   )
 (defun my/windower-toggle-single ()
-    "Un-maximize current window.
+  "Un-maximize current window.
 If multiple windows are active, save window configuration and
 delete other windows.  If only one window is active and a window
 configuration was previously save, restore that configuration."
-    (interactive)
-    (let*
-        (
-         (number-of-dedicated-windows
-          (let*
-              (
-               (count 0)
-               )
-            (dolist
-                (curwindow (window-list))
-              (if (window-dedicated-p curwindow)
-                  (setq count (1+ count))
-                  )
+  (interactive)
+  (let*
+      (
+       (number-of-dedicated-windows
+        (let*
+            (
+             (count 0)
+             )
+          (dolist
+              (curwindow (window-list))
+            (if (window-dedicated-p curwindow)
+                (setq count (1+ count))
               )
-            count
             )
+          count
           )
-         )
-        (if (<= (- (count-windows) number-of-dedicated-windows) 1)
+        )
+       )
+    (if (<= (- (count-windows) number-of-dedicated-windows) 1)
         (when windower--last-configuration
           (set-window-configuration windower--last-configuration))
       (setq windower--last-configuration (current-window-configuration))
       (sticky-window-delete-other-windows)))
-    )
+  )
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
 
@@ -1149,13 +1156,13 @@ Narrow to defun if it's not."
 	 )
       (org-edit-src-code)
       (setq buffer (current-buffer))
-    
-    (delete-window)
-    (switch-to-buffer
-     buffer
-     ;;(clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
-     )
-    )
+      
+      (delete-window)
+      (switch-to-buffer
+       buffer
+       ;;(clone-indirect-buffer nil nil ) ;; create indirect buffer with current_buffer_name<N> name
+       )
+      )
     ;;(org-narrow-to-block)
     )
    ((my/org-mode-p)
@@ -1192,49 +1199,49 @@ Narrow to defun if it's not."
 
         ;; narrow to defun
         (if (eq (ivy--buffer-list new-indirect-buffer-name) nil)
+            (progn
+              (clone-indirect-buffer new-indirect-buffer-name nil )
+              (switch-to-buffer new-indirect-buffer-name)
+              (narrow-to-defun)
+              )
           (progn
-            (clone-indirect-buffer new-indirect-buffer-name nil )
             (switch-to-buffer new-indirect-buffer-name)
             (narrow-to-defun)
             )
-        (progn
-          (switch-to-buffer new-indirect-buffer-name)
-          (narrow-to-defun)
           )
         )
-          )
       )
     )
    )
   )
 (defun delete-nth (index seq)
-   "Delete the INDEX th element of SEQ.
+  "Delete the INDEX th element of SEQ.
  Return result sequence, SEQ __is__ modified."
-   (if (equal index 0)
-       (progn
-         (setcar seq (car (cdr seq)))
-         (setcdr seq (cdr (cdr seq))))
-     (setcdr (nthcdr (1- index) seq) (nthcdr (1+ index) seq))))
+  (if (equal index 0)
+      (progn
+        (setcar seq (car (cdr seq)))
+        (setcdr seq (cdr (cdr seq))))
+    (setcdr (nthcdr (1- index) seq) (nthcdr (1+ index) seq))))
 
 (defun replace-regexp-visual ()
   "call vr/replace(more convenient func name)"
   (interactive)
-(save-excursion
-(goto-char (point-min))
-(call-interactively 'vr/replace)
-)
-)
+  (save-excursion
+    (goto-char (point-min))
+    (call-interactively 'vr/replace)
+    )
+  )
 (defun my-find-file ()
   (interactive)
   (call-interactively 'ido-find-file))
 
 (defun my-insert-into-table(string)
-(interactive)
+  (interactive)
   (progn
     (org-table-blank-field)
     (insert string)
     (org-table-align)
-)
+    )
   )  
 (use-package mypack
   :after (org)
@@ -1383,9 +1390,9 @@ Narrow to defun if it's not."
    '(;; ("t" "Todo" entry (file+headline todos "Tasks")
      ;;  "* TODO %?")
      ("j" "Add to inbox.org" entry (file+datetree inbox)
-      "* %?")
+      "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:")
      ("i" "Idea" entry (file+datetree inbox)
-      "* IDEA %?")
+      "* IDEA %?\n:PROPERTIES:\n:CREATED: %U\n:END:")
      ;;("d" "TEST" entry (file+datetree (concat my-org-directory "notes.org"))
      ;; "* frombroser: %a" :immediate-finish t)
      ("e" "Добавить непонятное предложение на англ" entry (file+headline engl "Непонятные предложения")
@@ -1793,11 +1800,11 @@ or calls a menu of last clocked tasks to choose"
   (setq org-board-capture-file (concat my-org-directory "webarchive.org"))
   ;; /web archiving through org-capture + org-board  
   ;;(use-package org-download
-;;:defer t
-;;)
+  ;;:defer t
+  ;;)
   ;;(use-package my-week-day-based-habits
-;;:defer t
-;;)
+  ;;:defer t
+  ;;)
   :bind (:map org-mode-map
               ("M-a" . 'my/org-archive-youtube-video-at-point)
               ("C-c f" . 'org-search-view)
@@ -1969,7 +1976,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :config
 
   (setq
-   dired-listing-switches "-alh" ;; human-readable file sizes
+   dired-listing-switches "-alhv" ;; human-readable file sizes
    )
   
   :bind (:map dired-mode-map
@@ -2000,21 +2007,21 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :after (dired)
   :custom
   (dired-open-extensions
-        '(("pdf" . "evince")
-          ("csv" . "konsole -e visidata")
-          ("html" . "google-chrome")
-          ("mp4" . "mpv")
-          ("webp" . "mpv")
-          ("avi" . "mpv")
-          ("webm" . "mpv")
-          ("wav" . "mpv")
-          ("mkv" . "vlc")
-          ("mp3" . "clementine")
-          ("ogg" . "clementine")
-          ("opus" . "clementine")
-          ("odt" . "libreoffice")
-          ("doc" . "libreoffice")
-          ("docx" . "libreoffice")))
+   '(("pdf" . "evince")
+     ("csv" . "konsole -e visidata")
+     ("html" . "google-chrome")
+     ("mp4" . "mpv")
+     ("webp" . "mpv")
+     ("avi" . "mpv")
+     ("webm" . "mpv")
+     ("wav" . "mpv")
+     ("mkv" . "vlc")
+     ("mp3" . "clementine")
+     ("ogg" . "clementine")
+     ("opus" . "clementine")
+     ("odt" . "libreoffice")
+     ("doc" . "libreoffice")
+     ("docx" . "libreoffice")))
   )
 
 (use-package dired-x
@@ -2028,19 +2035,21 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 	 )
   :custom
   (elfeed-feeds
-                                       ;; tags here
-      '(("http://nullprogram.com/feed/" emacs blog)
-        "http://planet.emacsen.org/atom.xml" ;; no tags
-	"https://lukesmith.xyz/rss.xml"
-	"https://lukesmith.xyz/youtube.xml"
-	"https://notrelated.xyz/rss"
-	"https://www.reddit.com/r/emacs/.rss"
-	;;"https://videos.lukesmith.xyz/feeds/videos.xml?accountId=3" peertube or sth
-	))
+   ;; tags here
+   '(("http://nullprogram.com/feed/" emacs blog)
+     "http://planet.emacsen.org/atom.xml" ;; no tags
+     "https://lukesmith.xyz/rss.xml"
+     "https://lukesmith.xyz/youtube.xml"
+     "https://notrelated.xyz/rss"
+     "https://www.reddit.com/r/emacs/.rss"
+     "https://isocpp.org/blog/rss/category/articles-books"
+     ;;"https://videos.lukesmith.xyz/feeds/videos.xml?accountId=3" peertube or sth
+     ))
   :config
   ;; If you're getting many "Queue timeout exceeded"
   ;; errors, increase the fetch timeout via
-  ;; elfeed-set-timeout.
+					;
+					; elfeed-set-timeout.
   (setf url-queue-timeout 30)
 
   )
@@ -2072,108 +2081,108 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   (mu4e-compose-dont-reply-to-self t)
   )
 
-  ;; (require 'org-mu4e)
+;; (require 'org-mu4e)
 
-  ;; ;; convert org mode to HTML automatically
-  ;; (setq org-mu4e-convert-to-html t)
+;; ;; convert org mode to HTML automatically
+;; (setq org-mu4e-convert-to-html t)
 
-  ;; ;;from vxlabs config
-  ;; ;; show full addresses in view message (instead of just names)
-  ;; ;; toggle per name with M-RET
-  ;; (setq mu4e-view-show-addresses 't)
+;; ;;from vxlabs config
+;; ;; show full addresses in view message (instead of just names)
+;; ;; toggle per name with M-RET
+;; (setq mu4e-view-show-addresses 't)
 
-  ;; ;; don't ask when quitting
-  ;; (setq mu4e-confirm-quit nil)
+;; ;; don't ask when quitting
+;; (setq mu4e-confirm-quit nil)
 
-  ;; mu4e-context
-  (use-package mu4e-context
-    :after (mu4e)
-    :custom
-    (mu4e-context-policy 'pick-first)
-    (mu4e-compose-context-policy 'always-ask)
-    (mu4e-contexts
-     (list
-      (make-mu4e-context
-       :name "zelenye shtany" ;;for zelenyeshtany-gmail
-       :enter-func (lambda () (mu4e-message "Entering context work"))
-       :leave-func (lambda () (mu4e-message "Leaving context work"))
-       :match-func (lambda (msg)
-		     (when msg
-		       (mu4e-message-contact-field-matches
-			msg '(:from :to :cc :bcc) "zelenyeshtany@gmail.com")))
-       :vars '((user-mail-address . "zelenyeshtany@gmail.com")
-	       (user-full-name . "zelenye shtany")
-	       (mu4e-sent-folder . "/zelenyeshtany-gmail/[zelenyeshtany].Sent Mail")
-	       (mu4e-drafts-folder . "/zelenyeshtany-gmail/[zelenyeshtany].drafts")
-	       (mu4e-trash-folder . "/zelenyeshtany-gmail/[zelenyeshtany].Bin")
-	       (mu4e-compose-signature . (concat "Formal Signature\n" "Emacs 25, org-mode 9, mu4e 1.0\n"))
-	       (mu4e-compose-format-flowed . t)
-	       (smtpmail-queue-dir . "~/Maildir/zelenyeshtany-gmail/queue/cur")
-	       (message-send-mail-function . smtpmail-send-it)
-	       (smtpmail-smtp-user . "zelenyeshtany")
-	       (smtpmail-starttls-credentials . (("smtp.gmail.com" 587 nil nil)))
-	       (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
-	       (smtpmail-default-smtp-server . "smtp.gmail.com")
-	       (smtpmail-smtp-server . "smtp.gmail.com")
-	       (smtpmail-smtp-service . 587)
-	       (smtpmail-debug-info . t)
-	       (smtpmail-debug-verbose . t)
-	       (mu4e-maildir-shortcuts . ( ("/zelenyeshtany-gmail/INBOX"            . ?i)
-					   ("/zelenyeshtany-gmail/[zelenyeshtany].Sent Mail" . ?s)
-					   ("/zelenyeshtany-gmail/[zelenyeshtany].Bin"       . ?t)
-					   ("/zelenyeshtany-gmail/[zelenyeshtany].All Mail"  . ?a)
-					   ("/zelenyeshtany-gmail/[zelenyeshtany].Starred"   . ?r)
-					   ("/zelenyeshtany-gmail/[zelenyeshtany].drafts"    . ?d)
-					   ))))
-      (make-mu4e-context
-       :name "chandler khaki" ;;for chandlerkhaki-gmail
-       :enter-func (lambda () (mu4e-message "Entering context personal"))
-       :leave-func (lambda () (mu4e-message "Leaving context personal"))
-       :match-func (lambda (msg)
-		     (when msg
-		       (mu4e-message-contact-field-matches
-			msg '(:from :to :cc :bcc) "chandlerkhaki@gmail.com")))
-       :vars '((user-mail-address . "chandlerkhaki@gmail.com")
-	       (user-full-name . "chandler khaki")
-	       (mu4e-sent-folder . "/chandlerkhaki-gmail/[chandlerkhaki].Sent Mail")
-	       (mu4e-drafts-folder . "/chandlerkhaki-gmail/[chandlerkhaki].drafts")
-	       (mu4e-trash-folder . "/chandlerkhaki-gmail/[chandlerkhaki].Trash")
-	       (mu4e-compose-signature . (concat "Informal Signature\n" "Emacs is awesome!\n"))
-	       (mu4e-compose-format-flowed . t)
-	       (smtpmail-queue-dir . "~/Maildir/chandlerkhaki-gmail/queue/cur")
-	       (message-send-mail-function . smtpmail-send-it)
-	       (smtpmail-smtp-user . "chandlerkhaki")
-	       (smtpmail-starttls-credentials . (("smtp.gmail.com" 587 nil nil)))
-	       (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
-	       (smtpmail-default-smtp-server . "smtp.gmail.com")
-	       (smtpmail-smtp-server . "smtp.gmail.com")
-	       (smtpmail-smtp-service . 587)
-	       (smtpmail-debug-info . t)
-	       (smtpmail-debug-verbose . t)
-	       (mu4e-maildir-shortcuts . ( ("/chandlerkhaki-gmail/INBOX"            . ?i)
-					   ("/chandlerkhaki-gmail/[chandlerkhaki].Sent Mail" . ?s)
-					   ("/chandlerkhaki-gmail/[chandlerkhaki].Trash"     . ?t)
-					   ("/chandlerkhaki-gmail/[chandlerkhaki].All Mail"  . ?a)
-					   ("/chandlerkhaki-gmail/[chandlerkhaki].Starred"   . ?r)
-					   ("/chandlerkhaki-gmail/[chandlerkhaki].drafts"    . ?d)
-					   ))))))
-    )
+;; mu4e-context
+(use-package mu4e-context
+  :after (mu4e)
+  :custom
+  (mu4e-context-policy 'pick-first)
+  (mu4e-compose-context-policy 'always-ask)
+  (mu4e-contexts
+   (list
+    (make-mu4e-context
+     :name "zelenye shtany" ;;for zelenyeshtany-gmail
+     :enter-func (lambda () (mu4e-message "Entering context work"))
+     :leave-func (lambda () (mu4e-message "Leaving context work"))
+     :match-func (lambda (msg)
+		   (when msg
+		     (mu4e-message-contact-field-matches
+		      msg '(:from :to :cc :bcc) "zelenyeshtany@gmail.com")))
+     :vars '((user-mail-address . "zelenyeshtany@gmail.com")
+	     (user-full-name . "zelenye shtany")
+	     (mu4e-sent-folder . "/zelenyeshtany-gmail/[zelenyeshtany].Sent Mail")
+	     (mu4e-drafts-folder . "/zelenyeshtany-gmail/[zelenyeshtany].drafts")
+	     (mu4e-trash-folder . "/zelenyeshtany-gmail/[zelenyeshtany].Bin")
+	     (mu4e-compose-signature . (concat "Formal Signature\n" "Emacs 25, org-mode 9, mu4e 1.0\n"))
+	     (mu4e-compose-format-flowed . t)
+	     (smtpmail-queue-dir . "~/Maildir/zelenyeshtany-gmail/queue/cur")
+	     (message-send-mail-function . smtpmail-send-it)
+	     (smtpmail-smtp-user . "zelenyeshtany")
+	     (smtpmail-starttls-credentials . (("smtp.gmail.com" 587 nil nil)))
+	     (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
+	     (smtpmail-default-smtp-server . "smtp.gmail.com")
+	     (smtpmail-smtp-server . "smtp.gmail.com")
+	     (smtpmail-smtp-service . 587)
+	     (smtpmail-debug-info . t)
+	     (smtpmail-debug-verbose . t)
+	     (mu4e-maildir-shortcuts . ( ("/zelenyeshtany-gmail/INBOX"            . ?i)
+					 ("/zelenyeshtany-gmail/[zelenyeshtany].Sent Mail" . ?s)
+					 ("/zelenyeshtany-gmail/[zelenyeshtany].Bin"       . ?t)
+					 ("/zelenyeshtany-gmail/[zelenyeshtany].All Mail"  . ?a)
+					 ("/zelenyeshtany-gmail/[zelenyeshtany].Starred"   . ?r)
+					 ("/zelenyeshtany-gmail/[zelenyeshtany].drafts"    . ?d)
+					 ))))
+    (make-mu4e-context
+     :name "chandler khaki" ;;for chandlerkhaki-gmail
+     :enter-func (lambda () (mu4e-message "Entering context personal"))
+     :leave-func (lambda () (mu4e-message "Leaving context personal"))
+     :match-func (lambda (msg)
+		   (when msg
+		     (mu4e-message-contact-field-matches
+		      msg '(:from :to :cc :bcc) "chandlerkhaki@gmail.com")))
+     :vars '((user-mail-address . "chandlerkhaki@gmail.com")
+	     (user-full-name . "chandler khaki")
+	     (mu4e-sent-folder . "/chandlerkhaki-gmail/[chandlerkhaki].Sent Mail")
+	     (mu4e-drafts-folder . "/chandlerkhaki-gmail/[chandlerkhaki].drafts")
+	     (mu4e-trash-folder . "/chandlerkhaki-gmail/[chandlerkhaki].Trash")
+	     (mu4e-compose-signature . (concat "Informal Signature\n" "Emacs is awesome!\n"))
+	     (mu4e-compose-format-flowed . t)
+	     (smtpmail-queue-dir . "~/Maildir/chandlerkhaki-gmail/queue/cur")
+	     (message-send-mail-function . smtpmail-send-it)
+	     (smtpmail-smtp-user . "chandlerkhaki")
+	     (smtpmail-starttls-credentials . (("smtp.gmail.com" 587 nil nil)))
+	     (smtpmail-auth-credentials . (expand-file-name "~/.authinfo.gpg"))
+	     (smtpmail-default-smtp-server . "smtp.gmail.com")
+	     (smtpmail-smtp-server . "smtp.gmail.com")
+	     (smtpmail-smtp-service . 587)
+	     (smtpmail-debug-info . t)
+	     (smtpmail-debug-verbose . t)
+	     (mu4e-maildir-shortcuts . ( ("/chandlerkhaki-gmail/INBOX"            . ?i)
+					 ("/chandlerkhaki-gmail/[chandlerkhaki].Sent Mail" . ?s)
+					 ("/chandlerkhaki-gmail/[chandlerkhaki].Trash"     . ?t)
+					 ("/chandlerkhaki-gmail/[chandlerkhaki].All Mail"  . ?a)
+					 ("/chandlerkhaki-gmail/[chandlerkhaki].Starred"   . ?r)
+					 ("/chandlerkhaki-gmail/[chandlerkhaki].drafts"    . ?d)
+					 ))))))
+  )
 
 (add-to-list 'load-path "~/.emacs.d/sticky-windows")
 (use-package sticky-windows
-:defer t
-)
+  :defer t
+  )
 
 (add-to-list 'load-path "~/.emacs.d/elpa/peg-1.0")
 
 (add-to-list 'load-path "~/.emacs.d/elpa/highlight-symbol.el/")
 (use-package highlight-symbol
-:hook ((cc-mode emacs-lisp-mode) . highlight-symbol-mode)
-:defer t
-:diminish highlight-symbol-mode
-:custom
-(highlight-symbol-idle-delay 0.2)
-)
+  :hook ((cc-mode emacs-lisp-mode) . highlight-symbol-mode)
+  :defer t
+  :diminish highlight-symbol-mode
+  :custom
+  (highlight-symbol-idle-delay 0.2)
+  )
 
 (add-to-list 'load-path "~/.emacs.d/org-pandoc-import/")
 
@@ -2206,9 +2215,9 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ''/tiny
 
 (use-package org-branch
-:defer t
-:after (org)
-)
+  :defer t
+  :after (org)
+  )
 
 ;;(use-package wgrep)
 (use-package elisp-mode)
@@ -2221,8 +2230,8 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (add-to-list 'load-path "~/.emacs.d/elpa/org-ql-20200713.909/")
 (use-package org-ql
-:defer t
-)
+  :defer t
+  )
 
 (use-package beacon
   :diminish beacon-mode
@@ -2245,20 +2254,20 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   )
 
 (use-package org-protocol
-:defer t
-)
+  :defer t
+  )
 (use-package visual-regexp
-:commands (vr/replace)
-)
+  :commands (vr/replace)
+  )
 (use-package ido
-:defer t
-)
+  :defer t
+  )
 (ido-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/zoom/")
 (use-package zoom
-:defer t
-)
+  :defer t
+  )
 
 (add-to-list 'load-path "~/.emacs.d/elpa/powerline-20200817.1321/")
 (use-package powerline)
@@ -2280,15 +2289,15 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (add-to-list 'load-path "~/.emacs.d/deferred/")
 (use-package deferred
-:defer t
-)
+  :defer t
+  )
 
 
 (add-to-list 'load-path "~/.emacs.d/elpa/auto-minor-mode/")
 
 (use-package ido-vertical-mode
-;;:defer t
-)
+  ;;:defer t
+  )
 (ido-mode 1)
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
@@ -2335,26 +2344,26 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 ;; open agenda
 (define-key global-map (kbd "C-c a")
-(lambda () (interactive) (org-agenda)))
+  (lambda () (interactive) (org-agenda)))
 ;;
 
 ;; <placing backup files (with ~ in the end) in special directory>
 ;; stored in 'temporary-file-directory' variable
-    (setq backup-directory-alist
-          `((".*" . ,temporary-file-directory)))
-    (setq auto-save-file-name-transforms
-          `((".*" ,temporary-file-directory t)))
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 ;; </placing backup files (with ~ in the end) in special directory>
 
 (setq system-time-locale "C")
 (use-package org-id
-:defer t
-)
+  :defer t
+  )
 
 (global-set-key (kbd "M-o") 'ace-window)
 
 (add-to-list 'display-buffer-alist
-  (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
+	     (cons "\\*Async Shell Command\\*.*" (cons #'display-buffer-no-window nil)))
 
 (define-key esc-map "." #'xref-find-definitions-other-window)
 (put 'narrow-to-region 'disabled nil)
@@ -2465,9 +2474,9 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 ;;(fringe-mode '(8 . 0))
 (use-package fringe
-:after (flycheck)
-:hook ((flycheck-mode) . (lambda () (fringe-mode (cons 8 0))))
-)
+  :after (flycheck)
+  :hook ((flycheck-mode) . (lambda () (fringe-mode (cons 8 0))))
+  )
 (define-key global-map (kbd "C-c c") #'counsel-org-capture)
 (define-key global-map (kbd "M-<backspace>") #'sp-splice-sexp)
 
@@ -2488,7 +2497,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (global-set-key "\C-x2" (lambda () (interactive)(split-window-vertically) (other-window 1)
 			  (if(and (buffer-narrowed-p) (string-match "/"  (buffer-name)))
-			     (switch-to-buffer (car (split-string (buffer-name) "/")))
+			      (switch-to-buffer (car (split-string (buffer-name) "/")))
 			    (switch-to-buffer "*Messages*")
 
 			    )
@@ -2526,18 +2535,18 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 (defun my/count-windows-before-call (&rest arg)
   "docstring"
   (when (not (derived-mode-p 'help-mode))
-      (progn
-       (if (member "*Help*" (ivy--buffer-list "*Help*"))
-	   (progn
-	     (switch-to-buffer "*Help*")
-	     (rename-uniquely)
-	     (previous-buffer)
-	     )
-	 )
-       (setq my/windows-quantity-before-call (count-windows 1))
-       (setq my/previous-selected-window (selected-window))
-       (message "selected window: %s" (selected-window))
-       )
+    (progn
+      (if (member "*Help*" (ivy--buffer-list "*Help*"))
+	  (progn
+	    (switch-to-buffer "*Help*")
+	    (rename-uniquely)
+	    (previous-buffer)
+	    )
+	)
+      (setq my/windows-quantity-before-call (count-windows 1))
+      (setq my/previous-selected-window (selected-window))
+      (message "selected window: %s" (selected-window))
+      )
     )
   )
 (advice-add 'describe-function :after 'my/describe-functions-open-window)
@@ -2558,14 +2567,14 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 	 (curbuf (current-buffer))
 	 )
     
-  (previous-buffer)
-  (if (< (window-pixel-height) (window-pixel-width))
-	    (split-window-horizontally)
-	  (split-window-vertically)
-	  )
-  (other-window 1)
-  (switch-to-buffer curbuf)
-  )
+    (previous-buffer)
+    (if (< (window-pixel-height) (window-pixel-width))
+	(split-window-horizontally)
+      (split-window-vertically)
+      )
+    (other-window 1)
+    (switch-to-buffer curbuf)
+    )
   )
 ;;(advice-add 'find-function :after 'my/after-find-function-advice)
 (add-hook 'find-function-after-hook 'my/after-find-function-advice)
@@ -2574,11 +2583,11 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (use-package smex) ; Not needed if you use package.el
 (smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-                    ; when Smex is auto-initialized on its first run.
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is your old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+					; when Smex is auto-initialized on its first run.
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (use-package reverse-im
   :ensure t
@@ -2607,50 +2616,50 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :after (org)
   :hook ((dired-mode org-mode) . org-download-enable)
   :bind (:map global-map
-	 ("C-x p" . 'org-download-screenshot)
-	 )
+	      ("C-x p" . 'org-download-screenshot)
+	      )
   :init
   (setq org-download-method 'directory)
   (setq-default org-download-image-dir (concat my-org-directory "img/"))
   :config
   (defun my/org-download-annotate (link)
-  "Annotate LINK with the time of download."
-  (format "#+DOWNLOADED: %s @ %s\n#+ATTR_ORG: :width 100\n"
-          (if (equal link org-download-screenshot-file)
-              "screenshot"
-            link)
-          (format-time-string "%Y-%m-%d %H:%M:%S")))
+    "Annotate LINK with the time of download."
+    (format "#+DOWNLOADED: %s @ %s\n#+ATTR_ORG: :width 100\n"
+            (if (equal link org-download-screenshot-file)
+		"screenshot"
+              link)
+            (format-time-string "%Y-%m-%d %H:%M:%S")))
   (setq org-download-annotate-function #'my/org-download-annotate)
-)
+  )
 
 (setq org-board-new 1)
 
 (use-package ob-mermaid
-:defer t
-)
+  :defer t
+  )
 (setq ob-mermaid-cli-path "/home/zelenyeshtany/node_modules/.bin/mmdc")
 
 (use-package org-agenda
   :commands (org-agenda)  
   :after (org)
   :bind (:map org-agenda-mode-map
-	 ("r" . 'org-agenda-todo)
-	 ("t" . 'counsel-org-tag-agenda)
-	 ("C-r" . 'org-agenda-redo-all)
-	 ("e" . 'org-agenda-redo)
-	 ("C-c n" . 'org-agenda-add-note)
-	 ("C-s" . 'org-save-all-org-buffers)
-	 ("s" . 'org-agenda-schedule)
-	 ("C-<down>" . 'org-agenda-later)
-	 ("C-<up>" . 'org-agenda-earlier)
-	 )
+	      ("r" . 'org-agenda-todo)
+	      ("t" . 'counsel-org-tag-agenda)
+	      ("C-r" . 'org-agenda-redo-all)
+	      ("e" . 'org-agenda-redo)
+	      ("C-c n" . 'org-agenda-add-note)
+	      ("C-s" . 'org-save-all-org-buffers)
+	      ("s" . 'org-agenda-schedule)
+	      ("C-<down>" . 'org-agenda-later)
+	      ("C-<up>" . 'org-agenda-earlier)
+	      )
   )
 
 (use-package yasnippet
-:diminish yas-minor-mode
-:config
-(yas-global-mode 1)
-)
+  :diminish yas-minor-mode
+  :config
+  (yas-global-mode 1)
+  )
 
 ;;(add-to-list 'load-path "~/.emacs.d/org-gcal/")
 ;;(use-package org-gcal
@@ -2855,21 +2864,18 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 
 (use-package org-mind-map
   :init
-  (use-package ox-org
-:defer t
-)
+  (require 'ox-org)
   :ensure t
   ;; Uncomment the below if 'ensure-system-packages` is installed
   ;;:ensure-system-package (gvgen . graphviz)
   :bind (
 	 :map org-mode-map
-	      ("C-c g" . org-mind-map-write)
-	      )
-  
-  :config
-  (setq org-mind-map-engine "dot"
-	org-mind-map-include-text t
-	)       ; Default. Directed Graph
+	 ("C-c g" . org-mind-map-write)
+	 )
+  :custom
+  (org-mind-map-engine "dot")
+  (org-mind-map-include-text t)
+  ;; Default. Directed Graph
   ;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
   ;; (setq org-mind-map-engine "twopi")  ; Radial Layout
   ;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
@@ -2879,18 +2885,18 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   )
 
 (use-package proced
-    :commands (proced proced-toggle-auto-update)
-    :bind (:map global-map
-		("C-S-<escape>" . 'proced)
-	   )
-    :config
-    (progn
-      ;;(setq proced-auto-update-interval 2)
+  :commands (proced proced-toggle-auto-update)
+  :bind (:map global-map
+	      ("C-S-<escape>" . 'proced)
+	      )
+  :config
+  (progn
+    ;;(setq proced-auto-update-interval 2)
 
-      (defun alexm/proced-settings ()
-        (proced-toggle-auto-update t))
+    (defun alexm/proced-settings ()
+      (proced-toggle-auto-update t))
 
-      (add-hook 'proced-mode-hook 'alexm/proced-settings)))
+    (add-hook 'proced-mode-hook 'alexm/proced-settings)))
 
 ;; (use-package pdf-tools
 ;;   :init
@@ -2914,15 +2920,15 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   )
 
 (defun mytest (&optional arg)
-    "docstring"
-    (interactive "P")
-    (message "%s" (eq arg nil))
+  "docstring"
+  (interactive "P")
+  (message "%s" (eq arg nil))
 
-    )
+  )
 
-  ;; play sound every n second while clocking in
-  (defun my/sound-while-clocking-in (&optional arg)
-    "Run `org-clock-in' with interminent beeping.
+;; play sound every n second while clocking in
+(defun my/sound-while-clocking-in (&optional arg)
+  "Run `org-clock-in' with interminent beeping.
 
 This function runs timer that runs `beep'
 terminal command periodically.
@@ -2930,15 +2936,15 @@ terminal command periodically.
 If ARG is non-nil, clock-in without beeping at all.
 Useful when you're listening lectures, podcasts or whatever.
   "
-    (interactive "P")
-    ;;(interactive)
-    ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
-    ;;(play-sound-file "/org/timer-sounds/bell.wav")
-    ;;
-    ;;org-clock-clocking-in
-    (org-mru-clock-in)
-    (when (eq arg nil)
-     (setq my/clocking-in-timer
+  (interactive "P")
+  ;;(interactive)
+  ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
+  ;;(play-sound-file "/org/timer-sounds/bell.wav")
+  ;;
+  ;;org-clock-clocking-in
+  (org-mru-clock-in)
+  (when (eq arg nil)
+    (setq my/clocking-in-timer
           ;; run with 3 seconds delay at start and repeat every 30secs
           (run-with-timer 3 30
                           ;;'play-sound-file "/org/timer-sounds/bell.wav" ;; archive
@@ -2948,17 +2954,17 @@ Useful when you're listening lectures, podcasts or whatever.
   done
   "
                           )))
-    )
-  (defun my/delete-clocking-in-timer ()
-    "docstring"
-    ;;(interactive)
-    (when (boundp 'my/clocking-in-timer) (cancel-timer my/clocking-in-timer))
-    )
-  ;;(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
-  (add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
-  (add-hook 'org-clock-cancel-hook 'my/delete-clocking-in-timer)
+  )
+(defun my/delete-clocking-in-timer ()
+  "docstring"
+  ;;(interactive)
+  (when (boundp 'my/clocking-in-timer) (cancel-timer my/clocking-in-timer))
+  )
+;;(add-hook 'org-clock-in-hook 'my/sound-while-clocking-in)
+(add-hook 'org-clock-out-hook 'my/delete-clocking-in-timer)
+(add-hook 'org-clock-cancel-hook 'my/delete-clocking-in-timer)
 
-  ;; /play sound every n second while clocking in
+;; /play sound every n second while clocking in
 
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -3007,11 +3013,11 @@ Useful when you're listening lectures, podcasts or whatever.
 (setq lsp-keymap-prefix "C-c l")
 
 (use-package lsp-modeline
-:after (lsp-mode)
-)
+  :after (lsp-mode)
+  )
 (use-package lsp-headerline
-:after (lsp-mode)
-)
+  :after (lsp-mode)
+  )
 ;; To defer LSP server startup (and DidOpen notifications)
 ;; until the buffer is visible you can use lsp-deferred instead of lsp
 (use-package lsp-mode
@@ -3024,7 +3030,7 @@ Useful when you're listening lectures, podcasts or whatever.
   :commands (lsp lsp-deferred)
   :custom
   (lsp-headerline-breadcrumb-enable t)
-  (lsp-clients-clangd-executable "/usr/bin/clangd")
+  (lsp-clients-clangd-executable "/usr/bin/clangd-11")
   (add-to-list 'lsp-enabled-clients 'clang)
   (add-hook 'c-mode--hook #'lsp-clangd-c-enable)
   (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
@@ -3032,8 +3038,8 @@ Useful when you're listening lectures, podcasts or whatever.
 
 ;; optionally
 (use-package lsp-ui-sideline
-:after (lsp-ui)
-)
+  :after (lsp-ui)
+  )
 
 (use-package lsp-ui
   :ensure t
@@ -3047,6 +3053,8 @@ Useful when you're listening lectures, podcasts or whatever.
   lsp-treemacs-errors-list
   lsp-treemacs-symbols
   )
+
+
 
 ;; optionally if you want to use debugger
 ;;(use-package dap-mode)
@@ -3068,16 +3076,16 @@ Useful when you're listening lectures, podcasts or whatever.
 ;;     (add-to-list 'lsp-disabled-clients 'pyls)
 ;;     (add-to-list 'lsp-enabled-clients 'jedi)))
 
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :hook (python-mode . (lambda ()
-;;                           (use-package lsp-pyright
-;;:defer t
-;;)
-;;                           ;;(lsp); or lsp-deferred
-;; 			  (lsp-deferred)
-;; 			  (add-to-list 'lsp-enabled-clients 'pyright)
-;; 			  )))
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (use-package lsp-pyright
+:defer t
+)
+                          ;;(lsp); or lsp-deferred
+			  (lsp-deferred)
+			  (add-to-list 'lsp-enabled-clients 'pyright)
+			  )))
 ;; / LSP NEW
 
 ;; (add-hook 'c-mode-common-hook
@@ -3086,39 +3094,39 @@ Useful when you're listening lectures, podcasts or whatever.
 ;;               (ggtags-mode 1))))
 
 (use-package flycheck
-:after (lsp-mode)
-:hook ((lsp-mode cc-mode) . flycheck-mode)
-:custom
-(flycheck-checker 'c/c++-clang)
-)
+  :after (lsp-mode)
+  :hook ((lsp-mode cc-mode) . flycheck-mode)
+  :custom
+  (flycheck-checker 'c/c++-clang)
+  )
 
 
 ;;emacs / ggtags / config to make GNU Global see cpp system header files
- ;; added to ~/.bashrc also
- ;;(setenv "GTAGSLIBPATH" (concat (getenv "HOME")"/.gtags/"))
- ;; (use-package ccls
- ;;   :defer t
- ;;   :init
- ;;   (setq ccls-executable "/usr/local/bin/ccls")
- ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
- ;;          (lambda () (use-package ccls
+;; added to ~/.bashrc also
+;;(setenv "GTAGSLIBPATH" (concat (getenv "HOME")"/.gtags/"))
+;; (use-package ccls
+;;   :defer t
+;;   :init
+;;   (setq ccls-executable "/usr/local/bin/ccls")
+;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;          (lambda () (use-package ccls
 ;;:defer t
 ;;) (lsp-deferred)
- ;;            (add-to-list 'lsp-enabled-clients 'ccls)
- ;;            ))
- ;;   )
+;;            (add-to-list 'lsp-enabled-clients 'ccls)
+;;            ))
+;;   )
 
- (use-package semantic
-   :hook ((c++-mode c-mode) . semantic-mode)
-   :config
-   (semantic-add-system-include "/usr/local/include")
-   (semantic-add-system-include "/usr/include")
-   (semantic-add-system-include "/usr/include/x86_64-linux-gnu/qt5/QtWidgets/")
-   )
+(use-package semantic
+  :hook ((c++-mode c-mode) . semantic-mode)
+  :config
+  (semantic-add-system-include "/usr/local/include")
+  (semantic-add-system-include "/usr/include")
+  (semantic-add-system-include "/usr/include/x86_64-linux-gnu/qt5/QtWidgets/")
+  )
 
- ;;(define-key c++-mode-map (kbd "C-j") 'semantic-ia-fast-jump)
+;;(define-key c++-mode-map (kbd "C-j") 'semantic-ia-fast-jump)
 
- (use-package cc-mode
+(use-package cc-mode
    :defer t
    :bind (:map
           c++-mode-map
@@ -3134,13 +3142,13 @@ Useful when you're listening lectures, podcasts or whatever.
    )
 
 (setq ivy-use-selectable-prompt t)
-  (setq ivy-initial-inputs-alist
-   (quote
-    ((counsel-minor . "^+")
-     (counsel-package . "^+")
-     (counsel-org-capture . "")
-     (counsel-M-x . "")
-     (counsel-describe-symbol . ""))))
+(setq ivy-initial-inputs-alist
+      (quote
+       ((counsel-minor . "^+")
+	(counsel-package . "^+")
+	(counsel-org-capture . "")
+	(counsel-M-x . "")
+	(counsel-describe-symbol . ""))))
 
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.

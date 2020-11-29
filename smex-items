@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- esup
+ getenv
+ smartparens-mode
+ my-json/prettify-array-at-point
+ fringe-mode
+ tetris
+ eval-buffer
  emacs-init-time
- outline-demote
- outline-promote
- outline-cycle
- outline-show-all
- outline-hide-entry
 )
 
 ;; ----- smex-data -----
@@ -25,14 +25,14 @@
  (grep . 2)
  (eval-expression . 67)
  (org-evaluate-time-range . 2)
- (getenv . 11)
+ (getenv . 14)
  (kill-word . 2)
  (kill-line . 1)
  (customize-variable . 14)
  (org-download-screenshot . 4)
  (org-download-image . 1)
  (eww-list-bookmarks . 1)
- (eww . 11)
+ (eww . 12)
  (org-web-tools-insert-link-for-url . 1)
  (org-web-tools-insert-web-page-as-entry . 3)
  (org-web-tools-read-url-as-org . 2)
@@ -84,7 +84,7 @@
  (scroll-up-1 . 1)
  (delete-window . 2)
  (imenu . 6)
- (fringe-mode . 18)
+ (fringe-mode . 20)
  (linum-mode . 2)
  (helm-M-x . 9)
  (load-file . 4)
@@ -129,7 +129,7 @@
  (counsel-package . 197)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 126)
+ (company-mode . 133)
  (company-complete . 2)
  (counsel-org-capture . 334)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 221)
+ (emacs-init-time . 230)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 24)
@@ -302,7 +302,7 @@
  (helm-find-files . 21)
  (counsel-command-history . 4)
  (helm-find-files-switch-to-bookmark . 1)
- (avy-goto-line . 1)
+ (avy-goto-line . 2)
  (avy-org-goto-heading-timer . 2)
  (avy-goto-char-timer . 9)
  (org-archive-subtree . 4)
@@ -372,7 +372,7 @@
  (centaur-tabs--tab-menu . 1)
  (swiper . 1)
  (vr/query-replace . 2)
- (json-pretty-print . 1)
+ (json-pretty-print . 3)
  (json-reformat-region . 4)
  (counsel-flycheck . 2)
  (json-mode-beautify . 6)
@@ -399,7 +399,7 @@
  (org-version . 3)
  (counsel-org-tag . 1)
  (org-tags-view . 2)
- (xml-mode . 1)
+ (xml-mode . 2)
  (web-mode . 4)
  (web-mode-navigate . 1)
  (web-mode-buffer-indent . 1)
@@ -418,17 +418,17 @@
  (json-mode . 1)
  (emacs-version . 14)
  (my/json-point . 19)
- (json-pretty-print-buffer . 1)
+ (json-pretty-print-buffer . 3)
  (test42 . 6)
  (elisp-index-search . 1)
  (tetris . 1052)
  (tetris-start-game . 35)
- (my-json/prettify-array-at-point . 9)
+ (my-json/prettify-array-at-point . 10)
  (my-json/engl . 1)
  (split-window-below . 1)
  (customize-face . 1)
  (open-line . 1)
- (smartparens-mode . 28)
+ (smartparens-mode . 35)
  (sp-comment . 2)
  (sp-cheat-sheet . 1)
  (sp-beginning-of-sexp . 1)
@@ -534,7 +534,7 @@
  (lsp-rename . 1)
  (company-diag . 2)
  (ccls-reload . 1)
- (lsp-ui-doc-show . 4)
+ (lsp-ui-doc-show . 8)
  (LaTeX-mode . 1)
  (org-latex-preview . 1)
  (c-c++-menu . 1)
@@ -568,7 +568,7 @@
  (pong . 1)
  (solitaire . 1)
  (cua-cut-region . 1)
- (wdired-change-to-wdired-mode . 26)
+ (wdired-change-to-wdired-mode . 30)
  (size-indication-mode . 4)
  (display-time-mode . 1)
  (spaceline-toggle-global . 3)
@@ -579,7 +579,7 @@
  (benchmark-init/activate . 1)
  (benchmark-init/deactivate . 1)
  (benchmark-init/install . 1)
- (esup . 13)
+ (esup . 14)
  (lsp . 1)
  (lsp-ui-flycheck-list-mode . 1)
  (erc . 18)
@@ -608,7 +608,7 @@
  (gnus-group-list-all-groups . 1)
  (mu4e-mark-at-point . 1)
  (eww-list-buffers . 1)
- (elfeed . 4)
+ (elfeed . 6)
  (elfeed-update . 2)
  (reddit . 7)
  (md4rd . 1)
@@ -628,4 +628,11 @@
  (outline-show-all . 1)
  (outline-cycle . 3)
  (outline-demote . 2)
+ (unload-feature . 6)
+ (counsel-outline . 1)
+ (lsp-ui-doc-hide . 1)
+ (lsp-ui-doc-glance . 1)
+ (org-mind-map-write . 3)
+ (dired-undo . 1)
+ (json-pretty-print-buffer-ordered . 1)
 )

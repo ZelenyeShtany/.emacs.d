@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/11/12 12:35:51 /home/zelenyeshtany/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/11/26 20:57:29 /home/zelenyeshtany/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; Run `M-x tramp-cleanup-all-connections' instead.
 
@@ -30,7 +30,7 @@
   ("git" "\\git")
   ("hg" nil))
  ((tramp-file-name "sudo" "root" nil "localhost" nil nil nil)
-  ("uname" "Linux 5.4.0-53-generic")
+  ("uname" "Linux 5.4.0-54-generic")
   ("locale" "LC_ALL=en_US.utf8")
   ("test" "test")
   ("remote-path"
@@ -51,4 +51,5 @@
   ("perl" "\\perl")
   ("bzr" nil)
   ("git" "\\git")
-  ("hg" nil)))
+  ("hg" nil)
+  ("env-u-option" t)))

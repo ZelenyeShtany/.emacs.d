@@ -107,6 +107,8 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/data/Sync/projects/cpp/subtitles-downloader/" (24511 44340 412834 700000) "Makefile" "main.cpp" "compile_commands.json" "cmake_install.cmake" "CMakeLists.txt" "CMakeFiles/" "CMakeCache.txt" ".git/" ".clangd" "../" "./")
+
  ("/home/zelenyeshtany/mbox/" (24495 33754 959653 291000) "../" "./" "okular-devel-mbox?/")
 
  ("/home/zelenyeshtany/" (24495 33746 827568 575000) ".authinfo" ".fzf/" "org-pomodoro/" ".android/" ".adobe/" ".mu/" "Public/" "Maildir/" ".wget-hsts" ".newsrc.el-dribble" "Pictures/" "getting_started.org" "get-pip.py" ".kdesrc-build-data" "../" ".clangd/" ".offlineimaprc" ".authinfo.gpg" "qt5/" "snap/" ".profile" ".viminfo" "b.org" ".mpd/" ".bash_history" "node_modules/" ".fzf.bash" ".pencil/" "initbekap.el" ".npm/" "Documents/" "package-lock.json" ".local/" ".bashrc" ".gtags/" ".gconf/" "nohup.out" ".cache/" ".texlive2019/" "Mail/" ".sudo_as_admin_successful" ".nv/" "autostart.sh" ".Xauthority" "tmp/" "gccemacs/" ".visidata/" ".ccls-cache/" ".w3m/" "./" ".python_history" "Videos/" "News/" ".gtkrc-2.0" "gmail/" "counsel-ffdata/" "govno/" ".surf/" ".newsrc-dribble" "platform-tools/" ".visidatarc" "Templates/" "nohup.err" "screenshots/" ".gphoto/" ".bash_logout" ".emacs.d/" "doc.html" ".nvm/" ".greencubes/" "github/" "mbox/" ".elfeed/" ".gnome/" ".idlerc/" ".git-credentials" "ccls/" ".mozilla/" "beep/" ".gnupg/" ".pki/" ".xsession-errors" ".offlineimap/" "org-download/" "Desktop/" "Downloads/" ".kde/" ".elinks/" ".goldendict/" ".java/" "img.jpg" ".kdesrc-buildrc" ".gitconfig" "Music/" ".config/" "Output.svg")
@@ -304,8 +306,6 @@
  ("/snap/emacs/296/usr/share/emacs/26.3/" (24037 63281 0 0) "site-lisp/" "lisp/" "etc/" "../" "./")
 
  ("/home/zelenyeshtany/Sync/org/DCIM/" (24330 52639 500665 866000) "Camera/" "../" ".thumbnails/" ".stfolder/" "./")
-
- ("/home/zelenyeshtany/.emacs.d/elpa/org-sidebar-20200501.1215/" (24339 13824 500144 165000) "org-sidebar.elc" "../" "org-sidebar.el" "org-sidebar-autoloads.el" "./" "org-sidebar-pkg.el")
 )
 
 ;; ----- ido-unc-hosts-cache -----
