@@ -563,6 +563,8 @@ There are two things you can do about this warning:
   (if (outline-on-heading-p) (outline-cycle) (indent-for-tab-command arg))
   )
 
+(use-package pkg-info)
+
 ;;; IRC
 (setenv "IRCNICK" "khakipants33")
 (use-package erc
@@ -3079,9 +3081,7 @@ Useful when you're listening lectures, podcasts or whatever.
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
-                          (use-package lsp-pyright
-:defer t
-)
+                          (require 'lsp-pyright)
                           ;;(lsp); or lsp-deferred
 			  (lsp-deferred)
 			  (add-to-list 'lsp-enabled-clients 'pyright)
@@ -3095,9 +3095,16 @@ Useful when you're listening lectures, podcasts or whatever.
 
 (use-package flycheck
   :after (lsp-mode)
-  :hook ((lsp-mode cc-mode) . flycheck-mode)
-  :custom
-  (flycheck-checker 'c/c++-clang)
+  :hook (
+	 ;;(lsp-mode cc-mode) . flycheck-mode
+	 (cc-mode . (lambda()
+		       (flycheck-mode)
+		       (setq flycheck-checker 'c/c++-clang)))
+	 
+	 (python-mode . (lambda() (flycheck-mode) (setq flycheck-checker 'python-pyright)))
+	 )
+  ;;:custom
+  ;;(flycheck-checker 'c/c++-clang)
   )
 
 

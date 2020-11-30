@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- getenv
+ python-mode
+ company-mode
+ fundamental-mode
  smartparens-mode
+ getenv
  my-json/prettify-array-at-point
  fringe-mode
- tetris
- eval-buffer
- emacs-init-time
 )
 
 ;; ----- smex-data -----
@@ -129,7 +129,7 @@
  (counsel-package . 197)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 133)
+ (company-mode . 137)
  (company-complete . 2)
  (counsel-org-capture . 334)
  (all-the-icons-install-fonts . 1)
@@ -317,7 +317,7 @@
  (org-table-delete-column . 3)
  (dired-toggle-read-only . 1)
  (org-edit-src-code . 66)
- (fundamental-mode . 22)
+ (fundamental-mode . 23)
  (my/org-at-source-block . 3)
  (csv-align-mode . 6)
  (csv-header-line . 4)
@@ -327,7 +327,7 @@
  (org-table-align . 1)
  (org-table-blank-field . 1)
  (counsel-org-entity . 1)
- (python-mode . 6)
+ (python-mode . 7)
  (anaconda-mode . 1)
  (anaconda-eldoc-mode . 1)
  (highlight-symbol-next . 1)
@@ -428,7 +428,7 @@
  (split-window-below . 1)
  (customize-face . 1)
  (open-line . 1)
- (smartparens-mode . 35)
+ (smartparens-mode . 36)
  (sp-comment . 2)
  (sp-cheat-sheet . 1)
  (sp-beginning-of-sexp . 1)
@@ -635,4 +635,7 @@
  (org-mind-map-write . 3)
  (dired-undo . 1)
  (json-pretty-print-buffer-ordered . 1)
+ (flycheck-verify-setup . 1)
+ (flycheck-verify-checker . 4)
+ (flycheck-select-checker . 2)
 )

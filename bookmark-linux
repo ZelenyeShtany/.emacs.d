@@ -224,7 +224,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/gitserver/org/inbox.org")
- (front-context-string . "**** ffmpeg mp3 ")
- (rear-context-string . "ho $a\n#+end_src\n")
- (position . 223312))
+ (front-context-string . "**** bash: split")
+ (rear-context-string . "20-11-30 Monday\n")
+ (position . 223485))
 )
