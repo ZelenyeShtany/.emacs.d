@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  python-mode
- company-mode
  fundamental-mode
  smartparens-mode
  getenv
  my-json/prettify-array-at-point
  fringe-mode
+ tetris
 )
 
 ;; ----- smex-data -----

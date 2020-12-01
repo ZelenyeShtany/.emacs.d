@@ -1,2 +1,0 @@
-;; org-clock-save.el - localhost at <2020-11-17 Tue 13:16>
-(setq org-clock-stored-history '(("/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" . 31096) ("/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" . 32698) ("/data/data/com.termux/files/home/storage/shared/Sync/org/вечрит.org" . 216) ("/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" . 32962) ("/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" . 9281)))
