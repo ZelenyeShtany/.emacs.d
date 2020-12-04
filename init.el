@@ -565,6 +565,10 @@ There are two things you can do about this warning:
 
 (use-package pkg-info)
 
+(use-package magit
+  :commands (magit)
+  )
+
 ;;; IRC
 (setenv "IRCNICK" "khakipants33")
 (use-package erc
@@ -2674,7 +2678,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 (use-package ivy
   :diminish ivy-mode
   :config
-  (ivy-mode 1)
+  (ivy-mode 1)  
   )
 
 (autoload
@@ -2753,6 +2757,14 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :diminish counsel-mode
   :config
   (counsel-mode 1)
+  (setq ivy-use-selectable-prompt t)
+  (setq ivy-initial-inputs-alist
+	(quote
+	 ((counsel-minor . "^+")
+	  (counsel-package . "^+")
+	  (counsel-org-capture . "")
+	  (counsel-M-x . "")
+	  (counsel-describe-symbol . ""))))
   :init
   (global-set-key [remap org-set-tags-command] #'counsel-org-tag)
   (global-set-key [remap describe-function] #'counsel-describe-function)
@@ -3148,14 +3160,6 @@ Useful when you're listening lectures, podcasts or whatever.
           )
    )
 
-(setq ivy-use-selectable-prompt t)
-(setq ivy-initial-inputs-alist
-      (quote
-       ((counsel-minor . "^+")
-	(counsel-package . "^+")
-	(counsel-org-capture . "")
-	(counsel-M-x . "")
-	(counsel-describe-symbol . ""))))
 
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
