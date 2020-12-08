@@ -27,6 +27,7 @@
 (require 'esup)
 ;;; Add to list
 (add-to-list 'load-path "~/.emacs.d/elpa/use-package-20200629.1856")
+(add-to-list 'load-path "~/.emacs.d/org-ql/")
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (add-to-list 'load-path "~/.emacs.d/elpa/cmake-mode-20190710.1319")
@@ -89,7 +90,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/git-commit-20200828.1753")
 (add-to-list 'load-path "~/.emacs.d/elpa/gntp-20141025.250")
 (add-to-list 'load-path "~/.emacs.d/elpa/gnupg")
-;;(add-to-list 'load-path "~/.emacs.d/elpa/gruvbox-theme-20200807.855")
+(add-to-list 'load-path "~/.emacs.d/elpa/gruvbox-theme-20200807.855")
 ;;(add-to-list 'load-path "~/.emacs.d/elpa/afternoon-theme-20140104.1859")
 (add-to-list 'load-path "~/.emacs.d/elpa/hamburg-theme-20160123.740")
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-20200719.557")
@@ -137,7 +138,6 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/org-download-20200615.936")
 (add-to-list 'load-path "~/.emacs.d/elpa/org-mind-map-20180826.2340")
 (add-to-list 'load-path "~/.emacs.d/elpa/org-mru-clock-20200930.819")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-ql-20200713.909")
 (add-to-list 'load-path "~/.emacs.d/elpa/org-roam-20201005.1902")
 (add-to-list 'load-path "~/.emacs.d/elpa/org-super-agenda-20200310.1337")
 (add-to-list 'load-path "~/.emacs.d/elpa/org-superstar-20200818.2257")
@@ -459,7 +459,7 @@ Probably not required))."
       (priority date)
       :super-groups org-super-agenda-groups)))
  '(package-selected-packages
-   '(elisp-benchmarks cmake-mode expand-region md4rd elfeed w3m mu4e lsp-modeline esup lsp-clangd dired-du ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode org-ql counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(elisp-benchmarks cmake-mode expand-region md4rd elfeed w3m mu4e lsp-modeline esup lsp-clangd dired-du ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
  '(powerline-display-buffer-size (if my/phone-p nil t))
  '(powerline-display-mule-info nil)
  '(safe-local-variable-values
@@ -2234,10 +2234,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :hook ((emacs-lisp-mode) . hs-minor-mode)
   )
 
-(add-to-list 'load-path "~/.emacs.d/elpa/org-ql-20200713.909/")
-(use-package org-ql
-  :defer t
-  )
+(use-package org-ql)
 
 (use-package beacon
   :diminish beacon-mode
@@ -2322,8 +2319,8 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;;(ivy-rich-mode 1)
 ;;)
 
-;;(use-package afternoon-theme)
-;;(load-theme 'afternoon t)
+(use-package gruvbox)
+(load-theme 'gruvbox-dark-hard t)
 
 (define-key global-map (kbd "<prior>") #'my/sound-while-clocking-in)
 (define-key global-map (kbd "<next>") #'org-clock-out)

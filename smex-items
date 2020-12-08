@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- fundamental-mode
- magit
- python-mode
- smartparens-mode
- getenv
- tetris
- eval-buffer
+ counsel-package
+ org-ql-view-todo
+ emacs-version
+ wdired-change-to-wdired-mode
+ elfeed
+ fringe-mode
+ esup
 )
 
 ;; ----- smex-data -----
@@ -84,7 +84,7 @@
  (scroll-up-1 . 1)
  (delete-window . 2)
  (imenu . 6)
- (fringe-mode . 20)
+ (fringe-mode . 23)
  (linum-mode . 2)
  (helm-M-x . 9)
  (load-file . 4)
@@ -123,13 +123,13 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 22)
+ (counsel-load-theme . 25)
  (counsel-yank-pop . 1)
  (counsel-ag . 102)
- (counsel-package . 197)
+ (counsel-package . 199)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 137)
+ (company-mode . 141)
  (company-complete . 2)
  (counsel-org-capture . 334)
  (all-the-icons-install-fonts . 1)
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 230)
+ (emacs-init-time . 237)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 24)
@@ -409,14 +409,14 @@
  (web-mode-toggle-current-element-highlight . 1)
  (my/number-of-spaces-at-point . 1)
  (table-widen-cell . 1)
- (org-ql-view-todo . 2)
+ (org-ql-view-todo . 4)
  (helm-org-ql-views . 1)
  (helm-org-ql . 1)
  (org-copy-subtree . 7)
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
- (emacs-version . 14)
+ (emacs-version . 16)
  (my/json-point . 19)
  (json-pretty-print-buffer . 3)
  (test42 . 6)
@@ -561,14 +561,14 @@
  (semantic-gcc-setup . 1)
  (dired-du-mode . 1)
  (flycheck-next-error . 32)
- (flycheck-mode . 10)
+ (flycheck-mode . 18)
  (org-show-block-all . 2)
  (lsp-ui-mode . 6)
  (disassemble . 2)
  (pong . 1)
  (solitaire . 1)
  (cua-cut-region . 1)
- (wdired-change-to-wdired-mode . 30)
+ (wdired-change-to-wdired-mode . 32)
  (size-indication-mode . 4)
  (display-time-mode . 1)
  (spaceline-toggle-global . 3)
@@ -579,7 +579,7 @@
  (benchmark-init/activate . 1)
  (benchmark-init/deactivate . 1)
  (benchmark-init/install . 1)
- (esup . 14)
+ (esup . 15)
  (lsp . 1)
  (lsp-ui-flycheck-list-mode . 1)
  (erc . 18)
@@ -608,7 +608,7 @@
  (gnus-group-list-all-groups . 1)
  (mu4e-mark-at-point . 1)
  (eww-list-buffers . 1)
- (elfeed . 6)
+ (elfeed . 11)
  (elfeed-update . 2)
  (reddit . 7)
  (md4rd . 1)
@@ -632,7 +632,7 @@
  (counsel-outline . 1)
  (lsp-ui-doc-hide . 1)
  (lsp-ui-doc-glance . 1)
- (org-mind-map-write . 3)
+ (org-mind-map-write . 38)
  (dired-undo . 1)
  (json-pretty-print-buffer-ordered . 1)
  (flycheck-verify-setup . 1)

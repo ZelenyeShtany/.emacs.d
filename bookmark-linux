@@ -1,4 +1,4 @@
-;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
@@ -223,8 +223,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/gitserver/org/inbox.org")
- (front-context-string . "**** package man")
- (rear-context-string . "20-12-04 Friday\n")
- (position . 228491))
+ (filename . "/data/Sync/tables/sleep diary/2020/data.json")
+ (front-context-string)
+ (rear-context-string . "\"0000\",4]]\n]\n\n}\n")
+ (position . 4127))
 )

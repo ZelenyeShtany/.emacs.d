@@ -1,0 +1,3 @@
+[submodule "org-ql"]
+	path = org-ql
+	url = https://github.com/alphapapa/org-ql
