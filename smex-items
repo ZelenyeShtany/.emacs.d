@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- counsel-package
- org-ql-view-todo
- emacs-version
- wdired-change-to-wdired-mode
- elfeed
- fringe-mode
  esup
+ emacs-version
+ emacs-init-time
+ elfeed
+ wdired-change-to-wdired-mode
+ org-ql-view-todo
+ fringe-mode
 )
 
 ;; ----- smex-data -----
@@ -192,7 +192,7 @@
  (cua-rectangle-mark-mode . 2)
  (emojify-insert-emoji . 3)
  (wg-save-session . 27)
- (emacs-init-time . 237)
+ (emacs-init-time . 247)
  (emacs-uptime . 2)
  (debug . 5)
  (check-parens . 24)
@@ -409,14 +409,14 @@
  (web-mode-toggle-current-element-highlight . 1)
  (my/number-of-spaces-at-point . 1)
  (table-widen-cell . 1)
- (org-ql-view-todo . 4)
+ (org-ql-view-todo . 6)
  (helm-org-ql-views . 1)
  (helm-org-ql . 1)
  (org-copy-subtree . 7)
  (org-browse-news . 1)
  (view-emacs-news . 2)
  (json-mode . 1)
- (emacs-version . 16)
+ (emacs-version . 18)
  (my/json-point . 19)
  (json-pretty-print-buffer . 3)
  (test42 . 6)
@@ -568,7 +568,7 @@
  (pong . 1)
  (solitaire . 1)
  (cua-cut-region . 1)
- (wdired-change-to-wdired-mode . 32)
+ (wdired-change-to-wdired-mode . 33)
  (size-indication-mode . 4)
  (display-time-mode . 1)
  (spaceline-toggle-global . 3)
@@ -579,7 +579,7 @@
  (benchmark-init/activate . 1)
  (benchmark-init/deactivate . 1)
  (benchmark-init/install . 1)
- (esup . 15)
+ (esup . 19)
  (lsp . 1)
  (lsp-ui-flycheck-list-mode . 1)
  (erc . 18)
@@ -608,7 +608,7 @@
  (gnus-group-list-all-groups . 1)
  (mu4e-mark-at-point . 1)
  (eww-list-buffers . 1)
- (elfeed . 11)
+ (elfeed . 12)
  (elfeed-update . 2)
  (reddit . 7)
  (md4rd . 1)

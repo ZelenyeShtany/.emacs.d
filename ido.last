@@ -2,6 +2,8 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/usr/share/emacs/26.3/" . "etc/")
+ ("/usr/share/emacs/" . "26.3/")
  ("/data/Sync/tables/exercises tracker/" . "2020/")
  ("/data/Sync/tables/" . "exercises tracker/")
  ("/usr/lib/python3/dist-packages/" . "PyQt5/")
@@ -107,6 +109,12 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/usr/share/emacs/26.3/etc/" (24522 32433 487378 921000) "forms/" "GNU" "NEWS.23" "emacs.service" "DOC" "gnus-tut.txt" "HELLO" "NXML-NEWS" "ps-prin1.ps" "ps-prin0.ps" "images/" "tutorials/" "ERC-NEWS" "nxml/" "NEWS.21" "emacs-buffer.gdb" "NEWS.24" "THE-GNU-PROJECT" "e/" "./" "TODO" "AUTHORS" "NEWS" "package-keyring.gpg" "LINUX-GNU" "ses-example.ses" "spook.lines" "NEWS.18" "publicsuffix.txt.gz" "future-bug" "GNUS-NEWS" "COPYING" "enriched.txt" "../" "HISTORY" "README" "compilation.txt" "ORG-NEWS" "NEWS.1-17" "ETAGS.README" "rgb.txt" "NEWS.25" "NEXTSTEP" "NEWS.22" "MACHINES" "PROBLEMS" "ETAGS.EBNF" "DEBUG" "MORE.STUFF" "WHY-FREE" "CALC-NEWS" "grep.txt" "CENSORSHIP" "charsets/" "FTP" "edt-user.el" "emacs.appdata.xml" "TERMS" "gnus/" "themes/" "yow.lines" "srecode/" "org/" "ORDERS" "NEWS.19" "refcards/" "DISTRIB" "emacs.icon" "MH-E-NEWS" "schema/" "NEWS.20")
+
+ ("/usr/share/emacs/26.3/" (24522 32431 715372 442000) "./" "site-lisp/" "lisp/" "../" "etc/")
+
+ ("/usr/share/emacs/" (24522 32429 927365 904000) "./" "site-lisp/" "../" "26.3/")
+
  ("/home/zesh/.config/mpd/" (24524 32697 884098 101000) "./" "../" "mpd.conf")
 
  ("/etc/" (24524 27702 891296 840000) "ld.so.conf" "thermald/" "ufw/" "gtk-2.0/" "ubuntu-advantage/" "issue" "vim/" "perl/" "dconf/" "hddtemp.db" "grub.d/" "apport/" "environment" "mtab" "cupshelpers/" "pam.d/" "shadow" "eb.conf" "shells" "brltty.conf" "initramfs-tools/" "resolvconf/" "hostname" "aliases" "subuid-" "network/" "bash_completion.d/" "ldap/" "bash.bashrc" "pam.conf" "fstab~" "ocamlfind.conf" "pm/" "group-" "protocols" "mke2fs.conf" "insserv.conf.d/" "sensors.d/" "adduser.conf" "logrotate.d/" "rpc" "debconf.conf" "networkd-dispatcher/" "vtrgb" "X11/" "login.defs" "python3.8/" "deluser.conf" "cron.daily/" "rc1.d/" "inxi.conf" "host.conf" "papersize" "os-release" "fuse.conf" "pki/" "hosts" "doc-base/" "rc5.d/" "rc4.d/" "security/" "passwd-" "vdpau_wrapper.cfg" "sudoers.d/" "newt/" "wgetrc" "calendar/" "ppp/" "networks" "subgid" "popularity-contest.conf" "sgml/" "update-notifier/" "profile" "resolv.conf" "default/" "magic" "postfix/" "sensors3.conf" "profile.d/" "crontab" "cron.monthly/" "wpa_supplicant/" "tmpfiles.d/" "apparmor/" "sudoers" "rsyslog.conf" "systemd/" "modprobe.d/" "lightdm/" "chatscripts/" "gnome-system-tools/" "groff/" "xfce4/" "usb_modeswitch.conf" "OpenCL/" "libblockdev/" "apache2/" "cron.weekly/" "pnm2ppa.conf" "nanorc" "depmod.d/" "emacs/" "purple/" "dkms/" "sane.d/" "libpaper.d/" "modules-load.d/" "console-setup/" "legal" "alsa/" "python3/" "openal/" "rmt" "ssl/" "bindresvport.blacklist" "iproute2/" "mailcap" "quilt.quiltrc" "hdparm.conf" "hosts.deny" "ifplugd/" "libaudit.conf" "gdb/" "bluetooth/" "rc0.d/" "rcS.d/" "ghostscript/" "ld.so.conf.d/" "brltty/" "lsb-release" ".pwd.lock" "init.d/" "cron.d/" "logrotate.conf" "pulse/" "timezone" "debian_version" "libreoffice/" "fonts/" "guest-session/" "group" "mail.rc" "gimp/" "logcheck/" "inputrc" "ltrace.conf" "usb_modeswitch.d/" "brlapi.key" "skel/" "apt/" "hosts.allow" "kernel-img.conf" "rc3.d/" "udev/" "sysctl.conf" "geoclue/" "appstream.conf" "xml/" "snmp/" "alternatives/" "nsswitch.conf" "ssh/" "xattr.conf" "sysctl.d/" "dpkg/" "terminfo/" "kerneloops.conf" "update-manager/" "apparmor.d/" "lighttpd/" "magic.mime" "init/" "fstab" "gshadow-" "timidity/" "xdg/" "cups/" "mailcap.order" "mpd.conf" "UPower/" "apm/" "libnl-3/" "gnome/" "update-motd.d/" "pcmcia/" "ld.so.cache" "dictionaries-common/" "locale.alias" "polkit-1/" "PackageKit/" "e2scrub.conf" "subuid" "machine-id" "modules" "acpi/" "thunderbird/" "zsh_command_not_found" "netplan/" "gss/" "issue.net" "anacrontab" "gtk-3.0/" "hostid" "bash_completion" "fwupd/" "updatedb.conf" "ucf.conf" "gai.conf" "cron.hourly/" "localtime" "binfmt.d/" "avahi/" "environment.d/" "NetworkManager/" "rc6.d/" "libao.conf" "manpath.config" "texmf/" "shadow-" "gshadow" "ca-certificates.conf" "ca-certificates/" "ca-certificates.conf.dpkg-old" "hp/" "dhcp/" "rsyslog.d/" "passwd" "prime-discrete" "mime.types" "ImageMagick-6/" "ethertypes" "dbus-1/" "mysql/" "glvnd/" "transmission-daemon/" "firefox/" "rc2.d/" "selinux/" "speech-dispatcher/" "kernel/" "opt/" "services" "vulkan/" "locale.gen" "subgid-" "udisks2/" "../" "./")
@@ -300,12 +308,6 @@
  ("/snap/emacs/" (24314 9995 603860 726000) "../" "current/" "./" "296/")
 
  ("/snap/emacs/296/" (24037 63329 0 0) "var/" "usr/" "snap/" "setup-env" "sbin/" "meta/" "lib/" "etc/" "command-etags.wrapper" "command-emacsclient.wrapper" "command-ebrowse.wrapper" "command-ctags.wrapper" "../" "./")
-
- ("/snap/emacs/296/usr/" (24037 63250 0 0) "share/" "sbin/" "libexec/" "lib/" "include/" "bin/" "../" "./")
-
- ("/snap/emacs/296/usr/share/" (24037 63250 0 0) "xml/" "thumbnailers/" "themes/" "polkit-1/" "pkgconfig/" "pam-configs/" "mime/" "metainfo/" "menu/" "man/" "m17n/" "lintian/" "libthai/" "libsensors4/" "libdrm/" "info/" "icons/" "gvfs/" "glvnd/" "glib-2.0/" "fonts/" "emacs/" "drirc.d/" "doc-base/" "doc/" "dbus-1/" "bug/" "bash-completion/" "apport/" "applications/" "alsa/" "X11/" "ImageMagick-6/" "GConf/" "../" "./")
-
- ("/snap/emacs/296/usr/share/emacs/" (24037 63250 0 0) "site-lisp/" "26.3/" "../" "./")
 )
 
 ;; ----- ido-unc-hosts-cache -----

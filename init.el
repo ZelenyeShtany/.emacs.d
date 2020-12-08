@@ -1,7 +1,13 @@
 
 ;; speeds up initialization
-(setq gc-cons-threshold 100000000)
+
+;; The GC can easily double startup time, so we suppress it at startup
+;; by turning up gc-cons-threshold (and perhaps gc-cons-percentage) temporarily
+(setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
+      gc-cons-percentage 0.6)
 ;; for better lsp-mode performance
+
+
 
 ;; Increase the amount of data which Emacs
 ;; reads from the process. Again the emacs default
@@ -1261,7 +1267,7 @@ Narrow to defun if it's not."
   )
 
 (use-package org
-  :defer t
+  :commands (org-mode)
   :mode ("\\.org\\'" . org-mode)
   :custom
   (org-agenda-files (list my-org-directory))
@@ -2234,7 +2240,13 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :hook ((emacs-lisp-mode) . hs-minor-mode)
   )
 
-(use-package org-ql)
+;; (use-package org-ql
+;;   :after (org)
+;;   )
+
+(use-package org-ql-view
+  :commands (org-ql-view)
+  )
 
 (use-package beacon
   :diminish beacon-mode
@@ -3156,6 +3168,15 @@ Useful when you're listening lectures, podcasts or whatever.
           ("M-<right>" . 'forward-sexp)
           )
    )
+
+;; However, it is important to reset it eventually. Not doing so will
+;; cause garbage collection freezes during long-term interactive use.
+;; Conversely, a gc-cons-threshold that is too small will cause stuttering.
+;; We use 16mb as our default
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (setq gc-cons-threshold 16777216 ; 16mb
+          gc-cons-percentage 0.1)))
 
 
 ;; (custom-set-faces
