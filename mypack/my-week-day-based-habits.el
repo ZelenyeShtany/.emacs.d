@@ -352,19 +352,18 @@ Create it if it doesnt exist"
 (defun my-org-habits/find-recur-tasks-by-day(day)
   (let*
       (
-       (regex "\\* +|.*?Mon.*?|")
        (tasks
 	(let*
 	    (
 	     (headings-titles (list))
 	     )
-	  (save-window-excursion
+	  (save-excursion(save-window-excursion
 	    (find-file (concat my-org-directory "regular.org"))
 	    (widen)
 	    (goto-char (point-min))
 	    (while (re-search-forward (concat "^\\*+ +.*?|.*?" day ".*?|") nil t)
 	      (push (org-element-property :title (org-element-at-point)) headings-titles)
-	      ))
+	      )))
 	    headings-titles)))
     tasks
     )
@@ -600,10 +599,6 @@ Create it if it doesnt exist"
 	    (replace-regexp-in-string "|.+?| +" "" task))
 	   )))))))
 
-(defun org-dblock-write:regulars-table (params)
-  
-
-  )
 
 (defun org-dblock-write:block-update-time (params)
   (let ((fmt (or (plist-get params :format) "%d. %m. %Y")))
@@ -616,17 +611,19 @@ Create it if it doesnt exist"
       (
        (headings-titles (list))
        )
-    (save-window-excursion
+    (save-excursion(save-window-excursion
       (find-file (concat my-org-directory orgfile))
       (widen)
       (goto-char (point-min))
       (while (re-search-forward (concat "^\\*+ +.*?|.*?|") nil t)
 	(push (org-element-property :title (org-element-at-point)) headings-titles)
-	))
+	)))
     headings-titles)
   )
 
 (defun org-dblock-write:org-table-test (params)
+  (require 'org-table)
+  (require 'cl-lib)
   (let ((recurring-tasks (my-org-habits/find-recur-tasks "regular.org"))
 	(fmt (or (plist-get params :format) "%d. %m. %Y"))
 	(access-to-vector-indices
@@ -645,83 +642,84 @@ Create it if it doesnt exist"
     (org-table-insert-row t)
     (dolist (task recurring-tasks)
       (dolist (day (list "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"))
-	(if
-	    ;; if task string contains '|...'day'(00:00(-(00:00))?)?...([00:00(-(00:00))?]|)?...|'
-	    (string-match (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?.*?\\(\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\]\\)?[. ]*?|") task)
-	    ;; insert task name into table field (without |...| and org-links)
-	    (insert (replace-regexp-in-string
-		     org-bracket-link-regexp "\\2"
-		     (replace-regexp-in-string "|.+?| +" "" task))))
-	(cond
-	 ;; if time range for this day exists
-	 ((match-string 4 task)
-	  ;; insert duration of this time in '[HH:MM]' format
-	  (insert (let* (
-			 (start (ts-parse (match-string 2 task)))
-			 (end (ts-parse(match-string 4 task)))
-			 (diff-in-minutes (/ (round(ts-difference end start)) 60))
-			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
-			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
+	(let* (
+	       (task-name)
+	       (task-duration)
+	       (task-start-time)
+	       (task-end-time)
+	       (task-time-range)
+	       )
+	  (cl-labels ((format-element
+		       (match1 match2)
+		       (let* (
+			      (start (ts-parse (match-string match1 task)))
+			      (end (ts-parse(match-string match2 task)))
+			      (diff-in-minutes (/ (round(ts-difference end start)) 60))
+			      (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			      (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			      )
+			 ;; add diff-in-minutes to index of corresponding day in vector of summary time
+			 (aset summary (cdr(assoc day access-to-vector-indices))
+			       (+ diff-in-minutes (aref summary (cdr(assoc day access-to-vector-indices)))))
+			 (setq task-duration (concat  "[" hours ":" minutes "]")
+			       task-start-time (match-string match1 task)
+			       task-end-time (match-string match2 task)
+			       task-time-range (concat "[" task-start-time "-" task-end-time "]")
+			       )
 			 )
-		    ;; add diff-in-minutes to index of corresponding day in vector of summary time
-		    (aset summary (cdr(assoc day access-to-vector-indices))
-			  (+ diff-in-minutes (aref summary (cdr(assoc day access-to-vector-indices)))))
-		    (concat " [" hours ":" minutes"]")
-		    ))
+		       ))
+	    (and
+	     ;; if task string contains '|...'day'(00:00(-(00:00))?)?...([00:00(-(00:00))?]|)?...|'
+	     (string-match (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?.*?\\(\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\]\\)?[. ]*?|") task)
+	     ;; insert task name into table field (without |...| and org-links)
+	     (setq task-name (replace-regexp-in-string
+			      org-bracket-link-regexp "\\2"
+			      (replace-regexp-in-string "|.+?| +" "" task)))
+	     (cond
+	      ;; if time range for this day exists
+	      ((match-string 4 task)
+	       ;; insert duration of this time in '[HH:MM]' format
+	       (format-element 2 4)
+	       )
+	      ;; if general time range exists for this task  -- [HH:MM-HH:MM] format (within square brackets)
+	      ((match-string 8 task)
+	       ;; insert duration of this time in '[HH:MM]' format
+	       (format-element 6 8)
+	       ))
+	     (insert (concat task-time-range task-name task-duration)))  
+	    )
 	  )
-	 ;; if general time range exists for this task  -- [HH:MM-HH:MM] format (within square brackets)
-	 ((match-string 8 task)
-	  ;; insert duration of this time in '[HH:MM]' format
-	  (insert (let* (
-			 (start (ts-parse (match-string 6 task)))
-			 (end (ts-parse(match-string 8 task)))
-			 (diff-in-minutes (/ (round(ts-difference end start)) 60))
-			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
-			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
-			 )
-		    ;; add diff-in-minutes to index of corresponding day in vector of summary time
-		    (aset summary (cdr(assoc day access-to-vector-indices))
-			  (+ diff-in-minutes (aref summary (cdr(assoc day access-to-vector-indices)))))
-		    (concat " [" hours ":" minutes"]")
-		    ))
-	  )
-	 )
-	
-	(org-table-next-field)
-	))
+	(org-table-next-field)))
     (org-table-insert-column)
     (org-table-move-column-left)
     (insert "summary:")
     (mapcar (lambda(diff-in-minutes) (org-table-next-field)
 	      (insert (let* (
-			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
-			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
-			 )
-		    (concat hours ":" minutes)
-		    ))
+			     (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			     (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			     )
+			(concat hours ":" minutes)
+			))
 	      )
 	    summary)
-    (org-table-align)
-    
-    )
-  )
+    (org-table-align)))
 
-(defun mytest
-    (let (
-	  (ma (list (cons "Mon" 0)
-	       (cons "Tue" 0)
-	       (cons "Wed" 0)
-	       (cons "Thu" 0)
-	       (cons "Fri" 0)
-	       (cons "Sat" 0)
-	       (cons "Sun" 0)
-	       ))
-	  (sum (make-vector 5 0))
-	  )
-      ;;(assoc "Mon" ma)
-      (mapcar 'insert (mapcar 'number-to-string sum))
+;; (defun mytest ()
+;;     (let (
+;; 	  (ma (list (cons "Mon" 0)
+;; 	       (cons "Tue" 0)
+;; 	       (cons "Wed" 0)
+;; 	       (cons "Thu" 0)
+;; 	       (cons "Fri" 0)
+;; 	       (cons "Sat" 0)
+;; 	       (cons "Sun" 0)
+;; 	       ))
+;; 	  (sum (make-vector 5 0))
+;; 	  )
+;;       ;;(assoc "Mon" ma)
+;;       (mapcar 'insert (mapcar 'number-to-string sum))
       
-    )
-)
+;;     )
+;; )
 
 (provide 'my-week-day-based-habits)
