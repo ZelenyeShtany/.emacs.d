@@ -624,6 +624,7 @@ Create it if it doesnt exist"
 (defun org-dblock-write:org-table-test (params)
   (require 'org-table)
   (require 'cl-lib)
+  (require 'ts)
   (let ((recurring-tasks (my-org-habits/find-recur-tasks "regular.org"))
 	(fmt (or (plist-get params :format) "%d. %m. %Y"))
 	(access-to-vector-indices
@@ -690,6 +691,34 @@ Create it if it doesnt exist"
 	    )
 	  )
 	(org-table-next-field)))
+    ;; sorting
+    (let* (
+	   (fields (list))
+	   (current-row)
+	   )
+     (while (org-at-table-p)
+      (my/forward-line -1)
+      )
+    (my/forward-line 2) ;; point at first row of table (second if we count column names)
+    ;;(org-table-get-field)
+
+    ;; filling fields list
+    (while (<= current-row (- (my-org-table-height) 2) )
+      (let (
+	    (field (org-table-blank-field)))
+	(unless (not (string= (field) ""))
+	  (push field fields)))
+      (my/forward-line 1)
+      (setq current-row (1+ current-row))
+      )
+
+    ;; sorting fields list
+    (sort fields 'my-org-table/sort-fields)
+    ;;(org-table-move-cell-down)
+    ;;(my-org-table-height)
+    ;;(org-at-table-p)
+    )
+    ;; /sorting
     (org-table-insert-column)
     (org-table-move-column-left)
     (insert "summary:")
@@ -699,8 +728,7 @@ Create it if it doesnt exist"
 			     (minutes (format "%1$02d"(% diff-in-minutes 60)))
 			     )
 			(concat hours ":" minutes)
-			))
-	      )
+			)))
 	    summary)
     (org-table-align)))
 
@@ -718,8 +746,30 @@ Create it if it doesnt exist"
 ;; 	  )
 ;;       ;;(assoc "Mon" ma)
 ;;       (mapcar 'insert (mapcar 'number-to-string sum))
-      
+
 ;;     )
 ;; )
+
+(defun my-org-table/sort-fields (field1 field2)
+  (require 'ts)
+  (let* (
+	 (regex "\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\]")
+	 (field1-start-time (progn
+			      (string-match regex field1)
+			      (ts-parse (match-string 1 field1))
+			      ))
+	 (field2-start-time (progn
+			      (string-match regex field2)
+			      (ts-parse (match-string 1 field2)))))
+    (ts< field1-start-time field2-start-time)))
+
+(defun my-org-table-height()
+  (let* ((count 0))
+    (save-excursion(while (org-at-table-p)(forward-line -1))
+    (while (progn
+	     (forward-line 1)
+	     (org-at-table-p))
+      (setq count (1+ count))))
+    count))
 
 (provide 'my-week-day-based-habits)
