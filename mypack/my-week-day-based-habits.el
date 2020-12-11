@@ -331,10 +331,10 @@ Create it if it doesnt exist"
     
     (while (ts<= time-unit-iterator table-end-time)
       (table--cell-insert-char
-       (concat
-	(number-to-string (ts-hour time-unit-iterator))
+       (concat ;;(format "%1$03d" 80)
+	(format "%1$02d" (ts-hour time-unit-iterator))
 	":"
-	(number-to-string (ts-minute time-unit-iterator))
+	(format "%1$02d" (ts-minute time-unit-iterator))
 	)
        )
 
@@ -345,16 +345,14 @@ Create it if it doesnt exist"
       ;; increment time-unit-iterator by 30 minutes
       (setq time-unit-iterator (ts-adjust 'minute +30 time-unit-iterator))
       )
-
-
     )
   )
+
 ;;(org-element-property :title (org-element-at-point))
 (defun my-org-habits/find-recur-tasks-by-day(day)
   (let*
       (
        (regex "\\* +|.*?Mon.*?|")
-       
        (tasks
 	(let*
 	    (
@@ -388,15 +386,22 @@ Create it if it doesnt exist"
       )
     )
 
+(defun my/forward-line(&optional arg)
+(let ((column (current-column)))
+  (forward-line arg)
+  (move-to-column column))
+  )
+
 (defun my-org-table/get-cell-value (row column)
-  ;; TODO dumb code
+  ;; CAUTION dumb code
   (let*
       (
        (beg-of-cell-line)
        (end-of-cell-line)
        (cell-value "")
        )
-    (my-org-table/goto-cell row column)
+    (save-excursion
+      (my-org-table/goto-cell row column)
     (while (not (my-org-table/point-at-table-horizontal-border-p))
       (setq beg-of-cell-line (point))
       (while (not (eq (char-after) ?|))
@@ -404,15 +409,18 @@ Create it if it doesnt exist"
 	)
       (setq end-of-cell-line (point))
       (setq cell-value (concat cell-value (buffer-substring-no-properties beg-of-cell-line end-of-cell-line) "\n"))
-      (next-line)
+      (my/forward-line)
       (while (and
 	      (not (eq (char-before) ?|))
 	      (not (eq (char-before) ?+))
 	      )
 	(forward-char -1)
 	)
-      )
-    cell-value
+      ))
+    (replace-regexp-in-string
+     "\\(^ +\\| +$\\)" ""
+     (replace-regexp-in-string "[[:space:]
+]+" " " cell-value) )
     )
   )
 
@@ -422,7 +430,6 @@ Create it if it doesnt exist"
        (current-line (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
        (res (string-match "\\(\\+-+\\)+\\+" current-line))
        )
-    
     (and
      res
      (>= (point) (+ (match-beginning 0) (line-beginning-position)))
@@ -466,14 +473,45 @@ Create it if it doesnt exist"
 (defun my-org-table/get-column-number-by-header-value (header-value)
   (let*
       (
-       ()
-       ()
+       (found nil)
+       (header-number 0)
+       (columns-amount (my-org-table/table-columns-number))
        )
-    (my-org-table/goto-cell 1 1)
-    (while
-	(table-forward-cell ))
+    (while (and
+	    (not found)
+	    (setq header-number (1+ header-number))
+	    (<= header-number columns-amount)
+	    )
+
+      (if (string= header-value (my-org-table/get-cell-value 1 header-number))
+	  (setq found t)
+	)
+      
+      )
+    header-number
       )
     )
+
+(defun my-org-table/get-row-number-by-column-value (column-name column-value)
+  (let*
+      (
+       (column-number (my-org-table/get-column-number-by-header-value column-name))
+       (rows-amount (my-org-table/table-rows-number))
+       (row-iter 1)
+       (found nil)
+       )
+    (while (and
+	    (not found)
+	    (setq row-iter (1+ row-iter))
+	    (<= row-iter rows-amount)
+	    )
+      (if (string= column-value (my-org-table/get-cell-value row-iter column-number))
+	  (setq found t)
+	  )
+      )
+    row-iter
+    )
+  )
 
 (defun my-org-table/append-to-unspec-time (day)
   (let*
@@ -485,6 +523,22 @@ Create it if it doesnt exist"
       )
     )
 
+
+(defun my-org-table/expand-cell-down (start-time end-time)
+
+  (let*
+      (
+       (start-ts (ts-parse start-time))
+       (end-ts (ts-parse end-time))
+       (subtr-ts (/ (ts-difference end-ts start-ts) 60))
+       (size-of-1-time-unit 30)
+       (how-many-times-to-expand (1- (/ subtr-ts size-of-1-time-unit) ))
+       )
+    (cl-dotimes (iter how-many-times-to-expand)
+	(table-span-cell 'below))
+      )
+    
+    )
 
 (defun my-org-table/fill-schedule-table ()
   (let*
@@ -499,34 +553,175 @@ Create it if it doesnt exist"
 	(cond
 	 ;; check for time for specific day
 	 ((string-match
-	   (concat "|.*?" day "*\\([0-9]\\{2\\}:[0-9]\\{2\\}\\(-[0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\).*?|") ;; * |Mon,Tue 99:99,Fri| -- time for specific day
+	   (concat "|.*?" day " *\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\)?.*?|") ;; * |Mon,Tue 99:99,Fri| -- time for specific day
 	   task
 	   )
-	 BODY 
+	  
+	  (save-match-data(my-org-table/goto-cell
+	   (my-org-table/get-row-number-by-column-value "TIME" (match-string 3 task))
+	   (my-org-table/get-column-number-by-header-value day)))
+	  (if (not (eq (match-string 3 task) nil))
+	      (my-org-table/expand-cell-down  (match-string 1 task) (match-string 3 task))
+	      )
+	  ;; insert task text into cell
+	  (table--cell-insert-char
+	   (replace-regexp-in-string org-bracket-link-regexp "\\2"
+	    (replace-regexp-in-string "|.+?| +" "" task))
+	   )
 	  
 	 )
 
 	 ;;check for general time
 	 ((string-match
-	   (concat "|.*? *\\(\\[[0-9]\\{2\\}:[0-9]\\{2\\}\\(-[0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]\\).*?|") ;; * |Mon,Tue,Fri [99:99]| -- general time
+	   "|.*?\\[\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\)?\\].*?|" ;; * |Mon,Tue,Fri [99:99]| -- general time
 	   task
 	   )
-	 BODY 
+	  
+	  (save-match-data(my-org-table/goto-cell
+	   (my-org-table/get-row-number-by-column-value "TIME" (match-string 1 task))
+	   (my-org-table/get-column-number-by-header-value day)))
+	  (if (not (eq (match-string 3 task) nil))
+	      (my-org-table/expand-cell-down  (match-string 1 task) (match-string 3 task))
+	      )
+	  (table--cell-insert-char
+	   (replace-regexp-in-string org-bracket-link-regexp "\\2"
+	    (replace-regexp-in-string "|.+?| +" "" task))
+	   )
 	  
 	 )
-
 	 ;; no specified time in task
 	 (t
 	  ;; append to 'Unspecified time' row
-	  )
-	 
-	 )
+	  (my-org-table/goto-cell
+	   (my-org-table/get-row-number-by-column-value "TIME" "Unspecified time")
+	   (my-org-table/get-column-number-by-header-value day))
+	  (table--cell-insert-char
+	   (replace-regexp-in-string org-bracket-link-regexp "\\2"
+	    (replace-regexp-in-string "|.+?| +" "" task))
+	   )))))))
+
+(defun org-dblock-write:regulars-table (params)
+  
+
+  )
+
+(defun org-dblock-write:block-update-time (params)
+  (let ((fmt (or (plist-get params :format) "%d. %m. %Y")))
+    (insert "Last block update at: "
+            (format-time-string fmt))))
+
+
+(defun my-org-habits/find-recur-tasks(orgfile)
+  (let
+      (
+       (headings-titles (list))
+       )
+    (save-window-excursion
+      (find-file (concat my-org-directory orgfile))
+      (widen)
+      (goto-char (point-min))
+      (while (re-search-forward (concat "^\\*+ +.*?|.*?|") nil t)
+	(push (org-element-property :title (org-element-at-point)) headings-titles)
+	))
+    headings-titles)
+  )
+
+(defun org-dblock-write:org-table-test (params)
+  (let ((recurring-tasks (my-org-habits/find-recur-tasks "regular.org"))
+	(fmt (or (plist-get params :format) "%d. %m. %Y"))
+	(access-to-vector-indices
+	 (list (cons "Mon" 0)
+	       (cons "Tue" 1)
+	       (cons "Wed" 2)
+	       (cons "Thu" 3)
+	       (cons "Fri" 4)
+	       (cons "Sat" 5)
+	       (cons "Sun" 6)
+	       ))
+	(summary (make-vector 7 0))
+	
 	)
-      )
+    (insert "|mon|tue|wed|thu|fri|sat|sun|")
+    (org-table-insert-row t)
+    (dolist (task recurring-tasks)
+      (dolist (day (list "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"))
+	(if
+	    ;; if task string contains '|...'day'(00:00(-(00:00))?)?...([00:00(-(00:00))?]|)?...|'
+	    (string-match (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?.*?\\(\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\]\\)?[. ]*?|") task)
+	    ;; insert task name into table field (without |...| and org-links)
+	    (insert (replace-regexp-in-string
+		     org-bracket-link-regexp "\\2"
+		     (replace-regexp-in-string "|.+?| +" "" task))))
+	(cond
+	 ;; if time range for this day exists
+	 ((match-string 4 task)
+	  ;; insert duration of this time in '[HH:MM]' format
+	  (insert (let* (
+			 (start (ts-parse (match-string 2 task)))
+			 (end (ts-parse(match-string 4 task)))
+			 (diff-in-minutes (/ (round(ts-difference end start)) 60))
+			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			 )
+		    ;; add diff-in-minutes to index of corresponding day in vector of summary time
+		    (aset summary (cdr(assoc day access-to-vector-indices))
+			  (+ diff-in-minutes (aref summary (cdr(assoc day access-to-vector-indices)))))
+		    (concat " [" hours ":" minutes"]")
+		    ))
+	  )
+	 ;; if general time range exists for this task  -- [HH:MM-HH:MM] format (within square brackets)
+	 ((match-string 8 task)
+	  ;; insert duration of this time in '[HH:MM]' format
+	  (insert (let* (
+			 (start (ts-parse (match-string 6 task)))
+			 (end (ts-parse(match-string 8 task)))
+			 (diff-in-minutes (/ (round(ts-difference end start)) 60))
+			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			 )
+		    ;; add diff-in-minutes to index of corresponding day in vector of summary time
+		    (aset summary (cdr(assoc day access-to-vector-indices))
+			  (+ diff-in-minutes (aref summary (cdr(assoc day access-to-vector-indices)))))
+		    (concat " [" hours ":" minutes"]")
+		    ))
+	  )
+	 )
+	
+	(org-table-next-field)
+	))
+    (org-table-insert-column)
+    (org-table-move-column-left)
+    (insert "summary:")
+    (mapcar (lambda(diff-in-minutes) (org-table-next-field)
+	      (insert (let* (
+			 (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			 (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			 )
+		    (concat hours ":" minutes)
+		    ))
+	      )
+	    summary)
+    (org-table-align)
+    
     )
+  )
+
+(defun mytest
+    (let (
+	  (ma (list (cons "Mon" 0)
+	       (cons "Tue" 0)
+	       (cons "Wed" 0)
+	       (cons "Thu" 0)
+	       (cons "Fri" 0)
+	       (cons "Sat" 0)
+	       (cons "Sun" 0)
+	       ))
+	  (sum (make-vector 5 0))
+	  )
+      ;;(assoc "Mon" ma)
+      (mapcar 'insert (mapcar 'number-to-string sum))
+      
     )
-
-
-
+)
 
 (provide 'my-week-day-based-habits)

@@ -342,4 +342,15 @@ no CREATED property"
 ;;          (list (y-or-n-p "Update time for further days also? ")))
 ;;  (message "pashol von" )
 ;;  )
+
+
+(defun my-regex/replace-all-matches-in-string (regexp rep string)
+  "Replace all matches of `REGEXP' in `STRING' and return result."
+  (while
+      (progn
+	(setq str (replace-regexp-in-string regexp rep string nil t 2))
+	(not (eq (string-match regexp string 0) nil))
+	)
+    ))
+;; "\\(\\[.*?\\)\\(|\\)\\(.*?\\]\\)" 
 (provide 'mypack)

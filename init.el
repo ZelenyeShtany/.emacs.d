@@ -32,6 +32,8 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/esup-20200814.1400")
 (require 'esup)
 ;;; Add to list
+(add-to-list 'load-path "~/.emacs.d/emacs-calfw")
+(add-to-list 'load-path "~/.emacs.d/transmission-el")
 (add-to-list 'load-path "~/.emacs.d/elpa/use-package-20200629.1856")
 (add-to-list 'load-path "~/.emacs.d/org-ql/")
 (add-to-list 'load-path "~/.emacs.d/mypack/")
@@ -554,6 +556,27 @@ There are two things you can do about this warning:
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  )
+
+
+;; (use-package visual-regexp-steroids
+;;   :custom
+;;   (vr/command-python "python /home/zesh/.emacs.d/elpa/visual-regexp-steroids-20170222.853/regexp.py")
+;;   )
+
+(use-package calfw)
+(use-package calfw-cal)
+(use-package calfw-org)
+
+(use-package tramp
+
+  :custom
+  (tramp-default-method "ssh")
+  
+  )
+
+(use-package transmission
+  :commands (transmission transmission-add)
   )
 (use-package outline
   :bind
@@ -2248,6 +2271,10 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   :commands (org-ql-view)
   )
 
+(use-package org-ql-search
+  :after (org-ql)
+  )
+
 (use-package beacon
   :diminish beacon-mode
   )
@@ -2390,7 +2417,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 (global-set-key (kbd "C-<return>") 'cua-rectangle-mark-mode)
 (define-key global-map (kbd "C-S-f") #'replace-regexp-visual)
 (define-key cua-global-keymap (kbd "C-<return>") #'org-cua-rectangle-conflict-resolving)
-(setq debug-on-error nil)
+(setq debug-on-error t)
 
 (define-key global-map (kbd "M-?") 'chunyang-elisp-function-or-variable-quickhelp)
 (define-key help-mode-map (kbd "<DEL>") 'help-go-back)

@@ -223,8 +223,8 @@
  (rear-context-string)
  (position . 1))
 ("org-capture-last-stored"
- (filename . "/data/Sync/tables/sleep diary/2020/data.json")
- (front-context-string)
- (rear-context-string . "\"0000\",4]]\n]\n\n}\n")
- (position . 4127))
+ (filename . "/data/gitserver/org/inbox.org")
+ (front-context-string . "**** [[https://r")
+ (rear-context-string . "t.mkv\n#+end_src\n")
+ (position . 240790))
 )
