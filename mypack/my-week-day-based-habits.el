@@ -1,3 +1,4 @@
+
 ;;(defun my-org-recur-reschedule (&optional arg)
 ;;  (interactive)
 ;;  (call-interactively 'org-todo arg))
@@ -692,35 +693,11 @@ Create it if it doesnt exist"
 	  )
 	(org-table-next-field)))
     ;; sorting
-    (let* (
-	   (fields (list))
-	   (current-row)
-	   )
-     (while (org-at-table-p)
-      (my/forward-line -1)
-      )
-    (my/forward-line 2) ;; point at first row of table (second if we count column names)
-    ;;(org-table-get-field)
-
-    ;; filling fields list
-    (while (<= current-row (- (my-org-table-height) 2) )
-      (let (
-	    (field (org-table-blank-field)))
-	(unless (not (string= (field) ""))
-	  (push field fields)))
-      (my/forward-line 1)
-      (setq current-row (1+ current-row))
-      )
-
-    ;; sorting fields list
-    (sort fields 'my-org-table/sort-fields)
-    ;;(org-table-move-cell-down)
-    ;;(my-org-table-height)
-    ;;(org-at-table-p)
-    )
+    (my-org-table/sort)
     ;; /sorting
     (org-table-insert-column)
     (org-table-move-column-left)
+    (my-org-table/goto-last-row)
     (insert "summary:")
     (mapcar (lambda(diff-in-minutes) (org-table-next-field)
 	      (insert (let* (
@@ -732,23 +709,77 @@ Create it if it doesnt exist"
 	    summary)
     (org-table-align)))
 
-;; (defun mytest ()
-;;     (let (
-;; 	  (ma (list (cons "Mon" 0)
-;; 	       (cons "Tue" 0)
-;; 	       (cons "Wed" 0)
-;; 	       (cons "Thu" 0)
-;; 	       (cons "Fri" 0)
-;; 	       (cons "Sat" 0)
-;; 	       (cons "Sun" 0)
-;; 	       ))
-;; 	  (sum (make-vector 5 0))
-;; 	  )
-;;       ;;(assoc "Mon" ma)
-;;       (mapcar 'insert (mapcar 'number-to-string sum))
+(defun my-org-table/goto-last-row()
+  ;; NOTE dumb code
+  (let* (
+	 (prev)
+	 )
+    (while (org-at-table-p)
+      (setq prev (point))
+      (my/forward-line 1)
+      )
+    (goto-char prev)
+    )
+    ;; point is at first row of table (second if we count column names)
+  )
 
-;;     )
-;; )
+(defun my-org-table/goto-first-row ()
+  ;; NOTE dumb code
+  (let* (
+	 (prev)
+	 )
+    (while (org-at-table-p)
+      (setq prev (point))
+      (my/forward-line -1)
+      )
+    (goto-char prev)
+    )
+    ;; point is at first row of table (second if we count column names)
+    (my/forward-line 1)
+    )
+
+(defun my-org-table/goto-first-column ()
+  (ignore-errors (while t (org-table-previous-field)))
+    )
+
+(defun my-org-table/sort ()
+  ;;(org-table-get-field)
+  ;;(org-table-move-cell-down)?
+  ;;(my-org-table/goto-first-column)
+  (let((current-column 1))
+    (while (<= current-column (my-org-table-width)) 
+      (let* (
+	     (fields (list))
+	     (current-row 1)
+	     )
+
+	(my-org-table/goto-first-row)
+
+	;; filling fields list
+	(while (<= current-row (- (my-org-table-height) 2) )
+	  (let (
+		(field (replace-regexp-in-string " +" " " (org-table-blank-field))))
+	    (unless (string= field " ")
+	      (push field fields)))
+	  (my/forward-line 1)
+	  (setq current-row (1+ current-row))
+	  )
+
+	;; sorting fields list
+	(setq fields (sort fields 'my-org-table/sort-fields))
+	(my-org-table/goto-first-row)
+	(setq current-row 1)
+	(while (and
+		(<= current-row (length fields))
+		(<= current-row (- (my-org-table-height) 2) ))
+	  (insert (nth (1- current-row) fields))
+	  (org-table-align)
+	  (my/forward-line 1)
+	  (setq current-row (1+ current-row)))
+	(org-table-next-field)
+	(setq current-column (1+ current-column)))
+      )))
+
 
 (defun my-org-table/sort-fields (field1 field2)
   (require 'ts)
@@ -764,6 +795,7 @@ Create it if it doesnt exist"
     (ts< field1-start-time field2-start-time)))
 
 (defun my-org-table-height()
+  "Return number of rows in org-table."
   (let* ((count 0))
     (save-excursion(while (org-at-table-p)(forward-line -1))
     (while (progn
@@ -771,5 +803,18 @@ Create it if it doesnt exist"
 	     (org-at-table-p))
       (setq count (1+ count))))
     count))
+
+(defun my-org-table-width()
+  "Return number of columns in org-table."
+  (save-excursion(my-org-table/goto-first-column)
+  (let* (
+	(count 0)
+	(line-number (line-number-at-pos))
+	)
+    (while
+	(eq line-number (line-number-at-pos))
+      (org-table-next-field)
+      (setq count (1+ count)))
+    count)))
 
 (provide 'my-week-day-based-habits)
