@@ -4,3 +4,6 @@
 [submodule "emacs-calfw"]
 	path = emacs-calfw
 	url = https://github.com/kiwanami/emacs-calfw/
+[submodule "transmission-el"]
+	path = transmission-el
+	url = https://github.com/holomorph/transmission
