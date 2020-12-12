@@ -609,7 +609,7 @@ Create it if it doesnt exist"
 
 (defun my-org-habits/find-recur-tasks(orgfile)
   (let
-      ((scheduled-time-for+1d-task)
+      (
        (headings-titles+id (list)))
     (save-excursion
       (save-window-excursion
@@ -625,16 +625,16 @@ Create it if it doesnt exist"
 
 	;; searching for recurring tasks with +1d frequency
 	(while (re-search-forward "SCHEDULED.*?\\(\\+1d\\)>" nil t)
-	  (save-match-data
-	    (outline-previous-heading)
+	  (let* ((scheduled-time-for+1d-task))
+	  (save-match-data(outline-previous-heading))
 	    (my/copy-id-to-clipboard)
 	    ;;prepending |...| string to +1d task
 	    (unless (eq (org-element-property :hour-start (org-element-property :scheduled (org-element-at-point))) nil)
 	      (let*((sch (org-element-property :raw-value
 					       (org-element-property :scheduled (org-element-at-point)))))
-		(string-match "\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\)?" sch)
+		(save-match-data(string-match "\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\)?" sch)
 		(setq scheduled-time-for+1d-task
-		      (concat " [" (match-string 0 sch) "]"))))
+		      (concat " [" (match-string 0 sch) "]")))))
 	    (push (list
 		   (concat "|Mon,Tue,Wed,Thu,Fri,Sat,Sun "
 			   scheduled-time-for+1d-task
@@ -642,9 +642,100 @@ Create it if it doesnt exist"
 			   (org-element-property :title (org-element-at-point)))
 		   (org-element-property :ID (org-element-at-point)))
 		  headings-titles+id)
-	    )
-	  (goto-char (match-end 0)))))
+	    
+	  (goto-char (match-end 0))))))
     headings-titles+id))
+
+
+(defun my-org-table/check-for-matches(day task id)
+  ;;"|Mon,Tue 15:00,Wed 15:15-16:30 [17:00]| name"
+  "Return list that contains string and task duration(integer) or nil if there's no matches."
+  (require 'ts)
+  (let*
+      (
+       (regexp (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?,?.*?\\(\\[\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)\\]\\)?[. ]*?| *\\(.+\\)"))
+       (time-range-match)
+       (start)
+       (end)
+       (diff-in-minutes)
+       (hours)
+       (minutes)
+       ;;(result-string)
+       )
+    (when
+	(string-match regexp task)
+      ;; choose general time range match if day-specific equals to nil
+      (setq time-range-match
+	    (cond
+	     ( (match-string 1 task) 1)
+	     ( (match-string 6 task) 6)
+	     ( t nil)
+	     ))
+      (when
+	  (and time-range-match
+	       (match-end (+ 2 time-range-match)))
+	(setq start (ts-parse (match-string (1+ time-range-match) task))
+	      end (ts-parse(match-string (+ time-range-match 3) task))
+	      diff-in-minutes (/ (round(ts-difference end start)) 60)
+	      hours (format "%1$02d" (floor (/ diff-in-minutes 60)))
+	      minutes (format "%1$02d"(% diff-in-minutes 60))))
+      (list (concat
+	     (when time-range-match
+	       (concat
+		"["
+		(match-string time-range-match task)
+		"] "))
+	     (concat "[[id:" id "]["(match-string 10 task) "]]");;task-name
+	     ;;task-duration
+	     (when (and time-range-match
+	       (match-end (+ 2 time-range-match))) (concat " (" hours ":" minutes ")")))
+	    diff-in-minutes))))
+
+(defun org-dblock-write:org-table-test222 (params)
+  (require 'org-table)
+  (require 'cl-lib)
+  (require 'ts)
+  (let ((all-recurring-tasks (my-org-habits/find-recur-tasks "regular.org")) ;; get all tasks
+	(srt (or (plist-get params :sort) nil))
+	(fmt (or (plist-get params :format) "%d. %m. %Y"))
+	(access-to-vector-indices(list (cons "Mon" 0)(cons "Tue" 1)(cons "Wed" 2)(cons "Thu" 3)(cons "Fri" 4)(cons "Sat" 5)(cons "Sun" 6)))
+	(summary (make-vector 7 0)))
+    (insert "|mon|tue|wed|thu|fri|sat|sun|")
+    (org-table-insert-row t)
+    (dolist (day (list "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"))
+      (let* (
+	     (tasks-to-insert-into-current-day-column (list))
+	     )
+	(dolist (task all-recurring-tasks)
+	  (let ((processed-task nil))
+	    (setq processed-task (my-org-table/check-for-matches day (car task) (nth 1 task)))
+	    (when processed-task
+	      (push (car processed-task) tasks-to-insert-into-current-day-column))
+	    (when (nth 1 processed-task)
+	      (aset summary (cdr(assoc day access-to-vector-indices))
+		(+ (nth 1 processed-task) (aref summary (cdr(assoc day access-to-vector-indices)))))
+	      )
+	    ))
+	(when srt (setq tasks-to-insert-into-current-day-column (sort tasks-to-insert-into-current-day-column 'my-org-table/sort-fields)))
+	(dolist (task tasks-to-insert-into-current-day-column)
+	  (insert task)
+	  (org-table-next-row)))
+      (my-org-table/goto-first-row)
+      (org-table-next-field))
+    ;;(my-org-table/sort)
+    (org-table-insert-column)
+    (org-table-move-column-left)
+    (my-org-table/goto-last-row)
+    (insert "summary:")
+    (mapcar (lambda(diff-in-minutes) (org-table-next-field)
+	      (insert (let* (
+			     (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+			     (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			     )
+			(concat hours ":" minutes))))
+	    summary)
+    (org-table-align)))
+
 
 (defun org-dblock-write:org-table-test (params)
   (require 'org-table)
@@ -696,19 +787,19 @@ Create it if it doesnt exist"
 		       ))
 	    (and
 	     ;; if task string contains '|...'day'(00:00(-(00:00))?)?...([00:00(-(00:00))?]|)?...|'
-	     (string-match (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?.*?\\(\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\]\\)?[. ]*?|") task)
+	     (string-match (concat "|.*?" day " *\\(\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\)?.*?\\(\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\(-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\)?\\]\\)?[. ]*?|") (car task))
 	     ;; insert task name into table field (without |...| and org-links)
 	     (setq task-name (replace-regexp-in-string
 			      org-bracket-link-regexp "\\2"
-			      (replace-regexp-in-string "|.+?| +" "" task)))
+			      (replace-regexp-in-string "|.+?| +" "" (car task))))
 	     (cond
 	      ;; if time range for this day exists
-	      ((match-string 4 task)
+	      ((match-string 4 (car task))
 	       ;; insert duration of this time in '[HH:MM]' format
 	       (format-element 2 4)
 	       )
 	      ;; if general time range exists for this task  -- [HH:MM-HH:MM] format (within square brackets)
-	      ((match-string 8 task)
+	      ((match-string 8 (car task))
 	       ;; insert duration of this time in '[HH:MM]' format
 	       (format-element 6 8)
 	       ))
@@ -808,15 +899,21 @@ Create it if it doesnt exist"
 (defun my-org-table/sort-fields (field1 field2)
   (require 'ts)
   (let* (
-	 (regex "\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)-\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\)\\]")
-	 (field1-start-time (progn
-			      (string-match regex field1)
-			      (ts-parse (match-string 1 field1))
-			      ))
-	 (field2-start-time (progn
-			      (string-match regex field2)
-			      (ts-parse (match-string 1 field2)))))
-    (ts< field1-start-time field2-start-time)))
+	 (regex "\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\).*?\\]")
+	 (field1-start-time (save-match-data
+			      (and (string-match regex field1)
+			      (match-string 1)
+			      (ts-parse (match-string 1 field1)))
+			     ))
+	 (field2-start-time (save-match-data
+			      (and (string-match regex field2)
+			      (match-string 1)
+			      (ts-parse (match-string 1 field2))))))
+    (save-match-data(cond
+     ((not (or field1-start-time field2-start-time)) t)
+     ((not field1-start-time) t)
+     ((not field2-start-time) nil)
+     (t (ts<= field1-start-time field2-start-time))))))
 
 (defun my-org-table-height()
   "Return number of rows in org-table."
