@@ -609,18 +609,42 @@ Create it if it doesnt exist"
 
 (defun my-org-habits/find-recur-tasks(orgfile)
   (let
-      (
-       (headings-titles (list))
-       )
-    (save-excursion(save-window-excursion
-      (find-file (concat my-org-directory orgfile))
-      (widen)
-      (goto-char (point-min))
-      (while (re-search-forward (concat "^\\*+ +.*?|.*?|") nil t)
-	(push (org-element-property :title (org-element-at-point)) headings-titles)
-	)))
-    headings-titles)
-  )
+      ((scheduled-time-for+1d-task)
+       (headings-titles+id (list)))
+    (save-excursion
+      (save-window-excursion
+	(find-file (concat my-org-directory orgfile))
+	(widen)
+	(goto-char (point-min))
+	(while (re-search-forward "^\\*+ +.*?|.*?|" nil t)
+	  (my/copy-id-to-clipboard)
+	  (push (list (org-element-property :title (org-element-at-point))
+		      (org-element-property :ID (org-element-at-point)))
+		headings-titles+id))
+	(goto-char (point-min))
+
+	;; searching for recurring tasks with +1d frequency
+	(while (re-search-forward "SCHEDULED.*?\\(\\+1d\\)>" nil t)
+	  (save-match-data
+	    (outline-previous-heading)
+	    (my/copy-id-to-clipboard)
+	    ;;prepending |...| string to +1d task
+	    (unless (eq (org-element-property :hour-start (org-element-property :scheduled (org-element-at-point))) nil)
+	      (let*((sch (org-element-property :raw-value
+					       (org-element-property :scheduled (org-element-at-point)))))
+		(string-match "\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\)?" sch)
+		(setq scheduled-time-for+1d-task
+		      (concat " [" (match-string 0 sch) "]"))))
+	    (push (list
+		   (concat "|Mon,Tue,Wed,Thu,Fri,Sat,Sun "
+			   scheduled-time-for+1d-task
+			   "| "
+			   (org-element-property :title (org-element-at-point)))
+		   (org-element-property :ID (org-element-at-point)))
+		  headings-titles+id)
+	    )
+	  (goto-char (match-end 0)))))
+    headings-titles+id))
 
 (defun org-dblock-write:org-table-test (params)
   (require 'org-table)
