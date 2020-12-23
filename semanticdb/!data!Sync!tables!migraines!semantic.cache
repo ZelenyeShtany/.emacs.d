@@ -1,0 +1,16 @@
+;; Object semanticdb-project-database-file-156a1a7d6d60
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-156a1a7d6d60"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-156a1a8d6afc"
+      :major-mode js-mode
+      :tags nil
+      :file "data.json"
+      :pointmax 2267
+      :fsize 3789
+      :lastmodtime '(24536 35758 42464 600000)
+      :unmatched-syntax '((BRACK_BLOCK 258 . 2267))))
+  :file "!data!Sync!tables!migraines!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

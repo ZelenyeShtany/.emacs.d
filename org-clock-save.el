@@ -1,2 +1,2 @@
-;; org-clock-save.el - sonyvaio at <2020-12-10 Thu 23:38>
-(setq org-clock-stored-history '(("/data/gitserver/org/career.org" . 38957) ("/data/gitserver/org/career.org" . 39353) ("/data/gitserver/org/content.org" . 33303) ("/data/gitserver/org/утррит.org" . 230) ("/data/gitserver/org/content.org" . 33501)))
+;; org-clock-save.el - sonyvaio at <2020-12-23 Wed 23:03>
+(setq org-clock-stored-history '(("/data/gitserver/org/inbox.org" . 263526) ("/data/gitserver/org/notes.org" . 58059) ("/data/gitserver/org/утррит.org" . 230) ("/data/gitserver/org/notes.org" . 90589) ("/data/gitserver/org/notes.org" . 90468)))

@@ -1,0 +1,261 @@
+;; Object semanticdb-project-database-file-1558a6e1c3c4
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1558a6e1c3c4"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1558a6e1c3d0"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [3940 3958])
+            ("stdlib.h" include (:system-flag t) nil [3959 3978])
+            ("string.h" include (:system-flag t) nil [3979 3998])
+            ("curl/curl.h" include (:system-flag t) nil [3999 4021])
+            ("openssl/x509v3.h" include (:system-flag t) nil [4022 4049])
+            ("openssl/x509_vfy.h" include (:system-flag t) nil [4050 4079])
+            ("openssl/crypto.h" include (:system-flag t) nil [4080 4107])
+            ("openssl/lhash.h" include (:system-flag t) nil [4108 4134])
+            ("openssl/objects.h" include (:system-flag t) nil [4135 4163])
+            ("openssl/err.h" include (:system-flag t) nil [4164 4188])
+            ("openssl/evp.h" include (:system-flag t) nil [4189 4213])
+            ("openssl/x509.h" include (:system-flag t) nil [4214 4239])
+            ("openssl/pkcs12.h" include (:system-flag t) nil [4240 4267])
+            ("openssl/bio.h" include (:system-flag t) nil [4268 4292])
+            ("openssl/ssl.h" include (:system-flag t) nil [4293 4317])
+            ("curlx_usage" variable
+               (:pointer 1
+                :dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  \"usage: curlx args\\n\",
+  \" -p12 arg         - tia  file \",
+  \" -envpass arg     - environment variable which content the tia private\"
+  \" key password\",
+  \" -out arg         - output file (response)- default stdout\",
+  \" -in arg          - input file (request)- default stdin\",
+  \" -connect arg     - URL of the server for the connection ex:\"
+  \" www.openevidence.org\",
+  \" -mimetype arg    - MIME type for data in ex : application/timestamp-query\"
+  \" or application/dvcs -default application/timestamp-query\",
+  \" -acceptmime arg  - MIME type acceptable for the response ex : \"
+  \"application/timestamp-response or application/dvcs -default none\",
+  \" -accesstype arg  - an Object identifier in an AIA/SIA method, e.g.\"
+  \" AD_DVCS or ad_timestamping\",
+  NULL
+}"
+                :type "char")
+                nil [4319 5120])
+            ("ZERO_NULL" variable (:constant-flag t) nil [5410 5419])
+            ("sslctxparm_st" type
+               (:members 
+                  ( ("p12file" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol classsubparts) [5511 5534])
+                    ("pst" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [5537 5553])
+                    ("p12" variable
+                       (:pointer 1
+                        :type ("PKCS12" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5556 5568])
+                    ("pkey" variable
+                       (:pointer 1
+                        :type ("EVP_PKEY" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5571 5586])
+                    ("usercert" variable
+                       (:pointer 1
+                        :type ("X509" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5589 5604])
+                    ("ca" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol classsubparts) [5622 5627])
+                    ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5630 5641])
+                    ("errorbio" variable
+                       (:pointer 1
+                        :type ("BIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [5644 5658])
+                    ("accesstype" variable (:type "int") (reparse-symbol classsubparts) [5661 5676])
+                    ("verbose" variable (:type "int") (reparse-symbol classsubparts) [5679 5691]))                  
+                :type "struct")
+                nil [5478 5706])
+            ("sslctxparm" type
+               (:typedef ("sslctxparm_st" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [5478 5706])
+            ("ia5string" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("ia5" variable
+                       (:pointer 1
+                        :type ("ASN1_IA5STRING" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5760 5780]))                  
+                :type "char")
+                nil [5737 5959])
+            ("my_get_ext" function
+               (:pointer 1
+                :typemodifiers ("static")
+                :arguments 
+                  ( ("cert" variable
+                       (:pointer 1
+                        :type ("X509" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6044 6055])
+                    ("type" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [6056 6071])
+                    ("extensiontype" variable (:type "int") (reparse-symbol arg-sub-list) [6105 6123]))                  
+                :type "unsigned char")
+                nil [6011 6631])
+            ("ssl_app_verify_callback" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("ctx" variable
+                       (:pointer 1
+                        :type ("X509_STORE_CTX" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6890 6910])
+                    ("arg" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [6911 6921]))                  
+                :type "int")
+                nil [6855 7881])
+            ("sslctxfun" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("curl" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8125 8136])
+                    ("sslctx" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [8137 8150])
+                    ("parm" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [8151 8162]))                  
+                :type ("CURLcode" type (:type "class") nil nil))
+                nil [8099 9122])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [9133 9142])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9143 9155]))                  
+                :type "int")
+                nil [9124 16866]))          
+      :file "curlx.c"
+      :pointmax 16867
+      :fsize 16866
+      :lastmodtime '(24448 1272 0 0)
+      :unmatched-syntax '((semantic-list 5615 . 5621) (symbol 5607 . 5615))
+      :lexical-table 
+        '(("ZERO_NULL" . ((number "0" 5420 . 5421)))
+          )
+)
+    (semanticdb-table "semanticdb-table-1558a66f0c2c"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1109 1127])
+            ("stdlib.h" include (:system-flag t) nil [1128 1147])
+            ("string.h" include (:system-flag t) nil [1148 1167])
+            ("errno.h" include (:system-flag t) nil [1168 1186])
+            ("sys/time.h" include (:system-flag t) nil [1217 1238])
+            ("unistd.h" include (:system-flag t) nil [1239 1258])
+            ("curl/curl.h" include (:system-flag t) nil [1277 1299])
+            ("curl/mprintf.h" include (:system-flag t) nil [1300 1325])
+            ("CURLPIPE_MULTIPLEX" variable (:constant-flag t) nil [1549 1567])
+            ("transfer" type
+               (:members 
+                  ( ("easy" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1598 1609])
+                    ("num" variable (:type "unsigned int") (reparse-symbol classsubparts) [1612 1629])
+                    ("out" variable
+                       (:pointer 1
+                        :type ("FILE" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1632 1642]))                  
+                :type "struct")
+                nil [1578 1645])
+            ("NUM_HANDLES" variable (:constant-flag t) nil [1655 1666])
+            ("dump" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("text" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1690 1707])
+                    ("num" variable (:type "int") (reparse-symbol arg-sub-list) [1708 1716])
+                    ("ptr" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [1717 1736])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1737 1749])
+                    ("nohex" variable (:type "char") (reparse-symbol arg-sub-list) [1760 1771]))                  
+                :type "void")
+                nil [1673 2993])
+            ("my_trace" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("handle" variable
+                       (:pointer 1
+                        :type ("CURL" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3015 3028])
+                    ("type" variable (:type ("curl_infotype" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3029 3048])
+                    ("data" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3062 3073])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3074 3086])
+                    ("userp" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [3100 3112]))                  
+                :type "int")
+                nil [2995 3922])
+            ("setup" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("t" variable
+                       (:pointer 1
+                        :type ("transfer" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3942 3961])
+                    ("num" variable (:type "int") (reparse-symbol arg-sub-list) [3962 3970]))                  
+                :type "void")
+                nil [3924 5037])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [5122 5131])
+                    ("argv" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [5132 5144]))                  
+                :type "int")
+                nil [5113 8144]))          
+      :file "http2-download.c"
+      :pointmax 8145
+      :fsize 8144
+      :lastmodtime '(24448 1272 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("CURLPIPE_MULTIPLEX" . ((number "0" 1568 . 1569)))
+          ("NUM_HANDLES" . ((number "1000" 1667 . 1671)))
+          )
+))
+  :file "!data!source-code!culr!curl-7.73.0!docs!examples!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

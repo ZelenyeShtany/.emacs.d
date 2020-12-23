@@ -16,12 +16,15 @@
 	my/org-move-left
 	my/org-move-right
 	org-backward-sentence
+	org-cua-rectangle-conflict-resolving
 	org-fill-paragraph
 	org-force-self-insert
 	org-forward-sentence
+	org-insert-link
 	org-metaleft
 	org-metaright
 	org-open-line
+	org-refile
 	org-self-insert-command
 	org-shiftmetaleft
 	org-shiftmetaright

@@ -46,23 +46,16 @@ Create it if it doesnt exist"
   "docstring"
   (let*(
 	(cur-head-point (nth 1 (my-org-get-current-heading-level-and-point)))
-	rec-string
-	)
+	rec-string)
     
     (save-excursion
       (goto-char cur-head-point)
       (setq head-string (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
       (save-match-data
-	(and (string-match "\\(^[*]+\\)[ ]+\\(\\(MISSED\\)\\|\\(DONE\\)\\)[ ]+|\\([^|]*\\)|\\(.*\\)" head-string)
+	(and (string-match "\\(^\\*+\\) +\\(\\(MISSED\\)\\|\\(DONE\\)\\) +.*?|\\(.*?\\)|\\(.*\\)" head-string)
 	     (if (not (zerop (length (match-data))))
-		 (setq rec-string (match-string 5 head-string))
-	       )
-	     )
-	)
-      )
-    rec-string
-   )
-  )
+		 (setq rec-string (match-string 5 head-string))))))
+    rec-string))
 
 
 ;; (defun my/kkk ()
@@ -105,89 +98,40 @@ Create it if it doesnt exist"
   "docstring"
   (interactive)
   (let*
-      (
-       (org-read-date-prefer-future-default org-read-date-prefer-future)
-       
+      ((org-read-date-prefer-future-default org-read-date-prefer-future)
        (rec-string (my-org-recur-get-current-heading-recurrence-string))
-       (general-time nil)
-       
-       )
-    (if (and
-	 ;;(string= (org-entry-get nil "WEEK-DAY-BASED-HABIT" nil) "true")
-	 (not (eq rec-string nil)))
-	(let* (
-	       (weekdays-alist
-		'(
-		  ("Mon" . 1)
-		  ("Tue" . 2)
-		  ("Wed" . 3)
-		  ("Thu" . 4)
-		  ("Fri" . 5)
-		  ("Sat" . 6)
-		  ("Sun" . 7)
-		  )
-		)
-	       
-	       (scheduled-prop (if (eq (org-entry-get nil "SCHEDULED" nil) nil)
+       (general-time nil))
+    (if rec-string
+	(let* ((weekdays-alist
+		'(("Mon" . 1)("Tue" . 2)("Wed" . 3)("Thu" . 4)("Fri" . 5)("Sat" . 6)("Sun" . 7)))
+	       (scheduled-prop (if (not (org-entry-get nil "SCHEDULED" nil))
 				   (org-schedule nil "");; set today date if schedule date is not set
-				 (org-entry-get nil "SCHEDULED" nil)
-				 )
-			       )
+				 (org-entry-get nil "SCHEDULED" nil)))
 	       (parsed-scheduled-time (parse-time-string scheduled-prop))
 	       (rec-list
 		(let*
-		    (
-		     (tmplist (reverse (split-string rec-string  ",")))
-		     (general-time-search-result (string-match "[[:space:]]*\\[\\([[:digit:]:-]+\\)\\]" (car tmplist)))
-		     )
-		  (if (not (eq general-time-search-result nil))
-		      (progn
-			(setq general-time (substring (car tmplist) (match-beginning 1) (match-end 1)))
-			(setcar tmplist (substring (car tmplist) 0 (match-beginning 0)))
-			)
-		    )
-		  (reverse tmplist)
-		  )
+		    ((tmplist (reverse (split-string rec-string  ",")))
+		     (general-time-search-result (string-match "[[:space:]]*\\[\\([[:digit:]:-]+\\)\\]" (car tmplist))))
+		  (when general-time-search-result
+		    (setq general-time (substring (car tmplist) (match-beginning 1) (match-end 1)))
+		    (setcar tmplist (substring (car tmplist) 0 (match-beginning 0))))
+		  (reverse tmplist)))
 
-		)
-
-	       ;; as some days might be appended by time org time period, we get rid of them
+	       ;; as some days might be appended by org time period, we get rid of them
 	       (rec-list-days-only
-		(let*
-		    (
-		     (tmplist '())
-		     )
-		  (dolist (
-			   curelem
-			   rec-list
-			   )
+		(let* ((tmplist (list)))
+		  (dolist (curelem rec-list)
 		    (let* (
 			   ;;(search-result (string-match-p (regexp-quote "\\(\\(Mon\\)\\|\\(Tue\\)\\)") curelem))
-			   (search-result (string-match "\\(\\(Mon\\)\\|\\(Tue\\)\\|\\(Wed\\)\\|\\(Thu\\)\\|\\(Fri\\)\\|\\(Sat\\)\\|\\(Sun\\)\\)" curelem))
-			   )
-		      (if (not (eq search-result nil))
-			  (push (substring curelem search-result (+ search-result 3)) tmplist)
-			)
-		      )
-		    )
-		  (reverse tmplist)
-		  )
-		) 
+			   (search-result (string-match "\\(\\(Mon\\)\\|\\(Tue\\)\\|\\(Wed\\)\\|\\(Thu\\)\\|\\(Fri\\)\\|\\(Sat\\)\\|\\(Sun\\)\\)" curelem)))
+		      (if search-result
+			  (push (substring curelem search-result (+ search-result 3)) tmplist))))
+		  (reverse tmplist))) 
 	       ;;(cur-week-day (format-time-string "%a"))
 	       (cur-heading-scheduled-week-day
-		(nth 6 parsed-scheduled-time)
-		)
+		(nth 6 parsed-scheduled-time))
 	       (y-m-y-date
-		(org-format-time-string "%Y-%m-%d" (org-get-scheduled-time (point)))
-		
-		;; (concat
-		;;  (number-to-string (nth 5 parsed-scheduled-time))
-		;;  "-"
-		;;  (number-to-string (nth 4 parsed-scheduled-time))
-		;;  "-"
-		;;  (number-to-string (nth 3 parsed-scheduled-time))
-		;;  )
-		)
+		(org-format-time-string "%Y-%m-%d" (org-get-scheduled-time (point))))
 	       
 	       (nextoccurence nil)
 	       (nextoccurence-weekday nil)
@@ -196,33 +140,20 @@ Create it if it doesnt exist"
 	  (setq org-read-date-prefer-future nil)
 	  (catch 'weekdayfound
 	    (dolist (curelem rec-list-days-only)
-	      (if (> (cdr (assoc curelem weekdays-alist)) cur-heading-scheduled-week-day )
-		  (progn
-		    (setq nextoccurence-weekday curelem)
-		    (throw 'weekdayfound 1)
-		    )
-		)
-	      )
-	    )
-	  (if (eq nextoccurence-weekday nil)
-	      (setq nextoccurence-weekday (car rec-list-days-only))
-	    )
+	      (when (> (cdr (assoc curelem weekdays-alist)) cur-heading-scheduled-week-day )
+		(setq nextoccurence-weekday curelem)
+		(throw 'weekdayfound 1))))
+	  (if (not nextoccurence-weekday)
+	      (setq nextoccurence-weekday (car rec-list-days-only)))
 
 	  (catch 'occurfound
 	    (dolist (curelem rec-list)
-	      (if (not (eq (string-match nextoccurence-weekday curelem) nil))
-		  (progn
-		    (setq nextoccurence curelem)
-		    (throw 'occurfound 1)
-		    )
-		)
-	      )
-	    )
-
-	  (if (not (eq (string-match "[[:digit:]:-]+" nextoccurence) nil))
+	      (when (string-match nextoccurence-weekday curelem)
+		(setq nextoccurence curelem)
+		(throw 'occurfound 1))))
+	  (if (string-match "[[:digit:]:-]+" nextoccurence)
 	      (setq nextoccurence-time
-		    (substring nextoccurence (match-beginning 0) (match-end 0)))
-	      )
+		    (substring nextoccurence (match-beginning 0) (match-end 0))))
 
 	  ;; inserting into LOGBOOK drawer
 	  ;; - State "DONE"       from "TODO"       [2020-09-28 Mon 03:09]
@@ -237,43 +168,33 @@ Create it if it doesnt exist"
 	  ;; function (org-schedule nil nextoccurence) wont work properly,
 	  ;; so do not use it for that particular purpose
 	  (save-excursion
-	    (if (re-search-forward "SCHEDULED:[ ]*<[[:digit:]]" (save-excursion
+	    (when (re-search-forward "SCHEDULED:[ ]*<[[:digit:]]" (save-excursion
 								(outline-next-heading)
 								(point))
 				 t)
-		(progn
-		  (goto-char (match-end 0))
-		  (while (not (eq (cdr (assoc nextoccurence-weekday weekdays-alist))
-				  ;; week day in scheduled timestamp in number notation
-				  (nth 6 (parse-time-string (org-entry-get nil "SCHEDULED" nil))) 
-				  ) )
-		    (org-timestamp-up-day)
-		    ))
-	      )
-	    )
+	      (goto-char (match-end 0))
+	      (while (not (eq (cdr (assoc nextoccurence-weekday weekdays-alist))
+			      ;; week day in scheduled timestamp in number notation
+			      (nth 6 (parse-time-string (org-entry-get nil "SCHEDULED" nil)))))
+		(org-timestamp-up-day))))
 
-	  (if (not (eq nextoccurence-time nil))
-	      (org-schedule nil
-			    (concat
-			     (org-format-time-string "%Y-%m-%d %a"
-						     (org-get-scheduled-time (point))) " " nextoccurence-time))
-	    (if (not (eq general-time nil))
-		(org-schedule nil
-			      (org-schedule nil
-					    (concat
-					     (org-format-time-string "%Y-%m-%d %a" (org-get-scheduled-time (point))) " " general-time)))
-	      )
-	    )
+	  (if nextoccurence-time
+	      (org-schedule
+	       nil
+	       (concat
+		(org-format-time-string "%Y-%m-%d %a" (org-get-scheduled-time (point))) " " nextoccurence-time))
+	    (if general-time
+		(org-schedule
+		 nil
+		 (org-schedule
+		  nil
+		  (concat
+		   (org-format-time-string "%Y-%m-%d %a" (org-get-scheduled-time (point))) " " general-time)))))
 	  
 	  ;; /rescheduling to next week day
-	  
-	  )
-      )
+	  ))
     (message (concat "Scheduled to " (org-entry-get nil "SCHEDULED" nil) ))
-    (setq org-read-date-prefer-future org-read-date-prefer-future-default)
-    
-    )
-  )
+    (setq org-read-date-prefer-future org-read-date-prefer-future-default)))
 (add-hook 'org-after-todo-state-change-hook 'my/set-next-week-day)
 
 (defun my-org-table/create-empty-schedule-table ()
@@ -610,7 +531,7 @@ Create it if it doesnt exist"
 (defun my-org-habits/find-recur-tasks(orgfile)
   (let
       (
-       (headings-titles+id (list)))
+       (headings-titles+id+priority (list)))
     (save-excursion
       (save-window-excursion
 	(find-file (concat my-org-directory orgfile))
@@ -619,8 +540,10 @@ Create it if it doesnt exist"
 	(while (re-search-forward "^\\*+ +.*?|.*?|" nil t)
 	  (my/copy-id-to-clipboard)
 	  (push (list (org-element-property :title (org-element-at-point))
-		      (org-element-property :ID (org-element-at-point)))
-		headings-titles+id))
+		      (org-element-property :ID (org-element-at-point))
+		      (org-element-property :priority (org-element-at-point))
+		      )
+		headings-titles+id+priority))
 	(goto-char (point-min))
 
 	;; searching for recurring tasks with +1d frequency
@@ -636,18 +559,21 @@ Create it if it doesnt exist"
 		(setq scheduled-time-for+1d-task
 		      (concat " [" (match-string 0 sch) "]")))))
 	    (push (list
-		   (concat "|Mon,Tue,Wed,Thu,Fri,Sat,Sun "
+		   (concat
+		    
+		    "|Mon,Tue,Wed,Thu,Fri,Sat,Sun "
 			   scheduled-time-for+1d-task
 			   "| "
 			   (org-element-property :title (org-element-at-point)))
-		   (org-element-property :ID (org-element-at-point)))
-		  headings-titles+id)
-	    
+		   (org-element-property :ID (org-element-at-point))
+		   (org-element-property :priority (org-element-at-point))
+		   )
+		  headings-titles+id+priority)
 	  (goto-char (match-end 0))))))
-    headings-titles+id))
+    headings-titles+id+priority))
 
 
-(defun my-org-table/check-for-matches(day task id)
+(defun my-org-table/check-for-matches(day task id priority)
   ;;"|Mon,Tue 15:00,Wed 15:15-16:30 [17:00]| name"
   "Return list that contains string and task duration(integer) or nil if there's no matches."
   (require 'ts)
@@ -660,6 +586,8 @@ Create it if it doesnt exist"
        (diff-in-minutes)
        (hours)
        (minutes)
+       (task-name)
+       (real-work-p)
        ;;(result-string)
        )
     (when
@@ -671,6 +599,7 @@ Create it if it doesnt exist"
 	     ( (match-string 6 task) 6)
 	     ( t nil)
 	     ))
+      (setq real-work-p (eq priority 49)) ;; if priority equals to 1
       (when
 	  (and time-range-match
 	       (match-end (+ 2 time-range-match)))
@@ -679,50 +608,90 @@ Create it if it doesnt exist"
 	      diff-in-minutes (/ (round(ts-difference end start)) 60)
 	      hours (format "%1$02d" (floor (/ diff-in-minutes 60)))
 	      minutes (format "%1$02d"(% diff-in-minutes 60))))
+      (setq task-name  
+	    (replace-regexp-in-string org-bracket-link-regexp "\\2"
+				      (match-string 10 task)))
       (list (concat
+	     (when real-work-p "⚠ ")
 	     (when time-range-match
 	       (concat
 		"["
 		(match-string time-range-match task)
 		"] "))
-	     (concat "[[id:" id "]["(match-string 10 task) "]]");;task-name
+	     (concat "[[id:" id "]["task-name "]]");;task-name
 	     ;;task-duration
 	     (when (and time-range-match
 	       (match-end (+ 2 time-range-match))) (concat " (" hours ":" minutes ")")))
-	    diff-in-minutes))))
+	    diff-in-minutes real-work-p))))
+
 
 (defun org-dblock-write:org-table-test222 (params)
   (require 'org-table)
   (require 'cl-lib)
   (require 'ts)
   (let ((all-recurring-tasks (my-org-habits/find-recur-tasks "regular.org")) ;; get all tasks
-	(srt (or (plist-get params :sort) nil))
+	(show-free-time-p (or (plist-get params :free-time) nil))
+	(sort-p (or (plist-get params :sort) nil))
 	(fmt (or (plist-get params :format) "%d. %m. %Y"))
 	(access-to-vector-indices(list (cons "Mon" 0)(cons "Tue" 1)(cons "Wed" 2)(cons "Thu" 3)(cons "Fri" 4)(cons "Sat" 5)(cons "Sun" 6)))
-	(summary (make-vector 7 0)))
+	(summary (make-vector 7 0))
+	(real-work (make-vector 7 0))
+	)
     (insert "|mon|tue|wed|thu|fri|sat|sun|")
     (org-table-insert-row t)
     (dolist (day (list "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"))
-      (let* (
-	     (tasks-to-insert-into-current-day-column (list))
-	     )
+      (let* ((tasks-to-insert-into-current-day-column (list)))
 	(dolist (task all-recurring-tasks)
 	  (let ((processed-task nil))
-	    (setq processed-task (my-org-table/check-for-matches day (car task) (nth 1 task)))
+	    (setq processed-task (my-org-table/check-for-matches day (car task) (nth 1 task) (nth 2 task)))
 	    (when processed-task
 	      (push (car processed-task) tasks-to-insert-into-current-day-column))
 	    (when (nth 1 processed-task)
 	      (aset summary (cdr(assoc day access-to-vector-indices))
 		(+ (nth 1 processed-task) (aref summary (cdr(assoc day access-to-vector-indices)))))
 	      )
-	    ))
-	(when srt (setq tasks-to-insert-into-current-day-column (sort tasks-to-insert-into-current-day-column 'my-org-table/sort-fields)))
-	(dolist (task tasks-to-insert-into-current-day-column)
-	  (insert task)
-	  (org-table-next-row)))
-      (my-org-table/goto-first-row)
-      (org-table-next-field))
-    ;;(my-org-table/sort)
+	    (when (and (nth 1 processed-task) (nth 2 processed-task))
+	      (aset real-work (cdr(assoc day access-to-vector-indices))
+		    (+ (nth 1 processed-task) (aref real-work (cdr(assoc day access-to-vector-indices))))))))
+	(when sort-p (setq tasks-to-insert-into-current-day-column (sort tasks-to-insert-into-current-day-column 'my-org-table/sort-fields)))
+	
+	(let ((iter 0))
+	  (while (< iter (length tasks-to-insert-into-current-day-column))
+	    (let*((task-1-name (nth iter tasks-to-insert-into-current-day-column))
+		  (task-2-name (and (< (1+ iter) (length tasks-to-insert-into-current-day-column))(nth (1+ iter) tasks-to-insert-into-current-day-column))))
+	     (insert (nth iter tasks-to-insert-into-current-day-column))
+	     (org-table-next-row)
+	     
+	    (when (and show-free-time-p task-2-name)
+	      (let*
+		  (
+		   (task-1-end-time (and
+				     (string-match "\\[[0-9]\\{2\\}:[0-9]\\{2\\}-\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\]" task-1-name)
+				     (match-string 1 task-1-name)))
+		   (task-2-start-time (and
+				       (string-match "\\[\\([0-9]\\{2\\}:[0-9]\\{2\\}\\)\\(-[0-9]\\{2\\}:[0-9]\\{2\\}\\)?\\]" task-2-name)
+				       (match-string 1 task-2-name)))
+		   (diff)(hours)(minutes)
+		   )
+		
+		(when (and
+		       task-1-end-time
+		       task-2-start-time
+		       (> (setq diff (round(/ (ts-difference (ts-parse task-2-start-time) (ts-parse task-1-end-time)) 60))) 0))
+		 ;; (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+		 ;; 	     (minutes (format "%1$02d"(% diff-in-minutes 60)))
+			     
+		  (setq hours (format "%1$02d" (floor (/ diff 60))))
+		  (setq minutes (format "%1$02d"(% diff 60)))
+		  (insert
+		   (concat "=free time: (" hours ":" minutes ")="))
+		  (org-table-next-row)))))
+	    (setq iter (1+ iter))))
+	;; (dolist (task tasks-to-insert-into-current-day-column)
+	;;   (insert task)
+	;;   (org-table-next-row))
+	(my-org-table/goto-first-row)
+	(org-table-next-field)))
     (org-table-insert-column)
     (org-table-move-column-left)
     (my-org-table/goto-last-row)
@@ -734,7 +703,18 @@ Create it if it doesnt exist"
 			     )
 			(concat hours ":" minutes))))
 	    summary)
-    (org-table-align)))
+    (org-table-align)
+    (my-org-table/goto-first-column)
+    (my-org-table/goto-last-row)
+    (org-table-insert-row)
+    (insert "real work:")
+    (mapcar (lambda(diff-in-minutes) (org-table-next-field)
+	      (insert
+	       (let* (
+		      (hours (format "%1$02d" (floor (/ diff-in-minutes 60))))
+		      (minutes (format "%1$02d"(% diff-in-minutes 60))))
+		 (concat hours ":" minutes))))
+	    real-work)))
 
 
 (defun org-dblock-write:org-table-test (params)
@@ -835,7 +815,7 @@ Create it if it doesnt exist"
       )
     (goto-char prev)
     )
-    ;; point is at first row of table (second if we count column names)
+  ;; point is at first row of table (second if we count column names)
   )
 
 (defun my-org-table/goto-first-row ()
@@ -849,13 +829,13 @@ Create it if it doesnt exist"
       )
     (goto-char prev)
     )
-    ;; point is at first row of table (second if we count column names)
-    (my/forward-line 1)
-    )
+  ;; point is at first row of table (second if we count column names)
+  (my/forward-line 1)
+  )
 
 (defun my-org-table/goto-first-column ()
   (ignore-errors (while t (org-table-previous-field)))
-    )
+  )
 
 (defun my-org-table/sort ()
   ;;(org-table-get-field)
@@ -902,40 +882,40 @@ Create it if it doesnt exist"
 	 (regex "\\[\\([[:digit:]]\\{2\\}:[[:digit:]]\\{2\\}\\).*?\\]")
 	 (field1-start-time (save-match-data
 			      (and (string-match regex field1)
-			      (match-string 1)
-			      (ts-parse (match-string 1 field1)))
-			     ))
+				   (match-string 1)
+				   (ts-parse (match-string 1 field1)))
+			      ))
 	 (field2-start-time (save-match-data
 			      (and (string-match regex field2)
-			      (match-string 1)
-			      (ts-parse (match-string 1 field2))))))
+				   (match-string 1)
+				   (ts-parse (match-string 1 field2))))))
     (save-match-data(cond
-     ((not (or field1-start-time field2-start-time)) t)
-     ((not field1-start-time) t)
-     ((not field2-start-time) nil)
-     (t (ts<= field1-start-time field2-start-time))))))
+		     ((not (or field1-start-time field2-start-time)) t)
+		     ((not field1-start-time) t)
+		     ((not field2-start-time) nil)
+		     (t (ts<= field1-start-time field2-start-time))))))
 
 (defun my-org-table-height()
   "Return number of rows in org-table."
   (let* ((count 0))
     (save-excursion(while (org-at-table-p)(forward-line -1))
-    (while (progn
-	     (forward-line 1)
-	     (org-at-table-p))
-      (setq count (1+ count))))
+		   (while (progn
+			    (forward-line 1)
+			    (org-at-table-p))
+		     (setq count (1+ count))))
     count))
 
 (defun my-org-table-width()
   "Return number of columns in org-table."
   (save-excursion(my-org-table/goto-first-column)
-  (let* (
-	(count 0)
-	(line-number (line-number-at-pos))
-	)
-    (while
-	(eq line-number (line-number-at-pos))
-      (org-table-next-field)
-      (setq count (1+ count)))
+		 (let* (
+			(count 0)
+			(line-number (line-number-at-pos))
+			)
+		   (while
+		       (eq line-number (line-number-at-pos))
+		     (org-table-next-field)
+		     (setq count (1+ count)))
     count)))
 
 (provide 'my-week-day-based-habits)

@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("career / cpp"
- (filename . "/data/gitserver/org/career.org")
+ (filename . "/data/gitserver/org/notes.org")
  (front-context-string . "cpp\n:PROPERTIES:")
- (rear-context-string . "ю в методичке\n* ")
- (position . 27246))
+ (rear-context-string . " в методичке\n** ")
+ (position . 75724))
 ("org"
  (filename . "/data/gitserver/org/")
  (front-context-string . "archive\n  -rwxrw")
@@ -107,11 +107,6 @@
  (front-context-string . "#+TODO: TODO LEV")
  (rear-context-string)
  (position . 1))
-("discretemaths"
- (filename . "/data/gitserver/org/career.org")
- (front-context-string . "* Discrete Mathe")
- (rear-context-string . " logdone indent\n")
- (position . 41))
 ("torrents"
  (filename . "/data/Torrents/")
  (front-context-string . "Green.Book.2018.")
@@ -123,10 +118,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "/data/gitserver/org/утррит.org")
- (front-context-string . "** TODO решить п")
- (rear-context-string . "ыл сделать днём\n")
- (position . 8468))
+ (filename . "/data/gitserver/org/brench.org")
+ (front-context-string . "** shower\n:PROPE")
+ (rear-context-string . "de-sublevels 1)\n")
+ (position . 15110))
 ("data"
  (filename . "/data/")
  (front-context-string . "$RECYCLE.BIN\n  d")
@@ -224,7 +219,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/gitserver/org/inbox.org")
- (front-context-string . "**** [[https://r")
- (rear-context-string . "t.mkv\n#+end_src\n")
- (position . 240790))
+ (front-context-string . "**** ffmpeg: web")
+ (rear-context-string . "ись сами собой.\n")
+ (position . 267007))
 )

@@ -1,25 +1,212 @@
-;; Object semanticdb-project-database-file-157fae2d88e8
+;; Object semanticdb-project-database-file-1562c22687e4
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-157fae2d88e8"
+(semanticdb-project-database-file "semanticdb-project-database-file-1562c22687e4"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-157faf012348"
+    (semanticdb-table "semanticdb-table-1562c2268784"
       :major-mode c++-mode
       :tags 
-        '( ("stdio.h" include (:system-flag t) nil [24 42])
-            ("map" include (:system-flag t) nil [44 58])
-            ("iostream" include (:system-flag t) nil [59 78])
+        '( ("curl/curl.h" include (:system-flag t) nil [1 23])
+            ("stdio.h" include (:system-flag t) nil [24 42])
+            ("regex" include (:system-flag t) nil [43 59])
+            ("iostream" include (:system-flag t) nil [78 97])
+            ("cstring" include (:system-flag t) nil [98 116])
             ("std" using (:type ("std" type
                  (:prototype t
                   :type "namespace")
-                  nil nil)) nil [79 99])
-            ("main" function (:type "int") nil [100 588]))          
+                  nil nil)) nil [117 137])
+            ("mydata" variable
+               (:pointer 1
+                :type "char")
+                nil [139 152])
+            ("alldata_size" variable
+               (:default-value "0"
+                :type "int")
+                nil [172 193])
+            ("alldata" variable
+               (:pointer 2
+                :type "char")
+                nil [194 209])
+            ("curr_alldata_elem" variable (:type "int") nil [415 437])
+            ("myfunc" function
+               (:arguments 
+                  ( ("ptr" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [453 463])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [464 476])
+                    ("nmemb" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [477 490])
+                    ("userdata" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [491 506]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [439 1668])
+            ("main" function (:type "int") nil [1670 3831]))          
       :file "main.cpp"
-      :pointmax 590
-      :fsize 589
-      :lastmodtime '(24511 55798 991063 900000)
+      :pointmax 3832
+      :fsize 3804
+      :lastmodtime '(24546 5018 407817 700000)
       :unmatched-syntax nil)
-)
+    (semanticdb-table "semanticdb-table-1562c22687a4"
+      :major-mode html-mode
+      :tags 
+        '( ("MLDb, The Music Lyrics Database - Lyrics of Guns' N' Roses - Sweet Child O' Mine" section nil nil [198 2211])
+            ("-->
+<div id=\"topadframe\">
+<script type=\"text/javascript\"><!--
+google_ad_client = \"pub-9307576326974516\";
+//MLDb top 468x60
+google_ad_slot = \"9720604683\";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->" section nil nil [2211 2271])
+            ("-->
+<div id=\"topadframe\">
+<script type=\"text/javascript\"><!--
+google_ad_client = \"pub-9307576326974516\";
+//MLDb top 468x60
+google_ad_slot = \"9720604683\";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->" section nil nil [2271 2337])
+            ("-->
+<div id=\"topadframe\">
+<script type=\"text/javascript\"><!--
+google_ad_client = \"pub-9307576326974516\";
+//MLDb top 468x60
+google_ad_slot = \"9720604683\";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->" section nil nil [2337 2538])
+            ("
+google_ad_client = \"pub-9307576326974516\";
+//MLDb top 468x60
+google_ad_slot = \"9720604683\";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->" section nil nil [2538 2734])
+            ("" section (:members 
+              ( ("Advertise" anchor nil nil [2904 2907])
+                ("contact us" anchor nil nil [2965 2968])
+                ("home" anchor nil nil [3184 3187])
+                ("artists" anchor nil nil [3252 3255])
+                ("albums" anchor nil nil [3323 3326])
+                ("search" anchor nil nil [3392 3395])
+                ("top 40" anchor nil nil [3477 3480])
+                ("new" anchor nil nil [3561 3564])
+                ("submit" anchor nil nil [3623 3626])
+                ("extras" anchor nil nil [3771 3774])
+                ("#" anchor nil nil [4192 4195])
+                ("A" anchor nil nil [4218 4221])
+                ("B" anchor nil nil [4244 4247])
+                ("C" anchor nil nil [4270 4273])
+                ("D" anchor nil nil [4296 4299])
+                ("E" anchor nil nil [4322 4325])
+                ("F" anchor nil nil [4348 4351])
+                ("G" anchor nil nil [4374 4377])
+                ("H" anchor nil nil [4400 4403])
+                ("I" anchor nil nil [4426 4429])
+                ("J" anchor nil nil [4452 4455])
+                ("K" anchor nil nil [4478 4481])
+                ("L" anchor nil nil [4504 4507])
+                ("M" anchor nil nil [4530 4533])
+                ("N" anchor nil nil [4556 4559])
+                ("O" anchor nil nil [4582 4585])
+                ("P" anchor nil nil [4608 4611])
+                ("Q" anchor nil nil [4634 4637])
+                ("R" anchor nil nil [4660 4663])
+                ("S" anchor nil nil [4686 4689])
+                ("T" anchor nil nil [4712 4715])
+                ("U" anchor nil nil [4738 4741])
+                ("V" anchor nil nil [4764 4767])
+                ("W" anchor nil nil [4790 4793])
+                ("X" anchor nil nil [4816 4819])
+                ("Y" anchor nil nil [4842 4845])
+                ("Z" anchor nil nil [4868 4871])
+                ("*" anchor nil nil [4894 4897]))              ) nil [2734 5159])
+            ("
+google_ad_client = \"pub-9307576326974516\";
+//MLDb below top nav 728x90
+google_ad_slot = \"5179889214\";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->" section nil nil [5159 5365])
+            ("" section nil nil [5365 5566])
+            ("searchBox();" section nil nil [5566 5636])
+            ("drawStats(236453,23932,11115,183);" section nil nil [5636 5720])
+            ("
+google_ad_client = \"ca-pub-9307576326974516\";
+/* MLDB Left Sidebar 160x600 */
+google_ad_slot = \"7838877680\";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->" section nil nil [5720 5936])
+            ("" section (:members 
+              ( ("A Funny Thing Happened on the Way to the Forum Soundtrack" anchor nil nil [6173 6176])
+                ("Soundtracks (other tracks) soundtrack" anchor nil nil [6330 6333])
+                ("Michael Jackson" anchor nil nil [6445 6448])
+                ("A Charlie Brown Christmas Soundtrack" anchor nil nil [6517 6520])
+                ("A" anchor nil nil [6632 6635])
+                ("A Funny Thing Happened on the Way to the Forum Soundtrack" anchor nil nil [6823 6826])
+                ("A Alguns Quilômetros de Lugar Nenhum" anchor nil nil [6980 6983])
+                ("A Arte de Leila Pinheiro" anchor nil nil [7095 7098])
+                ("A Casa Das Sete Mulheres Soundtrack" anchor nil nil [7186 7189])
+                ("A Bossa de Leila Pinheiro" anchor nil nil [7299 7302])
+                ("MyBestMatch.net" anchor nil nil [7545 7548])
+                ("Bianca Ryan fan site" anchor nil nil [7660 7663])
+                ("Croler Video Search" anchor nil nil [7746 7749]))              ) nil [5936 7898])
+            ("" section (:members 
+              ( ("Sweet Child O' Mine <span style=\"color:#555\">lyrics" section (:members 
+                  ( ("Guns' N' Roses" anchor nil nil [8287 8290])
+                    ("Appetite For Destruction" anchor nil nil [8406 8409]))                  ) nil [8047 9680]))              ) nil [7898 9680])
+            ("
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-319914-9', 'auto');
+  ga('send', 'pageview');
+" section nil nil [9680 10109])
+            ("" section nil nil [10109 10339]))          
+      :file "text.html"
+      :pointmax 10339
+      :fsize 10339
+      :lastmodtime '(24538 22986 824688 800000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-1562c22687c4"
+      :major-mode c++-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("cstring" include (:system-flag t) nil [20 38])
+            ("iostream" include (:system-flag t) nil [39 58])
+            ("new" include (:system-flag t) nil [59 73])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [74 94])
+            ("main" function (:type "int") nil [95 658]))          
+      :file "test.cpp"
+      :pointmax 659
+      :fsize 658
+      :lastmodtime '(24540 36274 830578 800000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-1562c2201fb0"
+      :major-mode c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [1 20])
+            ("regex" include (:system-flag t) nil [21 37])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [38 58])
+            ("main" function (:type "int") nil [59 435]))          
+      :file "test2.cpp"
+      :pointmax 436
+      :fsize 435
+      :lastmodtime '(24546 3416 724321 700000)
+      :unmatched-syntax nil))
   :file "!data!Sync!projects!cpp!subtitles-downloader!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

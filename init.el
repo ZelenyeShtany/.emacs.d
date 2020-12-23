@@ -32,10 +32,12 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/esup-20200814.1400")
 (require 'esup)
 ;;; Add to list
+
+(add-to-list 'load-path "~/.emacs.d/emacs-redshift")
 (add-to-list 'load-path "~/.emacs.d/emacs-calfw")
 (add-to-list 'load-path "~/.emacs.d/transmission-el")
 (add-to-list 'load-path "~/.emacs.d/elpa/use-package-20200629.1856")
-(add-to-list 'load-path "~/.emacs.d/org-ql/")
+(add-to-list 'load-path "~/.emacs.d/org-ql/") 
 (add-to-list 'load-path "~/.emacs.d/mypack/")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (add-to-list 'load-path "~/.emacs.d/elpa/cmake-mode-20190710.1319")
@@ -104,7 +106,7 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-20200719.557")
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-core-20200718.741")
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-lsp-20200910.518")
-(add-to-list 'load-path "~/.emacs.d/elpa/helm-org-20200311.633")
+(add-to-list 'load-path "~/.emacs.d/elpa/helm-org-20200311.633") 
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-smex-20171004.2008")
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-swoop-20200515.417")
 (add-to-list 'load-path "~/.emacs.d/elpa/helm-xref-20201004.1817")
@@ -139,17 +141,17 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/modus-vivendi-theme-20200718.1456")
 (add-to-list 'load-path "~/.emacs.d/elpa/multiple-cursors-20191210.1759")
 (add-to-list 'load-path "~/.emacs.d/elpa/ob-mermaid-20200320.1504")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-9.3.6")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-board-20200619.1016")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-brain-20200625.2050")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-cliplink-20190608.2134")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-download-20200615.936")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-mind-map-20180826.2340")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-mru-clock-20200930.819")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-roam-20201005.1902")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-super-agenda-20200310.1337")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-superstar-20200818.2257")
-(add-to-list 'load-path "~/.emacs.d/elpa/org-timeline-20190612.1759")
+(add-to-list 'load-path "~/.emacs.d/elpa/org-9.3.6") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-board-20200619.1016") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-brain-20200625.2050") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-cliplink-20190608.2134") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-download-20200615.936") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-mind-map-20180826.2340") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-mru-clock-20200930.819") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-roam-20201005.1902") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-super-agenda-20200310.1337") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-superstar-20200818.2257") 
+(add-to-list 'load-path "~/.emacs.d/elpa/org-timeline-20190612.1759") 
 (add-to-list 'load-path "~/.emacs.d/elpa/ov-20200326.1042")
 (add-to-list 'load-path "~/.emacs.d/elpa/page-break-lines-20200305.244")
 (add-to-list 'load-path "~/.emacs.d/elpa/pdf-tools-20200512.1524")
@@ -283,6 +285,33 @@ Probably not required))."
  '(ido-auto-merge-delay-time 0.7)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'messages-buffer-mode)
+ '(ivy-format-functions-alist
+   '((counsel-compile-env . counsel-compile-env--format-hint)
+     (counsel-kmacro . counsel--kmacro-format-function)
+     (counsel-colors-web . counsel--colors-web-format-function)
+     (counsel-colors-emacs . counsel--colors-emacs-format-function)
+     (counsel-evil-registers . counsel--yank-pop-format-function)
+     (counsel-yank-pop . counsel--yank-pop-format-function)
+     (counsel-git-log . counsel--git-log-format-function)
+     (counsel-faces . counsel--faces-format-function)
+     (swiper-isearch . swiper-isearch-format-function)
+     (swiper-all . swiper--all-format-function)
+     (swiper-multi . swiper--all-format-function)
+     (t . ivy-format-function-default)))
+ '(ivy-sort-functions-alist
+   '((org-refile)
+     (counsel-minor . ivy-string<)
+     (counsel-colors-web . ivy-string<)
+     (counsel-unicode-char . ivy-string<)
+     (counsel-register . ivy-string<)
+     (counsel-mark-ring . ivy-string<)
+     (counsel-file-register . ivy-string<)
+     (counsel-describe-face . ivy-string<)
+     (counsel-info-lookup-symbol . ivy-string<)
+     (counsel-apropos . ivy-string<)
+     (counsel-describe-symbol . ivy-string<)
+     (read-file-name-internal . ivy-sort-file-function-default)
+     (t . ivy-string<)))
  '(menu-bar-mode nil)
  '(mode-line-format
    '("%e"
@@ -368,9 +397,12 @@ Probably not required))."
 			 (powerline-width rhs))
 	 (powerline-render rhs))))))
  '(org-M-RET-may-split-line '((default)))
- ;; '(org-agenda-files
- ;;   '("/data/data/com.termux/files/home/storage/shared/Sync/org/atomoxetine_research.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/brench.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/browsers_bookmarks.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/career.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/content.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/copingcards.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/cpp_roadmap.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/diredhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/emacs-todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/engl.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/helmhelp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/help.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/inbox.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/mtp.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/newreflex.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/notes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/pswd.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/regular.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/sleephygiene.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/takingChargeOfAdultADHDnotes.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/test.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/todos.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/webarchive.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/вечрит.org" "/data/data/com.termux/files/home/storage/shared/Sync/org/утррит.org"))
  '(org-agenda-log-mode-items '(closed clock state))
+ '(org-agenda-sorting-strategy
+   '((agenda time-up scheduled-down habit-down priority-down category-keep)
+     (todo priority-down category-keep)
+     (tags priority-down category-keep)
+     (search category-keep)))
  '(org-catch-invisible-edits 'error)
  '(org-complete-tags-always-offer-all-agenda-tags t)
  '(org-ctrl-k-protect-subtree 'error)
@@ -466,8 +498,9 @@ Probably not required))."
       :sort
       (priority date)
       :super-groups org-super-agenda-groups)))
+ '(org-refile-targets '((nil :maxlevel . 10)))
  '(package-selected-packages
-   '(elisp-benchmarks cmake-mode expand-region md4rd elfeed w3m mu4e lsp-modeline esup lsp-clangd dired-du ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme org hamburg-theme))
+   '(elisp-benchmarks cmake-mode expand-region md4rd elfeed w3m mu4e lsp-modeline esup lsp-clangd dired-du ggtags lsp-pyright lsp-jedi lsp-ui emacs-ccls company-lsp org-mind-map 0blayout org-cliplink gruvbox-theme org-mru-clock org-superstar ada-mode ack wgrep-ag peg web-mode diminish loop json-mode counsel-ffdata emacsql-sqlite beacon elpy magit bm csv-mode markdown-mode+ js2-highlight-vars windower markdown-mode undo-tree dumb-jump cyberpunk-theme persist alert company-quickhelp visual-regexp xah-find helm-org dired-filter dired-open dired-avfs dired-subtree dired-hacks-utils page-break-lines ag counsel ivy yasnippet-snippets yasnippet helm-smex helm-swoop helm afternoon-theme modus-vivendi-theme light-soap-theme dark-krystal-theme ace-window dired-launch mermaid-mode ob-mermaid multiple-cursors org-timeline org-board org-download use-package reverse-im blimp ido-vertical-mode zenburn-theme hamburg-theme))
  '(powerline-display-buffer-size (if my/phone-p nil t))
  '(powerline-display-mule-info nil)
  '(safe-local-variable-values
@@ -568,15 +601,81 @@ There are two things you can do about this warning:
 (use-package calfw-cal)
 (use-package calfw-org)
 
-(use-package tramp
 
+
+
+(use-package tramp
   :custom
   (tramp-default-method "ssh")
-  
+  :config
+  (defun my-tramp/open-remote-server()
+    (interactive)
+    (dired "/ssh:shmelevvl@192.168.1.105:~/")
+    )
+  (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
+
+  (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
+  (defvar sudo-tramp-prefix 
+    "/sudo:" 
+    (concat "Prefix to be used by sudo commands when building tramp path "))
+  (defun sudo-file-name (filename)
+    (set 'splitname (split-string filename ":"))
+    (if (> (length splitname) 1)
+        (progn (set 'final-split (cdr splitname))
+               (set 'sudo-tramp-prefix "/sudo:")
+               )
+      (progn (set 'final-split splitname)
+             (set 'sudo-tramp-prefix (concat sudo-tramp-prefix "root@localhost:")))
+      )
+    (set 'final-fn (concat sudo-tramp-prefix (mapconcat (lambda (e) e) final-split ":")))
+    (message "splitname is %s" splitname)
+    (message "sudo-tramp-prefix is %s" sudo-tramp-prefix)
+    (message "final-split is %s" final-split)
+    (message "final-fn is %s" final-fn)
+    (message "%s" final-fn)
+    )
+
+  (defun sudo-find-file (filename &optional wildcards)
+    "Calls find-file with filename with sudo-tramp-prefix prepended"
+    (interactive "fFind file with sudo ")      
+    (let ((sudo-name (sudo-file-name filename)))
+      (apply 'find-file 
+             (cons sudo-name (if (boundp 'wildcards) '(wildcards))))))
+
+  (defun sudo-reopen-file ()
+    "Reopen file as root by prefixing its name with sudo-tramp-prefix and by clearing buffer-read-only"
+    (interactive)
+    (let* 
+        ((file-name (expand-file-name buffer-file-name))
+         (sudo-name (sudo-file-name file-name)))
+      (progn           
+        (setq buffer-file-name sudo-name)
+        (rename-buffer sudo-name)
+        (setq buffer-read-only nil)
+        (message (concat "File name set to " sudo-name)))))
+  ;;(global-set-key (kbd "C-c o") 'sudo-find-file)
+  ;;(global-set-key (kbd "C-c o s") 'sudo-reopen-file)
+
+  :bind (
+	 ("C-x C-d" . 'my-tramp/open-remote-server)
+	 ("C-r" . 'sudo-reopen-file)
+	 )
   )
 
 (use-package transmission
   :commands (transmission transmission-add)
+  :init
+  (defun transmission-switch-host()
+    (interactive)
+    (require 'ivy)
+    (unload-feature 'transmission)
+    (require 'transmission)
+    (let ((hosts(list "localhost" "192.168.1.105")))
+      (setq transmission-host (ivy-read "host:" hosts :require-match t))
+      )
+    )
+  :custom
+  (transmission-host "192.168.1.105")
   )
 (use-package outline
   :bind
@@ -990,6 +1089,9 @@ With argument, do this that many times."
     (display-buffer buffer '(display-buffer-pop-up-frame . nil))
     )
   )
+
+
+
 (defun er-sudo-edit (&optional arg)
   "Edit currently visited file as root.
 
@@ -1289,10 +1391,32 @@ Narrow to defun if it's not."
   :after (org)
   )
 
+(use-package org-branch
+  :after (org)
+  )
+;; (use-package eaf
+;;   :load-path "~/.emacs.d/site-lisp/emacs-application-framework" ; Set to "/usr/share/emacs/site-lisp/eaf" if installed from AUR
+;;   :custom
+;;   (eaf-find-alternate-file-in-dired t)
+;;   :config
+;;   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+
 (use-package org
   :commands (org-mode)
   :mode ("\\.org\\'" . org-mode)
   :custom
+  ;;(org-refile-targets '(org-agenda-files . (:maxlevel . 10)))
+  (org-emphasis-alist '(("*" (bold :foreground "#fabd2f"))
+			("/" italic)
+			("_" underline)
+			("=" org-verbatim verbatim)
+			("~" org-code verbatim)
+			("+"
+			 (:strike-through t))))
+  (org-log-refile 'time)
+  (org-refile-use-outline-path nil)
   (org-agenda-files (list my-org-directory))
   (org-edit-src-content-indentation 0)
   (org-clock-mode-line-total 'current)
@@ -1394,7 +1518,7 @@ Narrow to defun if it's not."
      ("alcohol")
      ("organization")
      ("workflow")
-
+     ("english-listening-skill")
      (:startgrouptag)
      ("emacs")
      (:grouptags)
@@ -1478,20 +1602,23 @@ Narrow to defun if it's not."
 
   ;; redefined for custom %-escapes.
   ;; For example, 
+  (defun my/org-open-at-point (&optional arg)
+    (interactive)
+    (if (and
+	 (org-at-table-p)
+	 (my/org-link-at-point-p))
+	(org-open-at-point)
+      (org-return arg)))
   (defun my/org-delete-link-at-point ()
     "docstring"
     (interactive)
-    (if
-        (my/org-link-at-point-p)
+    (if(my/org-link-at-point-p)
         (delete-region (match-beginning 0) (match-end 0))
-      nil
-      )
-    )
+      nil))
 
   (defun my/org-at-source-block-p ()
     "returns non-nil if point is at source block"
-    (eq (my-org-element-type (org-element-at-point)) 'src-block)
-    )
+    (eq (my-org-element-type (org-element-at-point)) 'src-block))
 
   (defun my/org-mode-p ()
     "Return `t' if major-mode or derived-mode-p equals 'org-mode, otherwise `nil'."
@@ -1508,18 +1635,13 @@ Narrow to defun if it's not."
     (interactive)
     (if(org-at-table-p)
         (org-table-next-field)
-      (right-word)
-      )
-    )
+      (right-word)))
   (defun my/org-move-left ()
     "docstring"
     (interactive)
     (if(org-at-table-p)
         (org-table-previous-field)
-      (left-word)
-      )
-    )
-
+      (left-word)))
 
   (defun my-org-set-todo-state (todostate)
     "Change TODO state of current heading to todostate"
@@ -1528,23 +1650,16 @@ Narrow to defun if it's not."
              (todo-state (concat todostate " "))
              (regexp "\\([[:word:]]+ \\)\\(.*\\)")
              (heading-level (car (my-org-get-current-heading-level-and-point)))
-             (heading-point (nth 1 (my-org-get-current-heading-level-and-point)))
-             )
+             (heading-point (nth 1 (my-org-get-current-heading-level-and-point))))
         (progn
           (if (eq (org-get-todo-state) nil)
               (setq new-line (concat todo-state (org-get-heading)))
             (progn
-              (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))
-              )
-            )
+              (setq new-line (replace-regexp-in-string regexp (concat todo-state "\\2") (org-get-heading) nil nil))))
           (goto-char (+ heading-point heading-level 1))
           (zap-up-to-char -1 ?*)
           (zap-up-to-char 1 ?\n)
-          (insert (concat " " new-line))
-          )
-        )
-      )
-    )
+          (insert (concat " " new-line))))))
 
   (defun my-org-element-type (element)
     "Return type of ELEMENT.
@@ -1841,6 +1956,7 @@ or calls a menu of last clocked tasks to choose"
   ;;:defer t
   ;;)
   :bind (:map org-mode-map
+	      ("<return>" . 'my/org-open-at-point)
               ("M-a" . 'my/org-archive-youtube-video-at-point)
               ("C-c f" . 'org-search-view)
               ("C-c C-x C-c" . 'my/toggle-org-columns)
@@ -2051,7 +2167,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
      ("webm" . "mpv")
      ("wav" . "mpv")
      ("mkv" . "vlc")
-     ("mp3" . "clementine")
+     ("mp3" . "mpv")
      ("ogg" . "clementine")
      ("opus" . "clementine")
      ("odt" . "libreoffice")
@@ -2219,7 +2335,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   (highlight-symbol-idle-delay 0.2)
   )
 
-(add-to-list 'load-path "~/.emacs.d/org-pandoc-import/")
+(add-to-list 'load-path "~/.emacs.d/org-pandoc-import/") 
 
 (use-package swiper
   :commands (swiper)
@@ -2359,7 +2475,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 ;;)
 
 (use-package gruvbox)
-(load-theme 'gruvbox-dark-hard t)
+(load-theme 'gruvbox-light-medium t)
 
 (define-key global-map (kbd "<prior>") #'my/sound-while-clocking-in)
 (define-key global-map (kbd "<next>") #'org-clock-out)
@@ -2540,7 +2656,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 (global-set-key "\C-x2" (lambda () (interactive)(split-window-vertically) (other-window 1)
 			  (if(and (buffer-narrowed-p) (string-match "/"  (buffer-name)))
 			      (switch-to-buffer (car (split-string (buffer-name) "/")))
-			    (switch-to-buffer "*Messages*")
+			    ;;(switch-to-buffer "*Messages*")
 
 			    )
 			  )
@@ -2548,7 +2664,7 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 (global-set-key "\C-x3" (lambda () (interactive)(split-window-horizontally) (other-window 1)
 			  (if(and (buffer-narrowed-p) (string-match "/"  (buffer-name)))
 			      (switch-to-buffer(car (split-string (buffer-name) "/")))
-			    (switch-to-buffer "*Messages*")
+			    ;;(switch-to-buffer "*Messages*")
 			    ))
 		)
 
@@ -2890,10 +3006,29 @@ as a inactive timestamp string '[%Y-%m-%d]'"
 	 ("C-c C-x C-i" . 'my/sound-while-clocking-in)
 	 )
   :commands (org-mru-clock-in org-mru-clock-select-recent-task)
+  :custom
+  (org-mru-clock-how-many 50)
+  ;;;;;;;;;;;;;;; Also possible: #'ido-completing-read
+  (org-mru-clock-completing-read #'ivy-completing-read)
   :config
-  (setq org-mru-clock-how-many 50
-        ;;;;;;;;;;;;;; Also possible: #'ido-completing-read
-        org-mru-clock-completing-read #'ivy-completing-read))
+  (defun org-mru-clock--find-clocks (file)
+  "Search through the given FILE and find all open clocks."
+  (let ((buf (or (get-file-buffer file)
+                 (find-file-noselect file)))
+	;; original function has a different regex which isnt appropriate for me and cause an error
+        (org-clock-re (concat "^ *" org-clock-string " *\\(\\[[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} ?[^\r\n>]*?\\]\\)"))
+        clocks)
+    (with-current-buffer buf
+      (org-with-wide-buffer
+       (save-excursion
+         (goto-char (point-min))
+         (while (re-search-forward org-clock-re nil t)
+           (when (org-mru-clock--predicate)
+             (push (cons (copy-marker (match-end 1) t)
+                         (org-time-string-to-time (match-string 1)))
+                   clocks))))))
+    clocks))
+  )
 ;; /time tracking
 
 ;; (use-package org-roam
@@ -2934,7 +3069,13 @@ as a inactive timestamp string '[%Y-%m-%d]'"
   ;; (setq org-mind-map-engine "circo")  ; Circular Layout
   )
 
-(use-package proced
+(use-package redshift
+  :bind (
+	 ("C-}" . 'redshift-increase-temp)
+	 )
+  )
+
+  (use-package proced
   :commands (proced proced-toggle-auto-update)
   :bind (:map global-map
 	      ("C-S-<escape>" . 'proced)
@@ -2987,13 +3128,11 @@ If ARG is non-nil, clock-in without beeping at all.
 Useful when you're listening lectures, podcasts or whatever.
   "
   (interactive "P")
-  ;;(interactive)
   ;;(run-with-timer 0 (* 30 60) 'recentf-save-list)
   ;;(play-sound-file "/org/timer-sounds/bell.wav")
-  ;;
   ;;org-clock-clocking-in
   (org-mru-clock-in)
-  (when (eq arg nil)
+  (when (not arg)
     (setq my/clocking-in-timer
           ;; run with 3 seconds delay at start and repeat every 30secs
           (run-with-timer 3 30
@@ -3002,9 +3141,7 @@ Useful when you're listening lectures, podcasts or whatever.
   for i in `seq 1 1`; do
       beep -f 3000 -d 20 -l 80
   done
-  "
-                          )))
-  )
+  "))))
 (defun my/delete-clocking-in-timer ()
   "docstring"
   ;;(interactive)
@@ -3148,7 +3285,9 @@ Useful when you're listening lectures, podcasts or whatever.
 	 (cc-mode . (lambda()
 		       (flycheck-mode)
 		       (setq flycheck-checker 'c/c++-clang)))
-	 
+	 (c++-mode . (lambda()
+		       (flycheck-mode)
+		       (setq flycheck-checker 'c/c++-clang)))
 	 (python-mode . (lambda() (flycheck-mode) (setq flycheck-checker 'python-pyright)))
 	 )
   ;;:custom
@@ -3212,6 +3351,12 @@ Useful when you're listening lectures, podcasts or whatever.
 ;;  ;; Your init file should contain only one such instance.
 ;;  ;; If there is more than one, they won't work right.
 ;;  )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; Local Variables:
 ;;   mode: emacs-lisp
 ;;   outline-regexp: "^;;;"

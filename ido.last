@@ -110,6 +110,10 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/zesh/.dotfiles/shell/" (24534 6755 353062 734000) ".inputrc" "./" ".profile" "../" ".bash_logout" ".bash_history" ".#.bashrc" ".bashrc")
+
+ ("/home/zesh/.emacs.d/mypack/" (24532 63725 128830 549000) "org-tb.el" "my-org-timer.el" "test" "./" "test.el" "mypack.el~" "my-json.el" "../" "pdf-sel.el" "my-week-day-based-habits.el" "test2" "org-branch.el" "mypack.el" "aaa")
+
  ("/usr/share/doc/rtorrent/examples/" (24528 36282 922356 134000) "./" "rtorrent.rc.gz" "../")
 
  ("/usr/share/doc/rtorrent/" (24528 36282 922356 134000) "./" "examples/" "copyright" "../" "NEWS.Debian.gz" "changelog.Debian.gz")
@@ -305,10 +309,6 @@
  ("/home/zelenyeshtany/Sync/.stfolder/" (24315 6872 209959 547000) "../" "./")
 
  ("/home/zelenyeshtany/Sync/org/img/" (24341 53455 724533 607000) "../" "2020-07-06-MONDAY-EXAMPLE.png" "prop.png" "2020-07-19_15-53-00_screenshot.png" ".stfolder (1)/" "2020-07_mmobranch_ereader_hddcase.png" "sss.png" "sss2.png" "2020-07_mmobranch_raspberry_pi.png" "test.png" "2020-07-2020-09.png" "mmobranchRASP.png" "asd.png" "mmobranchRASPBERRY.png" "mmobranch.png" "mmobranch3.png" ".stfolder/" "mmobranch2.png" "Разобранные_треки/" "./" "longterm.png" "main_task_planning(MTP)/" "sasd.png" "pie.png" "jpg_44.jpg")
-
- ("/home/zelenyeshtany/.emacs.d/elpa/dimmer-20200509.1718/" (24344 38073 824231 272000) "dimmer-pkg.el" "../" "dimmer.elc" "dimmer.el" "dimmer-autoloads.el" "./")
-
- ("/home/zelenyeshtany/discrnotes2015/" (24337 57590 32149 162000) "n7.pdf" "../" "n18.pdf" "n22.pdf" "n16.pdf" "n9.pdf" "n2.pdf" "n10.pdf" "n4.pdf" "n12.pdf" "n17.pdf" "n21.pdf" "n13.pdf" "n8.pdf" "n0.pdf" ".stfolder/" "n6.pdf" "n5.pdf" "n14.pdf" "n19.pdf" "./" "n23.pdf" "n3.pdf" "n21_slides.pdf" "n1.pdf" "n15.pdf" "n11.pdf" "n20.pdf")
 )
 
 ;; ----- ido-unc-hosts-cache -----
