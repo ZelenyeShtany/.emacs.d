@@ -97,17 +97,12 @@ if `ID' is not specified, takes heading at point
       (while (not (eobp))
 	(outline-next-heading)
 	(let*
-	    (
-	     (action (org-entry-get nil "ACTION" nil))
+	    ((action (org-entry-get nil "ACTION" nil))
 	     (streak-to-achieve (org-entry-get nil "streak-to-achieve" nil))
-	     (heading (org-element-property :title (org-element-at-point)))
-	     )
+	     (heading (org-element-property :title (org-element-at-point))))
 	  (when (and
 		 (not (string= (org-element-property :todo-keyword (org-element-at-point)) "DONE"))
-		 action
-		 streak-to-achieve
-		 )
-	      
+		 action streak-to-achieve)
 	  (org-entry-put nil "current-streak"
 			 (number-to-string
 			  (my/count-last-todo-states-streak-within-logbook
@@ -119,8 +114,7 @@ if `ID' is not specified, takes heading at point
 	      (org-entry-put nil "TODO" "DONE")))))
       (widen)
       (goto-char (point-min))))
-    (message "Error: current buffer is not %s" my-org-branch/branch-filename)
-    )
+    (message "Error: current buffer is not %s" my-org-branch/branch-filename))
   (point))
 
 
