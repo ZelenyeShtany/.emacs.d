@@ -44,31 +44,31 @@ if `ID' is not specified, takes heading at point
     (previous-buffer))
       streak))
 
-(defun org-dblock-write:last-streaks (params)
-  (require 'loop)
-  (let* (
-	 ;; EXAMPLE OF EXTRACTING PARAMS (fmt (or (plist-get params :format) "%d. %m. %Y"))
-	 (file  (or (plist-get params :file) regular) )
-	 (string-to-insert ""))
-    (save-window-excursion
-     (save-excursion
-      (find-file file)
-      (widen)
-      (goto-char (point-min))
+;; (defun org-dblock-write:last-streaks (params)
+;;   (require 'loop)
+;;   (let* (
+;; 	 ;; EXAMPLE OF EXTRACTING PARAMS (fmt (or (plist-get params :format) "%d. %m. %Y"))
+;; 	 (file  (or (plist-get params :file) regular) )
+;; 	 (string-to-insert ""))
+;;     (save-window-excursion
+;;      (save-excursion
+;;       (find-file file)
+;;       (widen)
+;;       (goto-char (point-min))
 
-      (loop-while (outline-next-heading)
-	(if (eq (org-entry-get nil "count-last-streak") nil)
-	    (loop-continue)
-	  (setq string-to-insert
-		(concat string-to-insert
-			(org-element-property :title (org-element-at-point))
-			": ("
-			(number-to-string(my/count-last-todo-states-streak-within-logbook "DONE"))
-			"/"
-			(org-entry-get nil "streak-to-achieve")
-			;;(org-element-property :streak-to-achieve (org-element-at-point))
-			")\n"))))))
-    (insert string-to-insert)))
+;;       (loop-while (outline-next-heading)
+;; 	(if (eq (org-entry-get nil "count-last-streak") nil)
+;; 	    (loop-continue)
+;; 	  (setq string-to-insert
+;; 		(concat string-to-insert
+;; 			(org-element-property :title (org-element-at-point))
+;; 			": ("
+;; 			(number-to-string(my/count-last-todo-states-streak-within-logbook "DONE"))
+;; 			"/"
+;; 			(org-entry-get nil "streak-to-achieve")
+;; 			;;(org-element-property :streak-to-achieve (org-element-at-point))
+;; 			")\n"))))))
+;;     (insert string-to-insert)))
 
 ;; find-file-after-hook
 (setq my/org-mmo-heading "MMO-like development branches")
@@ -94,8 +94,7 @@ if `ID' is not specified, takes heading at point
 				    (1+ (org-element-property :level (org-element-at-point)))))
 			   'tree )))
       (org-narrow-to-subtree)
-      (while (not (eobp))
-	(outline-next-heading)
+      (while (outline-next-heading)
 	(let*
 	    ((action (org-entry-get nil "ACTION" nil))
 	     (streak-to-achieve (org-entry-get nil "streak-to-achieve" nil))
