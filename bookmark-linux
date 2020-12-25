@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("career / cpp"
+(("projects / cpp / subtitles-downloader"
+ (filename . "/data/projects/cpp/subtitles-downloader/")
+ (front-context-string . ".clangd\n  drwxrw")
+ (rear-context-string . "77 ноя 26 19:27 ")
+ (position . 229))
+("career / cpp"
  (filename . "/data/gitserver/org/notes.org")
  (front-context-string . "cpp\n:PROPERTIES:")
  (rear-context-string . " в методичке\n** ")
@@ -42,11 +47,6 @@
  (front-context-string . "..\n  -rwxrwxrwx ")
  (rear-context-string . "0K Там 28 17:37 ")
  (position . 253))
-("projects / cpp"
- (filename . "/data/Sync/projects/cpp/")
- (front-context-string . ".ccls-cache\n  -r")
- (rear-context-string . " 0 Қаз 31 14:08 ")
- (position . 213))
 ("accels"
  (filename . "~/.config/evince/accels")
  (front-context-string . "; evince GtkAcce")
@@ -58,7 +58,7 @@
  (rear-context-string)
  (position . 1))
 ("books"
- (filename . "/data/Books/")
+ (filename . "/books/")
  (front-context-string . " /data/Books:\n  ")
  (rear-context-string)
  (position . 2))
@@ -219,7 +219,7 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "/data/gitserver/org/inbox.org")
- (front-context-string . "**** ffmpeg: web")
- (rear-context-string . "ись сами собой.\n")
- (position . 267007))
+ (front-context-string . "**** [[https://g")
+ (rear-context-string . "20-12-25 Friday\n")
+ (position . 267918))
 )

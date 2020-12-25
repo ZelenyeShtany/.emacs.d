@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  transmission
- transmission-switch-host
- profiler-stop
- profiler-report
- profiler-start
- edebug-defun
  counsel-load-theme
+ transmission-set-download
+ transmission-add
+ company-clang
+ html-mode
+ edebug-defun
 )
 
 ;; ----- smex-data -----
@@ -123,14 +123,14 @@
  (complete-symbol . 2)
  (counsel-ibuffer . 8)
  (counsel-buffer-or-recentf . 3)
- (counsel-load-theme . 67)
+ (counsel-load-theme . 70)
  (counsel-yank-pop . 1)
  (counsel-ag . 102)
  (counsel-package . 204)
  (grep-find . 1)
  (helm-popup-tip-mode . 1)
- (company-mode . 144)
- (company-complete . 2)
+ (company-mode . 149)
+ (company-complete . 4)
  (counsel-org-capture . 334)
  (all-the-icons-install-fonts . 1)
  (all-the-icons-insert . 22)
@@ -240,13 +240,13 @@
  (my/org-update-time-within-heading-at-point . 2)
  (comment-box . 1)
  (comment-region . 2)
- (org-narrow-to-subtree . 1)
+ (org-narrow-to-subtree . 2)
  (org-show-subtree . 2)
  (indent-region . 92)
  (dimmer-mode . 13)
  (edebug-stop . 4)
  (edebug-mode . 1)
- (edebug-defun . 305)
+ (edebug-defun . 307)
  (org-gcal-delete-at-point . 3)
  (org-table-insert-column . 3)
  (my/show-scheduling-amendments-status . 2)
@@ -394,7 +394,7 @@
  (multiple-cursors-mode . 1)
  (helm-colors . 4)
  (scroll-bar-mode . 1)
- (widen . 51)
+ (widen . 52)
  (org-narrow-to-element . 6)
  (org-version . 6)
  (counsel-org-tag . 1)
@@ -405,7 +405,7 @@
  (web-mode-buffer-indent . 1)
  (javascript-mode . 1)
  (js-indent-line . 2)
- (html-mode . 2)
+ (html-mode . 4)
  (web-mode-toggle-current-element-highlight . 1)
  (my/number-of-spaces-at-point . 1)
  (table-widen-cell . 2)
@@ -641,11 +641,11 @@
  (byte-compile-file . 3)
  (byte-recompile-directory . 1)
  (org-toggle-link-display . 12)
- (transmission . 103)
- (transmission-add . 11)
+ (transmission . 105)
+ (transmission-add . 12)
  (transmission-files . 1)
  (transmission-set-ratio . 1)
- (transmission-set-download . 2)
+ (transmission-set-download . 3)
  (transmission-files-want . 3)
  (transmission-peers . 1)
  (tramp-version . 1)
@@ -722,4 +722,6 @@
  (org-table-goto-column . 1)
  (profiler-start . 2)
  (profiler-stop . 2)
+ (company-clang . 7)
+ (global-company-mode . 2)
 )

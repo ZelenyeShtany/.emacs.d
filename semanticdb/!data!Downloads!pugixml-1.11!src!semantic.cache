@@ -1,0 +1,2914 @@
+;; Object semanticdb-project-database-file-1569e7e617a4
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1569e7e617a4"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1569e7e617b0"
+      :major-mode c++-mode
+      :tags 
+        '( ("SOURCE_PUGIXML_CPP" variable (:constant-flag t) nil [495 513])
+            ("pugixml.hpp" include nil nil [515 537])
+            ("stdlib.h" include (:system-flag t) nil [539 558])
+            ("stdio.h" include (:system-flag t) nil [559 577])
+            ("string.h" include (:system-flag t) nil [578 597])
+            ("assert.h" include (:system-flag t) nil [598 617])
+            ("limits.h" include (:system-flag t) nil [618 637])
+            ("math.h" include (:system-flag t) nil [718 736])
+            ("float.h" include (:system-flag t) nil [737 756])
+            ("istream" include (:system-flag t) nil [788 807])
+            ("ostream" include (:system-flag t) nil [808 827])
+            ("string" include (:system-flag t) nil [828 846])
+            ("new" include (:system-flag t) nil [876 890])
+            ("PUGI__NO_INLINE" variable (:constant-flag t) nil [2578 2593])
+            ("PUGI__UNLIKELY" variable (:constant-flag t) nil [2736 2750])
+            ("PUGI__STATIC_ASSERT" variable (:constant-flag t) nil [2869 2888])
+            ("PUGI__DMC_VOLATILE" variable (:constant-flag t) nil [3134 3152])
+            ("PUGI__UNSIGNED_OVERFLOW" variable (:constant-flag t) nil [3577 3600])
+            ("PUGI__SNPRINTF" variable (:constant-flag t) nil [4650 4664])
+            ("PUGI__SNPRINTF" variable (:constant-flag t) nil [4892 4906])
+            ("PUGI__NS_BEGIN" variable (:constant-flag t) nil [5496 5510])
+            ("PUGI__NS_END" variable (:constant-flag t) nil [5567 5579])
+            ("PUGI__FN" variable (:constant-flag t) nil [5603 5611])
+            ("PUGI__FN_NO_INLINE" variable (:constant-flag t) nil [5621 5639])
+            ("stdint.h" include (:system-flag t) nil [5966 5986])
+            ("pugi" type (:type "namespace") nil [6016 6830])
+            ("pugi" type (:type "namespace") nil [6851 7798])
+            ("pugi" type (:type "namespace") nil [7846 8183])
+            ("pugi" type (:type "namespace") nil [10734 20331])
+            ("pugi" type
+               (:members 
+                  ( ("xml_attribute_struct" type
+                       (:members 
+                          ( ("xml_attribute_struct" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("page" variable
+                                       (:pointer 1
+                                        :type ("impl::xml_memory_page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [28995 29023]))                                  
+                                :type ("xml_attribute_struct" type (:type "struct") nil nil))
+                                (reparse-symbol classsubparts) [28974 29139])
+                            ("header" variable (:type ("uintptr_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [29143 29160])
+                            ("name" variable
+                               (:pointer 1
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29164 29177])
+                            ("value" variable
+                               (:pointer 1
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29180 29194])
+                            ("prev_attribute_c" variable
+                               (:pointer 1
+                                :type ("xml_attribute_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29198 29237])
+                            ("next_attribute" variable
+                               (:pointer 1
+                                :type ("xml_attribute_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29240 29277]))                          
+                        :type "struct")
+                        (reparse-symbol namespacesubparts) [28941 29281])
+                    ("xml_node_struct" type
+                       (:members 
+                          ( ("xml_node_struct" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("page" variable
+                                       (:pointer 1
+                                        :type ("impl::xml_memory_page" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [29328 29356])
+                                    ("type" variable (:type ("xml_node_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29357 29376]))                                  
+                                :type ("xml_node_struct" type (:type "struct") nil nil))
+                                (reparse-symbol classsubparts) [29312 29538])
+                            ("header" variable (:type ("uintptr_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [29542 29559])
+                            ("name" variable
+                               (:pointer 1
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29563 29576])
+                            ("value" variable
+                               (:pointer 1
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29579 29593])
+                            ("parent" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29597 29621])
+                            ("first_child" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29625 29654])
+                            ("prev_sibling_c" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29658 29690])
+                            ("next_sibling" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29693 29723])
+                            ("first_attribute" variable
+                               (:pointer 1
+                                :type ("xml_attribute_struct" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [29727 29765]))                          
+                        :type "struct")
+                        (reparse-symbol namespacesubparts) [29284 29769]))                  
+                :type "namespace")
+                nil [28923 29771])
+            ("pugi" type (:type "namespace") nil [29780 30580])
+            ("pugi" type (:type "namespace") nil [30609 36812])
+            ("pugi" type (:type "namespace") nil [36851 36973])
+            ("pugi" type (:type "namespace") nil [36995 46098])
+            ("pugi" type (:type "namespace") nil [46099 135939])
+            ("pugi" type
+               (:members 
+                  ( ("xml_writer_file" function
+                       (:constructor-flag t
+                        :parent "xml_writer_file"
+                        :arguments 
+                          ( ("file_" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [136000 136012]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [135958 136031])
+                    ("write" function
+                       (:parent "xml_writer_file"
+                        :arguments 
+                          ( ("data" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [136071 136088])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [136089 136101]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [136043 136247])
+                    ("xml_writer_stream" function
+                       (:constructor-flag t
+                        :parent "xml_writer_stream"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("char" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("char" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [136319 136377]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [136273 136423])
+                    ("xml_writer_stream" function
+                       (:constructor-flag t
+                        :parent "xml_writer_stream"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("wchar_t" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("wchar_t" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [136472 136536]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [136426 136582])
+                    ("write" function
+                       (:parent "xml_writer_stream"
+                        :arguments 
+                          ( ("data" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [136624 136641])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [136642 136654]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [136594 137009])
+                    ("xml_tree_walker" function
+                       (:constructor-flag t
+                        :parent "xml_tree_walker"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [137019 137079])
+                    ("xml_tree_walker" function
+                       (:destructor-flag t
+                        :parent "xml_tree_walker"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [137082 137132])
+                    ("depth" function
+                       (:methodconst-flag t
+                        :parent "xml_tree_walker"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [137144 137201])
+                    ("begin" function
+                       (:parent "xml_tree_walker"
+                        :arguments 
+                          ( ("" variable
+                               (:reference 1
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137241 137251]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [137213 137272])
+                    ("end" function
+                       (:parent "xml_tree_walker"
+                        :arguments 
+                          ( ("" variable
+                               (:reference 1
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137310 137320]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [137284 137341])
+                    ("xml_attribute" function
+                       (:constructor-flag t
+                        :parent "xml_attribute"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [137344 137399])
+                    ("xml_attribute" function
+                       (:constructor-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("attr" variable
+                               (:pointer 1
+                                :type ("xml_attribute_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137440 137467]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [137402 137486])
+                    ("unspecified_bool_xml_attribute" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 3
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137541 137558]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [137498 137564])
+                    ("unspecified_bool_type" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [137600 137703])
+                    ("!" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [137715 137775])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137818 137841]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [137787 137882])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [137925 137948]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [137894 137989])
+                    ("<" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [138031 138054]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [138001 138094])
+                    (">" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [138136 138159]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [138106 138199])
+                    ("<=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [138242 138265]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [138211 138306])
+                    (">=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [138349 138372]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [138318 138413])
+                    ("next_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [138425 138555])
+                    ("previous_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [138567 138746])
+                    ("as_string" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_attribute"
+                        :constant-flag t
+                        :arguments 
+                          ( ("def" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [138797 138815]))                          
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [138758 138886])
+                    ("as_int" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("def" variable (:type "int") (reparse-symbol arg-sub-list) [138924 138932]))                          
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [138898 139020])
+                    ("as_uint" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("def" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [139068 139085]))                          
+                        :type "unsigned int")
+                        (reparse-symbol namespacesubparts) [139032 139174])
+                    ("as_double" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("def" variable (:type "double") (reparse-symbol arg-sub-list) [139218 139229]))                          
+                        :type "double")
+                        (reparse-symbol namespacesubparts) [139186 139320])
+                    ("as_float" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("def" variable (:type "float") (reparse-symbol arg-sub-list) [139362 139372]))                          
+                        :type "float")
+                        (reparse-symbol namespacesubparts) [139332 139462])
+                    ("as_bool" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("def" variable (:type "bool") (reparse-symbol arg-sub-list) [139502 139511]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [139474 139600])
+                    ("empty" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [139968 140024])
+                    ("name" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_attribute"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140036 140153])
+                    ("value" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_attribute"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140165 140285])
+                    ("hash_value" function
+                       (:methodconst-flag t
+                        :parent "xml_attribute"
+                        :type ("size_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140297 140440])
+                    ("internal_object" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_attribute"
+                        :type ("xml_attribute_struct" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140452 140534])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [140586 140604]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140546 140644])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "int") (reparse-symbol arg-sub-list) [140696 140704]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140656 140744])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [140796 140813]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140756 140853])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "long") (reparse-symbol arg-sub-list) [140905 140914]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140865 140954])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [141006 141024]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [140966 141064])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [141116 141127]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [141076 141167])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [141219 141229]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [141179 141269])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "bool") (reparse-symbol arg-sub-list) [141321 141330]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [141281 141370])
+                    ("set_name" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [141668 141686]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [141639 141849])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [141891 141909]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [141861 142074])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "int") (reparse-symbol arg-sub-list) [142116 142124]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [142086 142294])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [142336 142353]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [142306 142521])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "long") (reparse-symbol arg-sub-list) [142563 142572]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [142533 142743])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [142785 142803]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [142755 142972])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [143014 143025]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [142984 143198])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [143240 143251])
+                            ("precision" variable (:type "int") (reparse-symbol arg-sub-list) [143252 143266]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [143210 143424])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [143466 143476]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [143436 143648])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [143690 143700])
+                            ("precision" variable (:type "int") (reparse-symbol arg-sub-list) [143701 143715]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [143660 143873])
+                    ("set_value" function
+                       (:parent "xml_attribute"
+                        :arguments 
+                          ( ("rhs" variable (:type "bool") (reparse-symbol arg-sub-list) [143915 143924]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [143885 144068])
+                    ("xml_node" function
+                       (:constructor-flag t
+                        :parent "xml_node"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [144797 144842])
+                    ("xml_node" function
+                       (:constructor-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("p" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [144873 144892]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [144845 144908])
+                    ("unspecified_bool_xml_node" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 3
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [144958 144970]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [144920 144976])
+                    ("unspecified_bool_type" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [145007 145100])
+                    ("!" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [145112 145167])
+                    ("begin" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node::iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [145179 145289])
+                    ("end" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node::iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [145301 145376])
+                    ("attributes_begin" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node::attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [145388 145533])
+                    ("attributes_end" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node::attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [145545 145651])
+                    ("children" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_object_range" type
+                             (:template-specifier 
+                                ( ("xml_node_iterator" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol namespacesubparts) [145663 145793])
+                    ("children" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [145866 145886]))                          
+                        :type ("xml_object_range" type
+                             (:template-specifier 
+                                ( ("xml_named_node_iterator" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol namespacesubparts) [145805 146051])
+                    ("attributes" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_object_range" type
+                             (:template-specifier 
+                                ( ("xml_attribute_iterator" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol namespacesubparts) [146063 146227])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146265 146283]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146239 146324])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146362 146380]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146336 146421])
+                    ("<" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146458 146476]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146433 146516])
+                    (">" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146553 146571]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146528 146611])
+                    ("<=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146649 146667]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146623 146708])
+                    (">=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("r" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [146746 146764]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146720 146805])
+                    ("empty" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [146817 146868])
+                    ("name" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_node"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [146880 146992])
+                    ("type" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node_type" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [147004 147098])
+                    ("value" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_node"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [147110 147225])
+                    ("child" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [147262 147282]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [147237 147492])
+                    ("attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [147538 147558]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [147504 147798])
+                    ("next_sibling" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [147842 147862]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [147810 148073])
+                    ("next_sibling" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [148085 148191])
+                    ("previous_sibling" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [148239 148259]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [148203 148488])
+                    ("attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [148534 148554])
+                            ("hint_" variable
+                               (:reference 1
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [148555 148576]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [148500 149646])
+                    ("previous_sibling" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [149658 149850])
+                    ("parent" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [149862 149956])
+                    ("root" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [149968 150073])
+                    ("text" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [150085 150148])
+                    ("child_value" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_node"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [150160 150563])
+                    ("child_value" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_node"
+                        :constant-flag t
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [150611 150631]))                          
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [150575 150680])
+                    ("first_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [150692 150819])
+                    ("last_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [150831 151001])
+                    ("first_child" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [151013 151117])
+                    ("last_child" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [151129 151270])
+                    ("set_name" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [151306 151324]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [151282 151622])
+                    ("set_value" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [151659 151677]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [151634 152020])
+                    ("append_attribute" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [152073 152093]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [152032 152441])
+                    ("prepend_attribute" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [152495 152515]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [152453 152864])
+                    ("insert_attribute_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [152923 152943])
+                            ("attr" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [152944 152970]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [152876 153418])
+                    ("insert_attribute_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [153478 153498])
+                            ("attr" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [153499 153525]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [153430 153974])
+                    ("append_copy" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [154022 154049]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [153986 154464])
+                    ("prepend_copy" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [154513 154540]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [154476 154956])
+                    ("insert_copy_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [155010 155037])
+                            ("attr" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [155038 155064]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [154968 155579])
+                    ("insert_copy_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [155634 155661])
+                            ("attr" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [155662 155688]))                          
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [155591 156204])
+                    ("append_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("type_" variable (:type ("xml_node_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [156248 156268]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [156216 156641])
+                    ("prepend_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("type_" variable (:type ("xml_node_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [156686 156706]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [156653 157080])
+                    ("insert_child_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("type_" variable (:type ("xml_node_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [157131 157151])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [157152 157173]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [157092 157627])
+                    ("insert_child_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("type_" variable (:type ("xml_node_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [157677 157697])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [157698 157719]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [157639 158172])
+                    ("append_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158216 158236]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [158184 158335])
+                    ("prepend_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158380 158400]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [158347 158500])
+                    ("insert_child_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158550 158570])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158571 158592]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [158512 158703])
+                    ("insert_child_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158754 158774])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158775 158796]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [158715 158908])
+                    ("append_copy" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [158951 158973]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [158920 159363])
+                    ("prepend_copy" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [159407 159429]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [159375 159820])
+                    ("insert_copy_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [159869 159891])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [159892 159913]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [159832 160383])
+                    ("insert_copy_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [160433 160455])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [160456 160477]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [160395 160948])
+                    ("append_move" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("moved" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [160991 161013]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [160960 161486])
+                    ("prepend_move" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("moved" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [161530 161552]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [161498 162026])
+                    ("insert_move_after" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("moved" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [162075 162097])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [162098 162119]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [162038 162724])
+                    ("insert_move_before" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("moved" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [162774 162796])
+                            ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [162797 162818]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [162736 163424])
+                    ("remove_attribute" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [163468 163488]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [163436 163539])
+                    ("remove_attribute" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("a" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [163583 163606]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [163551 163912])
+                    ("remove_attributes" function
+                       (:parent "xml_node"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [163924 164327])
+                    ("remove_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [164367 164387]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [164339 164430])
+                    ("remove_child" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [164470 164488]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [164442 164745])
+                    ("remove_children" function
+                       (:parent "xml_node"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [164757 165128])
+                    ("append_buffer" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [165181 165202])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [165203 165215])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [165216 165237])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [165238 165260]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [165140 166937])
+                    ("find_child_by_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("name_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [166992 167012])
+                            ("attr_name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [167013 167037])
+                            ("attr_value" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [167038 167063]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [166949 167500])
+                    ("find_child_by_attribute" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("attr_name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [167555 167579])
+                            ("attr_value" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [167580 167605]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [167512 167979])
+                    ("path" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("delimiter" variable (:type ("char_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [168038 168055]))                          
+                        :type ("string_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [168014 168625])
+                    ("first_element_by_path" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("path_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [168685 168705])
+                            ("delimiter" variable (:type ("char_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [168706 168723]))                          
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [168644 169919])
+                    ("traverse" function
+                       (:parent "xml_node"
+                        :arguments 
+                          ( ("walker" variable
+                               (:reference 1
+                                :type ("xml_tree_walker" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [169955 169979]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [169931 170768])
+                    ("hash_value" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("size_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [170780 170913])
+                    ("internal_object" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_node"
+                        :type ("xml_node_struct" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [170925 170997])
+                    ("print" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("writer" variable
+                               (:reference 1
+                                :type ("xml_writer" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [171030 171049])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [171050 171071])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171072 171091])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [171092 171114])
+                            ("depth" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171115 171134]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [171009 171328])
+                    ("print" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("char" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("char" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [171384 171442])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [171443 171464])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171465 171484])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [171485 171507])
+                            ("depth" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171508 171527]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [171363 171625])
+                    ("print" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("wchar_t" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("wchar_t" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [171658 171722])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [171723 171744])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171745 171764])
+                            ("depth" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [171765 171784]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [171637 171888])
+                    ("offset_debug" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :type ("ptrdiff_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [171907 172736])
+                    ("xml_text" function
+                       (:constructor-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("root" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [172976 172998]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [172948 173017])
+                    ("_data" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_text"
+                        :type ("xml_node_struct" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [173029 173424])
+                    ("_data_new" function
+                       (:pointer 1
+                        :parent "xml_text"
+                        :type ("xml_node_struct" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [173436 173602])
+                    ("xml_text" function
+                       (:constructor-flag t
+                        :parent "xml_text"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [173605 173650])
+                    ("unspecified_bool_xml_text" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 3
+                                :type ("xml_text" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [173700 173712]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [173662 173718])
+                    ("unspecified_bool_type" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [173749 173844])
+                    ("!" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_text"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [173856 173913])
+                    ("empty" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [173925 173982])
+                    ("get" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_text"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [173994 174128])
+                    ("as_string" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_text"
+                        :constant-flag t
+                        :arguments 
+                          ( ("def" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [174174 174192]))                          
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [174140 174284])
+                    ("as_int" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("def" variable (:type "int") (reparse-symbol arg-sub-list) [174317 174325]))                          
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [174296 174434])
+                    ("as_uint" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("def" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [174477 174494]))                          
+                        :type "unsigned int")
+                        (reparse-symbol namespacesubparts) [174446 174604])
+                    ("as_double" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("def" variable (:type "double") (reparse-symbol arg-sub-list) [174643 174654]))                          
+                        :type "double")
+                        (reparse-symbol namespacesubparts) [174616 174766])
+                    ("as_float" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("def" variable (:type "float") (reparse-symbol arg-sub-list) [174803 174813]))                          
+                        :type "float")
+                        (reparse-symbol namespacesubparts) [174778 174924])
+                    ("as_bool" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("def" variable (:type "bool") (reparse-symbol arg-sub-list) [174959 174968]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [174936 175078])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [175497 175515]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [175478 175696])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "int") (reparse-symbol arg-sub-list) [175727 175735]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [175708 175921])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [175952 175969]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [175933 176153])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "long") (reparse-symbol arg-sub-list) [176184 176193]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [176165 176380])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [176411 176429]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [176392 176614])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [176645 176655]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [176626 176843])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [176874 176884])
+                            ("precision" variable (:type "int") (reparse-symbol arg-sub-list) [176885 176899]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [176855 177073])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [177104 177115]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [177085 177304])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [177335 177346])
+                            ("precision" variable (:type "int") (reparse-symbol arg-sub-list) [177347 177361]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [177316 177535])
+                    ("set" function
+                       (:parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "bool") (reparse-symbol arg-sub-list) [177566 177575]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [177547 177735])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [178294 178312]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178264 178346])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "int") (reparse-symbol arg-sub-list) [178388 178396]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178358 178430])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [178472 178489]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178442 178523])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "long") (reparse-symbol arg-sub-list) [178565 178574]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178535 178608])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [178650 178668]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178620 178702])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "double") (reparse-symbol arg-sub-list) [178744 178755]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178714 178789])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "float") (reparse-symbol arg-sub-list) [178831 178841]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178801 178875])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xml_text"
+                        :arguments 
+                          ( ("rhs" variable (:type "bool") (reparse-symbol arg-sub-list) [178917 178926]))                          
+                        :type ("xml_text" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [178887 178960])
+                    ("data" function
+                       (:methodconst-flag t
+                        :parent "xml_text"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [179197 179262])
+                    ("xml_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_node_iterator"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [179474 179527])
+                    ("xml_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [179576 179597]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [179530 179640])
+                    ("xml_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("ref" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [179689 179710])
+                            ("parent" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [179711 179735]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [179643 179770])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [179817 179846]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [179782 179937])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [179984 180013]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [179949 180104])
+                    ("" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :function-pointer t
+                        :parent "xml_node_iterator"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180116 180207])
+                    ("->" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :pointer 1
+                        :parent "xml_node_iterator"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180219 180354])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_node_iterator"
+                        :constant-flag t
+                        :type ("xml_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180366 180510])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [180570 180574]))                          
+                        :type ("xml_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180522 180640])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_node_iterator"
+                        :constant-flag t
+                        :type ("xml_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180652 180803])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_node_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [180863 180867]))                          
+                        :type ("xml_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180815 180933])
+                    ("xml_attribute_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_attribute_iterator"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [180936 180999])
+                    ("xml_attribute_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("attr" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181058 181084])
+                            ("parent" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181085 181108]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [181002 181144])
+                    ("xml_attribute_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("ref" variable
+                               (:pointer 1
+                                :type ("xml_attribute_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181203 181229])
+                            ("parent" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181230 181254]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [181147 181289])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181341 181375]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [181301 181466])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [181518 181552]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [181478 181643])
+                    ("" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :function-pointer t
+                        :parent "xml_attribute_iterator"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [181655 181756])
+                    ("->" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :pointer 1
+                        :parent "xml_attribute_iterator"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [181768 181918])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :constant-flag t
+                        :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [181930 182086])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [182156 182160]))                          
+                        :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182098 182231])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :constant-flag t
+                        :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182243 182410])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_attribute_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [182480 182484]))                          
+                        :type ("xml_attribute_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182422 182555])
+                    ("xml_named_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_named_node_iterator"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182558 182633])
+                    ("xml_named_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("node" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [182694 182715])
+                            ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [182716 182735]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182636 182791])
+                    ("xml_named_node_iterator" function
+                       (:constructor-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("ref" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [182852 182873])
+                            ("parent" variable
+                               (:pointer 1
+                                :type ("xml_node_struct" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [182874 182898])
+                            ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [182899 182918]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [182794 182966])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [183019 183054]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [182978 183145])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [183198 183233]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [183157 183324])
+                    ("" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :function-pointer t
+                        :parent "xml_named_node_iterator"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [183336 183433])
+                    ("->" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :pointer 1
+                        :parent "xml_named_node_iterator"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [183445 183586])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :constant-flag t
+                        :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [183598 183748])
+                    ("++" function
+                       (:operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [183820 183824]))                          
+                        :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [183760 183896])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :constant-flag t
+                        :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [183908 184197])
+                    ("--" function
+                       (:operator-flag t
+                        :parent "xml_named_node_iterator"
+                        :arguments 
+                          ( ("" variable (:type "int") (reparse-symbol arg-sub-list) [184269 184273]))                          
+                        :type ("xml_named_node_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [184209 184345])
+                    ("xml_parse_result" function
+                       (:constructor-flag t
+                        :parent "xml_parse_result"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [184348 184466])
+                    ("description" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xml_parse_result"
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol namespacesubparts) [184565 185864])
+                    ("xml_document" function
+                       (:constructor-flag t
+                        :parent "xml_document"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [185867 185935])
+                    ("xml_document" function
+                       (:destructor-flag t
+                        :parent "xml_document"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [185938 185996])
+                    ("reset" function
+                       (:parent "xml_document"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [186374 186433])
+                    ("reset" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("proto" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_document" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [186470 186496]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [186445 186558])
+                    ("_create" function
+                       (:parent "xml_document"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [186570 188126])
+                    ("_destroy" function
+                       (:parent "xml_document"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [188138 189236])
+                    ("load" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_istream" type
+                                     (:template-specifier 
+                                        ( ("char" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("char" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [192590 192648])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [192649 192670])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [192671 192693]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [192554 192829])
+                    ("load" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_istream" type
+                                     (:template-specifier 
+                                        ( ("wchar_t" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("wchar_t" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [192877 192941])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [192942 192963]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [192841 193105])
+                    ("load_string" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [193167 193190])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [193191 193212]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [193124 193487])
+                    ("load" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [193535 193558])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [193559 193580]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [193499 193627])
+                    ("load_file" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("path_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [193680 193698])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [193699 193720])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [193721 193743]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [193639 194004])
+                    ("load_file" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("path_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "wchar_t")
+                                (reparse-symbol arg-sub-list) [194057 194078])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [194079 194100])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [194101 194123]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [194016 194390])
+                    ("load_buffer" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [194445 194466])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [194467 194479])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [194480 194501])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [194502 194524]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [194402 194708])
+                    ("load_buffer_inplace" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [194771 194786])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [194787 194799])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [194800 194821])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [194822 194844]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [194720 195008])
+                    ("load_buffer_inplace_own" function
+                       (:parent "xml_document"
+                        :arguments 
+                          ( ("contents" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [195075 195090])
+                            ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [195091 195103])
+                            ("options" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [195104 195125])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [195126 195148]))                          
+                        :type ("xml_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [195020 195311])
+                    ("save" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :arguments 
+                          ( ("writer" variable
+                               (:reference 1
+                                :type ("xml_writer" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [195347 195366])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [195367 195388])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [195389 195408])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [195409 195431]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [195323 196293])
+                    ("save" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("char" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("char" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [196352 196410])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [196411 196432])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [196433 196452])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [196453 196475]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [196328 196565])
+                    ("save" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :arguments 
+                          ( ("stream" variable
+                               (:reference 1
+                                :type ("std::basic_ostream" type
+                                     (:template-specifier 
+                                        ( ("wchar_t" type nil nil nil)
+                                          ("std::char_traits" type (:template-specifier 
+                                            ( ("wchar_t" type nil nil nil))                                            ) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [196601 196665])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [196666 196687])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [196688 196707]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [196577 196803])
+                    ("save_file" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :arguments 
+                          ( ("path_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [196851 196869])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [196870 196891])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [196892 196911])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [196912 196934]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [196822 197184])
+                    ("save_file" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :arguments 
+                          ( ("path_" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "wchar_t")
+                                (reparse-symbol arg-sub-list) [197225 197246])
+                            ("indent" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [197247 197268])
+                            ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [197269 197288])
+                            ("encoding" variable (:type ("xml_encoding" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [197289 197311]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [197196 197568])
+                    ("document_element" function
+                       (:methodconst-flag t
+                        :parent "xml_document"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [197580 197811])
+                    ("as_utf8" function
+                       (:arguments 
+                          ( ("str" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "wchar_t")
+                                (reparse-symbol arg-sub-list) [197883 197902]))                          
+                        :type ("PUGIXML_FUNCTION" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [197858 197985])
+                    ("as_utf8" function
+                       (:arguments 
+                          ( ("str" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("std::basic_string" type
+                                     (:template-specifier 
+                                        ( ("wchar_t" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [198034 198072]))                          
+                        :type ("PUGIXML_FUNCTION" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [198009 198132])
+                    ("as_wide" function
+                       (:arguments 
+                          ( ("str" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [198196 198212]))                          
+                        :type ("PUGIXML_FUNCTION" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [198171 198281])
+                    ("as_wide" function
+                       (:arguments 
+                          ( ("str" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [198345 198368]))                          
+                        :type ("PUGIXML_FUNCTION" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [198320 198428])
+                    ("set_memory_management_functions" function
+                       (:arguments 
+                          ( ("allocate" variable (:type ("allocation_function" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [198501 198530])
+                            ("deallocate" variable (:type ("deallocation_function" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [198531 198564]))                          
+                        :type ("PUGIXML_FUNCTION" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [198452 198656])
+                    ("get_memory_allocation_function" function (:type ("PUGIXML_FUNCTION" type (:type "class") nil nil)) (reparse-symbol namespacesubparts) [198688 198780])
+                    ("get_memory_deallocation_function" function (:type ("PUGIXML_FUNCTION" type (:type "class") nil nil)) (reparse-symbol namespacesubparts) [198814 198910]))                  
+                :type "namespace")
+                nil [135940 198912])
+            ("pugi" type (:type "namespace") nil [200163 204273])
+            ("pugi" type (:type "namespace") nil [204322 208689])
+            ("pugi" type (:type "namespace") nil [208706 211977])
+            ("pugi" type (:type "namespace") nil [211978 233075])
+            ("pugi" type (:type "namespace") nil [233103 238024])
+            ("pugi" type (:type "namespace") nil [238025 316870])
+            ("pugi" type
+               (:members 
+                  ( ("xpath_exception" function
+                       (:constructor-flag t
+                        :parent "xpath_exception"
+                        :arguments 
+                          ( ("result_" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_parse_result" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [316961 316995]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [316919 317044])
+                    ("what" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_exception"
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol namespacesubparts) [317056 317135])
+                    ("result" function
+                       (:methodconst-flag t
+                        :parent "xpath_exception"
+                        :constant-flag t
+                        :type ("xpath_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317147 317228])
+                    ("xpath_node" function
+                       (:constructor-flag t
+                        :parent "xpath_node"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317238 317277])
+                    ("xpath_node" function
+                       (:constructor-flag t
+                        :parent "xpath_node"
+                        :arguments 
+                          ( ("node_" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [317312 317334]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317280 317354])
+                    ("xpath_node" function
+                       (:constructor-flag t
+                        :parent "xpath_node"
+                        :arguments 
+                          ( ("attribute_" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_attribute" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [317389 317421])
+                            ("parent_" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xml_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [317422 317446]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317357 317518])
+                    ("node" function
+                       (:methodconst-flag t
+                        :parent "xpath_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317530 317611])
+                    ("attribute" function
+                       (:methodconst-flag t
+                        :parent "xpath_node"
+                        :type ("xml_attribute" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317623 317693])
+                    ("parent" function
+                       (:methodconst-flag t
+                        :parent "xpath_node"
+                        :type ("xml_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [317705 317792])
+                    ("unspecified_bool_xpath_node" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 3
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [317844 317858]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [317804 317864])
+                    ("unspecified_bool_type" function
+                       (:methodconst-flag t
+                        :parent "xpath_node"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [317897 318010])
+                    ("!" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xpath_node"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [318022 318095])
+                    ("==" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xpath_node"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [318135 318155]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [318107 318224])
+                    ("!=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xpath_node"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [318264 318284]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [318236 318353])
+                    ("_assign" function
+                       (:parent "xpath_node_set"
+                        :arguments 
+                          ( ("begin_" variable (:type ("const_iterator" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [318607 318629])
+                            ("end_" variable (:type ("const_iterator" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [318630 318650])
+                            ("type_" variable (:type ("type_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [318651 318664]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [318578 319370])
+                    ("xpath_node_set" function
+                       (:constructor-flag t
+                        :parent "xpath_node_set"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [319734 319837])
+                    ("xpath_node_set" function
+                       (:constructor-flag t
+                        :parent "xpath_node_set"
+                        :arguments 
+                          ( ("begin_" variable (:type ("const_iterator" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [319880 319902])
+                            ("end_" variable (:type ("const_iterator" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [319903 319923])
+                            ("type_" variable (:type ("type_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [319924 319937]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [319840 320031])
+                    ("xpath_node_set" function
+                       (:destructor-flag t
+                        :parent "xpath_node_set"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [320034 320149])
+                    ("xpath_node_set" function
+                       (:constructor-flag t
+                        :parent "xpath_node_set"
+                        :arguments 
+                          ( ("ns" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [320192 320217]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [320152 320320])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xpath_node_set"
+                        :arguments 
+                          ( ("ns" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [320374 320399]))                          
+                        :type ("xpath_node_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [320332 320497])
+                    ("type" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type ("xpath_node_set::type_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [320929 321002])
+                    ("size" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type ("size_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321014 321079])
+                    ("empty" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [321091 321156])
+                    ("[]" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xpath_node_set"
+                        :constant-flag t
+                        :arguments 
+                          ( ("index" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [321213 321226]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321168 321288])
+                    ("begin" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type ("xpath_node_set::const_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321300 321383])
+                    ("end" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type ("xpath_node_set::const_iterator" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321395 321474])
+                    ("sort" function
+                       (:parent "xpath_node_set"
+                        :arguments 
+                          ( ("reverse" variable (:type "bool") (reparse-symbol arg-sub-list) [321512 321525]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [321486 321589])
+                    ("first" function
+                       (:methodconst-flag t
+                        :parent "xpath_node_set"
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321601 321696])
+                    ("xpath_parse_result" function
+                       (:constructor-flag t
+                        :parent "xpath_parse_result"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321699 321790])
+                    ("description" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_parse_result"
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol namespacesubparts) [321882 321976])
+                    ("xpath_variable" function
+                       (:constructor-flag t
+                        :parent "xpath_variable"
+                        :arguments 
+                          ( ("type_" variable (:type ("xpath_value_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [322019 322042]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [321979 322072])
+                    ("name" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_variable"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [322084 322639])
+                    ("type" function
+                       (:methodconst-flag t
+                        :parent "xpath_variable"
+                        :type ("xpath_value_type" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [322651 322718])
+                    ("get_boolean" function
+                       (:methodconst-flag t
+                        :parent "xpath_variable"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [322730 322888])
+                    ("get_number" function
+                       (:methodconst-flag t
+                        :parent "xpath_variable"
+                        :type "double")
+                        (reparse-symbol namespacesubparts) [322900 323067])
+                    ("get_string" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_variable"
+                        :constant-flag t
+                        :type ("char_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [323079 323297])
+                    ("get_node_set" function
+                       (:methodconst-flag t
+                        :parent "xpath_variable"
+                        :constant-flag t
+                        :type ("xpath_node_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [323309 323502])
+                    ("set" function
+                       (:parent "xpath_variable"
+                        :arguments 
+                          ( ("value" variable (:type "bool") (reparse-symbol arg-sub-list) [323539 323550]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [323514 323688])
+                    ("set" function
+                       (:parent "xpath_variable"
+                        :arguments 
+                          ( ("value" variable (:type "double") (reparse-symbol arg-sub-list) [323725 323738]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [323700 323874])
+                    ("set" function
+                       (:parent "xpath_variable"
+                        :arguments 
+                          ( ("value" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [323911 323931]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [323886 324411])
+                    ("set" function
+                       (:parent "xpath_variable"
+                        :arguments 
+                          ( ("value" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [324448 324476]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [324423 324616])
+                    ("xpath_variable_set" function
+                       (:constructor-flag t
+                        :parent "xpath_variable_set"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [324619 324755])
+                    ("xpath_variable_set" function
+                       (:destructor-flag t
+                        :parent "xpath_variable_set"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [324758 324901])
+                    ("xpath_variable_set" function
+                       (:constructor-flag t
+                        :parent "xpath_variable_set"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [324952 324982]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [324904 325086])
+                    ("=" function
+                       (:operator-flag t
+                        :parent "xpath_variable_set"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [325148 325178]))                          
+                        :type ("xpath_variable_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [325098 325252])
+                    ("_assign" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [325820 325850]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [325787 326038])
+                    ("_swap" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("rhs" variable
+                               (:reference 1
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [326081 326105]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [326050 326274])
+                    ("_find" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [326328 326347]))                          
+                        :type ("xpath_variable" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [326286 326642])
+                    ("_clone" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("var" variable
+                               (:pointer 1
+                                :type ("xpath_variable" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [326686 326706])
+                            ("out_result" variable
+                               (:pointer 2
+                                :type ("xpath_variable" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [326707 326735]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [326654 327271])
+                    ("_destroy" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("var" variable
+                               (:pointer 1
+                                :type ("xpath_variable" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [327317 327337]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [327283 327469])
+                    ("add" function
+                       (:pointer 1
+                        :parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [327521 327540])
+                            ("type" variable (:type ("xpath_value_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [327541 327563]))                          
+                        :type ("xpath_variable" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [327481 328052])
+                    ("set" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328093 328112])
+                            ("value" variable (:type "bool") (reparse-symbol arg-sub-list) [328113 328124]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [328064 328225])
+                    ("set" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328266 328285])
+                            ("value" variable (:type "double") (reparse-symbol arg-sub-list) [328286 328299]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [328237 328399])
+                    ("set" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328440 328459])
+                            ("value" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328460 328480]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [328411 328580])
+                    ("set" function
+                       (:parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328621 328640])
+                            ("value" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328641 328669]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [328592 328771])
+                    ("get" function
+                       (:pointer 1
+                        :parent "xpath_variable_set"
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328823 328842]))                          
+                        :type ("xpath_variable" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [328783 328870])
+                    ("get" function
+                       (:methodconst-flag t
+                        :pointer 1
+                        :parent "xpath_variable_set"
+                        :constant-flag t
+                        :arguments 
+                          ( ("name" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [328928 328947]))                          
+                        :type ("xpath_variable" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [328882 328981])
+                    ("xpath_query" function
+                       (:constructor-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("query" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [329018 329038])
+                            ("variables" variable
+                               (:pointer 1
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [329039 329069]))                          
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [328984 329852])
+                    ("xpath_query" function
+                       (:constructor-flag t
+                        :parent "xpath_query"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [329855 329906])
+                    ("xpath_query" function
+                       (:destructor-flag t
+                        :parent "xpath_query"
+                        :type ("PUGI__FN" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [329909 330045])
+                    ("return_type" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :type ("xpath_value_type" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [330604 330769])
+                    ("evaluate_boolean" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [330816 330836]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [330781 331158])
+                    ("evaluate_number" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [331206 331226]))                          
+                        :type "double")
+                        (reparse-symbol namespacesubparts) [331170 331569])
+                    ("evaluate_string" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [331642 331662]))                          
+                        :type ("string_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [331604 332037])
+                    ("evaluate_string" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("buffer" variable
+                               (:pointer 1
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [332092 332107])
+                            ("capacity" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [332108 332124])
+                            ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [332125 332145]))                          
+                        :type ("size_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [332056 332739])
+                    ("evaluate_node_set" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [332797 332817]))                          
+                        :type ("xpath_node_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [332751 333312])
+                    ("evaluate_node" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :arguments 
+                          ( ("n" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_node" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [333362 333382]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [333324 333836])
+                    ("result" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :constant-flag t
+                        :type ("xpath_parse_result" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [333848 333925])
+                    ("unspecified_bool_xpath_query" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("" variable
+                               (:pointer 3
+                                :type ("xpath_query" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [333978 333993]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [333937 333999])
+                    ("unspecified_bool_type" function
+                       (:methodconst-flag t
+                        :parent "xpath_query"
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [334033 334132])
+                    ("!" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :parent "xpath_query"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [334144 334202])
+                    ("select_node" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334247 334267])
+                            ("variables" variable
+                               (:pointer 1
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334268 334298]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [334214 334378])
+                    ("select_node" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_query" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334423 334448]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [334390 334497])
+                    ("select_nodes" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334547 334567])
+                            ("variables" variable
+                               (:pointer 1
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334568 334598]))                          
+                        :type ("xpath_node_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [334509 334682])
+                    ("select_nodes" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_query" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334732 334757]))                          
+                        :type ("xpath_node_set" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [334694 334810])
+                    ("select_single_node" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("char_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334862 334882])
+                            ("variables" variable
+                               (:pointer 1
+                                :type ("xpath_variable_set" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [334883 334913]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [334822 334993])
+                    ("select_single_node" function
+                       (:methodconst-flag t
+                        :parent "xml_node"
+                        :arguments 
+                          ( ("query" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("xpath_query" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [335045 335070]))                          
+                        :type ("xpath_node" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [335005 335119]))                  
+                :type "namespace")
+                nil [316871 335121]))          
+      :file "pugixml.cpp"
+      :pointmax 337431
+      :fsize 337430
+      :lastmodtime '(24511 28791 0 0)
+      :unmatched-syntax '((symbol 334996 . 335004) (symbol 334813 . 334821) (symbol 334685 . 334693) (symbol 334500 . 334508) (symbol 334381 . 334389) (symbol 334205 . 334213) (symbol 334135 . 334143) (OPERATOR 334024 . 334032) (punctuation 334023 . 334024) (punctuation 334022 . 334023) (symbol 334011 . 334022) (symbol 334002 . 334010) (symbol 333928 . 333936) (symbol 333839 . 333847) (symbol 333315 . 333323) (symbol 332742 . 332750) (symbol 332047 . 332055) (symbol 331595 . 331603) (symbol 331161 . 331169) (symbol 330772 . 330780) (symbol 330595 . 330603) (symbol 328873 . 328881) (symbol 328774 . 328782) (symbol 328583 . 328591) (symbol 328402 . 328410) (symbol 328228 . 328236) (symbol 328055 . 328063) (symbol 327472 . 327480) (symbol 327274 . 327282) (symbol 326645 . 326653) (symbol 326277 . 326285) (symbol 326041 . 326049) (symbol 325778 . 325786) (symbol 325089 . 325097) (symbol 324414 . 324422) (symbol 323877 . 323885) (symbol 323691 . 323699) (symbol 323505 . 323513) (symbol 323300 . 323308) (symbol 323070 . 323078) (symbol 322891 . 322899) (symbol 322721 . 322729) (symbol 322642 . 322650) (symbol 322075 . 322083) (symbol 321873 . 321881) (semantic-list 321845 . 321870) (CONST 321838 . 321843) (semantic-list 321835 . 321837) (BOOL 321831 . 321835) (OPERATOR 321822 . 321830) (punctuation 321821 . 321822) (punctuation 321820 . 321821) (symbol 321802 . 321820) (symbol 321793 . 321801) (symbol 321592 . 321600) (symbol 321477 . 321485) (symbol 321386 . 321394) (symbol 321291 . 321299) (symbol 321159 . 321167) (symbol 321082 . 321090) (symbol 321005 . 321013) (symbol 320920 . 320928) (symbol 320323 . 320331) (symbol 318569 . 318577) (symbol 318227 . 318235) (symbol 318098 . 318106) (symbol 318013 . 318021) (OPERATOR 317888 . 317896) (punctuation 317887 . 317888) (punctuation 317886 . 317887) (symbol 317876 . 317886) (symbol 317867 . 317875) (symbol 317795 . 317803) (symbol 317696 . 317704) (symbol 317614 . 317622) (symbol 317521 . 317529) (symbol 317138 . 317146) (symbol 317047 . 317055) (symbol 238025 . 238039) (symbol 233103 . 233117) (symbol 211978 . 211992) (symbol 208706 . 208720) (symbol 204322 . 204336) (symbol 200163 . 200177) (symbol 198792 . 198813) (symbol 198783 . 198791) (symbol 198668 . 198687) (symbol 198659 . 198667) (VOID 198447 . 198451) (symbol 198438 . 198446) (punctuation 198318 . 198319) (WCHAR 198311 . 198318) (punctuation 198310 . 198311) (symbol 198298 . 198310) (punctuation 198297 . 198298) (punctuation 198296 . 198297) (symbol 198293 . 198296) (symbol 198284 . 198292) (punctuation 198169 . 198170) (WCHAR 198162 . 198169) (punctuation 198161 . 198162) (symbol 198149 . 198161) (punctuation 198148 . 198149) (punctuation 198147 . 198148) (symbol 198144 . 198147) (symbol 198135 . 198143) (symbol 198002 . 198008) (punctuation 198001 . 198002) (punctuation 198000 . 198001) (symbol 197997 . 198000) (symbol 197988 . 197996) (symbol 197851 . 197857) (punctuation 197850 . 197851) (punctuation 197849 . 197850) (symbol 197846 . 197849) (symbol 197837 . 197845) (symbol 197571 . 197579) (symbol 197187 . 197195) (symbol 196813 . 196821) (symbol 196568 . 196576) (symbol 196319 . 196327) (symbol 195314 . 195322) (symbol 195011 . 195019) (symbol 194711 . 194719) (symbol 194393 . 194401) (symbol 194007 . 194015) (symbol 193630 . 193638) (symbol 193490 . 193498) (symbol 193115 . 193123) (symbol 192832 . 192840) (symbol 192545 . 192553) (symbol 188129 . 188137) (symbol 186561 . 186569) (symbol 186436 . 186444) (symbol 186365 . 186373) (symbol 184556 . 184564) (semantic-list 184519 . 184553) (CONST 184512 . 184517) (semantic-list 184509 . 184511) (BOOL 184505 . 184509) (OPERATOR 184496 . 184504) (punctuation 184495 . 184496) (punctuation 184494 . 184495) (symbol 184478 . 184494) (symbol 184469 . 184477) (symbol 184200 . 184208) (symbol 183899 . 183907) (symbol 183751 . 183759) (symbol 183589 . 183597) (symbol 183436 . 183444) (symbol 183327 . 183335) (symbol 183148 . 183156) (symbol 182969 . 182977) (symbol 182413 . 182421) (symbol 182234 . 182242) (symbol 182089 . 182097) (symbol 181921 . 181929) (symbol 181759 . 181767) (symbol 181646 . 181654) (symbol 181469 . 181477) (symbol 181292 . 181300) (symbol 180806 . 180814) (symbol 180643 . 180651) (symbol 180513 . 180521) (symbol 180357 . 180365) (symbol 180210 . 180218) (symbol 180107 . 180115) (symbol 179940 . 179948) (symbol 179773 . 179781) (symbol 179188 . 179196) (symbol 178878 . 178886) (symbol 178792 . 178800) (symbol 178705 . 178713) (symbol 178611 . 178619) (symbol 178526 . 178534) (symbol 178433 . 178441) (symbol 178349 . 178357) (symbol 178255 . 178263) (symbol 177538 . 177546) (symbol 177307 . 177315) (symbol 177076 . 177084) (symbol 176846 . 176854) (symbol 176617 . 176625) (symbol 176383 . 176391) (symbol 176156 . 176164) (symbol 175924 . 175932) (symbol 175699 . 175707) (symbol 175469 . 175477) (symbol 174927 . 174935) (symbol 174769 . 174777) (symbol 174607 . 174615) (symbol 174437 . 174445) (symbol 174287 . 174295) (symbol 174131 . 174139) (symbol 173985 . 173993) (symbol 173916 . 173924) (symbol 173847 . 173855) (OPERATOR 173740 . 173748) (punctuation 173739 . 173740) (punctuation 173738 . 173739) (symbol 173730 . 173738) (symbol 173721 . 173729) (symbol 173653 . 173661) (symbol 173427 . 173435) (symbol 173020 . 173028) (symbol 171898 . 171906) (symbol 171628 . 171636) (symbol 171354 . 171362) (symbol 171000 . 171008) (symbol 170916 . 170924) (symbol 170771 . 170779) (symbol 169922 . 169930) (symbol 168635 . 168643) (symbol 168005 . 168013) (symbol 167503 . 167511) (symbol 166940 . 166948) (symbol 165131 . 165139) (symbol 164748 . 164756) (symbol 164433 . 164441) (symbol 164330 . 164338) (symbol 163915 . 163923) (symbol 163542 . 163550) (symbol 163427 . 163435) (symbol 162727 . 162735) (symbol 162029 . 162037) (symbol 161489 . 161497) (symbol 160951 . 160959) (symbol 160386 . 160394) (symbol 159823 . 159831) (symbol 159366 . 159374) (symbol 158911 . 158919) (symbol 158706 . 158714) (symbol 158503 . 158511) (symbol 158338 . 158346) (symbol 158175 . 158183) (symbol 157630 . 157638) (symbol 157083 . 157091) (symbol 156644 . 156652) (symbol 156207 . 156215) (symbol 155582 . 155590) (symbol 154959 . 154967) (symbol 154467 . 154475) (symbol 153977 . 153985) (symbol 153421 . 153429) (symbol 152867 . 152875) (symbol 152444 . 152452) (symbol 152023 . 152031) (symbol 151625 . 151633) (symbol 151273 . 151281) (symbol 151120 . 151128) (symbol 151004 . 151012) (symbol 150822 . 150830) (symbol 150683 . 150691) (symbol 150566 . 150574) (symbol 150151 . 150159) (symbol 150076 . 150084) (symbol 149959 . 149967) (symbol 149853 . 149861) (symbol 149649 . 149657) (symbol 148491 . 148499) (symbol 148194 . 148202) (symbol 148076 . 148084) (symbol 147801 . 147809) (symbol 147495 . 147503) (symbol 147228 . 147236) (symbol 147101 . 147109) (symbol 146995 . 147003) (symbol 146871 . 146879) (symbol 146808 . 146816) (symbol 146711 . 146719) (symbol 146614 . 146622) (symbol 146519 . 146527) (symbol 146424 . 146432) (symbol 146327 . 146335) (symbol 146230 . 146238) (symbol 146054 . 146062) (symbol 145796 . 145804) (symbol 145654 . 145662) (symbol 145536 . 145544) (symbol 145379 . 145387) (symbol 145292 . 145300) (symbol 145170 . 145178) (symbol 145103 . 145111) (OPERATOR 144998 . 145006) (punctuation 144997 . 144998) (punctuation 144996 . 144997) (symbol 144988 . 144996) (symbol 144979 . 144987) (symbol 144911 . 144919) (symbol 143876 . 143884) (symbol 143651 . 143659) (symbol 143427 . 143435) (symbol 143201 . 143209) (symbol 142975 . 142983) (symbol 142746 . 142754) (symbol 142524 . 142532) (symbol 142297 . 142305) (symbol 142077 . 142085) (symbol 141852 . 141860) (symbol 141630 . 141638) (symbol 141272 . 141280) (symbol 141170 . 141178) (symbol 141067 . 141075) (symbol 140957 . 140965) (symbol 140856 . 140864) (symbol 140747 . 140755) (symbol 140647 . 140655) (symbol 140537 . 140545) (symbol 140443 . 140451) (symbol 140288 . 140296) (symbol 140156 . 140164) (symbol 140027 . 140035) (symbol 139959 . 139967) (symbol 139465 . 139473) (symbol 139323 . 139331) (symbol 139177 . 139185) (symbol 139023 . 139031) (symbol 138889 . 138897) (symbol 138749 . 138757) (symbol 138558 . 138566) (symbol 138416 . 138424) (symbol 138309 . 138317) (symbol 138202 . 138210) (symbol 138097 . 138105) (symbol 137992 . 138000) (symbol 137885 . 137893) (symbol 137778 . 137786) (symbol 137706 . 137714) (OPERATOR 137591 . 137599) (punctuation 137590 . 137591) (punctuation 137589 . 137590) (symbol 137576 . 137589) (symbol 137567 . 137575) (symbol 137489 . 137497) (symbol 137275 . 137283) (symbol 137204 . 137212) (symbol 137135 . 137143) (symbol 136585 . 136593) (symbol 136034 . 136042) (symbol 46099 . 46113) (symbol 36995 . 37009) (symbol 36851 . 36865) (symbol 30609 . 30623) (symbol 29780 . 29794) (symbol 10734 . 10748) (symbol 7846 . 7860) (symbol 6851 . 6865) (symbol 6016 . 6030))
+      :lexical-table 
+        '(("SOURCE_PUGIXML_CPP")
+          )
+)
+    (semanticdb-table "semanticdb-table-1569e72268b4"
+      :file "pugixml.hpp"
+      :fsize 53437
+      :lastmodtime '(24511 28791 0 0)))
+  :file "!data!Downloads!pugixml-1.11!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -1,0 +1,87 @@
+;; Object semanticdb-project-database-file-158462fcbecc
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-158462fcbecc"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-158462fdab94"
+      :major-mode c++-mode
+      :tags 
+        '( ("curl/curl.h" include (:system-flag t) nil [1 23])
+            ("stdio.h" include (:system-flag t) nil [24 42])
+            ("regex" include (:system-flag t) nil [43 59])
+            ("pugixml.hpp" include (:system-flag t) nil [60 82])
+            ("iostream" include (:system-flag t) nil [101 120])
+            ("cstring" include (:system-flag t) nil [121 139])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [140 160])
+            ("pugi" using (:type ("pugi" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [161 182])
+            ("mydata" variable
+               (:pointer 1
+                :type "char")
+                nil [184 197])
+            ("alldata_size" variable
+               (:default-value "0"
+                :type "int")
+                nil [217 238])
+            ("alldata" variable
+               (:pointer 2
+                :type "char")
+                nil [239 254])
+            ("curr_alldata_elem" variable (:type "int") nil [460 482])
+            ("myfunc" function
+               (:arguments 
+                  ( ("ptr" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [498 508])
+                    ("size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [509 521])
+                    ("nmemb" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [522 535])
+                    ("userdata" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [536 551]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [484 1713])
+            ("main" function (:type "int") nil [1715 3584]))          
+      :file "main.cpp"
+      :pointmax 3585
+      :fsize 3554
+      :lastmodtime '(24548 47163 908962 300000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-158462fdaf84"
+      :major-mode html-mode
+      :tags 
+        '( ("Patience
+	<span style=\"color:#555\">lyrics" section (:members 
+              ( ("Guns' N' Roses" anchor nil nil [275 278])
+                ("Lies" anchor nil nil [394 397])
+                ("G N' R Lies" anchor nil nil [462 465])
+                ("Live Era '87-'93" anchor nil nil [543 546]))              ) nil [45 2675]))          
+      :file "my.html"
+      :pointmax 2675
+      :fsize 2674
+      :lastmodtime '(24548 46231 466175 800000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-158462ffaa98"
+      :major-mode c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [1 20])
+            ("regex" include (:system-flag t) nil [21 37])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [38 58])
+            ("main" function (:type "int") nil [59 112]))          
+      :file "test2.cpp"
+      :pointmax 113
+      :fsize 112
+      :lastmodtime '(24548 46561 77732 0)
+      :unmatched-syntax nil))
+  :file "!data!projects!cpp!subtitles-downloader!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
